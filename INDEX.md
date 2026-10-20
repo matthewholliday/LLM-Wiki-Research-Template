@@ -1,17 +1,19 @@
 # Wiki Index
 
-This is the entry point for research on LLMs and agentic engineering.
+This is the entry point for the project's research questions, evidence, and conclusions.
 
 | Section | Contents |
 | --- | --- |
-| [Tools](tools/INDEX.md) | Evaluations of agent tools, frameworks, models, and services |
-| [Practices](practices/INDEX.md) | Methods for building, testing, and operating agent systems |
-| [Findings](findings/INDEX.md) | Evidence from experiments, observations, and source reviews |
+| [Topics](topics/INDEX.md) | Subject overviews, concepts, comparisons, and syntheses |
+| [Methods](methods/INDEX.md) | Research approaches, analytical methods, and evaluation criteria |
+| [Findings](findings/INDEX.md) | Individual conclusions supported by documented evidence |
 
 ## Authoring resources
 
 - [Repository overview](README.md)
 - [Agent instructions and research standards](AGENTS.md)
 - [Research finding template](templates/research-finding.md)
+- [Raw sources and ingestion ledger](raw/INDEX.md)
+- [Research queue](RESEARCH-QUEUE.md)
 
-No research entries have been added yet. Section pages list possible research topics, not established findings.
+No research entries have been added yet. Section pages explain where to record future work.

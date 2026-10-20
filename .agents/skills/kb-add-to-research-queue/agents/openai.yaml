@@ -1,0 +1,3 @@
+interface:
+  display_name: "KB Add to Research Queue"
+  short_description: "Add research questions to the repository queue"
