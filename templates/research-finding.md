@@ -1,4 +1,4 @@
-# <Finding title>
+# Finding title
 
 [Findings index](../findings/INDEX.md) | [Wiki index](../INDEX.md)
 

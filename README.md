@@ -1,3 +1,8 @@
+---
+slug: /getting-started
+sidebar_label: Getting started
+---
+
 # Research Wiki
 
 A reusable repository for collecting sources, investigating questions, and synthesizing findings in any research field.
@@ -24,6 +29,32 @@ Use [topics/](topics/INDEX.md) for subject-level syntheses, [methods/](methods/I
 3. Record evidence, sources, dates, and relevant research context. Separate observation from interpretation.
 4. Link the page from its section index and connect it to related research.
 5. Check that local links resolve and that conclusions match the available evidence.
+
+## Browse the website
+
+The Docusaurus site reads this repository's Markdown pages directly. It provides section navigation, a page outline, and light and dark themes.
+
+Install Node.js 20 or newer, then run these commands from the repository root:
+
+```sh
+npm ci
+./run-wiki-server.sh
+```
+
+Open the local address printed by Docusaurus. The script works from any working directory and forwards options, for example `./run-wiki-server.sh --port 3001`. You can also use `npm start` directly. Stop the server with Ctrl+C. To build and preview the static site:
+
+```sh
+npm run build
+npm run serve
+```
+
+The build output is `website/build/`. GitHub Actions checks the production build and saves it as a downloadable artifact on pushes to `main` and pull requests.
+
+Before deploying, set `SITE_URL` to the site's origin and `SITE_BASE_URL` to its path with leading and trailing slashes. For example, a project hosted at `https://example.org/research/` uses `SITE_URL=https://example.org` and `SITE_BASE_URL=/research/`. The default origin is a placeholder for local development.
+
+Site configuration and styling live in `website/`. New pages under Topics, Methods, and Findings appear automatically in the sidebar. When adding a new top-level research section, add it to the docs `include` patterns and sidebar configuration as well as the wiki index. Raw source documents remain separate from the rendered wiki; the source ledger is included.
+
+The docs plugin in `website/plugins/wiki-docs.js` limits sidebar metadata watchers to the included content folders. This avoids recursively watching dependencies when the repository root is used as the docs directory. If native file watching is unavailable in your environment, run `npm start -- --poll 1000` to use Docusaurus's polling fallback.
 
 ## Repository skills
 

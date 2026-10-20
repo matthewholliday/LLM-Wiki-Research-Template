@@ -13,6 +13,7 @@ The purpose of this repository is to collect, organize, and synthesize research 
 - `raw/` preserves source documents and tracks provenance and ingestion in `raw/INDEX.md`.
 - `RESEARCH-QUEUE.md` tracks open and completed research questions.
 - `.agents/skills/` contains this repository's knowledge-base workflows.
+- `website/` contains the Docusaurus configuration and styles; it reads the wiki Markdown directly.
 
 ## Research standards
 
@@ -40,6 +41,8 @@ The purpose of this repository is to collect, organize, and synthesize research 
 - Use `templates/research-finding.md` as a starting point for individual findings; adapt it when useful.
 - Write in clear, concise English. Avoid em dashes and double-hyphen substitutes.
 - Check internal links after changing page names or navigation.
+- Keep website navigation consistent with the wiki. New top-level sections need matching docs include patterns and sidebar entries in `website/`.
+- Run `npm run build` after changing wiki pages or site configuration to check rendered content and links. Keep generated site files and dependencies out of Git.
 
 ## Knowledge-base workflows
 

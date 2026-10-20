@@ -1,3 +1,8 @@
+---
+slug: /
+sidebar_label: Wiki index
+---
+
 # Wiki Index
 
 This is the entry point for the project's research questions, evidence, and conclusions.
