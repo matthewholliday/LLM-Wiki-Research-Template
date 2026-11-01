@@ -70,4 +70,4 @@ These skills live in `.agents/skills/` and are versioned with the wiki.
 
 Invoke a skill by name, followed by your question, for example `$kb-research-topic How do urban trees affect local temperatures?`. Place existing documents in [raw/](raw/INDEX.md) for ingestion, or add future work to [RESEARCH-QUEUE.md](RESEARCH-QUEUE.md).
 
-The wiki starts with a structure for research. No research entries have been recorded yet.
+Current research includes [agent harness session restart and rehydration](topics/agent-harness-session-rehydration.md), with source extracts, a supported finding, and a proposed recovery evaluation method.

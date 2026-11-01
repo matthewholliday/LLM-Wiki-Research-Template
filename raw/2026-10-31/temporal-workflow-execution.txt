@@ -1,0 +1,75 @@
+# Source extract: temporal-workflow-execution
+
+- Requested URL: https://docs.temporal.io/workflow-execution
+- Effective URL: https://docs.temporal.io/workflow-execution
+- Retrieved: 2026-10-31
+- Format: Selected paragraphs from FetchUrl Markdown extraction, not original HTML or a complete page archive.
+- Selection: Paragraphs concerning sessions, persistence, restart, interrupts, cancellation, checkpoints, replay, retries, and idempotency. Navigation, large embedded metadata, and unrelated text omitted. No source code was executed.
+
+- [What is a Workflow Execution?](https://docs.temporal.io/workflow-execution#workflow-execution)
+- [Replay](https://docs.temporal.io/workflow-execution#replay)
+- [Commands and awaitables](https://docs.temporal.io/workflow-execution#commands-awaitables)
+- [What is a Command?](https://docs.temporal.io/workflow-execution#command)
+- [Checking Workflow Execution Status](https://docs.temporal.io/workflow-execution#workflow-execution-status)
+- [Workflow Execution Chain](https://docs.temporal.io/workflow-execution#workflow-execution-chain)
+- [Memo](https://docs.temporal.io/workflow-execution#memo)
+- [State Transition](https://docs.temporal.io/workflow-execution#state-transition)
+- [Workflow cache](https://docs.temporal.io/workflow-execution#workflow-cache)
+
+A Workflow Execution is reliable, because it is fully recoverable after a failure.
+The Temporal Platform ensures the state of the Workflow Execution persists in the face of failures and outages and resumes execution from the latest state.
+
+### Replays [​](https://docs.temporal.io/workflow-execution\#replay "Direct link to Replays")
+
+A Replay is the method by which a Workflow Execution resumes making progress. During a Replay the Commands that are generated are checked against an existing Event History. Replays are necessary and often happen to give the effect that Workflow Executions are resumable, reliable, and durable.
+
+For more information, see [Deterministic constraints](https://docs.temporal.io/workflow-definition#deterministic-constraints).
+
+- [How to use Replay APIs using the Go SDK](https://docs.temporal.io/develop/go/best-practices/testing-suite#replay)
+- [How to use Replay APIs using the Java SDK](https://docs.temporal.io/develop/java/best-practices/testing-suite#replay)
+- [How to use Replay APIs using the Python SDK](https://docs.temporal.io/develop/python/best-practices/testing-suite#replay)
+- [How to use Replay APIs using the TypeScript SDK](https://docs.temporal.io/develop/typescript/best-practices/testing-suite#replay)
+- [How to use Replay APIs using the .NET SDK](https://docs.temporal.io/develop/dotnet/best-practices/testing-suite#replay)
+
+Commands are generated whenever the Workflow Function is executed.
+The Worker Process supervises the Command generation and makes sure that it maps to the current Event History.
+(For more information, see [Deterministic constraints](https://docs.temporal.io/workflow-definition#deterministic-constraints).)
+The Worker Process batches the Commands and then suspends progress to send the Commands to the Temporal Service whenever the Workflow Function reaches a place where it can no longer progress without a result from an Awaitable.
+
+- Awaiting: Progress can block using explicit "Await" APIs.
+- Requesting cancellation of another Workflow Execution: Progress can block on confirmation that the other Workflow Execution is cancelled.
+- Sending a [Signal](https://docs.temporal.io/sending-messages#sending-signals): Progress can block on confirmation that the Signal sent.
+- Spawning a [Child Workflow Execution](https://docs.temporal.io/child-workflows): Progress can block on confirmation that the Child Workflow Execution started, and on the result of the Child Workflow Execution.
+- Spawning an [Activity Execution](https://docs.temporal.io/activity-execution): Progress can block on the result of the Activity Execution.
+- Starting a Timer: Progress can block until the Timer fires.
+
+- Cancelled: The Workflow Execution successfully handled a cancellation request.
+- Completed: The Workflow Execution has completed successfully.
+- Continued-As-New: The Workflow Execution [Continued-As-New](https://docs.temporal.io/workflow-execution/continue-as-new).
+- Failed: The Workflow Execution returned an error and failed.
+- Terminated: The Workflow Execution was terminated.
+- Timed Out: The Workflow Execution reached a timeout limit.
+
+- [Continue-As-New](https://docs.temporal.io/workflow-execution/continue-as-new)
+- [Retries](https://docs.temporal.io/encyclopedia/retry-policies)
+- [Temporal Cron Job](https://docs.temporal.io/cron-job)
+- [Reset](https://docs.temporal.io/cli/command-reference/workflow#reset)
+
+A State Transition is a unit of progress made by a [Workflow Execution](https://docs.temporal.io/workflow-execution#workflow-execution).
+Each State Transition is recorded in a persistence store.
+
+When a Worker picks up a Workflow Task, it caches the Workflow's state in memory. This allows the Worker to continue processing subsequent Tasks for that Workflow without having to fetch the full Event History from the server and replay it from scratch.
+
+This caching mechanism is closely tied to [Sticky Execution](https://docs.temporal.io/sticky-execution). The Temporal Service directs future Workflow Tasks to the same Worker that cached the Workflow, via a dedicated "Sticky Queue". If the cached Workflow is evicted, to make room for another for example, the Worker must replay the Event History to restore its state before continuing.
+
+- [What is a Workflow Execution?](https://docs.temporal.io/workflow-execution#workflow-execution)
+  - [Replays](https://docs.temporal.io/workflow-execution#replay)
+  - [Commands and awaitables](https://docs.temporal.io/workflow-execution#commands-awaitables)
+  - [What is a Command?](https://docs.temporal.io/workflow-execution#command)
+  - [Status](https://docs.temporal.io/workflow-execution#workflow-execution-status)
+    - [Open](https://docs.temporal.io/workflow-execution#open)
+    - [Closed](https://docs.temporal.io/workflow-execution#closed)
+  - [Workflow Execution Chain](https://docs.temporal.io/workflow-execution#workflow-execution-chain)
+- [What is a Memo?](https://docs.temporal.io/workflow-execution#memo)
+- [What is a State Transition?](https://docs.temporal.io/workflow-execution#state-transition)
+- [Workflow cache](https://docs.temporal.io/workflow-execution#workflow-cache)
