@@ -6,7 +6,9 @@ Subject overviews, concepts, comparisons, and syntheses that bring together the 
 
 ## Research entries
 
-No entries yet.
+| Topic | Scope | Evidence checked |
+| --- | --- | --- |
+| [Agent harness session restart and rehydration](agent-harness-session-rehydration.md) | Six harnesses and orchestration systems, state preservation, and interrupted side effects | 2026-10-31 |
 
 ## Adding a topic
 

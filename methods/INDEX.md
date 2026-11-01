@@ -6,7 +6,9 @@ Research approaches, analytical methods, and evaluation criteria used to investi
 
 ## Research entries
 
-No entries yet.
+| Method | Purpose | Status |
+| --- | --- | --- |
+| [Evaluating agent restart recovery](agent-restart-recovery-evaluation.md) | Test preserved state, repeated work, and external-effect reconciliation across stop conditions | Proposed, not executed |
 
 ## Adding a method
 
