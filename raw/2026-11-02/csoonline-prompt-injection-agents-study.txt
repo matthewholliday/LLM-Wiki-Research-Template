@@ -1,0 +1,246 @@
+Title: Prompt injection breaks today’s AI agents, study warns | CSO Online
+Requested URL: https://www.csoonline.com/article/4184455/prompt-injection-breaks-todays-ai-agents-study-warns.html
+Resolved URL: https://www.csoonline.com/article/4184455/prompt-injection-breaks-todays-ai-agents-study-warns.html
+Retrieved: 2026-11-02
+Format: FetchUrl Markdown text snapshot, not original HTML. Lines of 10,000 or more characters (embedded metadata or oversized content) omitted (none present).
+
+## Topics
+
+Close
+
+01. [Analytics](https://www.csoonline.com/analytics/)
+02. [Application Security](https://www.csoonline.com/application-security/)
+03. [Artificial Intelligence](https://www.csoonline.com/artificial-intelligence/)
+04. [Business Continuity](https://www.csoonline.com/business-continuity/)
+05. [Business Operations](https://www.csoonline.com/business-operations/)
+06. [Careers](https://www.csoonline.com/careers/)
+07. [Cloud Security](https://www.csoonline.com/cloud-security/)
+08. [Compliance](https://www.csoonline.com/compliance/)
+09. [Contributor Content](https://www.csoonline.com/contributor-content/)
+10. [Critical Infrastructure](https://www.csoonline.com/critical-infrastructure/)
+11. [Cybercrime](https://www.csoonline.com/cybercrime/)
+12. [Enterprise Buyer’s Guides](https://www.csoonline.com/enterprise-buyers-guide/)
+13. [Generative AI](https://www.csoonline.com/generative-ai/)
+14. [Identity and Access Management](https://www.csoonline.com/identity-and-access-management/)
+15. [Industry](https://www.csoonline.com/industry/)
+16. [IT Leadership](https://www.csoonline.com/it-leadership/)
+17. [IT Management](https://www.csoonline.com/it-management/)
+18. [Network Security](https://www.csoonline.com/network-security/)
+19. [Physical Security](https://www.csoonline.com/physical-security/)
+20. [Privacy](https://www.csoonline.com/privacy/)
+21. [Risk Management](https://www.csoonline.com/risk-management/)
+22. [Security](https://www.csoonline.com/security/)
+23. [Security Infrastructure](https://www.csoonline.com/security-infrastructure/)
+24. [Software Development](https://www.csoonline.com/software-development/)
+25. [Vulnerabilities](https://www.csoonline.com/vulnerabilities/)
+
+by [Gyana Swain](https://www.csoonline.com/profile/gyana-swain-2/)
+
+# Prompt injection breaks today’s AI agents, study warns
+
+News
+
+Jun 12, 20265 mins
+
+Today’s AI web agents have no dependable defenses against prompt injection, according to new research showing that not a single attack scenario was consistently blocked across leading systems powered by GPT‑5 and Gemini.
+
+The findings come from StakeBench, a stakeholder-centric benchmark developed by researchers from Nanyang Technological University, ST Engineering, IBM Research, and the University of Illinois Urbana-Champaign to evaluate prompt injection attacks against AI agents operating in realistic web environments.
+
+The researchers executed 3,168 adversarial runs across NanoBrowser and BrowserUse using 264 benchmark cases. Indirect prompt injection attacks, where malicious instructions are hidden inside ordinary web content such as product reviews and metadata, achieved attack success rates ranging from 41.67% to 68.16%, while direct prompt injection exceeded 79% across all tested configurations.
+
+“Crucially, these failures exhibit distinct patterns when analysed through a stakeholder lens: some attacks succeed without disrupting the user’s delegated task while disproportionately harming third parties (stealthy parasitism), whereas others disrupt task completion without realizing the adversarial objective (misaligned disruption),” [the researchers wrote in a paper](https://arxiv.org/html/2606.13385v1).
+
+OpenAI and Google did not immediately respond to requests for comment.
+
+## Every attack objective exposed at least one failure mode
+
+The benchmark evaluated web agents across four possible outcomes: Robust Behavior, Stealthy Parasitism, Misaligned Disruption, and Compounded Failure. Robust Behavior represents the ideal state in which an agent completes a user’s task without advancing an attacker’s objective or exhibiting execution instability.
+
+The researchers argue that the findings reveal a broader problem than high attack success rates.
+
+“The Robust Behavior region remains unpopulated across all evaluated configurations,” they wrote, meaning every tested attack objective resulted in at least one meaningful failure dimension, whether successful adversarial manipulation, disruption of the user’s intended task, or execution instability.
+
+The authors say this demonstrates that “prompt-injection vulnerability in deployable web agents cannot be characterized by any single metric in isolation,” because attack success and task disruption are “weakly coupled in practice.”
+
+## Attacks can succeed while users see nothing wrong
+
+One of the failure modes identified by the benchmark is what the researchers call “stealthy parasitism,” in which an AI agent completes the user’s delegated task while simultaneously advancing an attacker’s objective.
+
+The paper illustrates the risk with an online shopping scenario: “A malicious prompt injected into product reviews may bias an agent toward a specific item: although the user may still receive an acceptable recommendation, the same behaviour can disadvantage competing sellers and undermine platform integrity.”
+
+The researchers argue that prompt injection has evolved into “a system-level security problem with multi-party harm,” rather than a model safety issue affecting only the end user.
+
+## Different stakeholders face different risks
+
+Unlike existing benchmarks that primarily measure attack success, StakeBench evaluates harm across three stakeholder groups: end users, third-party sellers, and platforms.
+
+The results show that those groups experience materially different risks.
+
+Seller-targeted attacks recorded the highest attack success rates across both evaluated web agents. User-targeted attacks, however, produced the lowest task deviation rates, suggesting they may be harder to detect because workflows continue to appear normal even when adversarial objectives are achieved.
+
+According to the researchers, “the same agent can simultaneously appear stealthy on user-targeted attacks, susceptible on seller-targeted attacks, and unstable on platform-targeted attacks.”
+
+That, they argue, makes “aggregate ASR alone insufficient to characterize stakeholder-specific vulnerability.”
+
+## Models and architectures influence outcomes
+
+The benchmark also found meaningful differences between AI models and agent architectures.
+
+Replacing GPT-5 with Gemini-2.5-Flash increased indirect prompt injection success rates by 26.49 percentage points on NanoBrowser and by 6.2 percentage points on BrowserUse, the paper said. BrowserUse also consistently exhibited higher task deviation and behavioral irregularity than NanoBrowser, it added.
+
+According to the researchers, the findings suggested prompt injection resilience depends not only on the language model but also on how it is implemented within an autonomous agent.
+
+“These results indicate that prompt-injection security in deployable web agents is not a scalar property of the backbone model but a distribution of harm whose realisation is jointly determined by the affected stakeholder, the semantic alignment between the injected objective and the user’s task, and the architectural context in which the backbone is deployed,” the paper added.
+
+## Images may emerge as the next attack vector
+
+The researchers also explored whether prompt injection could extend beyond text.
+
+In a preliminary multimodal experiment, they modified only a product image while leaving accompanying text, ratings, and page structure unchanged. The manipulated product’s selection rate increased from 10% to 76.67% without rating signals, suggesting visual content alone may significantly influence AI agent decisions.
+
+While the experiment was limited in scope, the researchers said the results indicate “the IPI surface relevant to deployable web agents may extend beyond textual channels to visual ones,” pointing to another emerging attack vector as enterprises increasingly deploy autonomous AI systems.
+
+[Vulnerabilities](https://www.csoonline.com/vulnerabilities/)[Security](https://www.csoonline.com/security/)[Artificial Intelligence](https://www.csoonline.com/artificial-intelligence/)
+
+by [Gyana Swain](https://www.csoonline.com/profile/gyana-swain-2/)
+
+Gyana Swain is a seasoned technology journalist with over 20 years' experience covering the telecom and IT space. He is a consulting editor with VARINDIA and earlier in his career, he held editorial positions at CyberMedia, PTI, 9dot9 Media, and Dennis Publishing. A published author of two books, he combines industry insight with narrative depth. Outside of work, he’s a keen traveler and cricket enthusiast. He earned a B.S. degree from Utkal University.
+
+## More from this author
+
+- [news\\
+**Cursor removes malicious Claude Code extension after SSH backdoor attempt** \\
+Nov 2, 2026 5 mins](https://www.csoonline.com/article/4243210/cursor-removes-malicious-claude-code-extension-after-ssh-backdoor-attempt.html)
+- [news\\
+**Mistral open-sources AI model despite warning it could aid cyberattacks** \\
+Oct 30, 2026 6 mins](https://www.csoonline.com/article/4242648/mistral-releases-large-4-weights-despite-warning-of-cyberattack-uplift.html)
+- [news\\
+**Anthropic and OpenAI diverge on who should pull the plug on risky AI** \\
+Oct 29, 2026 5 mins](https://www.csoonline.com/article/4242128/anthropic-and-openai-diverge-on-who-should-pull-the-plug-on-risky-ai-2.html)
+- [news\\
+**Fake ChatGPT, Claude apps spread malware via signed AI binaries** \\
+Oct 28, 2026 5 mins](https://www.csoonline.com/article/4241634/fake-chatgpt-claude-apps-spread-malware-via-signed-ai-binaries.html)
+- [news\\
+**eMudhra quits global TLS certificate market after compromise of CA signing keys** \\
+Oct 23, 2026 5 mins](https://www.csoonline.com/article/4239634/emudhra-quits-global-tls-certificate-market-after-compromise-of-ca-signing-keys-2.html)
+- [news\\
+**China-linked hackers used agentic AI in attack on 2,250 Microsoft 365 tenants** \\
+Oct 22, 2026 5 mins](https://www.csoonline.com/article/4239028/china-linked-hackers-used-agentic-ai-in-attack-on-2250-microsoft-365-tenants.html)
+- [news\\
+**Google, Mozilla revoke eMudhra intermediates after private key compromise** \\
+Oct 21, 2026 5 mins](https://www.csoonline.com/article/4238338/google-mozilla-revoke-emudhra-intermediates-after-private-key-compromise.html)
+- [news\\
+**Microsoft, Nvidia push provenance checks as open-weight AI adoption accelerates** \\
+Oct 19, 2026 5 mins](https://www.csoonline.com/article/4237095/microsoft-nvidia-push-provenance-checks-as-open-weight-ai-adoption-accelerates.html)
+
+## Show me more
+
+PopularArticlesPodcastsVideos
+
+[news\\
+\\
+**A compromised DevOps laptop caused the $6.3B Binance breach** \\
+\\
+By Shweta Sharma\\
+\\
+Nov 2, 20265 mins\\
+\\
+CyberattacksData BreachSecurity\\
+\\
+![Image](https://www.csoonline.com/wp-content/uploads/2026/11/4243225-0-14903400-1793623258-shutterstock_1065988967.jpg?quality=50&strip=all&w=375)](https://www.csoonline.com/article/4243225/a-compromised-devops-laptop-caused-the-6-3b-binance-breach.html)
+
+[opinion\\
+\\
+**Why do we keep testing employees for yesterday’s phishing attacks** \\
+\\
+By Oludolamu Onimole\\
+\\
+Nov 2, 20265 mins\\
+\\
+CybercrimePhishingSocial Engineering\\
+\\
+![Image](https://www.csoonline.com/wp-content/uploads/2026/11/4242712-0-34460200-1793613787-shutterstock_2142206135.jpg?quality=50&strip=all&w=444)](https://www.csoonline.com/article/4242712/why-do-we-keep-testing-employees-for-yesterdays-phishing-attacks.html)
+
+[opinion\\
+\\
+**Who approves the files that control your AI coding assistant?** \\
+\\
+By Sunil Gentyala\\
+\\
+Nov 2, 20267 mins\\
+\\
+IT GovernanceSecuritySecurity Practices\\
+\\
+![Image](https://www.csoonline.com/wp-content/uploads/2026/11/4242707-0-80151700-1793610128-shutterstock_1141562051.jpg?quality=50&strip=all&w=375)](https://www.csoonline.com/article/4242707/who-approves-the-files-that-control-your-ai-coding-assistant.html)
+
+[podcast\\
+\\
+**Beyond Cybersecurity: The CISO as a Business Leader** \\
+\\
+By Joan Goodchild\\
+\\
+Oct 15, 20269 mins\\
+\\
+Bugs\\
+\\
+![Image](https://www.csoonline.com/wp-content/uploads/2026/10/0-40303100-1792091190-youtube-thumbnail-AabqAvHL22c.jpg?quality=50&strip=all&w=444)](https://www.csoonline.com/podcast/4235981/beyond-cybersecurity-the-ciso-as-a-business-leader.html)
+
+[podcast\\
+\\
+**Identity Has Become the New Security Perimeter** \\
+\\
+By Joan Goodchild\\
+\\
+Oct 8, 20268 mins\\
+\\
+Identity and Access Management\\
+\\
+![Image](https://www.csoonline.com/wp-content/uploads/2026/10/0-87876500-1791485805-youtube-thumbnail-c6YDCf7Vc6g.jpg?quality=50&strip=all&w=444)](https://www.csoonline.com/podcast/4232722/identity-has-become-the-new-security-perimeter.html)
+
+[podcast\\
+\\
+**Why Email Still Works for Attackers** \\
+\\
+By Joan Goodchild\\
+\\
+Sep 30, 20266 mins\\
+\\
+Email Security\\
+\\
+![Image](https://www.csoonline.com/wp-content/uploads/2026/09/0-58767000-1790790864-youtube-thumbnail-kW4Vg-LNlPQ.jpg?quality=50&strip=all&w=444)](https://www.csoonline.com/podcast/4229079/why-email-still-works-for-attackers.html)
+
+[video\\
+\\
+**Beyond Cybersecurity: The CISO as a Business Leader** \\
+\\
+By Joan Goodchild\\
+\\
+Oct 15, 20269 mins\\
+\\
+Bugs\\
+\\
+![Image](https://www.csoonline.com/wp-content/uploads/2026/10/4235982-0-87936200-1792091125-youtube-thumbnail-AabqAvHL22c.jpg?quality=50&strip=all&w=444)](https://www.csoonline.com/video/4235982/beyond-cybersecurity-the-ciso-as-a-business-leader.html)
+
+[video\\
+\\
+**Identity Has Become the New Security Perimeter** \\
+\\
+By Joan Goodchild\\
+\\
+Oct 8, 20268 mins\\
+\\
+Identity and Access Management\\
+\\
+![Image](https://www.csoonline.com/wp-content/uploads/2026/10/4232723-0-73799800-1791485801-youtube-thumbnail-c6YDCf7Vc6g.jpg?quality=50&strip=all&w=444)](https://www.csoonline.com/video/4232723/identity-has-become-the-new-security-perimeter.html)
+
+[video\\
+\\
+**Why Email Still Works for Attackers** \\
+\\
+By Joan Goodchild\\
+\\
+Sep 30, 20266 mins\\
+\\
+Email Security\\
+\\
+![Image](https://www.csoonline.com/wp-content/uploads/2026/09/4229080-0-03971200-1790790857-youtube-thumbnail-kW4Vg-LNlPQ.jpg?quality=50&strip=all&w=444)](https://www.csoonline.com/video/4229080/why-email-still-works-for-attackers.html)

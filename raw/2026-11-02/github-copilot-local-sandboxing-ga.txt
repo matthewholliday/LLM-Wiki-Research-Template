@@ -1,0 +1,102 @@
+Title: Local sandboxing for GitHub Copilot now generally available - GitHub Changelog
+Requested URL: https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available/
+Resolved URL: https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available/
+Retrieved: 2026-11-02
+Format: FetchUrl Markdown text snapshot, not original HTML. Lines of 10,000 or more characters (embedded metadata or oversized content) omitted (none present).
+
+[Back to changelog](https://github.blog/changelog/)
+
+Local sandboxing for GitHub Copilot is now generally available in GitHub Copilot CLI, the GitHub Copilot app, and VS Code sessions using Agent Host.
+
+Local sandboxes give developers a secure execution boundary for agentic workflows on their own machines. Tools and commands initiated by Copilot run with restricted access to the filesystem, network, credentials, and other system capabilities, based on policies defined by the developer or their organization.
+
+Local sandboxing is powered by [Microsoft eXecution Container (MXC)](https://github.com/microsoft/mxc), which translates a common sandbox policy into native operating-system controls across Windows, macOS, and Linux.
+
+With local sandboxing, developers and organizations can:
+
+- Limit the files and directories that agent-run commands can read or modify.
+- Control access to the internet, local networks, Git credentials, and GitHub CLI credentials.
+- Apply sandboxing to local tools and services, including local MCP and language servers where supported.
+- Use enterprise-managed settings to require sandboxing and enforce policies that developers cannot weaken.
+- Adopt more autonomous agent workflows while maintaining clear boundaries around what Copilot can access.
+
+Model execution and tool isolation are separate concerns. Sandbox policies apply to tool execution regardless of which model Copilot uses.
+
+Local sandboxing is included with GitHub Copilot at no additional cost. To get started, see [About cloud and local sandboxes for GitHub Copilot](https://docs.github.com/copilot/concepts/security-governance-and-network-settings/about-cloud-and-local-sandboxes?utm_source=changelog-cta-cloud-local-sandbox-documentation&utm_medium=changelog&utm_campaign=oct-7-event-oct-2026).
+
+## Related Posts
+
+### Nov.02Improvement
+
+[Security risk assessments include repository protection status](https://github.blog/changelog/2026-11-02-security-risk-assessments-include-repository-protection-status)
+
+[application security](https://github.blog/changelog/2026/?label=application-security)
+
+### Oct.28Release
+
+[Route and orchestrate models with GitHub Copilot Fusion](https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion)
+
+[copilot](https://github.blog/changelog/2026/?label=copilot) [enterprise management tools](https://github.blog/changelog/2026/?label=enterprise-management-tools) [universe26](https://github.blog/changelog/2026/?label=universe26)...
++2
+
+### Oct.28Release
+
+[GitHub Copilot app, Universe releases](https://github.blog/changelog/2026-10-28-github-copilot-app-universe-releases)
+
+[copilot](https://github.blog/changelog/2026/?label=copilot) [universe26](https://github.blog/changelog/2026/?label=universe26)...
++1
+
+### Oct.28Release
+
+[GitHub Enterprise now includes access to GitHub Copilot](https://github.blog/changelog/2026-10-28-github-enterprise-now-includes-access-to-github-copilot)
+
+[copilot](https://github.blog/changelog/2026/?label=copilot) [universe26](https://github.blog/changelog/2026/?label=universe26)...
++1
+
+### Oct.28Release
+
+[Security extension for the GitHub Copilot app](https://github.blog/changelog/2026-10-28-security-extension-for-the-github-copilot-app)
+
+[application security](https://github.blog/changelog/2026/?label=application-security) [copilot](https://github.blog/changelog/2026/?label=copilot) [universe26](https://github.blog/changelog/2026/?label=universe26)...
++2
+
+### Oct.28Release
+
+[GitHub intelligence puts your code, context, and history to work](https://github.blog/changelog/2026-10-28-github-intelligence-puts-your-code-context-and-history-to-work)
+
+[copilot](https://github.blog/changelog/2026/?label=copilot) [universe26](https://github.blog/changelog/2026/?label=universe26)...
++1
+
+### Oct.28Improvement
+
+[Build shared workflows for your team with Copilot Automations](https://github.blog/changelog/2026-10-28-build-shared-workflows-for-your-team-with-copilot-automations)
+
+[copilot](https://github.blog/changelog/2026/?label=copilot) [universe26](https://github.blog/changelog/2026/?label=universe26)...
++1
+
+### Oct.28Release
+
+[GitHub Copilot in VS Code, Universe releases](https://github.blog/changelog/2026-10-28-github-copilot-in-vs-code-universe-releases)
+
+[copilot](https://github.blog/changelog/2026/?label=copilot) [universe26](https://github.blog/changelog/2026/?label=universe26) [vs code](https://github.blog/changelog/2026/?label=vs-code)...
++2
+
+### Oct.28Improvement
+
+[Repository plugin defaults and enterprise plugin controls generally available](https://github.blog/changelog/2026-10-28-repository-plugin-defaults-and-enterprise-plugin-controls-generally-available)
+
+[copilot](https://github.blog/changelog/2026/?label=copilot) [universe26](https://github.blog/changelog/2026/?label=universe26)...
++1
+
+## Subscribe to our developer newsletter
+
+Discover tips, technical guides, and best practices in our biweekly newsletter just for devs.
+
+Enter your email\*
+Subscribe
+
+By submitting, I agree to let GitHub and its affiliates use my information for personalized communications, targeted advertising, and campaign effectiveness. See the [GitHub Privacy Statement](https://github.com/site/privacy) for more details.
+
+[Back to top](https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available/#start-of-content)
+
+×

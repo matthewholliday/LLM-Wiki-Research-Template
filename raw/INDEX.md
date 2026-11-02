@@ -857,14 +857,14 @@ These twenty sources, plus the reused [Droid 1.0 launch post](#factory-droid-1-0
 - **Title:** The Race to Ship AI Tools Left Security Behind. Part 1: Sandbox Escape.
 - **Role:** Secondary analysis, security research blog.
 - **Origin:** https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape/.
-- **Author or publisher:** Cymulate.
-- **Published or updated:** 2026-05-03 (from search index).
+- **Author or publisher:** Ilan Kalendarov, Ben Zamir, and Elad Beber; Cymulate Research Lab.
+- **Published or updated:** Last updated 2026-05-03.
 - **Retrieved or supplied:** 2026-11-01.
 - **SHA-256:** `2aca4f68f593fe8c8c466adb8abbf19232c72b826a0ef969f23df5fd7db4acb1`.
-- **Status:** `excluded`.
-- **Ingested:** Not applicable.
-- **Wiki pages:** None; mentioned in the [PTC topic](../topics/programmatic-tool-calling-precedents.md) as excluded.
-- **Notes:** Collected while searching for PTC security analysis. It concerns configuration-based escapes from shell sandboxes in coding agents, not PTC runtimes, so it was excluded.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md); [approval layers finding](../findings/approval-layers-are-not-isolation-boundaries.md); mentioned in the [PTC topic](../topics/programmatic-tool-calling-precedents.md) as excluded from that research.
+- **Notes:** Collected while searching for PTC security analysis. It concerns configuration-based escapes from shell sandboxes in coding agents, not PTC runtimes, so it was excluded from the 2026-11-01 PTC research. On 2026-11-02 it was reused for the computer use and permissions research, where it is relevant; the earlier exclusion applies to the PTC topic only. Primary for its own disclosure timelines; fix status after 2026-05-03 not rechecked.
 
 ## Agent drawing and visual capabilities, 2026-11-02
 
@@ -941,8 +941,8 @@ These 13 sources support the [visual-capability comparison](../topics/agent-visu
 - **SHA-256:** `0d9b8f6b44de8c890a9fcfa64b1b80c5fbc40cb7b36065e5d952f67fc0768bef`.
 - **Status:** `ingested`.
 - **Ingested:** 2026-11-02.
-- **Wiki pages:** [Visual-capability comparison](../topics/agent-visual-capabilities.md).
-- **Notes:** Text snapshot; see collection limitations above. Wiki build, local-link checks, source hashes, and rendered attachment checks passed on 2026-11-02.
+- **Wiki pages:** [Visual-capability comparison](../topics/agent-visual-capabilities.md); [computer use topic](../topics/agent-computer-use-visibility-and-security.md).
+- **Notes:** Text snapshot; see collection limitations above. Wiki build, local-link checks, source hashes, and rendered attachment checks passed on 2026-11-02. Reused on 2026-11-02 for its computer use, assisted permissions, and working set sections.
 
 ### gemini-cli-nanobanana
 
@@ -1063,3 +1063,382 @@ These 13 sources support the [visual-capability comparison](../topics/agent-visu
 - **Ingested:** 2026-11-02.
 - **Wiki pages:** [Visual-capability comparison](../topics/agent-visual-capabilities.md).
 - **Notes:** Text snapshot; see collection limitations above. Wiki build, local-link checks, source hashes, and rendered attachment checks passed on 2026-11-02.
+
+## Computer use, visibility, and permissions research, 2026-11-02
+
+These 25 new sources, plus the reused [VS Code 1.144 release notes](#vscode-1-144-image-generation) and [Cymulate sandbox escape report](#cymulate-sandbox-escape-part-1), support the [computer use topic](../topics/agent-computer-use-visibility-and-security.md). Files are FetchUrl Markdown text snapshots, not original HTML, with a provenance header; lines of 10,000 or more characters were omitted and counted in each header. Navigation text can remain. No software, sandbox, or attack was run. Rolling documentation was not mapped to installed versions; model names are as stated by the sources.
+
+### anthropic-computer-use-tool
+
+- **File:** [Local text snapshot](2026-11-02/anthropic-computer-use-tool.txt).
+- **Title:** Computer use tool.
+- **Role:** Primary source, first-party API documentation.
+- **Origin:** https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool.
+- **Author or publisher:** Anthropic.
+- **Published or updated:** Unknown; documents `computer_toolset_20260801`.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `2d204ee6cab985a575f9e38fa7dd7200e6c487cdb6a77aa98a7eb9072722e0c5`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md); [prompt-injection finding](../findings/vendor-and-independent-prompt-injection-rates-diverge.md).
+- **Notes:** Rolling documentation.
+
+### openai-computer-use-guide
+
+- **File:** [Local text snapshot](2026-11-02/openai-computer-use-guide.txt).
+- **Title:** Computer use (OpenAI API guide).
+- **Role:** Primary source, first-party API documentation.
+- **Origin:** https://developers.openai.com/api/docs/guides/tools-computer-use.
+- **Author or publisher:** OpenAI.
+- **Published or updated:** Unknown.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `74dbcb1af9ddd4bcb482f0790340028b032fd2713680d214e0eea312bac344a8`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md).
+- **Notes:** Rolling documentation; includes navigation text.
+
+### gemini-computer-use-api
+
+- **File:** [Local text snapshot](2026-11-02/gemini-computer-use-api.txt).
+- **Title:** Computer use (Gemini API).
+- **Role:** Primary source, first-party API documentation.
+- **Origin:** https://ai.google.dev/gemini-api/docs/computer-use (redirected to https://aistudio.google.com/docs/computer-use).
+- **Author or publisher:** Google.
+- **Published or updated:** Unknown.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `1729f0a17812735e36fb34ba47707754fa0fcd6e713cd8360923875cec3ff5b6`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md); [prompt-injection finding](../findings/vendor-and-independent-prompt-injection-rates-diverge.md).
+- **Notes:** Captured from the preview AI Studio docs experience.
+
+### codex-computer-use
+
+- **File:** [Local text snapshot](2026-11-02/codex-computer-use.txt).
+- **Title:** Computer Use (ChatGPT Learn).
+- **Role:** Primary source, first-party product documentation.
+- **Origin:** https://developers.openai.com/codex/app/computer-use (redirected to https://learn.chatgpt.com/docs/computer-use).
+- **Author or publisher:** OpenAI.
+- **Published or updated:** Unknown.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `3edebf123cd614f70690eb779174c163408cfa94bf1ec3383071a77eb5d55744`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md).
+- **Notes:** Multi-surface page covering ChatGPT Work and Codex.
+
+### codex-agent-approvals-security
+
+- **File:** [Local text snapshot](2026-11-02/codex-agent-approvals-security.txt).
+- **Title:** Agent approvals and security.
+- **Role:** Primary source, first-party product documentation.
+- **Origin:** https://developers.openai.com/codex/agent-approvals-security (redirected to https://learn.chatgpt.com/docs/agent-approvals-security).
+- **Author or publisher:** OpenAI.
+- **Published or updated:** Unknown.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `4cf70d3c7b6c4f79de3b127471069d41b22fb5c084e4c7a576c906bd76ef2661`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md); [approval layers finding](../findings/approval-layers-are-not-isolation-boundaries.md).
+- **Notes:** Rolling documentation.
+
+### codex-sandboxing
+
+- **File:** [Local text snapshot](2026-11-02/codex-sandboxing.txt).
+- **Title:** Sandbox (ChatGPT Learn).
+- **Role:** Primary source, first-party product documentation.
+- **Origin:** https://developers.openai.com/codex/concepts/sandboxing (redirected to https://learn.chatgpt.com/docs/sandboxing?surface=app).
+- **Author or publisher:** OpenAI.
+- **Published or updated:** Unknown.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `053d053e0b09f6d69262479a51dd9aeea2493f7e5bee611b5f518e9b0aa4a82e`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md).
+- **Notes:** App-surface view of the page.
+
+### claude-code-sandboxing-docs
+
+- **File:** [Local text snapshot](2026-11-02/claude-code-sandboxing-docs.txt).
+- **Title:** Configure the sandboxed Bash tool.
+- **Role:** Primary source, first-party product documentation.
+- **Origin:** https://code.claude.com/docs/en/sandboxing.
+- **Author or publisher:** Anthropic.
+- **Published or updated:** Unknown.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `0784e257fd6f7e534d63c92bc3dbf372177dad5ffcd462a2970fa5958830abc9`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md); [approval layers finding](../findings/approval-layers-are-not-isolation-boundaries.md).
+- **Notes:** One oversized line omitted.
+
+### claude-code-sandbox-environments
+
+- **File:** [Local text snapshot](2026-11-02/claude-code-sandbox-environments.txt).
+- **Title:** Choose a sandbox environment.
+- **Role:** Primary source, first-party product documentation.
+- **Origin:** https://code.claude.com/docs/en/sandbox-environments.
+- **Author or publisher:** Anthropic.
+- **Published or updated:** Unknown.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `66eaa580c8d5d45b372b4c6f1dc3322628a70debcc131cd27b5c00228e4f22f6`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md); [approval layers finding](../findings/approval-layers-are-not-isolation-boundaries.md).
+- **Notes:** One oversized line omitted.
+
+### anthropic-claude-code-sandboxing-engineering
+
+- **File:** [Local text snapshot](2026-11-02/anthropic-claude-code-sandboxing-engineering.txt).
+- **Title:** Making Claude Code safer with sandboxing.
+- **Role:** Primary source, vendor engineering post.
+- **Origin:** https://www.anthropic.com/engineering/claude-code-sandboxing (redirected to /research/).
+- **Author or publisher:** Anthropic.
+- **Published or updated:** 2025-10-20 (from search index).
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `2638696c096cfbec35cc037d9024a3e0ea80caddab9b836a570afae9a004c4d6`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md).
+- **Notes:** 84% prompt-reduction figure is internal; method not stated.
+
+### claude-in-chrome-permissions
+
+- **File:** [Local text snapshot](2026-11-02/claude-in-chrome-permissions.txt).
+- **Title:** Claude in Chrome permissions guide.
+- **Role:** Primary source, first-party help documentation.
+- **Origin:** https://support.claude.com/en/articles/12902446-claude-in-chrome-permissions-guide.
+- **Author or publisher:** Anthropic.
+- **Published or updated:** Unknown.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `dd8aedbafc7861354c1c7311a6e9e2c7497cbb6a7f3887b9f998989a9e3bf94e`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md).
+- **Notes:** None.
+
+### claude-in-chrome-safety
+
+- **File:** [Local text snapshot](2026-11-02/claude-in-chrome-safety.txt).
+- **Title:** Use Claude in Chrome safely.
+- **Role:** Primary source, first-party help documentation.
+- **Origin:** https://support.claude.com/en/articles/12902428-use-claude-in-chrome-safely.
+- **Author or publisher:** Anthropic.
+- **Published or updated:** Unknown.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `ab17328d6701461ac4d9d77426dcde959a5951286293755d4ced2a876eb497bd`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md); [prompt-injection finding](../findings/vendor-and-independent-prompt-injection-rates-diverge.md).
+- **Notes:** Under-0.08% figure is internal; sample not stated.
+
+### anthropic-browser-prompt-injection-defenses
+
+- **File:** [Local text snapshot](2026-11-02/anthropic-browser-prompt-injection-defenses.txt).
+- **Title:** Mitigating prompt injections in browser use.
+- **Role:** Primary source, vendor research post.
+- **Origin:** https://www.anthropic.com/research/prompt-injection-defenses.
+- **Author or publisher:** Anthropic.
+- **Published or updated:** 2025-11-24 (from search index).
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `bd0faddab0d5909826809a6459689cc97c3c73d74c5be4e1c51d1a35c26a0c3a`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md); [prompt-injection finding](../findings/vendor-and-independent-prompt-injection-rates-diverge.md).
+- **Notes:** Chart values flattened to text.
+
+### cursor-agent-sandboxing-blog
+
+- **File:** [Local text snapshot](2026-11-02/cursor-agent-sandboxing-blog.txt).
+- **Title:** Implementing a secure sandbox for local agents.
+- **Role:** Primary source, vendor engineering post.
+- **Origin:** https://cursor.com/blog/agent-sandboxing.
+- **Author or publisher:** Cursor.
+- **Published or updated:** 2026-02-18 (from search index).
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `41b44a66bcceaac4801443740e4a6a86b1e0023a4a69d4c3301bd253489d793d`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md).
+- **Notes:** 40% interruption figure; method not stated.
+
+### cursor-run-modes
+
+- **File:** [Local text snapshot](2026-11-02/cursor-run-modes.txt).
+- **Title:** Run Modes.
+- **Role:** Primary source, first-party product documentation.
+- **Origin:** https://cursor.com/docs/agent/security/run-modes.
+- **Author or publisher:** Cursor.
+- **Published or updated:** Unknown; cites v3.23 dated 2026-10-01.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `79a2be52d20f2553f0b29499c270f2f19b477c5a3f6a628edc7168044251ad3d`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md); [approval layers finding](../findings/approval-layers-are-not-isolation-boundaries.md).
+- **Notes:** Rolling documentation.
+
+### playwright-mcp-introduction
+
+- **File:** [Local text snapshot](2026-11-02/playwright-mcp-introduction.txt).
+- **Title:** Playwright MCP introduction.
+- **Role:** Primary source, project documentation.
+- **Origin:** https://playwright.dev/mcp/introduction.
+- **Author or publisher:** Microsoft / Playwright.
+- **Published or updated:** Unknown.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `62c4c87dcc59bd427d9539a5ef12fdbc6f271bce04dcb958698a0bb9427f68ee`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md).
+- **Notes:** None.
+
+### playwright-mcp-snapshots
+
+- **File:** [Local text snapshot](2026-11-02/playwright-mcp-snapshots.txt).
+- **Title:** Snapshots (Playwright MCP).
+- **Role:** Primary source, project documentation.
+- **Origin:** https://playwright.dev/mcp/snapshots.
+- **Author or publisher:** Microsoft / Playwright.
+- **Published or updated:** Unknown.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `06f3d2f4064c889c6a5778cc07d37fd52dba9b41d2f5e07827fa6170d2bc3475`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md).
+- **Notes:** None.
+
+### factory-autonomy-level
+
+- **File:** [Local text snapshot](2026-11-02/factory-autonomy-level.txt).
+- **Title:** Autonomy Level.
+- **Role:** Primary source, first-party product documentation.
+- **Origin:** https://docs.factory.ai/autonomy-and-safety/auto-run (redirected to https://docs.factory.com/autonomy-and-safety/auto-run).
+- **Author or publisher:** Factory.
+- **Published or updated:** Unknown.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `641dd2f6b989282304ed53c175be307be788e924208f2c1d2a65d9f2d885c4f3`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md); [approval layers finding](../findings/approval-layers-are-not-isolation-boundaries.md).
+- **Notes:** Rolling documentation.
+
+### factory-droid-sandbox
+
+- **File:** [Local text snapshot](2026-11-02/factory-droid-sandbox.txt).
+- **Title:** Sandbox (Droid).
+- **Role:** Primary source, first-party product documentation.
+- **Origin:** https://docs.factory.com/docs/autonomy-and-safety/sandbox (redirected to https://docs.factory.com/autonomy-and-safety/sandbox).
+- **Author or publisher:** Factory.
+- **Published or updated:** Unknown.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `4db62e698e7c47449fa0d016cdd673808fddcc389100ad11d1c8a47ca46a67ee`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md); [approval layers finding](../findings/approval-layers-are-not-isolation-boundaries.md).
+- **Notes:** Rolling documentation.
+
+### github-copilot-local-sandboxing-ga
+
+- **File:** [Local text snapshot](2026-11-02/github-copilot-local-sandboxing-ga.txt).
+- **Title:** Local sandboxing for GitHub Copilot now generally available.
+- **Role:** Primary source, first-party release note.
+- **Origin:** https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available/.
+- **Author or publisher:** GitHub.
+- **Published or updated:** 2026-10-07.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `f6d991bf55c9a6ac25b65b07a97a7736516f94c4e8184062fbfeb94603813e6a`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md).
+- **Notes:** Announcement; mode details not included.
+
+### github-copilot-agent-firewall
+
+- **File:** [Local text snapshot](2026-11-02/github-copilot-agent-firewall.txt).
+- **Title:** Customizing or disabling the firewall for GitHub Copilot.
+- **Role:** Primary source, first-party product documentation.
+- **Origin:** https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/customize-the-agent-firewall (redirected to /copilot-on-github/customize-copilot/customize-the-firewall).
+- **Author or publisher:** GitHub.
+- **Published or updated:** Unknown.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `7e28e373016b8a5b73c8e11d0fb370a8972675e12ace936c606d5b7efe57ac40`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md); [approval layers finding](../findings/approval-layers-are-not-isolation-boundaries.md).
+- **Notes:** None.
+
+### claude-code-monitoring
+
+- **File:** [Local text snapshot](2026-11-02/claude-code-monitoring.txt).
+- **Title:** Monitoring (Claude Code).
+- **Role:** Primary source, first-party product documentation.
+- **Origin:** https://code.claude.com/docs/en/monitoring-usage.
+- **Author or publisher:** Anthropic.
+- **Published or updated:** Unknown.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `de901d1375c96a5788f0278bc66a9889907460be50cccc55c15981807461f665`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md).
+- **Notes:** One oversized line omitted; only audit-relevant event sections used.
+
+### arxiv-2506-02456-vpi-bench
+
+- **File:** [Local text snapshot](2026-11-02/arxiv-2506-02456-vpi-bench.txt).
+- **Title:** VPI-Bench: Visual Prompt Injection Attacks for Computer-Use Agents.
+- **Role:** Primary source, peer-reviewed benchmark (ICLR 2026).
+- **Origin:** https://arxiv.org/html/2506.02456v2.
+- **Author or publisher:** Cao et al..
+- **Published or updated:** 2026-03-01 (v2).
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `9e681ff6e4627cc44680fbbbbea038d3ea3bb6a1ec8ad4af1cba818616a3be03`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md); [prompt-injection finding](../findings/vendor-and-independent-prompt-injection-rates-diverge.md).
+- **Notes:** HTML version; tables partly flattened.
+
+### arxiv-2606-13385-stakebench
+
+- **File:** [Local text snapshot](2026-11-02/arxiv-2606-13385-stakebench.txt).
+- **Title:** Who Pays the Price? Stakeholder-Centric Prompt Injection Benchmarking for Real-world Web Agents.
+- **Role:** Primary source, research preprint.
+- **Origin:** https://arxiv.org/html/2606.13385v1.
+- **Author or publisher:** Wang et al. (NTU, ST Engineering, IBM Research, UIUC).
+- **Published or updated:** 2026-06-11 (v1).
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `9c86c6a907211b26770b49275f144ca1fba99014ec5b02a3b4a6c143888828f3`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md); [prompt-injection finding](../findings/vendor-and-independent-prompt-injection-rates-diverge.md).
+- **Notes:** Located through the CSO Online report.
+
+### csoonline-prompt-injection-agents-study
+
+- **File:** [Local text snapshot](2026-11-02/csoonline-prompt-injection-agents-study.txt).
+- **Title:** Prompt injection breaks today’s AI agents, study warns.
+- **Role:** Secondary analysis, trade press report on StakeBench.
+- **Origin:** https://www.csoonline.com/article/4184455/prompt-injection-breaks-todays-ai-agents-study-warns.html.
+- **Author or publisher:** Gyana Swain / CSO Online.
+- **Published or updated:** 2026-06-12.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `f4791a087c423be1a9df3d1dd11feecae29539f2f3f0b8f0345acbd2d2d692aa`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md); [prompt-injection finding](../findings/vendor-and-independent-prompt-injection-rates-diverge.md).
+- **Notes:** Includes site navigation text.
+
+### koukyosyumei-cursor-sandbox-escape
+
+- **File:** [Local text snapshot](2026-11-02/koukyosyumei-cursor-sandbox-escape.txt).
+- **Title:** A Cursor Sandbox Escape Shows Why AI Agents Need Kernel Boundaries.
+- **Role:** Secondary analysis, practitioner commentary on Cato AI Labs disclosures.
+- **Origin:** https://medium.com/@Koukyosyumei/a-cursor-sandbox-escape-shows-why-ai-agents-need-kernel-boundaries-281efdb56396.
+- **Author or publisher:** Hideaki Takahashi.
+- **Published or updated:** 2026-07-07.
+- **Retrieved or supplied:** 2026-11-02.
+- **SHA-256:** `351adc1e9bbd17cce0f8eeaf1e1d87da6604e4a87d9e7c2973258b97aab48cc9`.
+- **Status:** `ingested`.
+- **Ingested:** 2026-11-02.
+- **Wiki pages:** [Computer use topic](../topics/agent-computer-use-visibility-and-security.md); [approval layers finding](../findings/approval-layers-are-not-isolation-boundaries.md).
+- **Notes:** Author promotes a Landlock-based approach; original Cato AI Labs advisory not retrieved.

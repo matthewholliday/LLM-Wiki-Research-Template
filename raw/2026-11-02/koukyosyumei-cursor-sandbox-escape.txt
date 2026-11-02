@@ -1,0 +1,218 @@
+Title: A Cursor Sandbox Escape Shows Why AI Agents Need Kernel Boundaries | by Hideaki Takahashi | Medium
+Requested URL: https://medium.com/@Koukyosyumei/a-cursor-sandbox-escape-shows-why-ai-agents-need-kernel-boundaries-281efdb56396
+Resolved URL: https://medium.com/@Koukyosyumei/a-cursor-sandbox-escape-shows-why-ai-agents-need-kernel-boundaries-281efdb56396
+Retrieved: 2026-11-02
+Format: FetchUrl Markdown text snapshot, not original HTML. Lines of 10,000 or more characters (embedded metadata or oversized content) omitted (none present).
+
+[Sitemap](https://medium.com/sitemap/sitemap.xml)
+
+[Open in app](https://play.google.com/store/apps/details?id=com.medium.reader&referrer=utm_source%3DmobileNavBar&source=---top_nav_layout_nav-------------------------------------------)
+
+Sign up
+
+[Sign in](https://medium.com/m/signin?operation=login&redirect=https%3A%2F%2Fmedium.com%2F%40Koukyosyumei%2Fa-cursor-sandbox-escape-shows-why-ai-agents-need-kernel-boundaries-281efdb56396&source=post_page---top_nav_layout_nav-----------------------global_nav--------------------)
+
+[Medium Logo](https://medium.com/?source=---top_nav_layout_nav-------------------------------------------)
+
+Get app
+
+[Write](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Fmedium.com%2Fnew-story&source=---top_nav_layout_nav-----------------------new_post_topnav--------------------)
+
+[Search](https://medium.com/search?source=---top_nav_layout_nav-------------------------------------------)
+
+Sign up
+
+[Sign in](https://medium.com/m/signin?operation=login&redirect=https%3A%2F%2Fmedium.com%2F%40Koukyosyumei%2Fa-cursor-sandbox-escape-shows-why-ai-agents-need-kernel-boundaries-281efdb56396&source=post_page---top_nav_layout_nav-----------------------global_nav--------------------)
+
+![Unknown user](https://miro.medium.com/v2/resize:fill:64:64/1*dmbNkD5D-u45r44go_cf0g.png)
+
+[Cursor](https://medium.com/tag/cursor?source=post_page---header_tags--281efdb56396-----------------------------------------)
+
+[Claude Code](https://medium.com/tag/claude-code?source=post_page---header_tags--281efdb56396-----------------------------------------)
+
+[Security](https://medium.com/tag/security?source=post_page---header_tags--281efdb56396-----------------------------------------)
+
+[AI Agent](https://medium.com/tag/ai-agent?source=post_page---header_tags--281efdb56396-----------------------------------------)
+
+[Hacking](https://medium.com/tag/hacking?source=post_page---header_tags--281efdb56396-----------------------------------------)
+
+# A Cursor Sandbox Escape Shows Why AI Agents Need Kernel Boundaries
+
+[![Hideaki Takahashi](https://miro.medium.com/v2/resize:fill:64:64/1*2Lx5hCk2tOhjiOVP10J6Bg.jpeg)](https://medium.com/@Koukyosyumei?source=post_page---byline--281efdb56396-----------------------------------------)
+
+[Hideaki Takahashi](https://medium.com/@Koukyosyumei?source=post_page---byline--281efdb56396-----------------------------------------)
+
+Follow
+
+6 min read
+
+·
+
+Jul 7, 2026
+
+[Listen](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2Fplans%3Fdimension%3Dpost_audio_button%26postId%3D281efdb56396&operation=register&redirect=https%3A%2F%2Fmedium.com%2F%40Koukyosyumei%2Fa-cursor-sandbox-escape-shows-why-ai-agents-need-kernel-boundaries-281efdb56396&source=---header_actions--281efdb56396---------------------post_audio_button--------------------)
+
+Share
+
+_Cursor shipped a sandbox for agent-run commands, then two path-handling bugs let a malicious agent write outside it and reach full remote code execution._
+
+## What happened
+
+Cursor confines the commands its agent runs to a workspace sandbox, with the `cursorsandbox` helper granting write access to the command's working directory. Cato AI Labs (with Maor Dokhanian on the second finding) reported two ways an agent could write outside that boundary. Both were disclosed in June 2026, both are rated Critical (CVSS 4.0 9.3, CVSS 3.1 9.8), and both are fixed in Cursor 3.0. Neither needs anything from the victim beyond acting on a benign-looking prompt from an agent that is itself under attacker control, for example through prompt injection in a repository, an issue, or MCP-supplied context.
+
+**CVE-2026–50548**, path traversal via `working_directory` (CWE-22). The sandbox grants write access based on the command's working directory, and that directory was agent-controlled. By setting `working_directory` to a sensitive location, the agent could make the sandbox include writable paths outside the intended workspace and write arbitrary files under the user's privileges. Overwriting the `cursorsandbox` helper itself means every later command runs unsandboxed, so a single arbitrary write converts into non-sandboxed remote code execution.
+
+**CVE-2026–50549**, symlink canonicalization fallback (CWE-59). Before writing, Cursor canonicalized the target path to confirm it stayed inside the workspace. When canonicalization failed, it fell back to the original in-workspace path and wrote without approval. An agent could create a symlink inside the workspace that points outside it, then force resolution to fail on purpose (the target does not exist yet, or its read permission is removed). The failed check dropped into the unsafe fallback, and the write followed the symlink to the external target. The same `cursorsandbox` overwrite turns it into unsandboxed RCE.
+
+Two different bugs, one shared shape: a path the application believed was inside the workspace resolved, at the filesystem, to somewhere it was not.
+
+## Root cause
+
+Press enter or click to view image in full size
+
+![](https://miro.medium.com/v2/resize:fit:700/1*HffyfsKWja2PHDB0FPxFrw.png)
+
+Both flaws are failures of _path-string reasoning inside the application_. The sandbox decided what was in-bounds by examining paths in user space: a parameter it trusted (`working_directory`), or a canonicalization step it performed and then mishandled on failure. An attacker who can influence those inputs, an agent-controlled directory field, a symlink plus a deliberately failing resolve, moves the effective write target without the check noticing.
+
+This is the classic weakness of an application-layer confinement: correctness depends on the program reasoning perfectly about every path, every parameter, and every failure mode before it calls `open()`. A single "when in doubt, use the original path" fallback, or one trusted-but-attacker-supplied field, is enough to escape. The sandbox and the thing it is trying to contain share the same privilege and the same view of the filesystem, so the boundary is only as good as the code that draws it each time.
+
+## Get Hideaki Takahashi’s stories in your inbox
+
+Join Medium for free to get updates from this writer.
+
+Subscribe
+
+Subscribe
+
+Remember me for faster sign in
+
+Cursor 3.0 fixes both correctly: the sandbox no longer grants write access based on an agent-controlled working directory, and an unresolvable target path is now blocked instead of falling back into the workspace. Update to 3.0 or later. That is the fix.
+
+## Impact
+
+Arbitrary file write under the developer’s own privileges, escalating to remote code execution the moment the `cursorsandbox` helper (or any other trusted host file) is overwritten. From unsandboxed execution an attacker reaches source, credentials (`~/.ssh`, `~/.aws`, `.env`), the rest of the repository, and any network the developer can. The trigger is ordinary agent use on untrusted input, precisely the review-and-triage work where you point an agent at code, issues, or MCP context you did not write.
+
+## How `h5i env` changes the outcome
+
+Press enter or click to view image in full size
+
+![](https://miro.medium.com/v2/resize:fit:700/1*KXGlo12jsIIfAtj8szXlNg.png)
+
+The lesson is not “distrust sandboxes,” it is that a confinement enforced by the same process it confines can be argued out of its own rules. `h5i env` adds an outer boundary enforced by the kernel, not by application path logic. When you run the agent inside a `supervised` box, the filesystem allowlist is a Landlock rule the kernel checks against the actual resolved object of every `open()`, so the two tricks above have nothing to fool.
+
+```
+h5i env create cursor-triage --isolation supervised   # fails closed if the host can't enforce it
+h5i env shell cursor-triage -- cursor-agent "<task over untrusted input>"
+h5i env diff cursor-triage
+h5i env propose cursor-triage
+h5i env apply cursor-triage
+```
+
+```
+[profile.cursor-triage]
+isolation = "supervised"
+[profile.cursor-triage.fs]
+write = ["$WORK"]            # Landlock: only the worktree is writable
+deny  = ["~/.ssh", "~/.aws"] # preflight lint against granting credential dirs
+[profile.cursor-triage.net]
+mode  = "deny"              # empty netns: nothing to exfiltrate to
+[profile.cursor-triage.env]
+pass  = ["PATH", "HOME", "LANG"]   # no cloud creds inherited
+```
+
+Trace each CVE against the boundary:
+
+- The `working_directory` traversal (CVE-2026-50548). Landlock does not grant write access from a directory field an agent supplies. It grants it from a fixed ruleset (`write = ["$WORK"]`) evaluated by the kernel on the path actually opened. Pointing a working directory at `~/.ssh` or at a host helper changes nothing: that path is not in the allowlist, so the write returns `EACCES`.
+- The symlink canonicalization fallback (CVE-2026–50549). There is no application canonicalization step to fail, and therefore no “fall back to the original path” branch to exploit. The kernel resolves the symlink and checks the _final_ target against the ruleset. A link out of `$WORK` resolves to a path outside the allowlist, and the write is denied at the syscall, whether or not the target exists yet.
+
+In both cases the arbitrary write that the CVE turns into RCE is the step that fails. The agent cannot overwrite `cursorsandbox` on the host because the host helper is not in the box's write allowlist, and with `net.mode = "deny"` an empty network namespace means even a successful in-box read has nowhere to go. After the run, `h5i env diff` shows exactly what the session touched, and nothing reaches your branch until `h5i env apply`.
+
+## What `h5i env` does not do
+
+- It does not patch Cursor. These CVEs are fixed in 3.0; upgrading is the real remedy and `h5i env` is defense-in-depth, not a substitute. Update regardless.
+- Your everyday Cursor window is not inside `h5i env`. An IDE you launch normally runs on the host, where the pre-3.0 behavior applies unchanged. This pattern fits agent runs you deliberately start inside the box (`h5i env shell ... -- <agent>`) or a policy of doing untrusted work in a boxed session.
+- It confines the write, it does not stop the prompt injection. `h5i env` neither detects the malicious instructions nor blocks writes _inside_ the box. It bounds where a write can land and forces a review boundary; it is not a model fix or a content scanner.
+- Grants re-open reach. If you add a `net.egress` allowlist or broker in credentials, an escaped write or a running command regains exactly that reach. The confinement is only as tight as the policy.
+- Kernel-level guarantees have host requirements. The Landlock allowlist and `net.mode = "deny"` need the `process` or `supervised` tier on a supporting Linux host. Verify with `h5i env probe` and `h5i env doctor` before relying on them; `workspace` is file-isolation only, and an explicit `--isolation supervised` fails closed rather than silently downgrading.
+
+## Takeaway
+
+CVE-2026–50548 and CVE-2026–50549 are two ways to talk an application-layer sandbox out of its own path rules: a trusted directory parameter, and a canonicalization failure that fails open. The right fix is Cursor’s, and it ships in 3.0. The durable lesson is the same one behind kernel-enforced egress control: when confinement is checked by the kernel against the resolved object of each syscall, rather than argued about in user space before the call, the path tricks that defeat a string check have nothing left to trick. Patch Cursor, and for agent runs over untrusted input, put a `supervised``h5i env` around them so the arbitrary write that these bugs need never reaches your host.
+
+## Sources
+
+- [GitHub Security Advisory GHSA-3p48–7v9f-v5cw (CVE-2026–50548)](https://github.com/cursor/cursor/security/advisories/GHSA-3p48-7v9f-v5cw)
+- [GitHub Security Advisory GHSA-3v8f-48vw-3mjx (CVE-2026–50549)](https://github.com/cursor/cursor/security/advisories/GHSA-3v8f-48vw-3mjx)
+- [NVD entry for CVE-2026–50548](https://nvd.nist.gov/vuln/detail/CVE-2026-50548)
+- [NVD entry for CVE-2026–50549](https://nvd.nist.gov/vuln/detail/CVE-2026-50549)
+- [Landlock LSM kernel documentation](https://docs.kernel.org/userspace-api/landlock.html)
+- [https://github.com/h5i-dev/h5i](https://github.com/h5i-dev/h5i)
+- [https://h5i.dev/](https://h5i.dev/)
+
+[Cursor](https://medium.com/tag/cursor?source=post_page---footer_tags--281efdb56396-----------------------------------------)
+
+[Claude Code](https://medium.com/tag/claude-code?source=post_page---footer_tags--281efdb56396-----------------------------------------)
+
+[Security](https://medium.com/tag/security?source=post_page---footer_tags--281efdb56396-----------------------------------------)
+
+[AI Agent](https://medium.com/tag/ai-agent?source=post_page---footer_tags--281efdb56396-----------------------------------------)
+
+[Hacking](https://medium.com/tag/hacking?source=post_page---footer_tags--281efdb56396-----------------------------------------)
+
+[![Hideaki Takahashi](https://miro.medium.com/v2/resize:fill:96:96/1*2Lx5hCk2tOhjiOVP10J6Bg.jpeg)](https://medium.com/@Koukyosyumei?source=post_page---post_author_info--281efdb56396-----------------------------------------)
+
+[![Hideaki Takahashi](https://miro.medium.com/v2/resize:fill:128:128/1*2Lx5hCk2tOhjiOVP10J6Bg.jpeg)](https://medium.com/@Koukyosyumei?source=post_page---post_author_info--281efdb56396-----------------------------------------)
+
+Follow
+
+[**Written by Hideaki Takahashi**](https://medium.com/@Koukyosyumei?source=post_page---post_author_info--281efdb56396-----------------------------------------)
+
+[93 followers](https://medium.com/@Koukyosyumei/followers?source=post_page---post_author_info--281efdb56396-----------------------------------------)
+
+· [9 following](https://medium.com/@Koukyosyumei/following?source=post_page---post_author_info--281efdb56396-----------------------------------------)
+
+PhD @ Columbia researching AI & system security \| [https://github.com/h5i-dev/h5i](https://github.com/h5i-dev/h5i) (the agent-native web security workspace)
+
+Follow
+
+## No responses yet
+
+![Unknown user](https://miro.medium.com/v2/resize:fill:32:32/1*dmbNkD5D-u45r44go_cf0g.png)
+
+Write a response
+
+[What are your thoughts?](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Fmedium.com%2F%40Koukyosyumei%2Fa-cursor-sandbox-escape-shows-why-ai-agents-need-kernel-boundaries-281efdb56396&source=---post_responses--281efdb56396---------------------respond_sidebar--------------------)
+
+Cancel
+
+Respond
+
+## More from Hideaki Takahashi
+
+[See all from Hideaki Takahashi](https://medium.com/@Koukyosyumei?source=post_page---author_recirc--281efdb56396-----------------------------------------)
+
+## Recommended from Medium
+
+[See more recommendations](https://medium.com/?source=post_page---read_next_recirc--281efdb56396-----------------------------------------)
+
+[Help](https://help.medium.com/hc/en-us?source=post_page-----281efdb56396-----------------------------------------)
+
+[Status](https://status.medium.com/?source=post_page-----281efdb56396-----------------------------------------)
+
+[About](https://medium.com/about?autoplay=1&source=post_page-----281efdb56396-----------------------------------------)
+
+[Careers](https://medium.com/jobs-at-medium/work-at-medium-959d1a85284e?source=post_page-----281efdb56396-----------------------------------------)
+
+[Press](mailto:pressinquiries@medium.com)
+
+[Blog](https://blog.medium.com/?source=post_page-----281efdb56396-----------------------------------------)
+
+[Store](https://medium.com/store)
+
+[Privacy](https://policy.medium.com/medium-privacy-policy-f03bf92035c9?source=post_page-----281efdb56396-----------------------------------------)
+
+[Rules](https://policy.medium.com/medium-rules-30e5502c4eb4?source=post_page-----281efdb56396-----------------------------------------)
+
+[Terms](https://policy.medium.com/medium-terms-of-service-9db0094a1e0f?source=post_page-----281efdb56396-----------------------------------------)
+
+[Text to speech](https://speechify.com/medium?source=post_page-----281efdb56396-----------------------------------------)

@@ -1,0 +1,147 @@
+Title: Sandbox
+Requested URL: https://docs.factory.com/docs/autonomy-and-safety/sandbox
+Resolved URL: https://docs.factory.com/autonomy-and-safety/sandbox
+Retrieved: 2026-11-02
+Format: FetchUrl Markdown text snapshot, not original HTML. Lines of 10,000 or more characters (embedded metadata or oversized content) omitted (none present).
+
+OS-level sandboxes let users set filesystem and network boundaries for Droid. All shell commands initiated by Droid run in a separate process that is limited to the filesystem and network boundaries configured by users and enforced at the OS kernel level.
+
+## How OS-level isolation works [Copy link to this section](https://docs.factory.com/autonomy-and-safety/sandbox\#how-os-level-isolation-works "Copy link to this section")
+
+The sandbox enforces its filesystem and network boundaries with the same operating-system primitives the OS uses to confine untrusted software, so a blocked read, write, or connection is denied by the kernel rather than relying on Droid to police itself:
+
+- **macOS**: Seatbelt (the built-in macOS sandbox) profiles restrict filesystem and process access.
+- **Linux and WSL2**: [bubblewrap](https://github.com/containers/bubblewrap) with a seccomp filter provides the same confinement.
+- **Network (all platforms)**: outbound traffic is routed through an HTTP/SOCKS filtering proxy that permits only the allowed domains (Factory's own domains and WorkOS authentication domains are always allowed).
+
+Because the sandbox relies on these host primitives, it blocks rather than running without isolation when they are unavailable.
+
+## Isolation modes [Copy link to this section](https://docs.factory.com/autonomy-and-safety/sandbox\#isolation-modes "Copy link to this section")
+
+The `sandbox.mode` setting selects _what_ is placed inside the OS boundary. Both modes enforce the same default policies and configuration; they differ only in scope.
+
+| Aspect | `per-command` (default) | `whole-process` |
+| --- | --- | --- |
+| **Runs inside the OS sandbox** | Each shell command and its child processes | The entire Droid process |
+| **MCP servers, hooks, subagents** | Wrapped or checked against your policy per call | Isolated inside the process boundary |
+| **Main Droid process** | Not isolated | Isolated |
+| **If isolation is unavailable** | The affected command or hook is blocked | Droid refuses to start |
+
+- **`per-command`** runs each Droid-initiated action through the sandbox individually. Shell commands (and their child processes) are confined at the OS level; other tools are mediated by policy checks before each call. The main Droid process itself is not isolated.
+- **`whole-process`** launches the entire Droid process inside the OS sandbox, so the main process and everything it spawns (MCP transports, subagents) is isolated too. Its own network requests (not just those from the Execute tool) are filtered against `allowedDomains`, with interactive domain prompts in TUI mode. If the sandbox cannot be established at startup (unsupported platform or a failed isolation check), Droid refuses to start rather than running unsandboxed.
+
+## Enable and configure the sandbox [Copy link to this section](https://docs.factory.com/autonomy-and-safety/sandbox\#enable-and-configure-the-sandbox "Copy link to this section")
+
+Set `sandbox.enabled` to `true` in your settings to turn on the sandbox:
+
+JSONC
+
+```
+{
+  "sandbox": {
+    "enabled": true,
+  },
+}
+```
+
+Once enabled, the default policies below apply immediately. No other configuration is required to start. Settings resolve across the hierarchy (org > project > user), so you can enable the sandbox for yourself (user settings), a repository (project settings), or everyone (organization settings).
+
+### Default access policies [Copy link to this section](https://docs.factory.com/autonomy-and-safety/sandbox\#default-access-policies "Copy link to this section")
+
+| Resource | Default policy | Configurable via |
+| --- | --- | --- |
+| **File reads** | Allow all. Only explicit `denyRead` entries are blocked. | `sandbox.filesystem.denyRead` |
+| **File writes** | Deny all except **CWD** (current working directory). Additional paths can be allowed. `denyWrite` overrides `allowWrite`. | `sandbox.filesystem.allowWrite`, `sandbox.filesystem.denyWrite` |
+| **Network** | Deny all except Factory's own domains and WorkOS authentication domains (always allowed by default). Additional domains must be explicitly allowed. | `sandbox.network.allowedDomains` |
+
+### Full settings reference [Copy link to this section](https://docs.factory.com/autonomy-and-safety/sandbox\#full-settings-reference "Copy link to this section")
+
+JSONC
+
+```
+{
+  "sandbox": {
+    "enabled": true,
+    // Isolation scope: "per-command" (default) or "whole-process"
+    "mode": "per-command",
+    "filesystem": {
+      // Additional writable paths beyond CWD (which is always writable)
+      "allowWrite": ["/tmp/build-output", "~/.config"],
+      // Deny writes to specific subpaths even if parent is in allowWrite
+      "denyWrite": ["/tmp/build-output/cache/locks", "~/.config/secrets"],
+      // Block reads to specific paths (everything else is readable)
+      "denyRead": ["~/.aws/credentials", "~/.ssh/id_rsa"],
+    },
+    "network": {
+      // Only these domains are reachable (Factory's own domains and WorkOS authentication domains always included)
+      "allowedDomains": ["github.com", "*.npmjs.org"],
+    },
+  },
+}
+```
+
+Settings merge across the hierarchy (org > project > user). `denyWrite`/`denyRead` use union merge: org denies cannot be removed downstream.
+
+### Organization controls [Copy link to this section](https://docs.factory.com/autonomy-and-safety/sandbox\#organization-controls "Copy link to this section")
+
+- Org-level `denyWrite`/`denyRead` settings cannot be overridden by user **Allow always**.
+- The violation prompt shows `(organization policy)` when the deny comes from org settings.
+- Admins can set the sandbox isolation mode (`per-command` or `whole-process`) org-wide from [Enterprise Controls & Managed Settings](https://docs.factory.com/docs/enterprise/hierarchical-settings-and-org-control).
+
+## Coverage and enforcement [Copy link to this section](https://docs.factory.com/autonomy-and-safety/sandbox\#coverage-and-enforcement "Copy link to this section")
+
+With the sandbox enabled, a tool runs only if the sandbox can check everything it might do against your filesystem and network rules. Tools whose actions can't be checked are blocked.
+
+| Surface | Enforcement |
+| --- | --- |
+| File tools | `Read`, `Edit`, `Create`, `LS`, `Grep`, `Glob`, and `ApplyPatch` are checked before every operation, enforcing `denyRead` for reads and `allowWrite` plus `denyWrite` for writes. |
+| Execute tool | Shell commands run inside the OS sandbox, with network traffic routed through a filtering proxy for domain-level control. |
+| FetchUrl and WebSearch | Network access is checked against `sandbox.network.allowedDomains`. |
+| MCP tools | Filesystem and network requests are checked; locally launched servers receive a minimal environment (ambient host environment variables are dropped, keeping only a safe operational allowlist plus keys set in `mcp.json`). |
+| Subagents (Task tool) | Delegated subagents inherit the parent sandbox policy. |
+| Hooks | Hook commands (`PreToolUse`, `PostToolUse`, and the rest) are wrapped by the sandbox and run with the same proxy and runtime environment as the Execute tool; if the sandbox cannot be established, the hook is blocked instead of running on the host. |
+
+### When something is blocked [Copy link to this section](https://docs.factory.com/autonomy-and-safety/sandbox\#when-something-is-blocked "Copy link to this section")
+
+**Interactive permission prompts (TUI mode):**
+
+- Sandbox violations interrupt the agent loop with a TUI prompt, even at Auto (High) autonomy.
+- Options: **Allow once**, **Allow always** (persists to settings), **Deny**. For `denyRead`/`denyWrite` violations, "Remove from deny list" replaces "Allow always".
+- Execute network violations show a real-time domain prompt with a 60s auto-deny timeout.
+
+**Non-interactive mode (`droid exec`):**
+
+- Sandbox violations are auto-denied without prompting: no hang, no user interaction required.
+- The agent receives a denial message and reports it in the output.
+
+**Allow-always persistence:**
+
+- Choosing **Allow always** saves the exception to your user settings (for example, adding a domain to `allowedDomains` or a path to `allowWrite`) so it won't prompt again.
+- Changes take effect immediately in the current session.
+
+**TUI indicators:**
+
+- `SANDBOX` status indicator in the footer when the sandbox is enabled.
+- "Sandbox Violation" prompt with violation details (path, domain, reason).
+
+## Security limitations [Copy link to this section](https://docs.factory.com/autonomy-and-safety/sandbox\#security-limitations "Copy link to this section")
+
+Sandboxing reduces the impact of a mistake or a prompt-injection attack, but it does not eliminate risk:
+
+- **Allowed network egress can still leak data.** Every domain in `allowedDomains` is a channel through which data the agent can read might leave. Keep the allowlist as narrow as your workflow permits.
+- **A writable path can still be modified.** The sandbox limits _where_ writes land, not _what_ is written within the allowed paths, including your own project code under the working directory.
+- **Your settings files are protected.** Sandboxed tool processes cannot write to Droid's own configuration files (for example `settings.json`), so they cannot silently change sandbox policy.
+
+Treat the sandbox as defense in depth alongside [Autonomy Level](https://docs.factory.com/docs/autonomy-and-safety/auto-run) approvals and human review, not as a hard boundary around untrusted code. To evaluate code you do not trust, run Droid inside a container or a dedicated virtual machine.
+
+Related resources
+
+[Settings\\
+\\
+Where `sandbox.*` lives.](https://docs.factory.com/docs/droid-cli/settings) [Enterprise Controls & Managed Settings\\
+\\
+How org policy merges with user settings.](https://docs.factory.com/docs/enterprise/hierarchical-settings-and-org-control) [Security\\
+\\
+Broader security model for the Droid CLI.](https://docs.factory.com/docs/enterprise/security) [Autonomy Level\\
+\\
+Approval tiers that complement sandboxing as defense in depth.](https://docs.factory.com/docs/autonomy-and-safety/auto-run)

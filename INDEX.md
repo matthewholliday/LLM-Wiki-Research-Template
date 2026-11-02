@@ -23,6 +23,10 @@ This is the entry point for the project's research questions, evidence, and conc
 
 ## Research highlights
 
+- [Computer use, visibility, and permissions in coding agents](topics/agent-computer-use-visibility-and-security.md): How agents see screens, where computer use runs, and how approvals, sandboxes, and telemetry differ.
+- [Approval layers are not isolation boundaries](findings/approval-layers-are-not-isolation-boundaries.md): Approval modes and classifiers decide when to ask; only OS isolation confines, and its coverage varies.
+- [Vendor and independent prompt-injection rates diverge](findings/vendor-and-independent-prompt-injection-rates-diverge.md): Vendor-reported rates under 2% contrast with independent benchmarks up to 100%.
+
 - [Drawing and visual capabilities in coding agents](topics/agent-visual-capabilities.md): Which agents have native image generation, which need canvas integrations, and how orchestrator graph rendering differs.
 - [Visual output is not editable canvas control](findings/visual-output-is-not-editable-canvas-control.md): Generating a picture, editing shapes, and embedding a canvas are separate capabilities.
 

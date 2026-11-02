@@ -8,6 +8,8 @@ Individual research findings grounded in documented evidence, such as source rev
 
 | Finding | Evidence type | Evidence date | Status |
 | --- | --- | --- | --- |
+| [Approval layers are not isolation boundaries](approval-layers-are-not-isolation-boundaries.md) | Documentation and vulnerability report review | 2026-11-02 | Supported within documentary scope |
+| [Vendor and independent prompt-injection rates diverge](vendor-and-independent-prompt-injection-rates-diverge.md) | Vendor metrics compared with two attack benchmarks | 2026-11-02 | Supported; figures not directly comparable |
 | [Visual output is not editable canvas control](visual-output-is-not-editable-canvas-control.md) | First-party documentation review | 2026-11-02 | Supported within documentary scope |
 | [Session resume does not establish execution recovery](session-resume-is-not-execution-recovery.md) | First-party documentation review | 2026-10-31 | Supported within documentary scope |
 | [Rendering model predicts agent UI accessibility better than GUI versus TUI](rendering-model-predicts-agent-ui-accessibility.md) | Documentation and user report review | 2026-11-01 | Supported within reviewed scope |
