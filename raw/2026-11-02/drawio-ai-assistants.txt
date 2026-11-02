@@ -1,0 +1,353 @@
+Title: draw.io for AI assistants | draw.io
+Requested URL: https://www.drawio.com/mcp/
+Resolved URL: https://www.drawio.com/mcp/
+Retrieved: 2026-11-02
+Format: FetchUrl Markdown text snapshot, not original HTML. Lines of 10,000 or more characters (embedded metadata or oversized content) omitted.
+
+[Skip to main content](https://www.drawio.com/mcp/#__docusaurus_skipToContent_fallback)
+
+## Get started [​](https://www.drawio.com/mcp/\#get-started "Direct link to Get started")
+
+Choose your assistant and follow the setup steps.
+
+- Claude
+- Claude Code
+- ChatGPT
+- Codex
+- Copilot
+- Cursor
+- Antigravity
+- Other
+
+Recommended The MCP App Server where diagrams appear in the chat.
+
+1. Open [draw.io in the Claude connectors directory](https://claude.ai/directory/draw-io) and connect it.
+2. Start a new chat and describe the diagram you want.
+3. Click _Open in draw.io_ below the diagram to edit it in the draw.io editor.
+
+You can also add the server as a custom connector in the Claude settings, with this URL:
+
+```text
+https://mcp.draw.io/mcp
+```
+
+Recommended The draw.io plugin creates `.drawio` files in your project, and can export them to PNG, SVG or PDF.
+
+1. Add the plugin marketplace and install the plugin in Claude Code:
+
+```text
+/plugin marketplace add jgraph/drawio-mcp
+/plugin install drawio@drawio
+```
+
+1. Ask Claude Code for a diagram. Add `png`, `svg` or `pdf` to your request to export it, or `url` to open it in draw.io in your browser.
+
+[draw.io Desktop](https://get.diagrams.net/) must be installed to export diagrams. To open a diagram in the draw.io editor instead, add the MCP Tool Server:
+
+```bash
+claude mcp add drawio -- npx -y @drawio/mcp
+```
+
+Recommended The MCP App Server. Diagrams appear in the chat.
+
+1. Open [draw.io in ChatGPT Plugins](https://chatgpt.com/plugins/plugin_asdk_app_6abea666ca5081919375ed8d1d38da95) and select _Install plugin_.
+2. In a new conversation, type `@`, pick draw.io, and ask for a diagram.
+
+To add draw.io as a custom MCP server instead, open [ChatGPT Plugins](https://chatgpt.com/plugins), select _+_, then _Add custom MCP server_, and enter `https://mcp.draw.io/mcp` under _Connection_. This server needs no sign-in, so leave _Authentication_ off. If the option is missing, your workspace administrator may have disabled it.
+
+Recommended The draw.io plugin creates `.drawio` files in your project, and can export them to PNG, SVG or PDF.
+
+1. Add the plugin marketplace and install the plugin in the Codex CLI:
+
+```bash
+codex plugin marketplace add jgraph/drawio-mcp
+codex plugin add drawio@drawio
+```
+
+1. Ask Codex for a diagram. Add `png`, `svg` or `pdf` to your request to export it, or `url` to open it in draw.io in your browser.
+
+[draw.io Desktop](https://get.diagrams.net/) must be installed to export diagrams. To open a diagram in the draw.io editor instead, add the MCP Tool Server:
+
+```bash
+codex mcp add drawio -- npx -y @drawio/mcp
+```
+
+Recommended The MCP App Server in VS Code 1.109 or later where diagrams appear in Copilot Chat.
+
+1. Add the server to `.vscode/mcp.json` in your workspace, or run _MCP: Open User Configuration_ to add it for every workspace:
+
+.vscode/mcp.json
+
+```json
+{
+  "servers": {
+    "drawio": {
+      "type": "http",
+      "url": "https://mcp.draw.io/mcp"
+    }
+  }
+}
+```
+
+1. Click _Start_ above the server entry, and confirm that you trust the folder if VS Code asks.
+2. Ask Copilot Chat in _Agent_ mode to create a diagram.
+
+**GitHub Copilot CLI:** add the hosted server from your terminal. A terminal can't display the diagram. Follow the link to open it in draw.io.
+
+```bash
+copilot mcp add --transport http drawio https://mcp.draw.io/mcp
+```
+
+To create `.drawio` files and export them to your project instead, install the draw.io plugin for Copilot CLI:
+
+```bash
+copilot plugin marketplace add jgraph/drawio-mcp
+copilot plugin install drawio@drawio
+```
+
+Recommended The MCP App Server in Cursor 2.6 or later where diagrams appear in the Agent chat.
+
+1. Use the [one-click install](https://cursor.com/en/install-mcp?name=drawio&config=eyJ1cmwiOiJodHRwczovL21jcC5kcmF3LmlvL21jcCJ9), or add the server to `~/.cursor/mcp.json` (all projects) or `.cursor/mcp.json` (this project):
+
+~/.cursor/mcp.json
+
+```json
+{
+  "mcpServers": {
+    "drawio": {
+      "url": "https://mcp.draw.io/mcp"
+    }
+  }
+}
+```
+
+1. Enable the server when prompted, or under _Cursor Settings > MCP_.
+2. Ask the Agent to create a diagram.
+
+Recommended The draw.io plugin creates `.drawio` files in your project, and can export them to PNG, SVG or PDF.
+
+1. Install the plugin in the Antigravity CLI.
+
+```bash
+agy plugin install https://github.com/jgraph/drawio-mcp/tree/main/plugins/antigravity
+```
+
+1. Ask for a diagram. Add `png`, `svg` or `pdf` to your request to export it, or `url` to open it in draw.io in your browser.
+
+[draw.io Desktop](https://get.diagrams.net/) must be installed to export diagrams.
+
+**Note:** Run the same command again to update the plugin.
+
+Add the hosted server as a remote MCP server in any assistant that supports MCP. In assistants that support MCP Apps, diagrams will appear in the chat.
+
+```text
+https://mcp.draw.io/mcp
+```
+
+In assistants that don't support MCP Apps, the server answers with a link that will open the diagram in draw.io.
+
+**Any MCP client on your computer:** run the MCP Tool Server which opens each diagram in the draw.io editor in your browser:
+
+```bash
+npx @drawio/mcp
+```
+
+Follow the [README on GitHub](https://github.com/jgraph/drawio-mcp#readme) to set this up for Claude Desktop, OpenCode and self-hosting.
+
+## Choose a setup
+
+They all create native draw.io diagrams (files with the `.drawio` extension). They open diagrams in different locations and may require installations.
+
+### MCP App Server
+
+Shows diagrams right in the chat, in Claude, ChatGPT, VS Code and Cursor. It is hosted at mcp.draw.io, so there is nothing to install.
+
+[MCP App Server documentation](https://github.com/jgraph/drawio-mcp/blob/main/mcp-app-server/README.md)
+
+### MCP Tool Server
+
+An npm package for MCP clients on your computer. It opens each diagram in the draw.io editor in your browser, and also reads CSV data and Mermaid.
+
+[@drawio/mcp on npm](https://www.npmjs.com/package/@drawio/mcp)
+
+### Skills and plugins
+
+The draw.io skill for Claude Code, Codex CLI, GitHub Copilot, Cursor and Antigravity creates .drawio files in your project, and can export them to PNG, SVG or PDF.
+
+[Plugin documentation](https://github.com/jgraph/drawio-mcp/blob/main/plugins/README.md)
+
+### Docker image
+
+Run the MCP App Server on your own machine or server with the jgraph/drawio-mcp image, so diagrams stay on your network.
+
+[jgraph/drawio-mcp on Docker Hub](https://hub.docker.com/r/jgraph/drawio-mcp)
+
+### GitHub repository
+
+The source code of every variant, and the technical documentation for each client and for self-hosting.
+
+[jgraph/drawio-mcp on GitHub](https://github.com/jgraph/drawio-mcp)
+
+| Setup | Where the diagram appears | What to install | Why you would choose this setup |
+| --- | --- | --- | --- |
+| MCP App Server | In the chat, click _Open in draw.io_ to edit it | Nothing - it is hosted at `mcp.draw.io` | Claude, ChatGPT, VS Code and Cursor |
+| MCP Tool Server | In the draw.io editor, in a new browser tab | The npm package `@drawio/mcp` | MCP clients on your computer, CSV data and Mermaid |
+| Skills and plugins | Saved `.drawio` files, PNG, SVG or PDF exports, or a link | A plugin, and draw.io Desktop to export images | Claude Code, Codex CLI, GitHub Copilot, Cursor and Antigravity |
+| Docker image | In the chat, like the hosted server | Docker, on your machine or server | To keep diagrams on your own network |
+
+## Examples
+
+Each diagram is the unedited result of the prompt written beneath.
+
+Copy a prompt and try it in your assistant, or open the example in draw.io.
+
+[![Flowchart created by an AI assistant with draw.io from the prompt shown with it](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-t1-flowchart.svg)](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-t1-flowchart.svg "Show larger") **Flowchart**
+
+“Draw an online shop's order process as a diagram: a flowchart with at least two decisions and one retry loop (if the payment fails, retry up to 3 times).”
+
+Copy prompt [Open in draw.io](https://app.diagrams.net/?pv=0&grid=0#create=%7B%22type%22%3A%22xml%22%2C%22url%22%3A%22https%3A%2F%2Fraw.githubusercontent.com%2Fjgraph%2Fdrawio-mcp%2Ff6742eec323b440601a65ae98c2dbe592cdcd33e%2Fdocs%2Fimages%2Fgallery%2Fgallery-t1-flowchart.svg%22%2C%22effect%22%3A%22pop%22%7D)
+
+[![Sequence diagram created by an AI assistant with draw.io from the prompt shown with it](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-t3-sequence.svg)](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-t3-sequence.svg "Show larger") **Sequence diagram**
+
+“Draw the OAuth 2.0 authorization code flow as a diagram: a sequence diagram between the user, the browser, the client app, the authorization server and the resource server.”
+
+Copy prompt [Open in draw.io](https://app.diagrams.net/?pv=0&grid=0#create=%7B%22type%22%3A%22xml%22%2C%22url%22%3A%22https%3A%2F%2Fraw.githubusercontent.com%2Fjgraph%2Fdrawio-mcp%2Ff6742eec323b440601a65ae98c2dbe592cdcd33e%2Fdocs%2Fimages%2Fgallery%2Fgallery-t3-sequence.svg%22%2C%22effect%22%3A%22pop%22%7D)
+
+[![UML class diagram created by an AI assistant with draw.io from the prompt shown with it](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-n2-class.svg)](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-n2-class.svg "Show larger") **UML class diagram**
+
+“Draw a UML class diagram for an online store: Customer, Order, OrderItem, Product and Payment, with their main attributes, a few methods and the relationships between them.”
+
+Copy prompt [Open in draw.io](https://app.diagrams.net/?pv=0&grid=0#create=%7B%22type%22%3A%22xml%22%2C%22url%22%3A%22https%3A%2F%2Fraw.githubusercontent.com%2Fjgraph%2Fdrawio-mcp%2Ff6742eec323b440601a65ae98c2dbe592cdcd33e%2Fdocs%2Fimages%2Fgallery%2Fgallery-n2-class.svg%22%2C%22effect%22%3A%22pop%22%7D)
+
+[![AWS created by an AI assistant with draw.io from the prompt shown with it](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-t2-aws.svg)](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-t2-aws.svg "Show larger") **AWS**
+
+“Draw the AWS architecture of a photo-sharing app as a diagram, using CloudFront, S3, API Gateway, Lambda, DynamoDB and Cognito.”
+
+Copy prompt [Open in draw.io](https://app.diagrams.net/?pv=0&grid=0#create=%7B%22type%22%3A%22xml%22%2C%22url%22%3A%22https%3A%2F%2Fraw.githubusercontent.com%2Fjgraph%2Fdrawio-mcp%2Ff6742eec323b440601a65ae98c2dbe592cdcd33e%2Fdocs%2Fimages%2Fgallery%2Fgallery-t2-aws.svg%22%2C%22effect%22%3A%22pop%22%7D)
+
+[![Mind map created by an AI assistant with draw.io from the prompt shown with it](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-n4-mindmap.svg)](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-n4-mindmap.svg "Show larger") **Mind map**
+
+“Make a mind map for planning a family vacation.”
+
+Copy prompt [Open in draw.io](https://app.diagrams.net/?pv=0&grid=0#create=%7B%22type%22%3A%22xml%22%2C%22url%22%3A%22https%3A%2F%2Fraw.githubusercontent.com%2Fjgraph%2Fdrawio-mcp%2Ff6742eec323b440601a65ae98c2dbe592cdcd33e%2Fdocs%2Fimages%2Fgallery%2Fgallery-n4-mindmap.svg%22%2C%22effect%22%3A%22pop%22%7D)
+
+[![Wireframe created by an AI assistant with draw.io from the prompt shown with it](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-mockup.svg)](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-mockup.svg "Show larger") **Wireframe**
+
+“Draw a wireframe of a mobile app login screen: logo, email and password fields, a sign-in button, a forgot-password link and social login buttons.”
+
+Copy prompt [Open in draw.io](https://app.diagrams.net/?pv=0&grid=0#create=%7B%22type%22%3A%22xml%22%2C%22url%22%3A%22https%3A%2F%2Fraw.githubusercontent.com%2Fjgraph%2Fdrawio-mcp%2Ff6742eec323b440601a65ae98c2dbe592cdcd33e%2Fdocs%2Fimages%2Fgallery%2Fgallery-mockup.svg%22%2C%22effect%22%3A%22pop%22%7D)
+
+[![Floor plan created by an AI assistant with draw.io from the prompt shown with it](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-floorplan.svg)](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-floorplan.svg "Show larger") **Floor plan**
+
+“Draw a floor plan of a two-bedroom apartment: a living room with an open kitchen, two bedrooms, a bathroom and a hallway with the entrance. Show the walls, doors, windows and the main furniture.”
+
+Copy prompt [Open in draw.io](https://app.diagrams.net/?pv=0&grid=0#create=%7B%22type%22%3A%22xml%22%2C%22url%22%3A%22https%3A%2F%2Fraw.githubusercontent.com%2Fjgraph%2Fdrawio-mcp%2Ff6742eec323b440601a65ae98c2dbe592cdcd33e%2Fdocs%2Fimages%2Fgallery%2Fgallery-floorplan.svg%22%2C%22effect%22%3A%22pop%22%7D)
+
+[![Electrical circuit created by an AI assistant with draw.io from the prompt shown with it](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-circuit.svg)](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-circuit.svg "Show larger") **Electrical circuit**
+
+“Draw the circuit diagram of a 5 V power supply: a 230 V transformer, a bridge rectifier, a smoothing capacitor, a 7805 voltage regulator, an output capacitor and an LED with its resistor as a power indicator.”
+
+Copy prompt [Open in draw.io](https://app.diagrams.net/?pv=0&grid=0#create=%7B%22type%22%3A%22xml%22%2C%22url%22%3A%22https%3A%2F%2Fraw.githubusercontent.com%2Fjgraph%2Fdrawio-mcp%2Ff6742eec323b440601a65ae98c2dbe592cdcd33e%2Fdocs%2Fimages%2Fgallery%2Fgallery-circuit.svg%22%2C%22effect%22%3A%22pop%22%7D)
+
+[![P&ID created by an AI assistant with draw.io from the prompt shown with it](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-pid.svg)](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-pid.svg "Show larger") **P&ID**
+
+“Draw a P&ID for a simple heating process: a feed tank, a pump, a control valve, a heat exchanger heated by steam and a product tank, with a flow transmitter, a temperature transmitter and a temperature controller.”
+
+Copy prompt [Open in draw.io](https://app.diagrams.net/?pv=0&grid=0#create=%7B%22type%22%3A%22xml%22%2C%22url%22%3A%22https%3A%2F%2Fraw.githubusercontent.com%2Fjgraph%2Fdrawio-mcp%2Ff6742eec323b440601a65ae98c2dbe592cdcd33e%2Fdocs%2Fimages%2Fgallery%2Fgallery-pid.svg%22%2C%22effect%22%3A%22pop%22%7D)
+
+[![Business model canvas created by an AI assistant with draw.io from the prompt shown with it](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-bmc.svg)](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-bmc.svg "Show larger") **Business model canvas**
+
+“Fill in a business model canvas for a meal-kit delivery startup.”
+
+Copy prompt [Open in draw.io](https://app.diagrams.net/?pv=0&grid=0#create=%7B%22type%22%3A%22xml%22%2C%22url%22%3A%22https%3A%2F%2Fraw.githubusercontent.com%2Fjgraph%2Fdrawio-mcp%2Ff6742eec323b440601a65ae98c2dbe592cdcd33e%2Fdocs%2Fimages%2Fgallery%2Fgallery-bmc.svg%22%2C%22effect%22%3A%22pop%22%7D)
+
+[![Infographic created by an AI assistant with draw.io from the prompt shown with it](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-infographic.svg)](https://cdn.jsdelivr.net/gh/jgraph/drawio-mcp@f6742eec323b440601a65ae98c2dbe592cdcd33e/docs/images/gallery/gallery-infographic.svg "Show larger") **Infographic**
+
+“Make an infographic of the five steps to launch a product: research, design, build, test and launch, each with an icon and a one-line description.”
+
+Copy prompt [Open in draw.io](https://app.diagrams.net/?pv=0&grid=0#create=%7B%22type%22%3A%22xml%22%2C%22url%22%3A%22https%3A%2F%2Fraw.githubusercontent.com%2Fjgraph%2Fdrawio-mcp%2Ff6742eec323b440601a65ae98c2dbe592cdcd33e%2Fdocs%2Fimages%2Fgallery%2Fgallery-infographic.svg%22%2C%22effect%22%3A%22pop%22%7D)
+
+[See every diagram type in the gallery](https://www.drawio.com/docs/manual/generate/ai-assistants/gallery/)
+
+## Privacy and security
+
+- The hosted server requires no accounts and no sign-in. It can't access your files or anything else on your device.
+- It receives only what your assistant sends to draw a diagram. It never receives your conversation content.
+- It doesn't store your diagram data, and we don't use your data to train any AI models.
+- To keep diagrams inside your own network, run the Docker image or the MCP Tool Server instead.
+
+Read the [privacy policy for draw.io in AI assistants](https://www.drawio.com/trust/privacy-ai-assistants/) to see how draw.io works with [AI models and LLMs](https://www.drawio.com/docs/manual/generate/ai-models/), and where your diagram data is transmitted with each setup in the [Data residency and offline use](https://github.com/jgraph/drawio-mcp#data-residency--offline-use) section.
+
+## Questions and troubleshooting
+
+Troubleshoot: The diagram doesn't appear in the chat
+
+Diagrams appear in the chat in assistants that support MCP Apps: Claude, ChatGPT, VS Code with GitHub Copilot 1.109 or later, and Cursor 2.6 or later. In other assistants, such as Claude Code or GitHub Copilot CLI, the server answers with a link that will open the diagram in draw.io.
+
+Troubleshoot: I can't add a custom MCP server in ChatGPT
+
+Your workspace administrator may have disabled the option to add a custom MCP server. Ask your administrator to enable it.
+
+Troubleshoot: VS Code doesn't use the draw.io tools
+
+Click _Start_ above the server entry in `mcp.json`, trust the folder when VS Code asks, and switch Copilot Chat to _Agent_ mode. Check that the draw.io tools are turned on under _Configure Tools_ in the chat input.
+
+How do I change a diagram?
+
+Ask your assistant to make a change in the same chat, for example to use another colour theme, different icons or add a missing step. To edit the diagram yourself, click _Open in draw.io_. See [how to get the AI assistant to make changes](https://www.drawio.com/docs/manual/generate/ai-assistants/edit-and-style/) with examples.
+
+Which diagram types can my assistant draw?
+
+Flowcharts, UML, ER, architecture, cloud and network diagrams, mind maps, timelines, floor plans, circuits and many more, with more than 10,000 shapes from the draw.io libraries, including AWS, Azure, Google Cloud, Kubernetes and Cisco. The [generated gallery](https://www.drawio.com/docs/manual/generate/ai-assistants/gallery/) shows one example of each type with its prompt.
+
+Can the diagrams use SAP icons, or icons from other draw.io libraries?
+
+Yes. The draw.io MCP servers search more than 10,000 draw.io shapes, including SAP, AWS, Azure, Google Cloud, Cisco, Kubernetes and P&ID. Name the icon set in your prompt, for example "Use SAP icons" or "Use the SAP BTP service icons", and the assistant looks up the shapes before it draws the diagram. See the [SAP integration example](https://www.drawio.com/docs/manual/generate/ai-assistants/diagram-types/#sap-integration).
+
+Is draw.io in the ChatGPT and Codex plugin directory?
+
+Yes. Install [draw.io from the plugin directory](https://chatgpt.com/plugins/plugin_asdk_app_6abea666ca5081919375ed8d1d38da95), which ChatGPT and Codex share.
+
+Can I use draw.io in VS Code without the hosted server?
+
+Yes. Run the MCP Tool Server on your computer. It needs Node.js, and will open diagrams in the draw.io editor in your browser. Add it to `.vscode/mcp.json`:
+
+.vscode/mcp.json
+
+```json
+{
+  "servers": {
+    "drawio": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@drawio/mcp"]
+    }
+  }
+}
+```
+
+To keep the diagrams in Copilot Chat, [run the MCP App Server with Docker](https://www.drawio.com/docs/manual/generate/drawio-mcp-server/) on your computer, and use `http://localhost:3001/mcp` as the URL.
+
+Can I edit the diagrams in VS Code?
+
+Yes, with Henning Dieterichs' unofficial [draw.io extension for VS Code](https://www.drawio.com/docs/integrations/embed-diagrams-vscode/). It opens `.drawio` and `.drawio.svg` files in the draw.io editor inside VS Code.
+
+Do I need to install draw.io Desktop?
+
+Install draw.io Desktop to use draw.io editor plugins, to export diagrams to PNG, SVG or PDF and to lay them out automatically. You don't need it for `.drawio` files, generating links with embedded diagram information or to use the MCP servers.
+
+Which AI model draws the diagram?
+
+The model of your assistant writes the diagram as text. The draw.io server turns this into a draw.io diagram using native shapes. [Compare AI models](https://www.drawio.com/docs/manual/generate/ai-assistants/prompts/).
+
+## Versions and changes
+
+The hosted server is regularly updated. Check the current version before you update packages.
+
+[![Current version of the @drawio/mcp package on npm](https://img.shields.io/npm/v/@drawio/mcp?label=npm%20%40drawio%2Fmcp&color=f08705)Versions on npm](https://www.npmjs.com/package/@drawio/mcp?activeTab=versions) [![Current version of the jgraph/drawio-mcp image on Docker Hub](https://img.shields.io/docker/v/jgraph/drawio-mcp?sort=semver&label=docker%20jgraph%2Fdrawio-mcp&color=0077b6)Image tags on Docker Hub](https://hub.docker.com/r/jgraph/drawio-mcp/tags) [Changes on GitHub](https://github.com/jgraph/drawio-mcp/commits/main)
+
+## Learn more
+
+Write better prompts, change and style your diagrams, and browse examples of many different types of generated technical diagrams.
+
+[Read the guides](https://www.drawio.com/docs/manual/generate/ai-assistants/prompts/) [See the gallery](https://www.drawio.com/docs/manual/generate/ai-assistants/gallery/)

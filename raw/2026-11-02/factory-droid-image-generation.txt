@@ -1,0 +1,125 @@
+Title: https://docs.factory.com/droid-cli/image-generation.md
+Requested URL: https://docs.factory.com/droid-cli/image-generation.md
+Resolved URL: https://docs.factory.com/droid-cli/image-generation.md
+Retrieved: 2026-11-02
+Format: FetchUrl Markdown text snapshot, not original HTML. Lines of 10,000 or more characters (embedded metadata or oversized content) omitted.
+
+\# Image generation
+
+Generate and edit images from a Droid session, and choose the image model that fits the job.
+
+Droid can create and edit images in the middle of a session. Ask for a logo, an icon, a UI mockup, an architecture diagram, or a change to an image you already have, and Droid calls its built-in \`GenerateImage\` tool. The image appears inline in the conversation and is saved to disk so you can use it in your project.
+
+There is nothing to install. Image generation is on by default, and image models are billed like any other model usage.
+
+\## Generate an image
+
+Describe what you want in plain language. Droid turns your request into a detailed prompt for the image model, so you do not need to write one yourself.
+
+\`\`\`text
+\> Create a 1024x1024 app icon for a weather CLI: a minimal cloud with a lightning bolt, flat style, navy and amber
+\`\`\`
+
+Droid saves each result under \`~/.factory/generated-images/\` with a short, descriptive file name, and reports the path. Ask Droid to copy the file into your repository if you want to keep it with your code.
+
+ The image model only sees the prompt Droid writes and any reference images Droid passes. It does not see your conversation or your codebase. If details matter (exact copy, brand colors, dimensions, style), say them explicitly so Droid includes them in the prompt.
+
+\## Edit an existing image
+
+To change an image instead of starting over, refer to it in your request. Droid passes the image to the model as a reference and describes only the change.
+
+\`\`\`text
+\> Make the background of that icon transparent and the bolt slightly thicker
+\`\`\`
+
+You can edit:
+
+\- \*\*Images Droid generated\*\* in the current or an earlier session, from \`~/.factory/generated-images/\`.
+\- \*\*Images you attached\*\* to the session, for example by pasting or dragging a screenshot into the CLI.
+
+Each call accepts up to 4 reference images in PNG or JPEG format, up to 5 MB each. Droid re-encodes and compresses them before upload.
+
+\## Choose a model
+
+Droid supports three image models. All of them generate and edit images, accept reference images, and render legible text. They differ in speed, editing precision, and how much they reason about the content.
+
+\| Model \| Provider \| Best for \| Trade-off \|
+\| :\-\-\-\- \| :\-\-\-\-\-\-\- \| :\-\-\-\-\-\-\- \| :\-\-\-\-\-\-\-\- \|
+\| \*\*GPT Image 2.5 Sunburst\*\* (default) \| OpenAI \| Polished final assets and multi-step edit chains where every revision must stay clean \| Slowest of the three \|
+\| \*\*GPT Image 2.5 Flare\*\* \| OpenAI \| Fast drafts, quick iterations, and high-volume work \| Slightly lower peak quality than Sunburst \|
+\| \*\*Gemini 3 Pro Image\*\* (Nano Banana Pro) \| Google \| Infographics, explainer diagrams, multilingual text, and compositions built from several references \| Different style and content filters from the OpenAI models \|
+
+\### GPT Image 2.5 Sunburst
+
+OpenAI's full-size image model, released in September 2026, and Droid's default. OpenAI positions it for premium work that needs tight control across a chain of edits.
+
+\- \*\*Precise, scoped edits.\*\* Ask for one change (a product, a background, a line of copy) and the subject, composition, and surrounding layout stay put.
+\- \*\*Stable multi-turn editing.\*\* Earlier edits survive later ones, so the fourth revision is as clean as the first.
+\- \*\*Reference fidelity.\*\* Faces, products, and brand elements carry into new scenes and styles with their distinctive details intact.
+\- \*\*Text and layout.\*\* OpenAI calls out better infographic accuracy and layout in 2.5, and it handles posters, packaging, and labels well.
+\- \*\*Top of the leaderboards at launch.\*\* Sunburst debuted first on LMArena's text-to-image and image-edit leaderboards, ahead of every other model (scores were preliminary at launch).
+
+Pick Sunburst when the image is a deliverable: a landing page hero, marketing creative, a product shot, or anything you will refine over several rounds.
+
+\### GPT Image 2.5 Flare
+
+The small, fast variant of GPT Image 2.5. OpenAI measures it at up to half the latency of GPT Image 2, at comparable quality, and it ranked second only to Sunburst on LMArena at launch.
+
+\- \*\*Speed.\*\* Best for quick drafts, placeholder art, exploring several directions, or generating many assets in one session.
+\- \*\*Same editing model.\*\* It shares the 2.5 improvements in scoped edits and reference fidelity, with a little less polish than Sunburst.
+
+OpenAI's own advice is a good rule: if speed matters and Flare already meets your quality bar, use it. If quality is the constraint, start with Sunburst, get the result you want, then check whether Flare can match it faster.
+
+\### Gemini 3 Pro Image
+
+Google DeepMind's image model, also known as Nano Banana Pro. It is built on Gemini 3 Pro and uses that model's reasoning and world knowledge to plan an image before rendering it.
+
+\- \*\*Information-dense visuals.\*\* Strong at infographics, explainers, step-by-step diagrams, and turning notes or outlines into a visual, because it reasons about what the content should say.
+\- \*\*Text in many languages.\*\* Google describes it as its best model for legible in-image text, from short taglines to full paragraphs, including translating and localizing text in an existing image.
+\- \*\*Multi-reference composition.\*\* Good at blending several reference images into one scene while keeping people, products, and branding consistent.
+\- \*\*Studio-style controls.\*\* Handles edits to lighting, camera angle, focus, and aspect ratio (for example, day to night, or reframing to 1:1 without moving the subject).
+
+Pick Gemini 3 Pro Image for diagrams and explainers, localized or text-heavy mockups, and composites built from several references. It is also a useful second opinion: because it comes from a different provider, it can succeed on a prompt that the OpenAI models refuse.
+
+ Every model can still misplace text, drift on recurring characters across separate generations, or change details you meant to keep. Quote exact copy in your request, reuse a reference image instead of re-describing a character, and check the result before you ship it.
+
+\## Set your image model
+
+Open \`/settings\` and change \*\*Image generation model\*\* on the \*\*Session\*\* tab. Selecting the row cycles through the models your organization allows, plus \*\*Factory default\*\*.
+
+You can also set it in \`settings.json\`:
+
+\`\`\`json title="~/.factory/settings.json"
+{
+ "imageGenerationModel": "gpt-image-2.5-flare"
+}
+\`\`\`
+
+\| Model \| ID \|
+\| :\-\-\-\- \| :\- \|
+\| GPT Image 2.5 Sunburst \| \`gpt-image-2.5-sunburst\` \|
+\| GPT Image 2.5 Flare \| \`gpt-image-2.5-flare\` \|
+\| Gemini 3 Pro Image \| \`gemini-3-pro-image-preview\` \|
+
+Image models do not appear in the main model picker. They are only used through the \`GenerateImage\` tool, so your session model and your image model are independent.
+
+\### Automatic fallback
+
+Droid tries your selected model first. If the provider refuses the prompt or the request fails (for example, an outage or rate limit), Droid retries with the next allowed model in this order: GPT Image 2.5 Sunburst, GPT Image 2.5 Flare, then Gemini 3 Pro Image. The two GPT Image 2.5 models share content filters, so a refusal from one usually moves straight on to Gemini.
+
+\## Organization controls
+
+Admins control image generation in Enterprise Controls or org-managed settings:
+
+ Turns image generation on or off for the whole organization. When \`false\`, Droid stops offering the \`GenerateImage\` tool and the server rejects image-model requests.
+
+ Allowlist of image model IDs. Users can only select, and Droid can only fall back to, models on this list. An empty list disables image generation.
+
+ Default image model for the organization. Users can override it with their own setting.
+
+
+Image models are not covered by \`modelPolicy\` allow and block lists, so use these settings instead. \`imageGenerationEnabled\` and \`imageGenerationAllowedModelIds\` are hard controls that users cannot override. \`imageGenerationModel\` is a default that users can change. See \[Feature controls\](/enterprise/hierarchical-settings-and-org-control#feature-controls) for the full reference.
+
+ Configure the CLI, including your session and image models.
+
+ See every model available in Droid.

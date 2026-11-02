@@ -1,0 +1,1524 @@
+Source URL: https://accessibility.github.com/documentation/guide/cli/
+Effective URL: https://accessibility.github.com/documentation/guide/cli/
+Title: Using Git, GitHub CLI, and Copilot CLI with a Screen Reader
+Captured: 2026-11-01 via FetchUrl Markdown extraction (text snapshot, not original HTML). Long CSS/style lines removed.
+
+---
+
+![](https://accessibility.github.com/assets/images/gradient-glow-hero.png)
+
+# Using Git, GitHub CLI, and Copilot CLI with a Screen Reader
+
+## Guide Topics
+
+[Skip to content](https://accessibility.github.com/documentation/guide/cli/#page-content)
+
+A guide for screen reader users who want to work with Git and GitHub entirely from the command line. This guide covers installing and configuring Git, using Windows Terminal, working with the GitHub CLI, and using Copilot CLI as a terminal assistant.
+
+## Who this guide is for
+
+This guide is for developers and technical contributors who use a screen reader and want to interact with Git and GitHub from the terminal rather than through a web browser or desktop application. It assumes basic familiarity with navigating a computer with a screen reader, but no prior experience with Git or GitHub.
+
+The guide uses NVDA on Windows as the reference screen reader, but the commands and workflows apply to any screen reader and any terminal that supports standard keyboard input.
+
+## What you will need
+
+Before starting, make sure you have:
+
+- A Windows computer with administrator access (needed for installing software)
+- A screen reader (this guide references NVDA, but JAWS, Narrator, or other screen readers work as well)
+- A GitHub account (sign up at [github.com](https://github.com/) if you do not have one)
+- An internet connection for downloading installers and authenticating with GitHub
+
+## How this guide is organized
+
+The guide follows a local-to-remote progression:
+
+- **[Part 1: Git CLI](https://accessibility.github.com/documentation/guide/cli/#part-1-git-cli)** covers installing Git and learning the commands you need to work with files and commits on your own computer.
+- **[Part 2: GitHub CLI](https://accessibility.github.com/documentation/guide/cli/#part-2-github-cli)** covers installing the GitHub CLI (`gh`) and using it to create pull requests, manage issues, and interact with GitHub without opening a browser.
+- **[Part 3: Copilot CLI](https://accessibility.github.com/documentation/guide/cli/#part-3-copilot-cli)** covers installing GitHub Copilot CLI and using it as a conversational terminal assistant that translates plain language into commands.
+- **[Common Workflows](https://accessibility.github.com/documentation/guide/cli/#common-workflows)** brings it all together with end-to-end examples that chain Git and GitHub CLI commands.
+
+* * *
+
+## Part 1: Git CLI
+
+Git is the version control system that tracks changes to your files. The commands in this section all happen locally on your computer. You do not need an internet connection or a GitHub account to use them.
+
+### Installing Git for Windows
+
+Download the installer from the [Git for Windows download page](https://git-scm.com/downloads/win). The page has tabs for different operating systems. Make sure the Windows tab is selected, then follow the download link.
+
+#### Launching the installer
+
+1. Open File Explorer and navigate to the Downloads folder.
+2. Find the installer file. Your screen reader announces the file name, which includes “Git” followed by the version number and system architecture – for example, “Git-2.54.0-64-bit.”
+3. Press Enter to launch the installer.
+4. Windows displays a User Account Control (UAC) prompt. Your screen reader may announce “Secure Desktop” and go briefly silent before the dialog appears. Press Alt+Y to allow the installation, or Tab to the Yes button and press Enter.
+
+#### Step-by-step installer walkthrough
+
+The Git for Windows installer presents a series of screens, each with a question or set of options. Every screen has keyboard shortcuts for its buttons: Alt+N for Next, Alt+B for Back, Alt+I for Install, and Alt+F for Finish.
+
+**Accessibility note**: Several installer screens use radio button groups where the group heading (the question being asked) is not announced by the screen reader. Your screen reader reads the radio button text but not the surrounding context. If you are unsure what a screen is asking, use your screen reader’s object navigation (for example, NVDA+Numpad keys) to read the full screen content. This guide describes what each screen is about so you know the context before navigating the controls.
+
+##### License screen
+
+The first screen shows the GNU General Public License, which governs how Git’s source code can be used and distributed. Focus lands on the Next button. No action is needed here beyond continuing.
+
+Press Enter to proceed.
+
+##### Destination folder
+
+An edit field shows the default installation path (`C:\Program Files\Git`).
+
+- Leave the default path unless your organization requires software to be installed in a different directory.
+  - This is where Git’s executable and supporting files will be stored. The default location keeps Git accessible from the system PATH.
+- Tab to the Next button and press Enter to continue.
+
+##### Select components
+
+A tree view with checkboxes lists the components to install.
+
+- Use arrow keys to navigate the tree.
+- Use Space to toggle each checkbox.
+  - Your screen reader announces each item with its checked or unchecked state.
+- Take a moment to review the following settings.
+  - **Windows Explorer integration**: Leave this enabled for most workflows. This adds Git options to the right-click context menu in File Explorer, which can be a convenient way to open a terminal in any folder. Checked by default.
+  - **Add a Git Bash Profile to Windows Terminal**: Enable this option if you plan to use [Windows Terminal](https://accessibility.github.com/documentation/guide/cli/#setting-up-windows-terminal) (recommended), to save yourself from having to configure the profile manually later. This adds Git Bash as a profile you can open directly from Windows Terminal. Not checked by default.
+  - **Check daily for Git for Windows updates**: Enable this in development environments where you want the latest features and security fixes. Leave it unchecked in environments where updates need to be managed on a controlled schedule. This keeps Git up to date by checking for new versions automatically. Not checked by default.
+  - The remaining components – Git LFS, file associations, and Scalar – are configured with sensible defaults for most development workflows. Leave them as they are unless you have a specific reason to change them.
+- Select Next to continue.
+
+##### Start Menu folder
+
+An edit field shows the default value “Git” for the Start Menu folder name.
+
+- Leave the default name. It is clear and recognizable.
+  - This determines where Git appears in the Windows Start menu. The Start Menu entry provides a way to launch Git Bash or Git GUI from the Start menu, but it does not affect how Git works from the terminal.
+- Select Next to continue.
+
+##### Default editor
+
+A combo box (dropdown) for selecting the text editor Git uses when it needs you to write or edit text, such as commit messages.
+
+- Select Visual Studio Code if you already use it. It has strong screen reader support and numerous accessibility features. Otherwise, the default (Vim) is a widely used terminal-based editor.
+  - The editor can be changed later with `git config --global core.editor`, so this is not a permanent decision.
+- Use arrow keys to browse the options, then select Next to continue.
+
+##### Default branch name
+
+The default branch is the starting branch Git creates when you initialize a new repository. Branches are how Git lets you work on different changes independently – the concept is explained fully in the [Creating and switching branches](https://accessibility.github.com/documentation/guide/cli/#creating-and-switching-branches) section later in this guide. Two radio buttons are available.
+
+- Leave the default selected, since most teams configure the branch name as part of their project setup:
+  - **Let Git decide** (default recommended): The branch name is typically configured as part of project setup, not during installation.
+  - **Override the default branch name for new repositories**: Select this only if you want to specify a custom name during installation rather than configuring it later.
+- Use arrow keys to navigate between options, then select Next to continue.
+
+##### PATH environment
+
+This screen asks how Git should be made available from the command line. Three radio buttons are available.
+
+- Leave the default selected for broad terminal compatibility without risking conflicts:
+  - **Use Git from Git Bash only**: Select this only if you want Git commands to work exclusively inside the Git Bash terminal.
+  - **Git from the command line and also from 3rd-party software** (default recommended): It makes Git available from any terminal without risking conflicts with existing Windows commands.
+  - **Use Git and optional Unix tools from the Command Prompt**: Avoid this option unless you specifically need Unix commands in the Windows PATH. It adds Unix commands (like `find` and `sort`) to the system PATH, which can conflict with Windows commands that share the same names.
+- Use arrow keys to navigate between options, then select Next to continue.
+
+##### SSH executable
+
+This screen asks which SSH client Git should use for secure connections to remote repositories. SSH (Secure Shell) is a protocol for safely communicating between your computer and a server – Git uses it as one option for connecting to GitHub. Two radio buttons are available.
+
+- Leave the default selected for a zero-configuration setup:
+  - **Use bundled OpenSSH** (default recommended): It requires no extra configuration as it is included with the Git installation and works without any additional setup.
+  - **Use external OpenSSH**: Select this only if you have already configured a separate SSH client on your system and want Git to use it instead.
+- Use arrow keys to navigate between options, then select Next to continue.
+
+##### HTTPS transport backend
+
+This screen asks which SSL/TLS library Git should use for HTTPS connections. SSL/TLS is the encryption layer that secures data in transit when Git communicates with remote repositories over HTTPS. Two radio buttons are available.
+
+- Leave the default selected for its integration with the Windows certificate store:
+  - **Use the OpenSSL library**: Select this if you prefer the widely used open-source library.
+  - **Use the native Windows Secure Channel library** (default recommended): It integrates with the Windows certificate store, which can be an advantage in corporate environments where custom certificates are managed centrally.
+- Use arrow keys to navigate between options, then select Next to continue.
+
+##### Line ending conversions
+
+Different operating systems use different characters to mark the end of a line in text files. Windows uses a two-character sequence (CRLF), while macOS and Linux use a single character (LF). If these differences are not handled, files can appear to have changes in every line when collaborating across operating systems. This screen asks how Git should manage that conversion. Three radio buttons are available.
+
+- Leave the default selected to keep files compatible across operating systems automatically:
+  - **Checkout Windows-style, commit Unix-style line endings** (default recommended): Git converts line endings to the Windows format when you check out files and converts them back to the Unix format when you commit, handling the conversion in both directions. Your files work correctly on Windows while remaining compatible when you collaborate with users on macOS or Linux.
+  - **Checkout as-is, commit Unix-style line endings**: Select this if you want to avoid automatic conversion on checkout. Git leaves line endings unchanged when you check out files but normalizes them to the Unix format when you commit.
+  - **Checkout as-is, commit as-is**: Select this only if you need full manual control over line endings. Git does not convert line endings at all, in either direction. You are responsible for ensuring consistency when collaborating across operating systems.
+- Use arrow keys to navigate between options, then select Next to continue.
+
+##### Terminal emulator for Git Bash
+
+This screen asks which terminal emulator to use when opening Git Bash directly (outside of Windows Terminal). If you plan to use Git primarily through Windows Terminal – as this guide recommends – this setting has little practical impact, because Windows Terminal provides its own terminal emulator regardless of what you select here. Two radio buttons are available.
+
+- Leave the default selected if you plan to use Git Bash with Windows Terminal:
+  - **Use MinTTY** (default): A lightweight terminal that comes with the Git installation.
+  - **Use Windows’ default console window** (recommended): Select this for better screen reader support if you do not plan to use Windows Terminal.
+- Use arrow keys to navigate between options, then select Next to continue.
+
+##### Default git pull behavior
+
+When you pull changes from a remote repository, Git needs to decide how to combine those changes with your local work. Pulling is covered in detail in the [Pushing and pulling changes](https://accessibility.github.com/documentation/guide/cli/#pushing-and-pulling-changes) section later in this guide. Three radio buttons are available.
+
+- Leave the default selected for the most forgiving option in everyday work:
+  - **Fast-forward or merge** (default recommended): Handles most situations automatically. If your branch is behind, Git moves it forward. If your branch has diverged, Git creates a merge commit.
+  - **Rebase**: Select this if you prefer a linear history without merge commits. Replays your local commits on top of the remote changes.
+  - **Only ever fast-forward**: Select this only if you want strict control over how changes are combined. Updates your branch only if it has not diverged. If it has, the pull fails and you must resolve the situation manually.
+- Use arrow keys to navigate between options, then select Next to continue.
+
+##### Credential helper
+
+This screen asks how Git should remember your login credentials when connecting to remote repositories. Two radio buttons are available.
+
+- Leave the default selected to avoid re-entering credentials on every operation:
+  - **Git Credential Manager** (default recommended): You authenticate once and Git remembers your credentials for future operations.
+  - **None**: Select this only if you prefer to enter credentials manually each time Git connects to a remote repository.
+- Use arrow keys to navigate between options, then select Next to continue.
+
+##### Extra options
+
+This screen offers two additional features as checkboxes.
+
+- **Enable file system caching**: Leave this enabled.
+
+  - Improves performance by keeping file system data in memory, which makes Git operations faster on large repositories. Checked by default.
+- **Enable symbolic links**: Leave this unchecked unless you know your project needs them.
+
+  - Allows Git to create symbolic links (shortcuts that point to other files or folders) when checking out repositories that use them. Symbolic links are uncommon in most projects, and enabling them requires additional Windows permissions. Not checked by default.
+- Tab to the Install button and press Enter to start the installation.
+  - Your screen reader may produce ascending beep tones or announce progress percentages as the installation proceeds. No action is needed. Wait for the completion screen.
+
+##### Completion screen
+
+Two checkboxes appear in a tree view. Neither option is required.
+
+- **Launch Git Bash**: Leave this unchecked. You can open Git Bash later from the Start menu or from Windows Terminal.
+
+  - Opens a Git Bash terminal window immediately after closing the installer. Not checked by default.
+- **View Release Notes**: Leave this checked to review what is new in this version, or uncheck it to skip.
+
+  - Opens the release notes in a browser. Checked by default.
+- Select Finish to close the installer.
+
+### Setting up Windows Terminal
+
+Windows Terminal is the recommended terminal for working with Git and GitHub CLI. It supports multiple shell profiles in a tabbed interface, includes a command palette for discovering commands, and has a mark mode that lets you review terminal output line by line with your cursor keys – essential for navigating command output with a screen reader.
+
+#### Opening Windows Terminal
+
+1. Press Windows+X to open the Power User menu.
+2. Use the Up arrow key to find “Terminal” in the menu.
+3. Press Enter to open it. (Choose “Terminal (Admin)” only if you need elevated privileges for installing software.)
+
+#### Configuring shell profiles
+
+Windows Terminal opens with a default profile, usually Windows PowerShell. When you install Git for Windows with the “Add a Git Bash Profile to Windows Terminal” option, a Git Bash profile is added automatically.
+
+A profile in Windows Terminal is a pre-configured shell environment. Each profile launches a different command-line interpreter – PowerShell, Command Prompt, Git Bash, and so on. You can have multiple profiles and switch between them.
+
+Setting Git Bash as your default profile means every new terminal window starts with Git Bash, giving you access to Unix-style commands (like `ls`, `grep`, and `cat`) alongside Git. This is convenient if Git Bash is your primary working environment. If you prefer PowerShell for general tasks and only use Git Bash occasionally, you can keep PowerShell as the default and open Git Bash in a separate tab when needed (explained below).
+
+**Setting Git Bash as the default profile**:
+
+1. Press Ctrl+Comma to open Windows Terminal settings (opens as a tab within the terminal).
+2. Tab to the “Default profile” combo box.
+3. Press Spacebar to expand the combo box.
+4. Use arrow keys to select Git Bash.
+5. Tab to the Save button and press Enter.
+6. Press Ctrl+Shift+W to close the settings tab.
+
+The next time you open Windows Terminal, it will start with Git Bash.
+
+**Opening a profile in a new tab**: Press Ctrl+Shift+\[number\] where \[number\] is the profile’s position in the list. For example, if Git Bash is the 6th profile, press Ctrl+Shift+6. You can determine the position from the Default profile combo box in settings.
+
+**Switching between tabs**: Press Ctrl+Tab to cycle through open tabs. Your screen reader announces the tab name when switching. Tabs work like browser tabs – each one runs an independent shell session, and they appear in a row at the top of the window. You can close any tab with Ctrl+Shift+W. If only one tab is open, closing it closes the entire Windows Terminal window.
+
+#### Command palette
+
+The command palette is a searchable menu that lists all available commands in Windows Terminal. Instead of memorizing keyboard shortcuts or navigating through settings menus, you can type what you are looking for and select it from the results.
+
+1. Press Ctrl+Shift+P to open the command palette.
+2. Type the name of a command to filter the list, or use arrow keys to browse.
+3. Your screen reader announces the number of matching suggestions as you type.
+4. Press Enter to run the selected command, or Escape to dismiss the palette.
+
+Useful searches: “profile” to list commands for opening specific profiles, “copy” for copy commands, “split” for pane-splitting options.
+
+#### Mark mode (reviewing terminal output)
+
+Mark mode is one of the most valuable features in Windows Terminal for screen reader users and keyboard users in general. It turns the terminal into something closer to a text document: you can navigate output line by line with cursor keys, select text, and copy it to the clipboard.
+
+**Entering mark mode**: Press Ctrl+Shift+M.
+
+**Navigating**:
+
+- Up/Down arrow: move line by line
+- Left/Right arrow: move character by character
+- Ctrl+Left / Ctrl+Right: move word by word
+- Home: move to the beginning of the current line
+
+**Selecting and copying text**:
+
+- Shift+Down arrow: select the current line
+- Ctrl+Shift+Right arrow: select word by word
+- Shift+Right arrow: select character by character
+- Ctrl+C: copy the selected text (also exits mark mode and returns to the prompt)
+
+**Exiting mark mode**: Press Escape to return to the prompt without copying.
+
+**Practical example**: Suppose you run `whoami` and want to copy the output. Press Ctrl+Shift+M to enter mark mode, use the Up arrow to navigate to the line with the result, press Home to go to the beginning of the line, press Shift+Down arrow to select the full line, then Ctrl+C to copy.
+
+Selected text in mark mode is also highlighted on connected braille displays, provided selection indicators are configured in the screen reader settings.
+
+### Configuring Git
+
+Every commit you make in Git is stamped with your name and email address. This is how collaborators know who made which changes. Before you start using Git, you need to tell it who you are. This only needs to be done once – the `--global` flag saves these settings for all repositories on your computer.
+
+Open a terminal (Windows Terminal with Git Bash or PowerShell) and run these commands:
+
+Copy code
+
+```
+git config --global user.name "Your Name"
+git config --global user.email "your-email@example.com"
+```
+
+Replace “Your Name” and your email address with your actual name and the email address associated with your GitHub account.
+
+**Set your default editor** (if you did not choose it during installation):
+
+Copy code
+
+```
+git config --global core.editor "code --wait"
+```
+
+This sets VS Code as the editor Git uses for commit messages. The `--wait` flag tells Git to wait until you close the editor tab before continuing. Replace `code` with `code-insiders` if you use VS Code Insiders.
+
+**Set the default branch name** (optional):
+
+Copy code
+
+```
+git config --global init.defaultBranch main
+```
+
+This ensures new repositories start with a branch named `main`.
+
+**Verify your configuration**:
+
+Copy code
+
+```
+git config --global --list
+```
+
+Your screen reader reads back the configured values line by line.
+
+### Core Git commands
+
+These are the commands you need for day-to-day work with Git. All of them run locally on your computer.
+
+#### Cloning a repository
+
+Before you can work on an existing project, you need a local copy of its repository. Cloning downloads the full repository – all files, branches, and history – to your computer.
+
+Copy code
+
+```
+git clone https://github.com/owner/repository-name.git
+```
+
+Replace `owner` with the GitHub username or organization and `repository-name` with the repository’s name. For example, to clone the NVDA screen reader repository:
+
+Copy code
+
+```
+git clone https://github.com/nvaccess/nvda.git
+```
+
+Git creates a new folder with the repository name in your current directory. After cloning, navigate into it:
+
+Copy code
+
+```
+cd nvda
+```
+
+You can find the clone URL on any GitHub repository page. With the GitHub CLI installed (covered in Part 2), you can also clone by repository name:
+
+Copy code
+
+```
+gh repo clone owner/repository-name
+```
+
+If you are starting a brand-new project instead of working on an existing one, use `git init` to create a new empty repository in the current folder:
+
+Copy code
+
+```
+git init
+```
+
+#### Checking the status of your repository
+
+Copy code
+
+```
+git status
+```
+
+This shows which files have been changed, which are staged for commit, and which are untracked. It is the command you will run most often. The output is plain text organized into sections:
+
+- “Changes to be committed” lists files that are staged and ready to commit
+- “Changes not staged for commit” lists files that have been modified but not staged
+- “Untracked files” lists new files Git is not tracking yet
+
+If everything is clean, Git reports “nothing to commit, working tree clean.”
+
+#### Creating and switching branches
+
+A branch lets you work on changes without affecting the main codebase. Think of it as a separate copy of your project where you can experiment freely. For example, you might create a branch called `fix-alt-text` to add missing image descriptions. Your changes stay on that branch until you are ready to merge them into the main branch.
+
+- **Create a new branch and switch to it**:
+
+
+
+
+
+Copy code
+
+```
+git checkout -b my-branch-name
+```
+
+
+
+
+
+
+
+Replace `my-branch-name` with a descriptive name for the work you are doing (for example, `fix-login-bug` or `add-readme`).
+
+- **Switch to an existing branch**:
+
+
+
+
+
+Copy code
+
+```
+git checkout main
+```
+
+- **List all branches**:
+
+
+
+
+
+Copy code
+
+```
+git branch
+```
+
+
+
+
+
+
+
+The current branch is marked with an asterisk (\*). Your screen reader announces each branch name; the asterisk at the beginning of a line indicates the active branch.
+
+
+#### Staging files
+
+Before committing changes, you need to tell Git which files to include in the commit. This step is called staging. Staging lets you choose exactly what goes into each commit rather than committing everything at once. Be intentional about what you stage – do not stage files you do not want in the repository, such as local notes, API keys, passwords, or other sensitive data.
+
+- **Stage a specific file**:
+
+
+
+
+
+Copy code
+
+```
+git add filename.md
+```
+
+- **Stage all changed files**:
+
+
+
+
+
+Copy code
+
+```
+git add .
+```
+
+
+
+
+
+
+
+The period (`.`) means “everything in the current directory and all subdirectories.” After staging, run `git status` to confirm which files are staged.
+
+
+If there are files you never want to track – such as log files, build outputs, or files containing secrets – create a file called `.gitignore` in the root of your repository and list the file names or patterns to exclude. For example:
+
+Copy code
+
+```
+*.log
+node_modules/
+.env
+```
+
+Git will ignore any files matching those patterns when you run `git add .`.
+
+#### Committing changes
+
+A commit saves your staged changes with a message describing what you did.
+
+**Commit with an inline message**:
+
+Copy code
+
+```
+git commit -m "Add login form validation"
+```
+
+The `-m` flag lets you write the commit message directly in the command. A commit message is a short description of what you changed and why. It becomes part of the project’s permanent history, so anyone reviewing the code later – including your future self – can understand the purpose of each change. Good commit messages use present tense and imperative mood (“Add feature” not “Added feature”) and are specific enough to be useful (“Fix email validation on login form” rather than “Fix bug”).
+
+**Commit using your editor**: Run `git commit` without the `-m` flag. Git opens your configured editor (set earlier with `git config --global core.editor`). Write the commit message, save, and close the editor tab. Git completes the commit when the editor closes.
+
+#### Viewing changes before committing
+
+Copy code
+
+```
+git diff
+```
+
+This shows line-by-line changes in your modified files. Lines starting with `+` are additions; lines starting with `-` are removals. You can use mark mode (Ctrl+Shift+M in Windows Terminal) to navigate the diff output line by line.
+
+Alternatively, you can redirect the diff output to a file and open it in your text editor for a more comfortable reading experience:
+
+Copy code
+
+```
+git diff > changes.txt
+code changes.txt
+```
+
+The `>` operator redirects the command’s output into a file instead of displaying it in the terminal. In this example, the diff output is written to a file called `changes.txt` in the current directory. If the file does not exist, it is created; if it already exists, its contents are replaced. The second command opens that file in VS Code, where you can read and navigate the diff using your editor’s familiar keyboard shortcuts.
+
+**View changes for staged files only**:
+
+Copy code
+
+```
+git diff --staged
+```
+
+#### Reviewing commit history
+
+Copy code
+
+```
+git log
+```
+
+This displays the list of commits, starting with the most recent. Each entry shows the commit hash, author, date, and message. The output may be long. Press `q` to exit the log viewer.
+
+**Compact single-line view**:
+
+Copy code
+
+```
+git log --oneline
+```
+
+This shows one line per commit: a short hash followed by the commit message. This format may be easier to scan with a screen reader than the full log, which includes multiple lines per commit.
+
+#### Pushing and pulling changes
+
+The commands covered so far all operate locally on your computer. To share your work with others or keep your local copy in sync with a remote repository on GitHub, you need two more commands: `git push` and `git pull`.
+
+**Pushing your commits to GitHub**:
+
+Copy code
+
+```
+git push origin my-branch-name
+```
+
+This uploads your local commits to the remote repository on GitHub. `origin` is the default name Git assigns to the remote repository you cloned from. Replace `my-branch-name` with the name of the branch you are working on. If this is the first time you are pushing a new branch, Git creates the branch on GitHub automatically.
+
+In most collaborative projects, you should push to a feature branch rather than directly to the default branch (usually `main`). Pushing to a feature branch lets you propose changes through a pull request, where teammates can review your work before it is merged. Many repositories have branch protection rules that prevent pushing directly to `main` for this reason.
+
+If you are already working on a feature branch and have pushed it before, you can continue pushing incremental changes as you make more commits:
+
+Copy code
+
+```
+git push
+```
+
+When your branch already exists on GitHub, Git remembers the connection between your local branch and the remote one, so you do not need to specify `origin` and the branch name again.
+
+**Note**: Pushing to GitHub requires authentication. If you have not authenticated yet, Git will prompt you for credentials. The next section (Part 2: GitHub CLI) covers how to set up authentication with the `gh auth login` command, which also configures Git to use the same credentials.
+
+**Pulling changes from GitHub**:
+
+Copy code
+
+```
+git pull
+```
+
+This downloads any new commits from the remote repository and merges them into your current branch. Running `git pull` regularly keeps your local copy up to date with changes others have made. It is good practice to pull before starting new work to avoid conflicts later.
+
+If your local branch has diverged from the remote – meaning both you and someone else have made commits since the last sync – Git attempts to merge the changes automatically. If it cannot resolve the differences on its own, it reports a merge conflict and asks you to resolve it manually. Merge conflicts are beyond the scope of this guide, but Git’s error messages will tell you which files need attention.
+
+* * *
+
+## Part 2: GitHub CLI
+
+The GitHub CLI (`gh`) lets you interact with GitHub from the terminal. Once you have committed changes locally with Git, `gh` takes over for creating pull requests, managing issues, checking notifications, and other GitHub operations – without opening a browser.
+
+### Installing GitHub CLI
+
+The recommended installation method on Windows is WinGet.
+
+1. Open Windows Terminal with a PowerShell or Git Bash profile.
+2. Run the install command:
+
+Copy code
+
+```
+winget install --id GitHub.cli
+```
+
+1. WinGet downloads and installs the package. Your screen reader announces progress messages including “Found GitHub CLI,” download progress, and “Successfully installed.”
+2. A UAC prompt may appear during installation. Your screen reader announces “Secure Desktop.” Press Alt+Y to allow the installation, or Tab to the Yes button and press Enter.
+3. Close the terminal window and open a new one. This is necessary because the installation updates the system PATH.
+4. Verify the installation:
+
+Copy code
+
+```
+gh version
+```
+
+Your screen reader reads the version number, confirming the installation is complete.
+
+### Authenticating with GitHub
+
+Before you can push code or interact with repositories on GitHub, you need to prove your identity. Authentication establishes a secure connection between your terminal and your GitHub account, so GitHub knows who is making each request. Without it, `git push` will fail, and the GitHub CLI commands covered in the rest of this section will not work.
+
+The GitHub CLI provides an interactive login command that handles authentication for both `gh` commands and Git operations in a single step:
+
+Copy code
+
+```
+gh auth login
+```
+
+The CLI presents a series of questions. For each question with an arrow-key menu, the selected option is marked with a `>` character at the beginning of the line. Use Up/Down arrow keys to change the selection and Enter to confirm.
+
+1. **Select GitHub host**: The first question asks where you use GitHub. Two options appear: “GitHub.com” (for the public GitHub service) and “Other” (for GitHub Enterprise Server instances hosted by your organization). Most users should select GitHub.com, which is the default. Press Enter to continue.
+
+2. **Select protocol**: The next question asks which protocol to use for Git operations. Two options: “HTTPS” (default) and “SSH.” HTTPS works immediately after authentication with no extra setup. SSH requires generating an SSH key pair and registering the public key with your GitHub account, which is a separate configuration process. For a straightforward setup, select HTTPS. Press Enter to continue.
+
+3. **Authenticate Git with GitHub credentials**: A yes/no prompt asking whether Git should use the same credentials you are about to set up. Type `Y` and press Enter. This means the `git push` and `git pull` commands covered in Part 1 will work without any additional authentication setup.
+
+4. **Choose authentication method**: Two options: “Login with a web browser” (default) and “Paste an authentication token.” The browser method opens a GitHub page where you confirm the login – it is the simplest approach. The token method is for situations where you have already generated a personal access token and want to paste it directly. Press Enter to select the browser method.
+
+5. **Copy the one-time code**: The terminal displays a one-time code (for example, `XXXX-XXXX`) and prompts you to press Enter to open a browser page. This step requires careful attention. You need to copy the code before pressing Enter, because pressing Enter opens the browser and the terminal loses focus. If you miss the code, you can switch back to the terminal (Alt+Tab) and use mark mode to find it. To copy the code using Windows Terminal mark mode:
+
+
+1. Press Ctrl+Shift+M to enter mark mode.
+2. Use the Up arrow to navigate to the line containing the code.
+3. Press Home to move to the beginning of the line.
+4. Use Shift+Right arrow or Ctrl+Shift+Right arrow to select the code.
+5. Press Ctrl+C to copy.
+
+After copying, press Enter to open the browser.
+
+6. **Device activation in the browser**: The browser opens to the GitHub device activation page. If you are already signed in, the page shows your account with a Continue button. Tab to it and press Enter.
+
+7. **Enter the code**: The page shows edit fields for the one-time code. Paste with Ctrl+V. The focus advances through the fields automatically. Tab to the Continue button and press Enter.
+
+8. **Authorize access**: Depending on your account setup, you may see pages for:
+
+
+   - Authorizing organizations with SSO (press “Authorize” next to each organization that needs access)
+   - Authorizing the GitHub CLI application (press “Authorize github”)
+   - Two-factor authentication (complete using your preferred method – passkey, authenticator app, or GitHub Mobile)
+
+Not all of these pages appear for every user. Follow the prompts on each page.
+
+9. **Confirmation**: The browser shows “Congratulations, you’re all set!” Switch back to the terminal (Alt+Tab). The terminal confirms: “Authentication complete” and “Logged in as \[your username\].”
+
+**Verify authentication**:
+
+Copy code
+
+```
+gh auth status
+```
+
+This displays your active account, protocol, and token scopes.
+
+### Configuring accessibility settings
+
+GitHub CLI includes built-in accessibility settings that adjust how the CLI communicates with your terminal. Configuring these after authentication is recommended, especially if you use a screen reader or have preferences about motion and color contrast. Run `gh help accessibility` (or `gh a11y`) for the full reference.
+
+#### Accessible prompter
+
+The default interactive prompts use arrow-key menus that redraw parts of the screen on each keystroke, which can be difficult for screen readers to track reliably. The accessible prompter replaces these with numbered lists where you type a number to select an option.
+
+**Default mode** (arrow-key menus):
+
+Copy code
+
+```
+? Where do you use GitHub?  [Use arrows to move, type to filter]
+> GitHub.com
+  Other
+```
+
+**Accessible prompter mode** (numbered lists):
+
+Copy code
+
+```
+Where do you use GitHub? (default: GitHub.com)
+1. GitHub.com
+2. Other
+Enter a number between 1 and 2:
+```
+
+Both modes are valid choices. The default mode supports type-to-filter, which is useful when a list has many options – you can narrow the choices by typing instead of scrolling. The accessible prompter produces static, predictable output that is easier for screen readers to read consistently.
+
+To enable the accessible prompter:
+
+Copy code
+
+```
+gh config set accessible_prompter enabled
+```
+
+To switch back:
+
+Copy code
+
+```
+gh config set accessible_prompter disabled
+```
+
+#### Accessible colors
+
+The GitHub CLI uses colors to distinguish different types of information in its output. The default color palette may not provide enough contrast for all users or terminal themes. Enabling accessible colors switches to a 4-bit ANSI color palette that is designed for better contrast, adapting to your terminal’s background appearance (dark or light). This is particularly relevant for low-vision users who depend on sufficient color contrast to read terminal output.
+
+Copy code
+
+```
+gh config set accessible_colors enabled
+```
+
+#### Disable spinners
+
+When the GitHub CLI is processing a request, it displays an animated spinner to indicate that work is in progress. These spinners manipulate the terminal cursor to create a spinning effect, which can cause discomfort for users with motion sensitivity. Screen readers may also misinterpret the rapidly changing characters, announcing them in ways that do not convey useful information. Disabling spinners replaces them with text-based progress indicators that communicate the same information without motion.
+
+Copy code
+
+```
+gh config set spinner disabled
+```
+
+#### Quick setup
+
+To enable all three accessibility settings at once:
+
+Copy code
+
+```
+gh config set accessible_prompter enabled
+gh config set accessible_colors enabled
+gh config set spinner disabled
+```
+
+### Working with issues
+
+GitHub issues are a way to track bugs, feature requests, tasks, and discussions within a repository. You can create and manage issues entirely from the terminal, without opening a browser.
+
+- **Create an issue**:
+
+
+
+
+
+Copy code
+
+```
+gh issue create
+```
+
+
+
+
+
+
+
+Starts an interactive prompt for the title, body, labels, and assignees. Or use flags:
+
+
+
+
+
+Copy code
+
+```
+gh issue create --title "Button missing accessible name" --body "The submit button has no aria-label or visible text" --label "bug,accessibility"
+```
+
+- **List issues**:
+
+
+
+
+
+Copy code
+
+```
+gh issue list
+```
+
+
+
+
+
+
+
+Displays open issues in the current repository. Filter by label, assignee, or other criteria:
+
+
+
+
+
+Copy code
+
+```
+gh issue list --label "accessibility" --assignee "@me"
+```
+
+- **View a specific issue**:
+
+
+
+
+
+Copy code
+
+```
+gh issue view 15
+```
+
+
+
+
+
+
+
+Replace `15` with the issue number. Add `--comments` to include the discussion thread.
+
+
+### Working with pull requests
+
+Pull requests are the primary way to propose changes on GitHub. A pull request asks the repository maintainers to review your changes and merge them into the main branch. These commands assume you have committed changes locally and pushed your branch to GitHub (the full sequence is demonstrated in the Common Workflows section at the end of this guide).
+
+- **Create a pull request**:
+
+
+
+
+
+Copy code
+
+```
+gh pr create
+```
+
+
+
+
+
+
+
+This starts an interactive prompt asking for the title, body, base branch, and reviewers. If you prefer to skip the interactive prompts, use flags:
+
+
+
+
+
+Copy code
+
+```
+gh pr create --title "Fix login validation" --body "Corrects the email format check" --base main
+```
+
+- **List open pull requests**:
+
+
+
+
+
+Copy code
+
+```
+gh pr list
+```
+
+
+
+
+
+
+
+Displays open pull requests in the current repository. The output includes the PR number, title, branch, and status.
+
+- **View a specific pull request**:
+
+
+
+
+
+Copy code
+
+```
+gh pr view 42
+```
+
+
+
+
+
+
+
+Replace `42` with the PR number. This shows the title, body, status, reviewers, and checks. Add `--comments` to include the discussion thread.
+
+- **Check out a pull request locally**:
+
+
+
+
+
+Copy code
+
+```
+gh pr checkout 42
+```
+
+
+
+
+
+
+
+This creates a local branch from the pull request so you can review or test the changes.
+
+
+### Viewing your GitHub activity
+
+Copy code
+
+```
+gh status
+```
+
+The `gh status` command provides a quick summary of your GitHub activity: issues assigned to you, pull requests you own, review requests from others, and recent mentions of your username. The output is organized into labeled sections.
+
+The standard `gh status` output uses a tabular layout. If you find this difficult to read with your screen reader, see the Copilot CLI section below for a way to reformat it.
+
+* * *
+
+## Part 3: Copilot CLI
+
+GitHub Copilot CLI is a conversational AI assistant that runs in your terminal. It can translate plain language into commands, reformat output for easier reading, and automate multi-step workflows. Copilot CLI requires a GitHub Copilot subscription (included in Free, Pro, Pro+, Business, and Enterprise plans).
+
+### Installing Copilot CLI
+
+1. Open Windows Terminal.
+2. Run the install command:
+
+Copy code
+
+```
+winget install GitHub.Copilot
+```
+
+1. WinGet downloads and installs the package (approximately 51 MB). Your screen reader announces progress and “Successfully installed” when done.
+2. Close the terminal and open a new one so the `copilot` command is available in the PATH.
+3. Verify the installation:
+
+Copy code
+
+```
+copilot --help
+```
+
+Copilot CLI is a standalone application installed separately from the GitHub CLI. If you also have the GitHub CLI installed, running `gh copilot` will launch the standalone Copilot CLI, but `copilot` is the primary way to invoke it. This guide uses `copilot`.
+
+### First launch
+
+Navigate to a project folder you trust, then launch Copilot with screen reader optimizations:
+
+Copy code
+
+```
+copilot --screen-reader
+```
+
+The `--screen-reader` flag adjusts the interface for assistive technology: it reduces unnecessary output, improves dialog consistency, and prevents placeholder text from being repeatedly read.
+
+To suppress the decorative ASCII banner that the screen reader reads character by character, add the `--no-banner` flag:
+
+Copy code
+
+```
+copilot --screen-reader --no-banner
+```
+
+#### Folder trust prompt
+
+On first launch in a new folder, Copilot asks: “Do you trust the files in this folder?” Three options appear:
+
+1. Yes – trust for this session only
+2. Yes, and remember this folder for future sessions
+3. No
+
+Copilot asks this because it may read files and run commands in the current folder, and running untrusted code can be unsafe. For a regular development workspace that contains your own projects, option 2 (“Yes, and remember this folder for future sessions”) is a practical choice – it grants trust once and remembers it, so you do not see this prompt every time you launch Copilot in that folder. For an unfamiliar or downloaded project you have not reviewed, option 1 (session-only trust) is more cautious.
+
+#### Multi-line input prompt
+
+If Windows Terminal is detected, Copilot may ask whether to add a Shift+Enter key binding for multi-line input. By default, pressing Enter submits your prompt immediately. With this key binding enabled, Shift+Enter creates a new line instead, allowing you to compose multi-line prompts before submitting. This is useful when you want to give Copilot detailed instructions that span several lines. You can always add this binding later by running the `/terminal-setup` slash command inside a Copilot session.
+
+### Screen reader settings
+
+Copilot CLI stores configuration in `~/.copilot/settings.json` (on Windows: `%USERPROFILE%\.copilot\settings.json`). The following settings are particularly relevant for screen reader users:
+
+- **screenReader** (default: `false`): When set to `true`, Copilot enables screen reader optimizations permanently. This is the persistent equivalent of the `--screen-reader` launch flag, so you do not need to pass the flag every time you start Copilot.
+- **beep** (default: `true`): Plays an audible tone when Copilot needs your attention, such as when a tool permission prompt appears or a task completes. This is helpful when your screen reader is not actively reading the terminal, because the beep signals that something is waiting for your response.
+- **mouse** (default: `true`): Controls whether Copilot captures mouse input in the terminal. Screen readers sometimes use mouse events for navigation and review. Setting this to `false` prevents Copilot from intercepting those events, avoiding potential conflicts.
+- **stream** (default: `true`): Controls how Copilot delivers its responses. When enabled, responses stream token by token as they are generated. When set to `false`, responses arrive as complete blocks. Disabling streaming can reduce screen reader verbosity, since the reader does not announce each incremental update as it appears.
+
+Example `settings.json`:
+
+Copy code
+
+```
+{
+  "screenReader": true,
+  "beep": true,
+  "mouse": false,
+  "stream": false
+}
+```
+
+### Interactive session
+
+Type a message at the `>` prompt and press Enter. Copilot responds with text. With streaming disabled, responses arrive as complete blocks.
+
+**Useful slash commands**:
+
+- `/copy` – copies the last response to the clipboard, useful for reading in another application
+- `/share file` – exports the conversation to a markdown file
+- `/share html` – exports the conversation to an HTML file
+- `/share gist` – publishes the conversation as a GitHub gist
+- `/search` – searches conversation history by keyword
+- `/compact` – compresses the conversation history to free up context space, allowing for longer sessions before Copilot loses track of earlier messages
+- `/theme` – choose a high-contrast theme
+- `/clear` – abandons the session and starts fresh
+- `/quit` or `/exit` – exits Copilot CLI
+
+When browsing slash commands with arrow keys, your screen reader reads the command name but not the description text. Use `/help` to see the full list with descriptions.
+
+**Tool permission prompts**: When Copilot wants to access a URL, read a file, or run a command, it asks for permission with a numbered list of options ranging from one-time to permanent approval. The beep setting (described above) plays an audible tone when these prompts appear.
+
+**Reading long responses**: Three strategies work well with a screen reader:
+
+1. Use mark mode (Ctrl+Shift+M) to navigate the response line by line
+2. Type `/copy` to copy the response to the clipboard, then paste it into a text editor
+3. Type `/share file` to save the entire conversation as a markdown file
+
+### One-shot prompt mode
+
+The `-p` flag runs a single prompt without entering an interactive session:
+
+Copy code
+
+```
+copilot -p "your question here"
+```
+
+Copilot processes the prompt, produces a response, and exits. This is useful for quick questions or scripted workflows.
+
+#### Managing permissions with flags
+
+When a prompt requires Copilot to run shell commands, the `-p` flag alone cannot grant permission interactively. Use these flags to control what Copilot can do:
+
+**Allow a specific command**:
+
+Copy code
+
+```
+copilot -p "show me my open pull requests" --allow-tool='shell(gh pr list)'
+```
+
+**Allow multiple specific commands**:
+
+Copy code
+
+```
+copilot -p "what branch am I on and are there uncommitted changes" --allow-tool='shell(git status)' --allow-tool='shell(git branch)'
+```
+
+**Allow all tools but deny destructive commands**:
+
+Copy code
+
+```
+copilot --allow-all-tools --deny-tool='shell(rm)' --deny-tool='shell(git push)' --deny-tool='shell(git reset)'
+```
+
+`--deny-tool` takes precedence over `--allow-tool` and `--allow-all-tools`, so it serves as a safety rail.
+
+The broadest permission flag is `--allow-all`, which combines `--allow-all-tools`, `--allow-all-paths`, and `--allow-all-urls`. This grants Copilot unrestricted access to run commands, read files, and fetch URLs. Because of that scope, it is best reserved for situations where you fully trust the prompt and the working environment – for example, running a well-tested command in your own project folder.
+
+### Practical patterns
+
+#### Reformatting command output for screen readers
+
+The standard `gh status` output uses a tabular layout that can be hard to follow with a screen reader. Copilot can reformat it:
+
+Copy code
+
+```
+copilot -p "run gh status and present the output as labeled sections with numbered items, no tables" --allow-tool='shell(gh status)'
+```
+
+Copilot runs the command, parses the output, and returns it organized into sections like “Assigned Issues,” “Review Requests,” and “Mentions,” each with numbered items.
+
+This pattern works with any command whose output is hard to read:
+
+Copy code
+
+```
+copilot -p "run gh issue list and present each issue as: number, title, labels, assignees -- one issue per line, no tables" --allow-tool='shell(gh issue list)'
+```
+
+#### Avoiding complex command syntax
+
+Instead of memorizing flags, describe what you want:
+
+Copy code
+
+```
+copilot -p "show me all open pull requests assigned to me" --allow-tool='shell(gh pr list)'
+```
+
+Copy code
+
+```
+copilot -p "find all markdown files modified in the last week" --allow-tool='shell'
+```
+
+Using `--allow-tool='shell'` without specifying a command allows Copilot to run any shell command. This is useful when you do not know in advance what command Copilot will generate, but it grants broad access – use it only in project folders you trust.
+
+#### Custom instructions for consistent output
+
+Copilot CLI reads instruction files that customize its responses automatically:
+
+- **Repository level**: `.github/copilot-instructions.md` applies to the current project
+- **User level**: `~/.copilot/instructions/` applies across all projects
+
+Instead of repeating format preferences in every prompt, put them in an instructions file. For example, a user who prefers plain text output:
+
+Copy code
+
+```
+# Copilot Instructions
+
+- Prefer concise, text-only responses
+- Never use tables or ASCII art
+- Use numbered lists for any structured output
+- When presenting command output, reformat it as labeled sections with one item per line
+```
+
+A user who prefers structured markdown:
+
+Copy code
+
+```
+# Copilot Instructions
+
+- Use markdown headings to organize output into sections
+- Use bullet lists and numbered lists for structured data
+- Use code blocks for commands and file paths
+- Include a summary line at the top of long responses
+```
+
+The choice of output format is personal. There is no single “accessible” format that works for everyone.
+
+* * *
+
+## Common Workflows
+
+This section walks through complete scenarios that chain together the Git, GitHub CLI, and Copilot CLI commands covered in the earlier parts of this guide. Each workflow follows a practical example so you can see how the commands connect. Where relevant, a Copilot CLI alternative is shown alongside the manual command.
+
+### Fixing a bug and submitting a pull request
+
+Suppose you are a collaborator on a project and notice that an image on the README is missing its alt text. Here is how you would fix it and submit the change for review.
+
+**Start by making sure your local copy is up to date**:
+
+Copy code
+
+```
+cd my-project
+git checkout main
+git pull
+```
+
+This switches to the main branch and downloads any changes others have made since you last pulled. Starting from an up-to-date main branch avoids conflicts later.
+
+**Create a branch for your fix**:
+
+Copy code
+
+```
+git checkout -b fix-readme-alt-text
+```
+
+The `-b` flag tells Git to create a new branch and switch to it in one step. Without `-b`, `git checkout` switches to an existing branch. Branch names should describe the change. This makes it easier for reviewers to understand the purpose of a pull request at a glance.
+
+**Make the change in your editor**. Open the file, add the alt text, and save. Then check what Git sees:
+
+Copy code
+
+```
+git status
+```
+
+Git reports the modified file under “Changes not staged for commit.” If you want to see the exact lines that changed:
+
+Copy code
+
+```
+git diff
+```
+
+Lines starting with `+` show what you added. Lines starting with `-` show what was removed. For a more readable summary of what changed, you can ask Copilot to interpret the diff:
+
+Copy code
+
+```
+copilot -p "run git diff and summarize the changes in plain language" --allow-tool='shell(git diff)'
+```
+
+**Stage the change**:
+
+Copy code
+
+```
+git add README.md
+```
+
+Staging the specific file (rather than using `git add .`) is a deliberate choice here – it ensures only the intended file goes into the commit, even if you have other modified files in the repository.
+
+**Commit the change**:
+
+Copy code
+
+```
+git commit -m "Add alt text to architecture diagram in README"
+```
+
+Writing a good commit message takes practice. Copilot can help by reading the staged changes and generating a message for you:
+
+Copy code
+
+```
+copilot -p "look at my staged changes with git diff --staged and write a concise commit message in imperative mood" --allow-tool='shell(git diff --staged)'
+```
+
+Review the message Copilot suggests, then use it with `git commit -m`.
+
+**Push the branch to GitHub**:
+
+Copy code
+
+```
+git push origin fix-readme-alt-text
+```
+
+This uploads your branch and its commits to the remote repository. The first time you push a new branch, Git creates it on GitHub automatically.
+
+**Create a pull request**:
+
+Copy code
+
+```
+gh pr create --title "Add alt text to architecture diagram" --body "The architecture diagram in README.md was missing alt text, which meant screen reader users had no description of the image." --base main
+```
+
+The `--base main` flag tells GitHub which branch you want to merge into. After running this command, the CLI prints a URL to the new pull request.
+
+If you prefer not to remember the exact flags, Copilot can construct the command for you:
+
+Copy code
+
+```
+copilot -p "create a pull request titled 'Add alt text to architecture diagram' with a description explaining the image was missing alt text for screen readers, targeting the main branch" --allow-tool='shell(gh pr create)'
+```
+
+**Doing it all at once with Copilot**: Once you are comfortable with the individual steps, you can let Copilot handle the entire workflow in a single interactive session. Start Copilot in the project folder and describe the full task:
+
+Copy code
+
+```
+> The architecture diagram image in README.md is missing alt text.
+> Add descriptive alt text, commit the change, and create a draft pull request.
+```
+
+Copilot reads the file, makes the edit, stages and commits the change, pushes the branch, and opens a draft pull request – asking for permission at each step that involves running a command.
+
+### Reviewing someone else’s pull request
+
+A teammate has submitted a pull request and asked you to review it. You want to find it, read the description, check out the code locally, and leave feedback.
+
+**Find pull requests waiting for your review**:
+
+Copy code
+
+```
+gh pr list --search "review-requested:@me"
+```
+
+This filters the list to show only pull requests where you have been requested as a reviewer. The output includes PR numbers, titles, and branches. Identify the PR number you need – for this example, PR number 42.
+
+You can also ask Copilot to present the list in a more readable format:
+
+Copy code
+
+```
+copilot -p "run gh pr list --search 'review-requested:@me' and present each PR as: number, title, author -- one per line, no tables" --allow-tool='shell(gh pr list)'
+```
+
+**Read the pull request details**:
+
+Copy code
+
+```
+gh pr view 42
+```
+
+This displays the title, description, status, reviewers, and check results. To include the discussion thread:
+
+Copy code
+
+```
+gh pr view 42 --comments
+```
+
+**Check out the pull request locally**:
+
+Copy code
+
+```
+gh pr checkout 42
+```
+
+This creates a local branch from the pull request so you can inspect the files, run the code, or test the changes on your machine. Git switches to that branch automatically.
+
+**Leave your review**:
+
+You can leave review comments using the `gh pr review` command or through the GitHub web interface. Posting a review with multiple inline comments using `gh pr review` directly can result in a long and complex command. An alternative is to write your review comments in a plain text file as you go through the code – one comment per line, noting the file and line number – and then ask Copilot to post them as a single review:
+
+Copy code
+
+```
+copilot -p "read my file review-notes.txt and post a single review on PR 42 with those comments" --allow-tool='shell(gh)' --allow-tool='read_file(review-notes.txt)'
+```
+
+This lets you compose your feedback at your own pace in a text editor, then submit it all at once.
+
+**Switch back to your branch when done**:
+
+Copy code
+
+```
+git checkout main
+```
+
+### Reporting a bug with an issue
+
+You encounter a page on a project’s website where the skip-to-content link is missing. You want to report it as an issue. Make sure you are in the project’s local repository directory – `gh` uses the current folder to determine which GitHub repository to file the issue against.
+
+**Create the issue**:
+
+Copy code
+
+```
+gh issue create --title "Missing skip navigation link on documentation page" --body "The documentation landing page has no skip-to-content link. Keyboard and screen reader users must tab through the entire navigation to reach the main content." --label "accessibility,bug"
+```
+
+The `--label` flag attaches labels to the issue so maintainers can find and prioritize it. Multiple labels are separated by commas.
+
+**Check on issues assigned to you later**:
+
+Copy code
+
+```
+gh issue list --assignee "@me"
+```
+
+**Using Copilot to format your issue list for easier reading**:
+
+Copy code
+
+```
+copilot -p "run gh issue list --assignee @me and present each issue as: number, title, labels -- one issue per line, no tables" --allow-tool='shell(gh issue list)'
+```
+
+### Checking your GitHub activity
+
+When you sit down to work, it helps to see what needs your attention: issues assigned to you, pull requests waiting for review, and mentions from teammates.
+
+**Quick summary**:
+
+Copy code
+
+```
+gh status
+```
+
+This displays your assignments, review requests, and mentions in labeled sections.
+
+**Using Copilot for a screen reader-friendly summary**:
+
+Copy code
+
+```
+copilot -p "run gh status and present the output as labeled sections with numbered items, no tables" --allow-tool='shell(gh status)'
+```
+
+Copilot runs the command, parses the tabular output, and reorganizes it into clearly labeled sections with numbered items that are easier to navigate with a screen reader.
+
+* * *
+
+## Keyboard Shortcut Reference
+
+### Windows Terminal
+
+- Windows+X: open Power User menu (to launch Terminal)
+- Ctrl+Comma: open Windows Terminal settings
+- Ctrl+Shift+\[number\]: open a new tab with the profile at that position
+- Ctrl+Tab: switch between open tabs
+- Ctrl+Shift+P: open the command palette
+- Ctrl+Shift+M: enter mark mode (navigate output with cursor keys)
+- Ctrl+C (in mark mode): copy selected text
+- Escape (in mark mode): return to the prompt
+- Ctrl+Shift+W: close the active tab or pane
+- Ctrl+Shift+K: clear the terminal buffer
+
+* * *
+
+## Command Reference
+
+### Git
+
+- `git clone URL`: download a repository to your computer
+- `git status`: check what has changed
+- `git branch`: list branches (\* marks the current branch)
+- `git checkout -b name`: create and switch to a new branch
+- `git checkout name`: switch to an existing branch
+- `git add .`: stage all changes
+- `git add filename`: stage a specific file
+- `git commit -m "message"`: commit with an inline message
+- `git diff`: view unstaged changes
+- `git diff --staged`: view staged changes
+- `git log --oneline`: compact commit history
+- `git push origin branch-name`: push commits to GitHub
+- `git push`: push commits when the branch already exists on GitHub
+- `git pull`: download and merge remote changes
+- `q`: exit the log viewer
+
+### GitHub CLI
+
+- `gh auth login`: authenticate with GitHub
+- `gh auth status`: check authentication status
+- `gh status`: summary of assignments, reviews, and mentions
+- `gh pr create`: create a pull request
+- `gh pr list`: list open pull requests
+- `gh pr list --search "review-requested:@me"`: list pull requests awaiting your review
+- `gh pr view [number]`: view a pull request
+- `gh pr checkout [number]`: check out a pull request locally
+- `gh issue create`: create an issue
+- `gh issue list`: list open issues
+- `gh issue list --assignee "@me"`: list issues assigned to you
+- `gh issue view [number]`: view an issue
+- `gh help accessibility`: view accessibility settings reference
+
+### GitHub CLI Accessibility Settings
+
+- `gh config set accessible_prompter enabled`: use numbered-list prompts instead of arrow-key menus
+- `gh config set accessible_colors enabled`: use higher-contrast color palette
+- `gh config set spinner disabled`: replace spinners with text-based progress
+
+### Copilot CLI
+
+- `copilot --screen-reader --no-banner`: launch with screen reader optimizations and no banner
+- `copilot -p "prompt"`: run a single prompt without interactive mode
+- `/copy`: copy last response to clipboard
+- `/share file`: export conversation to a file
+- `/search`: search conversation history
+- `/compact`: compress conversation history to free up context space
+- `/quit`: exit Copilot CLI
+
+* * *
+
+## Get Help and Get Involved
+
+If you run into accessibility barriers with GitHub, the GitHub CLI, or Copilot CLI, the [GitHub Accessibility community discussions](https://github.com/orgs/community/discussions/categories/accessibility) are the place to go. You can ask questions, report issues, share workarounds, and connect with other developers who use assistive technology. The GitHub accessibility team actively participates in these discussions, and your feedback directly shapes how these tools evolve.
+
+* * *
+
+## Resources
+
+- [Git for Windows download page](https://git-scm.com/downloads/win)
+- [GitHub CLI installation guide for Windows](https://github.com/cli/cli/blob/trunk/docs/install_windows.md)
+- [About GitHub CLI](https://docs.github.com/en/github-cli/github-cli/about-github-cli)
+- GitHub CLI accessibility reference: run `gh help accessibility` or `gh a11y` in your terminal
+- [GitHub Copilot CLI command reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference)
+- [Windows Terminal documentation](https://learn.microsoft.com/en-us/windows/terminal/)
+
+Please share questions or comments on the [accessibility community discussion page](https://github.com/orgs/community/discussions/categories/accessibility).
+
+
+[Accessibility Documentation](https://accessibility.github.com/documentation)

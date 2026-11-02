@@ -1,0 +1,106 @@
+Source URL: https://forum.cursor.com/t/accessibility-issues-with-screen-readers-in-cursor-can-they-be-improved/56823
+Effective URL: https://forum.cursor.com/t/accessibility-issues-with-screen-readers-in-cursor-can-they-be-improved/56823/3
+Title: Accessibility Issues with Screen Readers in Cursor – Can They Be Improved? - Ideas / Feedback - Cursor - Community Forum
+Captured: 2026-11-01 via FetchUrl Markdown extraction (text snapshot, not original HTML). Long CSS/style lines removed.
+
+---
+
+[Skip to where you left off (last reply, post 3)](https://forum.cursor.com/t/accessibility-issues-with-screen-readers-in-cursor-can-they-be-improved/56823/3) [Skip to top](https://forum.cursor.com/t/accessibility-issues-with-screen-readers-in-cursor-can-they-be-improved/56823/1)
+
+[Skip to main content](https://forum.cursor.com/t/accessibility-issues-with-screen-readers-in-cursor-can-they-be-improved/56823/3#main-container)
+
+# [Accessibility Issues with Screen Readers in Cursor – Can They Be Improved?](https://forum.cursor.com/t/accessibility-issues-with-screen-readers-in-cursor-can-they-be-improved/56823)
+
+[Ideas](https://forum.cursor.com/c/ideas/22) [Feedback](https://forum.cursor.com/c/ideas/feedback/7)
+
+You have selected **0** posts.
+
+[select all](https://forum.cursor.com/t/accessibility-issues-with-screen-readers-in-cursor-can-they-be-improved/56823/3)
+
+[cancel selecting](https://forum.cursor.com/t/accessibility-issues-with-screen-readers-in-cursor-can-they-be-improved/56823/3)
+
+[Feb 2025](https://forum.cursor.com/t/accessibility-issues-with-screen-readers-in-cursor-can-they-be-improved/56823/1 "Jump to the first post")
+
+3 / 3
+
+
+Apr 6
+
+
+[Apr 6](https://forum.cursor.com/t/accessibility-issues-with-screen-readers-in-cursor-can-they-be-improved/56823/3)
+
+## post by MesterPerfect on Feb 27, 2025
+
+[![](https://sea3.discourse-cdn.com/cursor1/user_avatar/forum.cursor.com/mesterperfect/48/31183_2.png)](https://forum.cursor.com/u/mesterperfect)
+
+[Ahmed Bakr](https://forum.cursor.com/u/mesterperfect)[MesterPerfect](https://forum.cursor.com/u/mesterperfect)
+
+[Feb 2025](https://forum.cursor.com/t/accessibility-issues-with-screen-readers-in-cursor-can-they-be-improved/56823 "Post date")
+
+Hello Cursor Team and Community,
+
+I have been exploring **Cursor – The AI Code Editor**, and I see that it has many powerful features. However, as a blind programmer using screen readers like **NVDA and JAWS**, I have encountered significant accessibility issues that make it difficult to benefit from these features.
+
+One major issue is that **I cannot read the suggestions provided by the AI or programming language extensions.** In contrast, **VSCode handles this seamlessly** because of its strong commitment to accessibility.
+
+I would like to ask: **Does Cursor have an interest in improving accessibility?**
+
+If accessibility improvements are possible, I would be happy to provide detailed explanations of the issues faced by screen reader users.
+
+Looking forward to your response!
+
+**Best regards,**
+
+608
+views
+
+
+[![](https://sea3.discourse-cdn.com/cursor1/user_avatar/forum.cursor.com/mesterperfect/48/31183_2.png)](https://forum.cursor.com/u/MesterPerfect "MesterPerfect")
+
+[![](https://sea3.discourse-cdn.com/cursor1/user_avatar/forum.cursor.com/sagarjs/48/77184_2.png)](https://forum.cursor.com/u/sagarjs "sagarjs")
+
+[![](https://avatars.discourse-cdn.com/v4/letter/t/839c29/48.png)](https://forum.cursor.com/u/TimRally "TimRally")
+
+6 months later
+
+
+## post by sagarjs on Aug 19, 2025
+
+[![](https://sea3.discourse-cdn.com/cursor1/user_avatar/forum.cursor.com/sagarjs/48/77184_2.png)](https://forum.cursor.com/u/sagarjs)
+
+[Sagar](https://forum.cursor.com/u/sagarjs)[sagarjs](https://forum.cursor.com/u/sagarjs)
+
+[Aug 2025](https://forum.cursor.com/t/accessibility-issues-with-screen-readers-in-cursor-can-they-be-improved/56823/2 "Post date")
+
+This is the reason we could not go with cursor for our team. A developer productivity tool not taking accessibility seriously is quite ironic.
+
+8 months later
+
+
+## post by TimRally on Apr 6
+
+[![](https://avatars.discourse-cdn.com/v4/letter/t/839c29/48.png)](https://forum.cursor.com/u/timrally)
+
+[Tim](https://forum.cursor.com/u/timrally)[TimRally](https://forum.cursor.com/u/timrally)
+
+[Apr 6](https://forum.cursor.com/t/accessibility-issues-with-screen-readers-in-cursor-can-they-be-improved/56823/3 "Post date")
+
+Amazing. Screen reader support works fine for the editor, thanks to upstream VS Code, so long as you export the environment variable ACCESSIBILITY\_ENABLED=1 prior to launching.
+
+But the agent’s dialogue is completely opaque.
+
+![:frowning:](https://emoji.discourse-cdn.com/fluentui/frowning.png?v=15)
+
+Reply
+
+### Related topics
+
+| Topic |  | Replies | Views | Activity |
+| --- | --- | --- | --- | --- |
+| [Lack of Accessibility Options](https://forum.cursor.com/t/lack-of-accessibility-options/159822)<br>[Feature Requests](https://forum.cursor.com/c/ideas/feature-requests/5) <br>- [voice](https://forum.cursor.com/tag/voice/278) | [![](https://sea3.discourse-cdn.com/cursor1/user_avatar/forum.cursor.com/deanrie/24/1263_2.png)](https://forum.cursor.com/u/deanrie)[![](https://avatars.discourse-cdn.com/v4/letter/m/87869e/24.png)](https://forum.cursor.com/u/matt6) | [3](https://forum.cursor.com/t/lack-of-accessibility-options/159822/1) | 104 | [May 19](https://forum.cursor.com/t/lack-of-accessibility-options/159822/7) |
+| [Screenreader accessibility of Cursor IDE for blind and visually impaired programmers using Mac OS with VoiceOver screenreader for python, R, and markdown files: Cursor code editor typing and editing code](https://forum.cursor.com/t/screenreader-accessibility-of-cursor-ide-for-blind-and-visually-impaired-programmers-using-mac-os-with-voiceover-screenreader-for-python-r-and-markdown-files-cursor-code-editor-typing-and-editing-code/130919)<br>[Bug Reports](https://forum.cursor.com/c/support/bug-report/6) | [![](https://sea3.discourse-cdn.com/cursor1/user_avatar/forum.cursor.com/system/24/99069_2.png)](https://forum.cursor.com/u/system)[![](https://avatars.discourse-cdn.com/v4/letter/j/c2a13f/24.png)](https://forum.cursor.com/u/jml90) | [0](https://forum.cursor.com/t/screenreader-accessibility-of-cursor-ide-for-blind-and-visually-impaired-programmers-using-mac-os-with-voiceover-screenreader-for-python-r-and-markdown-files-cursor-code-editor-typing-and-editing-code/130919/1) | 479 | [Aug 2025](https://forum.cursor.com/t/screenreader-accessibility-of-cursor-ide-for-blind-and-visually-impaired-programmers-using-mac-os-with-voiceover-screenreader-for-python-r-and-markdown-files-cursor-code-editor-typing-and-editing-code/130919/1) |
+| [Legally blind user - hover menus, chat constantly scrolling to top, chat text size are nighmare UX](https://forum.cursor.com/t/legally-blind-user-hover-menus-chat-constantly-scrolling-to-top-chat-text-size-are-nighmare-ux/134386)<br>[Feedback](https://forum.cursor.com/c/ideas/feedback/7) | [![](https://sea3.discourse-cdn.com/cursor1/user_avatar/forum.cursor.com/system/24/99069_2.png)](https://forum.cursor.com/u/system)[![](https://sea3.discourse-cdn.com/cursor1/user_avatar/forum.cursor.com/tgrushka/24/80388_2.png)](https://forum.cursor.com/u/tgrushka)[![](https://avatars.discourse-cdn.com/v4/letter/h/b38774/24.png)](https://forum.cursor.com/u/hmp)[![](https://sea3.discourse-cdn.com/cursor1/user_avatar/forum.cursor.com/condor/24/73148_2.png)](https://forum.cursor.com/u/condor) | [2](https://forum.cursor.com/t/legally-blind-user-hover-menus-chat-constantly-scrolling-to-top-chat-text-size-are-nighmare-ux/134386/1) | 104 | [Sep 2025](https://forum.cursor.com/t/legally-blind-user-hover-menus-chat-constantly-scrolling-to-top-chat-text-size-are-nighmare-ux/134386/3) |
+| [Get started with accessibility features](https://forum.cursor.com/t/get-started-with-accessibility-features/133591)<br>[Feature Requests](https://forum.cursor.com/c/ideas/feature-requests/5) | [![](https://avatars.discourse-cdn.com/v4/letter/h/b38774/24.png)](https://forum.cursor.com/u/hmp)[![](https://sea3.discourse-cdn.com/cursor1/user_avatar/forum.cursor.com/condor/24/73148_2.png)](https://forum.cursor.com/u/condor) | [8](https://forum.cursor.com/t/get-started-with-accessibility-features/133591/1) | 181 | [Feb 4](https://forum.cursor.com/t/get-started-with-accessibility-features/133591/9) |
+| [Screen reader issue (NVDA)](https://forum.cursor.com/t/screen-reader-issue-nvda/95657)<br>[Bug Reports](https://forum.cursor.com/c/support/bug-report/6) | [![](https://sea3.discourse-cdn.com/cursor1/user_avatar/forum.cursor.com/system/24/99069_2.png)](https://forum.cursor.com/u/system)[![](https://avatars.discourse-cdn.com/v4/letter/x/9de053/24.png)](https://forum.cursor.com/u/xelo_games) | [2](https://forum.cursor.com/t/screen-reader-issue-nvda/95657/1) | 75 | [May 2025](https://forum.cursor.com/t/screen-reader-issue-nvda/95657/3) |
+
+Topic list, column headers with buttons are sortable.

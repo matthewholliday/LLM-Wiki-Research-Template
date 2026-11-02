@@ -1,0 +1,88 @@
+Source URL: https://x.com/FactoryAI/status/2115934579446182213
+Effective URL: https://x.com/FactoryAI/status/2115934579446182213
+HTTP status: 200
+Captured: 2026-11-01
+Format: FetchUrl Markdown text snapshot, not original HTML. Lines over 3000 characters removed.
+
+---
+
+# Post by @factory
+
+Author: Factory @factory
+Posted: 2026\-10\-29T22:31:30\.000Z
+URL: [https://x\.com/FactoryAI/status/2115934579446182213](https://x.com/FactoryAI/status/2115934579446182213)
+Likes: 1,764 | Retweets: 94
+
+## Post
+
+Introducing Droid 1.0: the new engine behind Factory’s agent.
+
+Built for complex projects and everyday development:
+&gt;more accurate
+&gt;more efficient
+&gt;faster than ever before
+
+## Thread
+
+### 1. Thread Post
+Author: @factory
+Posted: 2026\-10\-29T22:31:34\.000Z
+URL: [https://x\.com/FactoryAI/status/2115934596496056512](https://x.com/FactoryAI/status/2115934596496056512)
+
+> On Terminal-Bench 4, Droid outperforms popular models’ native harnesses, with up to 20% better efficiency.
+
+Likes: 235 | Retweets: 10
+
+### 2. Thread Post
+Author: @factory
+Posted: 2026\-10\-29T22:31:38\.000Z
+URL: [https://x\.com/FactoryAI/status/2115934612249805053](https://x.com/FactoryAI/status/2115934612249805053)
+
+> The biggest change in Droid 1.0: programmatic tool calling is now the default.
+>
+> Instead of calling tools one at a time, Droid writes a program that is capable of running up to hundreds of tools per single model request.
+
+Likes: 229 | Retweets: 5
+
+### 3. Thread Post
+Author: @factory
+Posted: 2026\-10\-29T22:31:49\.000Z
+URL: [https://x\.com/FactoryAI/status/2115934660895412364](https://x.com/FactoryAI/status/2115934660895412364)
+
+> In practice, this advantage is even more apparent than in benchmarks.
+>
+> For example: a task to move 151 Linear issues and verify each took 312 tool calls in the past. With direct calls, that's about 36 requests and 3.1M input tokens.
+>
+> Now, as a Script, it took 2 requests and 61K tokens.
+
+Likes: 226 | Retweets: 6
+
+### 4. Thread Post
+Author: @factory
+Posted: 2026\-10\-29T22:31:52\.000Z
+URL: [https://x\.com/FactoryAI/status/2115934672794652706](https://x.com/FactoryAI/status/2115934672794652706)
+
+> We built Droid 1.0 on our core design principles and an internal Agent Factory that tests every change on every model family, which we outline in our blog.
+>
+> Read more about our methodology here: https://factory.com/news/frontier-harness
+
+Likes: 138 | Retweets: 2
+
+## Top Comments
+
+### 1. @Davidwuuu92
+Author: AI 嘉豪
+Posted: 2026\-10\-29T23:37:42\.000Z
+URL: [https://x\.com/Davidwuuu92/status/2115951238265307637](https://x.com/Davidwuuu92/status/2115951238265307637)
+
+> they are not lying
+> I ported the t3code-style claude code integration into @droid 
+>
+> and my usage stay very healthy even running mission mode.
+>
+> this is a next level harness.
+>
+> https://github.com/aa2246740/factory-cc
+
+Likes: 67
+

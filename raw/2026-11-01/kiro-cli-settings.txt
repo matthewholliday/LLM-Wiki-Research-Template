@@ -1,0 +1,326 @@
+Source URL: https://kiro.dev/docs/cli/chat/settings/
+Effective URL: https://kiro.dev/docs/cli/chat/settings/
+Title: In-session settings - Chat - CLI - Docs - Kiro
+Captured: 2026-11-01 via FetchUrl Markdown extraction (text snapshot, not original HTML). Long CSS/style lines removed.
+
+---
+
+## Select your cookie preferences
+
+We use essential cookies and similar tools that are necessary to provide our site and services. We use performance cookies to collect anonymous statistics, so we can understand how customers use our site and make improvements. Essential cookies cannot be deactivated, but you can choose “Customize” or “Decline” to decline performance cookies.
+
+If you agree, AWS and approved third parties will also use cookies to provide useful site features, remember your preferences, and display relevant content, including relevant advertising. To accept or decline all non-essential cookies, choose “Accept” or “Decline.” To make more detailed choices, choose “Customize.”
+
+AcceptDeclineCustomize
+
+## Customize cookie preferences
+
+We use cookies and similar tools (collectively, "cookies") for the following purposes.
+
+### Essential
+
+Essential cookies are necessary to provide our site and services and cannot be deactivated. They are usually set in response to your actions on the site, such as setting your privacy preferences, signing in, or filling in forms.
+
+Allowed
+
+### Performance
+
+Performance cookies provide anonymous statistics about how customers navigate our site so we can improve site experience and performance. Approved third parties may perform analytics on our behalf, but they cannot use the data for their own purposes.
+
+Allowed
+
+### Functional
+
+Functional cookies help us provide useful site features, remember your preferences, and display relevant content. Approved third parties may set these cookies to provide certain site features. If you do not allow these cookies, then some or all of these services may not function properly.
+
+Allowed
+
+### Advertising
+
+Advertising cookies may be set through our site by us or our advertising partners and help us deliver relevant marketing content. If you do not allow these cookies, you will experience less relevant advertising.
+
+Allowed
+
+Blocking some types of cookies may impact your experience of our sites. You may review and change your choices at any time by selecting Cookie preferences in the footer of this site. We and selected third-parties use cookies or similar technologies as specified in the [AWS Cookie Notice](https://aws.amazon.com/legal/cookies/).
+
+CancelSave preferences
+
+## Your privacy choices
+
+We and our advertising partners (“we”) may use information we collect from or about you to show you ads on other websites and online services. Under certain laws, this activity is referred to as “cross-context behavioral advertising” or “targeted advertising.”
+
+To opt out of our use of cookies or similar technologies to engage in these activities, select “Opt out of cross-context behavioral ads” and “Save preferences” below. If you clear your browser cookies or visit this site from a different device or browser, you will need to make your selection again. For more information about cookies and how we use them, read our [Cookie Notice](https://aws.amazon.com/legal/cookies/).
+
+Allow cross-context behavioral adsOpt out of cross-context behavioral ads
+
+To opt out of the use of other identifiers, such as contact information, for these activities, fill out the form [here](https://pulse.aws/application/ZRPLWLL6?p=0).
+
+For more information about how AWS handles your information, read the [AWS Privacy Notice](https://aws.amazon.com/privacy/).
+
+CancelSave preferences
+
+## Unable to save cookie preferences
+
+We will only store essential cookies at this time, because we were unable to save your cookie preferences.
+
+If you want to change your cookie preferences, try again later using the link in the AWS console footer, or contact support if the problem persists.
+
+Dismiss
+
+On this page
+
+Copy page [View as Markdown](https://kiro.dev/docs/cli/chat/settings.md)
+
+# In-session settings
+
+Run `/settings` to change how Kiro responds, looks, and behaves — output style, colors, keyboard shortcuts, multi-line input, display toggles, feature toggles, and prompt history scope — without leaving your chat session. Run `/settings` on its own to open the menu, or jump straight to a subcommand with `/settings <subcommand>`.
+
+Available subcommands: `theme`, `keybindings`, `terminal`, `display`, `features`, and `history`.
+
+## Menu controls
+
+[Copy link to Menu controls section](https://kiro.dev/docs/cli/chat/settings/#menu-controls)
+
+Every settings menu shares the same controls. `Up` and `Down` move between rows. `Left` reverses a toggle or cycle. `Right` and `Enter` toggle or cycle a value, select a radio option, or open a navigation row, and `Enter` also runs action rows. `Esc` closes the top-level menu or returns from a submenu. These controls apply to `/settings`, Display, Status line, Theme, and `/verbosity`. In `/verbosity`, `Ctrl+X` cycles the preview through hidden, mini, and expanded.
+
+## Output styles in V3
+
+[Copy link to Output styles in v3 section](https://kiro.dev/docs/cli/chat/settings/#output-styles-in-v3)
+
+In a V3 session, run `/settings display` and use the **Output style** row to choose how Kiro formats responses. Built-in choices include **Proactive**, **Explanatory**, and **Learning**. The active agent can supply other choices when the Display menu opens.
+
+Your selection is saved as the global `chat.outputStyle` preference and applies to subsequent prompts. Choosing the agent's default removes the global override. A workspace-level `chat.outputStyle` value continues to take precedence; in that case, the row shows the active workspace style while you edit the global default.
+
+## Subcommands
+
+[Copy link to Subcommands section](https://kiro.dev/docs/cli/chat/settings/#subcommands)
+
+### `/settings theme`
+
+[Copy link to Settings theme section](https://kiro.dev/docs/cli/chat/settings/#settings-theme)
+
+Customize the colors used for prompt input and agent response text. The theme wizard walks you through customization step by step — pick a base theme, adjust specific elements, then confirm. The live preview renders actual conversation output so you see exactly how your theme looks in practice.
+
+bash
+
+```bash
+/settings theme
+```
+
+The theme system uses named ANSI colors, so your customizations render correctly across terminals with different color palettes. Falls back to safe ANSI colors when terminal color detection has low confidence.
+
+### `/settings keybindings`
+
+[Copy link to Settings keybindings section](https://kiro.dev/docs/cli/chat/settings/#settings-keybindings)
+
+View the current keyboard shortcut configuration. This is a read-only reference showing all configurable bindings and their current values.
+
+bash
+
+```bash
+/settings keybindings
+```
+
+To change keybindings, use the `kiro-cli settings` command:
+
+bash
+
+```bash
+kiro-cli settings chat.keybindings.cancelStream "ctrl+x"
+kiro-cli settings chat.keybindings.closeMenu "ctrl+["\
+kiro-cli settings chat.keybindings.quit "ctrl+shift+q"\
+```\
+\
+See [Key bindings (terminal UI)](https://kiro.dev/docs/reference/settings/#key-bindings-terminal-ui) for the full reference.\
+\
+### `/settings terminal`\
+\
+[Copy link to Settings terminal section](https://kiro.dev/docs/cli/chat/settings/#settings-terminal)\
+\
+Enable `Shift+Enter` and `Option+Enter` as newline shortcuts in your terminal. If pressing Shift+Enter currently submits your prompt instead of inserting a newline, this command fixes it by auto-detecting your terminal and applying the appropriate key binding configuration.\
+\
+bash\
+\
+```bash\
+/settings terminal\
+```\
+\
+**Terminals that need configuration** (auto-applied by `/settings terminal`):\
+\
+- VS Code integrated terminal\
+- Alacritty\
+- Zed\
+- Apple Terminal\
+\
+**Terminals with native support** (no configuration needed):\
+\
+- iTerm2\
+- Kitty\
+- Ghostty\
+- WezTerm\
+- Warp\
+\
+For terminals that don't support automatic configuration, Kiro shows manual workaround instructions.\
+\
+**tmux users:** Add both lines to your `tmux.conf` for `Shift+Enter` to pass through correctly:\
+\
+bash\
+\
+```bash\
+set -s extended-keys on\
+set -as terminal-features 'xterm*:extkeys'\
+```\
+\
+### `/settings display`\
+\
+[Copy link to Settings display section](https://kiro.dev/docs/cli/chat/settings/#settings-display)\
+\
+Toggle visual features for accessibility or personal preference, using the [menu controls](https://kiro.dev/docs/cli/chat/settings/#menu-controls) above.\
+\
+bash\
+\
+```bash\
+/settings display\
+```\
+\
+Available toggles:\
+\
+- **Output style** (V3) — choose how Kiro formats responses; the active agent supplies the available styles\
+- **Animations** (`chat.allowAnimations`) — when off, spinners and shimmers show static frames instead of animating\
+- **ASCII art** (`chat.allowAsciiArt`) — when off, replaces braille dots, box-drawing, and Unicode symbols with plain ASCII\
+- **Icons** (`chat.allowIcons`) — when off, hides status indicator icons (●, ○, ⚠) in favor of text-only labels\
+- **Show thinking** (`chat.showThinking`) — when off, hides the agent's reasoning blocks from chat output\
+- **Status line** — choose whether the status line shows the date, time, current usage percentage, and remaining credits. These optional segments are hidden by default. Changes take effect immediately and persist across sessions\
+- **Terminal title** (`chat.terminalTitle`) — when on, sets the terminal window title from a name you give with [`/title`](https://kiro.dev/docs/reference/slash-commands/#title); otherwise from the session's title, or the workspace folder name when the session has none. In Kiro CLI 2.33 or later, a V3 session shows its session title; before 2.33, a V3 session fell back to the workspace folder name. Off by default and global only. To confirm it is on, run `/title`: when the feature is off, `/title` reports that it is disabled and how to enable it\
+- **Preserve scrollback**: when on, keeps terminal history available during overflow and resize redraws\
+- **Screen reader** (`chat.screenReader`): full terminal UI only. Choose `auto` (default), `on`, or `off`. See [Screen reader support](https://kiro.dev/docs/cli/chat/settings/#screen-reader-support)\
+\
+Animations, ASCII art, icons, and status-line changes take effect immediately. The **Show thinking** toggle is startup-only — it persists right away, but the change applies to your next chat session. See [Thinking display](https://kiro.dev/docs/cli/chat/settings/#thinking-display) below.\
+\
+#### Screen reader support\
+\
+[Copy link to Screen reader support section](https://kiro.dev/docs/cli/chat/settings/#screen-reader-support)\
+\
+In the full terminal UI, screen reader support lets a screen reader follow Kiro's replies. While a reply streams and your prompt is empty, the hidden terminal cursor follows the reply text. When you start typing, open a menu, or respond to an approval, the cursor returns to that input.\
+\
+- **auto** (default): Kiro checks once whether VoiceOver is running on your local Mac, usually at startup or when you open `/settings display`. Over SSH or another remote connection, on other platforms, or when the check fails or takes too long, support stays off. Choose **on** in those cases.\
+- **on**: always active.\
+- **off**: never active.\
+\
+When support is active, IME input may appear in a different position. The setting is global only. To override it for a single launch, set `KIRO_SCREEN_READER` to `auto`, `on`, or `off`:\
+\
+bash\
+\
+```bash\
+KIRO_SCREEN_READER=on kiro-cli chat\
+```\
+\
+### `/settings features`\
+\
+[Copy link to Settings features section](https://kiro.dev/docs/cli/chat/settings/#settings-features)\
+\
+Enable account-available agent features for future Kiro CLI processes.\
+\
+bash\
+\
+```bash\
+/settings features\
+```\
+\
+Enable **Workflows** to expose declarative workflow commands and controls. The choice is stored as `chat.enableWorkflows`. Exit and restart Kiro CLI after changing it; the current process does not add or remove workflow commands dynamically.\
+\
+When Workflows are enabled in Kiro CLI 2.34 or later, **Workflow use** appears below the Workflows toggle. Choose how often Kiro starts a workflow from the main chat:\
+\
+- **Only when asked** (default) — Kiro starts a workflow only when you request one.\
+- **Only for large tasks** — Kiro can start one for multi-step work or work needing more context.\
+- **As much as possible** — Kiro tries to route most code reading, implementation, testing, and review work through Workflows.\
+\
+The choice is stored as `chat.workflowLaunch`. It applies to the current session when available and to new sessions afterward.\
+\
+If **Workflows** does not appear, it is not available for your account. See [Workflows](https://kiro.dev/docs/workflows/) for recipes, commands, and run behavior.\
+\
+### `/settings history`\
+\
+[Copy link to Settings history section](https://kiro.dev/docs/cli/chat/settings/#settings-history)\
+\
+Choose whether prompt history (the Up/Down arrow recall in the input) is tracked per session or shared across all sessions.\
+\
+bash\
+\
+```bash\
+/settings history\
+```\
+\
+Options:\
+\
+- **session** (default) — each chat session keeps its own prompt history, so Up/Down only recalls prompts from the current session\
+- **global** — all sessions share a single prompt history\
+\
+The change is written to `chat.historyMode` and takes effect on your next session.\
+\
+## Thinking display\
+\
+[Copy link to Thinking display section](https://kiro.dev/docs/cli/chat/settings/#thinking-display)\
+\
+When the agent reasons through a complex request, it can stream those reasoning ("thinking") blocks inline above its response. This is controlled by the `chat.showThinking` setting, which is **enabled by default** in Kiro CLI 2.5.0 and later.\
+\
+Toggle it from the display menu:\
+\
+bash\
+\
+```bash\
+/settings display\
+# Select "Show thinking" and press Enter to toggle\
+```\
+\
+Or set it directly from the command line:\
+\
+bash\
+\
+```bash\
+# Hide reasoning blocks\
+kiro-cli settings chat.showThinking false\
+\
+# Show reasoning blocks again\
+kiro-cli settings chat.showThinking true\
+```\
+\
+A few things to know:\
+\
+- The setting is **startup-only**. Changes apply to your next chat session, not the current one.\
+- The live "Thinking..." spinner always appears while the agent is processing, regardless of this setting.\
+- Long reasoning traces collapse to a tail view. Press `Ctrl+O` to expand or collapse the full thinking block.\
+- Reasoning blocks typically appear for complex, multi-step requests. Simple prompts may not produce any.\
+\
+## Persistence\
+\
+[Copy link to Persistence section](https://kiro.dev/docs/cli/chat/settings/#persistence)\
+\
+Preferences changed through `/settings` persist across sessions. Most are saved to `~/.kiro/settings/cli.json`, while theme preferences are saved to `~/.kiro/settings/kiro_cli_theme.json`. You can edit the main settings file directly with `kiro-cli settings open`.\
+\
+### Model and effort preferences\
+\
+[Copy link to Model and effort preferences section](https://kiro.dev/docs/cli/chat/settings/#model-and-effort-preferences)\
+\
+Your `/model` selection applies to the current session only. To save the current model as the default for future sessions, run `/model set-current-as-default`; Kiro stores the default in `~/.kiro/settings/cli.json`.\
+\
+Effort works differently. Choosing a level in the `/model` picker persists it for that model. Using `/effort <level>` directly changes the current session only — run `/effort set-current-as-default` afterward to save it, or choose the level in `/model` instead. In V3, the `--effort` flag applies only to the session Kiro starts with.\
+\
+Per-model effort defaults live under `chat.modelDefaults`. See [Effort](https://kiro.dev/docs/models/effort/) for the full reference.\
+\
+## Related\
+\
+[Copy link to Related section](https://kiro.dev/docs/cli/chat/settings/#related)\
+\
+- [Settings reference](https://kiro.dev/docs/reference/settings/) — full list of all CLI settings\
+- [Terminal UI](https://kiro.dev/docs/cli/terminal-ui/) — terminal UI features and configuration\
+- [Configuration](https://kiro.dev/docs/configuration/) — configuration file paths and scopes\
+- [Workflows](https://kiro.dev/docs/workflows/) — enable and run declarative workflows\
+\
+Page updated: October 24, 2026\
+\
+[Queue steering](https://kiro.dev/docs/cli/chat/queue-steering/)\
+\
+[Prompts](https://kiro.dev/docs/cli/chat/manage-prompts/)\
+\
+* * *

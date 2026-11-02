@@ -1,0 +1,253 @@
+Source URL: https://accessibility.github.com/documentation/guide/github-copilot-vsc/
+Effective URL: https://accessibility.github.com/documentation/guide/github-copilot-vsc/
+Title: Using GitHub Copilot in Visual Studio Code with a Screen Reader
+Captured: 2026-11-01 via FetchUrl Markdown extraction (text snapshot, not original HTML). Long CSS/style lines removed.
+
+---
+
+![](https://accessibility.github.com/assets/images/gradient-glow-hero.png)
+
+# Using GitHub Copilot in Visual Studio Code with a Screen Reader
+
+## Guide Topics
+
+[Skip to content](https://accessibility.github.com/documentation/guide/github-copilot-vsc/#page-content)
+
+Using GitHub Copilot with a screen reader in Visual Studio Code (VS Code) can enhance your coding experience by providing AI-powered code suggestions. Follow this guide to optimize your setup for accessibility.
+
+**Note:** This guide provides instructions specific to NVDA on a Windows desktop. Commands and shortcuts may vary for macOS, Linux, or other screen readers.
+
+* * *
+
+## Prerequisites
+
+- [Visual Studio Code](https://code.visualstudio.com/) installed
+- [GitHub Copilot VS Code extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) installed
+- [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) installed - this is installed when you install the GitHub Copilot extension
+- Sign up for a [GitHub](https://github.com/) account
+- Active [GitHub Copilot](https://github.com/features/copilot) subscription
+- Screen reader software installed (e.g., [NVDA](https://www.nvaccess.org/))
+
+* * *
+
+## 1\. VS Code Setup
+
+Install VS Code and enable [Screen Reader Mode](https://code.visualstudio.com/docs/editor/accessibility#_screen-reader-mode) to optimize screen reader interactions:
+
+1. **Ensure Latest Version of VS Code is Installed**
+   - Download and install the latest version of [Visual Studio Code](https://code.visualstudio.com/).
+2. **Activate Screen Reader Mode** (Toggle with `Shift` \+ `Alt` \+ `F1`):
+
+   - Open the Command Palette ( `Ctrl` \+ `Shift` \+ `P`).
+   - Type “Toggle Screen Reader Accessibility Mode” and press `Enter`.
+
+* * *
+
+## 2\. GitHub Copilot Setup
+
+Set up GitHub Copilot in VS Code to provide AI-powered code suggestions that can enhance your coding experience:
+
+1. **Open the GitHub Copilot Chat View**
+   - Open the GitHub Copilot chat view ( `⌃⌘I`) from the VS Code title bar by selecting “Use AI Features with Copilot for Free…”
+   - Alternatively, open the Command Palette ( `Ctrl` \+ `Shift` \+ `P`) and type “Chat: Focus on Chat View”.
+2. **Sign In to Use Copilot**
+   - Select “Sign in to Use Copilot for free” to sign in to your GitHub account.
+   - Follow the instructions in your browser to complete the sign-in process.
+3. **Get a GitHub Copilot Subscription**
+   - Use [GitHub Copilot Free](https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/about-github-copilot-free) to experience limited features without a subscription.
+   - Subscribe to a paid [GitHub Copilot](https://github.com/features/copilot) plan to unlock additional features. Learn more about [GitHub Copilot subscription options](https://github.com/features/copilot#pricing).
+
+Refer to the [GitHub Copilot setup guide for VS Code](https://code.visualstudio.com/docs/copilot/setup) for detailed instructions.
+
+* * *
+
+## 3\. Screen Reader Configuration
+
+Configure GitHub Copilot to work seamlessly with your screen reader by following these steps:
+
+1. **Listen for Audio Cues**
+   - GitHub Copilot provides audio cues when suggestions are available. Ensure your screen reader is configured to announce these cues.
+   - Manage audio cues in VS Code Settings ( `Ctrl` \+ `,`) under [Accessibility Signals](https://code.visualstudio.com/docs/editor/accessibility#_accessibility-signals).
+2. **Navigating Suggestions**
+   - Suggestions appear inline in the editor and are read out automatically.
+   - For detailed inspection, press `Alt` \+ `F2` to open the GitHub Copilot Accessible View.
+3. **Accepting or Dismissing Suggestions**
+   - To accept a suggestion, press `Tab`.
+   - To dismiss a suggestion, press `Esc`.
+
+For additional customization options, such as adjusting font size, changing themes, and configuring keybindings, refer to the [VS Code Accessibility Features](https://code.visualstudio.com/docs/editor/accessibility).
+
+* * *
+
+## 4\. Keyboard Shortcuts
+
+Here are some essential GitHub Copilot shortcuts to enhance your coding efficiency:
+
+| Action | Shortcut |
+| --- | --- |
+| Accept Inline Suggestion | `Tab` |
+| Dismiss Inline Suggestion | `Esc` |
+| Show next suggestion in Suggestions Panel | `Alt` \+ `]` |
+| Show previous suggestion in Suggestions Panel | `Alt` \+ `[` |\
+| Open GitHub Copilot Suggestions | `Ctrl` \+ `Enter` |\
+| Opens the suggestion in a Accessible View panel | `Alt` \+ `F2` |\
+| Inserts the suggestion from the Accessible View panel at point of cursor | `Ctrl` \+ `/` |\
+| Opens Inline Chat | `Ctrl` \+ `I` |\
+| Opens the dedicated chat view | `Ctrl` \+ `Shift` \+ `I` |\
+\
+For a complete list, visit the [GitHub Copilot in VS Code cheat sheet](https://code.visualstudio.com/docs/copilot/copilot-vscode-features).\
+\
+### Inline Suggestions\
+\
+When working in VS Code, GitHub Copilot suggests code as you type, appearing as inline text. If [Accessibility Signals](https://code.visualstudio.com/docs/editor/accessibility#_accessibility-signals) are enabled, an audio cue will play, and the screen reader will read the suggestion aloud. Follow these steps to manage inline suggestions effectively:\
+\
+1. **Accepting Suggestions**\
+   - Press `Tab` to accept and insert the suggestion.\
+2. **Inspecting Suggestions**\
+   - For detailed inspection, press `Alt` \+ `F2` to open the GitHub Copilot Accessible View.\
+   - Use text editing commands to review the suggestion.\
+3. **Inserting Snippets**\
+   - Use `Ctrl` \+ `/` to insert the snippet into your file. Learn more about [Snippets in VS Code](https://code.visualstudio.com/docs/editor/userdefinedsnippets).\
+4. **Generating Multiple Suggestions**\
+   - Press `Ctrl` \+ `Enter` when a suggestion is present to load several suggestions, typically 10. This will open GitHub Copilot suggestions in a side-by-side tab.\
+   - Navigate these suggestions using your screen reader’s heading keys in browse mode.\
+   - Each suggestion is followed by a button to accept and paste it into your file.\
+\
+For an [overview on using GitHub Copilot inline suggestions with a screen reader](https://www.youtube.com/embed/nRsshE54bjk?si=fjeJN7Cat2r0Idbt), watch the following tutorial:\
+\
+Using GitHub Copilot Inline Suggestions with a screen reader \| Tutorial \| Accessible coding - YouTube\
+\
+Tap to unmute\
+\
+[Using GitHub Copilot Inline Suggestions with a screen reader \| Tutorial \| Accessible coding](https://www.youtube.com/watch?v=nRsshE54bjk) [GitHub](https://www.youtube.com/channel/UC7c3Kb6jYCRj4JOHHZTxKsQ)\
+\
+![thumbnail-image](https://yt3.ggpht.com/piFr0Dgv_ejscYs1FmFYk8MAoRGzvG56eBAmZ7RVmYrX8RH1nrpZziZdG9GbQFyJyOHeNyuVPQ=s68-c-k-c0x00ffffff-no-rj)\
+\
+GitHub704K subscribers\
+\
+[Watch on](https://www.youtube.com/watch?v=nRsshE54bjk)\
+\
+### Inline Chat\
+\
+Inline chat allows you to ask questions about code within the current file. Follow these steps to use inline chat effectively:\
+\
+1. **Highlight the Relevant Code**\
+   - Use text editing commands or VS Code’s Start and End selection actions to highlight the code you want to query.\
+2. **Open the Inline Chat Window**\
+   - Press `Ctrl` \+ `I` to open the inline chat window.\
+3. **Type Your Query**\
+   - Enter your query, such as “fix this code” or “suggest a better alternative.”\
+4. **Review GitHub Copilot’s Response**\
+   - GitHub Copilot will respond with text or a suggested diff, which opens in VS Code’s accessible diff view.\
+\
+Common queries like “explain this code” or “generate documentation” are available as standard VS Code actions and can be mapped to keyboard shortcuts or triggered from the command palette.\
+\
+For an [overview on using GitHub Copilot Inline Chat with a screen reader](https://www.youtube.com/embed/jgON0bve74w?si=OMvsUcOdUckvkXFS), watch the following tutorial:\
+\
+Using GitHub Copilot Inline Chat with a screen reader \| Tutorial \| Accessible coding - YouTube\
+\
+Tap to unmute\
+\
+[Using GitHub Copilot Inline Chat with a screen reader \| Tutorial \| Accessible coding](https://www.youtube.com/watch?v=jgON0bve74w) [GitHub](https://www.youtube.com/channel/UC7c3Kb6jYCRj4JOHHZTxKsQ)\
+\
+![thumbnail-image](https://yt3.ggpht.com/piFr0Dgv_ejscYs1FmFYk8MAoRGzvG56eBAmZ7RVmYrX8RH1nrpZziZdG9GbQFyJyOHeNyuVPQ=s68-c-k-c0x00ffffff-no-rj)\
+\
+GitHub704K subscribers\
+\
+[Watch on](https://www.youtube.com/watch?v=jgON0bve74w)\
+\
+Learn more about [GitHub Copilot Inline Chat](https://code.visualstudio.com/docs/copilot/copilot-chat#_inline-chat)\
+\
+### Chat View\
+\
+For complex queries and detailed conversations, use the dedicated GitHub Copilot Chat view. This feature enables you to reference code from your workspace and access advanced capabilities. The GitHub Copilot Chat extension is installed when you install the GitHub Copilot extension. Follow these steps to get started:\
+\
+1. **Open the GitHub Copilot Chat View**\
+   - Press `Ctrl` \+ `Shift` \+ `I` to open the dedicated GitHub Copilot Chat view.\
+2. **Reference Code**\
+   - Highlight the relevant code using text editing commands or VS Code’s Start and End selection actions.\
+3. **Type Your Query**\
+   - In the chat view, type your query, such as “fix this code” or “suggest a better alternative.”\
+4. **Review GitHub Copilot’s Response**\
+   - GitHub Copilot will respond with text or a suggested diff, which opens in VS Code’s accessible diff view.\
+\
+For an [overview on using GitHub Copilot Chat with a screen reader](https://www.youtube.com/embed/uVGLQeZWXao?si=rD3W5VW2QeEoGXeV), watch the following tutorial:\
+\
+Using GitHub Copilot Chat with a screen reader \| Tutorial \| Accessible coding - YouTube\
+\
+Tap to unmute\
+\
+[Using GitHub Copilot Chat with a screen reader \| Tutorial \| Accessible coding](https://www.youtube.com/watch?v=uVGLQeZWXao) [GitHub](https://www.youtube.com/channel/UC7c3Kb6jYCRj4JOHHZTxKsQ)\
+\
+![thumbnail-image](https://yt3.ggpht.com/piFr0Dgv_ejscYs1FmFYk8MAoRGzvG56eBAmZ7RVmYrX8RH1nrpZziZdG9GbQFyJyOHeNyuVPQ=s68-c-k-c0x00ffffff-no-rj)\
+\
+GitHub704K subscribers\
+\
+[Watch on](https://www.youtube.com/watch?v=uVGLQeZWXao)\
+\
+Learn more about [GitHub Copilot Chat view](https://code.visualstudio.com/docs/copilot/copilot-chat#_chat-view)\
+\
+### Built-in Actions\
+\
+You can speed up common GitHub Copilot requests using built-in VS Code Actions. Follow these steps to utilize these actions efficiently:\
+\
+1. **Open the Command Palette**\
+   - Press `F1` to open the Command Palette.\
+2. **Search for GitHub Copilot Actions**\
+   - Type “copilot” to see a list of available actions such as “Document this code,” “Explain this code,” and “Generate unit tests.”\
+3. **Execute an Action**\
+   - Select the desired action from the list and press `Enter` to execute it.\
+4. **Bind Actions to Hotkeys**\
+   - For quicker access, you can bind these actions to hotkeys in VS Code’s settings. Navigate to `File > Preferences > Keyboard Shortcuts` and assign your preferred key combinations.\
+\
+For an [overview on using built-in VS Code Actions for GitHub Copilot](https://www.youtube.com/embed/J0DGD2IWypg?si=Hy6vKObD8fI_UY_I), watch the following tutorial:\
+\
+Using GitHub Copilot in the command palette with a screen reader \| Tutorial \| Accessible coding - YouTube\
+\
+Tap to unmute\
+\
+[Using GitHub Copilot in the command palette with a screen reader \| Tutorial \| Accessible coding](https://www.youtube.com/watch?v=J0DGD2IWypg) [GitHub](https://www.youtube.com/channel/UC7c3Kb6jYCRj4JOHHZTxKsQ)\
+\
+![thumbnail-image](https://yt3.ggpht.com/piFr0Dgv_ejscYs1FmFYk8MAoRGzvG56eBAmZ7RVmYrX8RH1nrpZziZdG9GbQFyJyOHeNyuVPQ=s68-c-k-c0x00ffffff-no-rj)\
+\
+GitHub704K subscribers\
+\
+[Watch on](https://www.youtube.com/watch?v=J0DGD2IWypg)\
+\
+* * *\
+\
+## 5\. Stay Updated\
+\
+### Regularly Update Extensions\
+\
+Ensure you always have the latest versions of Visual Studio Code and GitHub Copilot to maintain compatibility with the latest accessibility features:\
+\
+- **Enable Auto-Update**: Most platforms support automatic updates, prompting you to install new releases when available.\
+- **Manually Check for VS Code Updates**: Open the Command Palette ( `Ctrl` \+ `Shift` \+ `P`), type “Check for Updates,” select the option and follow instructions to update.\
+- **Update the GitHub Copilot extension**: Go to the Extensions view ( `Ctrl` \+ `Shift` \+ `X`) and search for “GitHub Copilot.” If an update is available, select “Update.”\
+- **Update the GitHub Copilot Chat extension**: Go to the Extensions view ( `Ctrl` \+ `Shift` \+ `X`) and search for “GitHub Copilot Chat.” If an update is available, select “Update.”\
+\
+These steps help keep your coding environment current and ensure compatibility with new accessibility features.\
+\
+### Engage with the Community\
+\
+Participate in forums and discussions to stay informed about new features and best practices. Join the [GitHub Accessibility Discussions](https://github.com/orgs/community/discussions/categories/accessibility) to connect with the community.\
+\
+* * *\
+\
+## Resources\
+\
+1. [GitHub Copilot Setup Guide for VS Code](https://code.visualstudio.com/docs/copilot/setup)\
+2. [VS Code Accessibility Features](https://code.visualstudio.com/docs/editor/accessibility)\
+3. [GitHub Copilot in VS Code cheat sheet](https://code.visualstudio.com/docs/copilot/copilot-vscode-features)\
+\
+* * *\
+\
+## Contributors\
+\
+Special thanks to [@mlama007](https://github.com/mlama007) (author) and [zersiax](https://github.com/zersiax).\
+\
+Please share questions or comments on the [accessibility community discussion page](https://github.com/orgs/community/discussions/categories/accessibility).\
+\
+\
+[Accessibility Documentation](https://accessibility.github.com/documentation)

@@ -1,0 +1,110 @@
+Source URL: https://github.com/zed-industries/zed/issues/41138
+Effective URL: https://github.com/zed-industries/zed/issues/41138
+Title: GitHub Issue #41138: Windows: Screen reader accessibility missing completely (Public)
+Captured: 2026-11-01 via FetchUrl Markdown extraction (text snapshot, not original HTML). Long CSS/style lines removed.
+
+---
+
+Title: Windows: Screen reader accessibility missing completely
+URL: https://github.com/zed-industries/zed/issues/41138
+Description: Body: ### Summary
+
+<!-- Please insert a one-line summary of the issue below -->
+Zed is absolutely inaccessible for screen reader users on Windows. Tested with latest JAWS and NVDA versions.
+
+### Description
+<!--  Describe with sufficient detail to reproduce from a clean Zed install. -->
+Steps to trigger the problem:
+1. Install Zed on Windows 11.
+2. run Zed with a screen reader. You may use free and open-source [NVDA screen reader](https://www.nvaccess.org/download/) for this test.
+3. Try to… do something. I mean, like anything at all. You will get no feedback. Try arrowing up and down, pressing Tab, F6, some Zed commands (I don't know any of them because well, I cannot use the editor to learn it).
+
+**Expected Behavior**: The editor should be accessible for screen readers. Probably it's impolite to mention competitors, but see how VS Code is done accessibility-wise.
+**Actual Behavior**: Zed is absolutely silent. the only thing I could do (by intuition and Windows/VS Code habits) is pressing Ctrl+O. Of course, the native Windows dialog is accessible, but when I opened the folder, again nothing spoke.
+
+
+### Zed Version and System Specs
+
+**Note**! This info is provided by JAWS, my screen reader of choice, and by Windows built-in dialog. As Zed is not accessible, I cannot summon the command palette and get that info from there.
+Zed Version 0.209.6
+Microsoft Windows
+Version 25H2 (OS Build 26200.6899) 
+
+Status: open
+Labels: area:accessibility
+
+Comments:
+
+User: franciskafyi
+Message: @Menelion thank you for submitting this. We totally hear you but unfortunately Zed has a long way to go when it comes to accessibility. The goal is to build the primitives into GPUI, but it's a long path and not something we'll get to in the near future. 
+
+For context, Zed doesn't support screen readers across MacOS, Linux and Windows. We want to and we will get there, but as a small team we're not able to tackle it just yet. 
+
+User: Menelion
+Message: @franciskafyi That's frustrating to hear, Zed is praised by the dev community. I'm not a rustacean but I know people in the community who are. Can we help? What do you need to make the GUI accessible? Thanks.
+
+User: franciskafyi
+Message: I totally hear you and share the frustration. Maybe yes. @mikayla-maki is our expert internally and she's wanting to build the primitives into GPUI but I wonder if we'd need to do a lot more scoping before being able to take external help on this. 
+
+User: mikayla-maki
+Message: Hi @Menelion, thanks for bringing up this issue. We have a rough plan to integrate [AccessKit](https://github.com/AccessKit/accesskit) into GPUI and I've talked to the developers there about the project and some other UI framework maintainers. The main blocker is that I'm the only person at Zed who is interested in expanding our UI framework as a UI framework on it's own, and so simply haven't had the space to give this the attention this deserves. However, I hope to change that soon as we've recently hired another developer, @cameron1024, who has done a lot of work with screen readers for other frameworks.
+
+To make the Zed accessible will take a few things:
+- Start up an accesskit adapter and put that in GPUI somewhere
+- Begin producing accesskit nodes as a side effect of rendering
+- Research the associated accessibility APIs and add them to `div()` (e.g. how to associate ARIA roles with a given element, should be pretty straightforward)
+- Go over Zed and use the new APIs
+
+AccessKit is already seeing success with projects like egui and bevy, and the maintainers tell me that as long as we can produce a stable ID (we can) we shouldn't have any problems with it. We just gotta get it done :D
+Edited: 10/29/2025, 6:39:47 PM
+
+User: Menelion
+Message: @mikayla-maki That sounds far less dark than I imagined 😄 . Actually, I thought about AccessKit and Matt, its developer. He's a great guy and already did and does lots of things for the community. Anyway, if you need something like testing, maybe some more-or-less web-related or template-based stuff like adapting widgets, please tell me. Again, I'm not a rustacean, but I'm a developer and accessibility specialist myself. Thanks!
+
+User: mikayla-maki
+Message: > That sounds far less dark than I imagined 😄
+Glad I could help out here :). I wish we'd already have this done tbh. But I've gotten a lot of the pieces together. Just need to make it happen!
+
+I'll let you know when our plans get stronger. 
+
+User: zersiax
+Message: Curious where this is at given 1.0 just dropped, is there any news on this issue? 
+I'm a content creator making accessibility-related content and am myself dependent on assistive tech,and have been asked several times now about covering Zed. As things stand right now, all I can really cover is that, to screen readers, the title bar (" Empty Project")  reads, but that's all it does.
+
+I'm aware of the rough place most if not all Rust-based UI frameworks are in right now where accessibility is concerned but if a cross-platform UI library is offered, adding accessibility sooner rather than later is going to benefit a bunch of different projects including Zed, whereas waiting and leaving it for later is going to ensure any project built on GPGUI is going to be entirely unusable for a huge number of users. I'm sure you know all this, but it bears repeating.
+Having said all that, I'm not going to sugarcoat it, there is quite a bit of work to do here. Primitives will help some, but more complicated interactions, such as dumb autocompletes and ghost-texted AI autopredictions are going to be difficult, and the more features we add before we get to this the more work it'll unfortunately end up being. Any way developers in the know can lend a hand?
+
+User: cameron1024
+Message: Hi, I'm working on this in #51097, which adds AccessKit support to GPUI. From there, we will need a series of PRs to add aria attributes to the various components in Zed.
+
+I've previously worked in accessible technology, and am familiar with the APIs needed for general applications, but to be totally honest, I'm not sure how the text editor itself should present itself to a screen reader, such that it's actually usable for people.
+
+If you're willing, when it comes time to add support to the editor itself, feedback on the experience of using it would be much appreciated. Unfortunately, I can't make any guarantees about when this will be, since it's somewhat a passion project of mine.
+
+User: Menelion
+Message: @cameron1024 When you will be at it, we can talk. @zersiax also can provide lots of useful info, he is a very knowledgeable person. Generally, VS Code basically did lots of things right, and it was the first truly accessible mainstream code editor of such popularity. Could be nice if Zed follows, because VS Code, to be honest, is quite bloated and slow (of course, it's JavaScript/TypeScript), so something snappier would be more than welcome.
+
+User: zersiax
+Message: happy to assist when you get there @cameron1024  . Like @Menelion  says, I would take a lot of clues from VS Code's editor component as well as the way their pickers work, should have all the ARIA you'll ever need and then some. This is likely to work as it's battle-tested and the ARIA, particularly for the editor, can get pretty complicated. In the end, even that project at times resorts to a layered approach, where an " accessible view"  can be spawned to look at gnarly dynamic parts in a more static, accessible manner. We'll get there when we get there.
+
+User: Almost-Senseless-Coder
+Message: Chipping in: I'm a Rustacean (~7 years of it being my go-to programming language) and deafblind. Currently I depend on VS Code, but I'm, frankly, a bit worried about where it's headed.  Been looking for alternatives.
+
+Sublime Text is actively hostile to the idea of implementing accessibility features (see [this thread and the GitHub issue linked within](https://forum.sublimetext.com/t/screen-reader-accessibility/15530/11) if you feel like getting mad today), so it's refreshing that Zed at least is willing.
+
+I think I can contribute code (though I'll have to do so in my free time, so productivity will be unpredictable) and of course test as well (all platforms, though I'm least comfortable with MacOS).
+
+User: cameron1024
+Message: Thanks for the offer @Almost-Senseless-Coder . It's definitely something I'm keen to support, and I feel optimistic about the path forward. 
+
+A small status update: 
+- #56065 is mostly working, and adds accesskit support into GPUI. The core primitives are in place and I believe most of the hard work is done. 
+- There is a very small demo app that can be run with `cargo run -p gpui --example a11y` (note you may need extra feature flags on some platforms)
+- I have tested on Windows using the `inspect` tool from VS and I was able to see and interact with UI elements
+- I have tested on Linux Wayland with `accerciser` and also `pyatspi`, and was also able to see and interact with UI elements
+- I have not tested on Linux X11, since I don't have a machine with X11 handy, but I plan to test in a VM, since my understanding is that X11 is in much more widespread use by users of assistive technologies (happy to be corrected on this assumption)
+- I spoke to @DataTriny about MacOS support, and the issues I was having, and he mentioned to me that the Accessibility Inspector tool only works with app bundles. I briefly tested with VoiceOver on a colleague's Mac, and was able to see individual UI elements highlighted. However, after building an app bundle with some accessible UI elements inserted, I was not able to see them in the Accessibility Inspector.
+
+Given all of the above, if anyone wants to try running the example app and giving feedback, that would be much appreciated, especially X11 and MacOS users. If you do, I think it would probably be better to leave those comments on #56065 directly, rather than in this issue, just to keep the thread tidy.
+
+Thanks for your patience 😅

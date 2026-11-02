@@ -1,0 +1,76 @@
+Source URL: https://github.com/openai/codex/issues/22816
+Effective URL: https://github.com/openai/codex/issues/22816
+Title: GitHub Issue #22816: Accessibility: screen reader focus jumps to the top while Codex is generating output (Public)
+Captured: 2026-11-01 via FetchUrl Markdown extraction (text snapshot, not original HTML). Long CSS/style lines removed.
+
+---
+
+Title: Accessibility: screen reader focus jumps to the top while Codex is generating output
+URL: https://github.com/openai/codex/issues/22816
+Description: Body: ## Summary
+
+I am reporting a serious accessibility issue affecting screen reader users in Codex.
+
+When I write a prompt and send it, then try to read the model output while it is being generated, the interface repeatedly moves my screen reader/reading position back to the very beginning of the conversation.
+
+This makes it extremely difficult to follow the latest generated output, because I have to keep navigating back down to the end of the conversation again and again.
+
+## Steps to reproduce
+
+1. Open Codex.
+2. Use a screen reader.
+3. Write a prompt and submit it.
+4. While Codex is generating the response, try to read/follow the latest output in the conversation.
+5. Press the button/control that should jump to the latest message or bottom of the conversation.
+
+## Actual behavior
+
+- The reading position/focus is repeatedly moved back to the top or beginning of the conversation.
+- The latest output becomes difficult to follow while it is being generated.
+- The jump-to-latest or scroll-to-bottom control does not keep the user at the latest output reliably.
+- This creates a very frustrating experience for screen reader users.
+
+## Expected behavior
+
+- Screen reader focus/reading position should not be reset to the top while Codex is generating output.
+- The user should be able to stay near the latest generated output.
+- The jump-to-latest or scroll-to-bottom control should work reliably with keyboard and screen readers.
+- New generated content should remain reachable/readable without stealing focus or resetting the reading position.
+
+## Impact
+
+This is a major accessibility issue because it prevents screen reader users from reliably reading and following active Codex output as it is generated.
+
+## Environment
+
+I can provide more details if needed, but the main issue is reproducible while using Codex with a screen reader and trying to read the generated output in real time.
+
+Status: open
+Labels: bug, app
+
+Comments:
+
+User: etraut-openai
+Message: Which variant of Codex are you using? The desktop app? The IDE extension? The TUI?
+Edited: 5/15/2026, 4:00:41 PM
+
+User: aimansour
+Message: This is reproducible in the **Codex Desktop app on Windows**.
+
+Environment currently tested:
+- Codex Desktop client 26.715.52143 (Windows package 26.715.7063.0)
+- Microsoft Windows NT 10.0.19045.0 x64
+- NVDA 2026.1.1 (latest stable; portable copy, ProductVersion 2026.1.1 / FileVersion 2026.1.1.55980)
+- Also reproduced with JAWS and other screen readers across multiple versions
+
+Additional details:
+- While reading the newest model output near the bottom of a long chat, the screen reader's reading position/focus unexpectedly jumps far upward in the conversation without any user action or announcement.
+- The visual scroll position also moves away from the latest response, and the “scroll to bottom” button appears.
+- This happens repeatedly, not just once when generation begins.
+- It has been present since the earliest Codex Desktop releases I tested and has never worked reliably for me in any release.
+- The issue is not specific to one NVDA version or one screen reader, which suggests that the app is replacing/reordering conversation DOM/accessibility nodes or programmatically changing scroll/focus during streamed updates.
+
+Expected: streamed output should update without moving the user's virtual cursor, accessibility focus, or scroll position. The “scroll to bottom” control should appear only after intentional user scrolling, not because a render update displaced the reading position.
+
+User: bhavyashah
+Message: @etraut-openai This is also reproducible with the VSCode extension and has a significant impact for screen reader users.

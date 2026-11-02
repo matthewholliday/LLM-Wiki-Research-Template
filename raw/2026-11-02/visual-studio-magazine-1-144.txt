@@ -1,0 +1,299 @@
+Title: VS Code 1.144 Unleashes Copilot Fusion, AI Image Generation and Computer Use -- Visual Studio Magazine
+Requested URL: https://visualstudiomagazine.com/articles/2026/10/28/vs-code-1-144-unleashes-copilot-fusion-ai-image-generation-and-computer-use.aspx
+Resolved URL: https://visualstudiomagazine.com/articles/2026/10/28/vs-code-1-144-unleashes-copilot-fusion-ai-image-generation-and-computer-use.aspx
+Retrieved: 2026-11-02
+Format: FetchUrl Markdown text snapshot, not original HTML. Lines of 10,000 or more characters (embedded metadata or oversized content) omitted.
+
+[Skip to main content](https://visualstudiomagazine.com/articles/2026/10/28/vs-code-1-144-unleashes-copilot-fusion-ai-image-generation-and-computer-use.aspx#main)
+
+# [![Visual Studio Magazine - Expert Solutions for .NET Development](https://visualstudiomagazine.com/~/media/ECG/visualstudiomagazine/design/vsmlogowhite.ashx)News & analysis on Visual Studio, .NET, AI and beyond](https://visualstudiomagazine.com/)
+
+[Add as a preferred source on Google](https://www.google.com/preferences/source?q=visualstudiomagazine.com)
+
+- [Home](https://visualstudiomagazine.com/home.aspx)
+- [News](https://visualstudiomagazine.com/articles/list/news.aspx)
+- [Tips & How-To](https://visualstudiomagazine.com/pages/topic-pages/tips-and-how-to.aspx)
+- [Newsletters](https://visualstudiomagazine.com/newslettersub)
+- [White Papers](https://visualstudiomagazine.com/whitepapers/list/vsm-tech-library-list.aspx)
+- [Webcasts](https://visualstudiomagazine.com/webcasts/list/webcast-list.aspx)
+- [Advertise](https://converge360.com/pages/advertising/vsm.aspx)
+- [About Us](https://visualstudiomagazine.com/pages/contact-us.aspx)
+- [Training](https://live360events.com/home.aspx)
+- More
+  - [.NET Tips and Tricks](https://visualstudiomagazine.com/blogs/tool-tracker/list/blog-list.aspx)
+  - [The Data Science Lab](https://visualstudiomagazine.com/articles/list/neural-network-lab.aspx)
+  - [Practical .NET](https://visualstudiomagazine.com/articles/list/practical-aspnet.aspx)
+  - [The Practical Client](https://visualstudiomagazine.com/articles/list/practical-javascript.aspx)
+  - [Data Driver](https://visualstudiomagazine.com/blogs/data-driver/list/blog-list.aspx)
+  - [C# Corner](https://visualstudiomagazine.com/articles/list/c-sharp-corner.aspx)
+  - [In-Depth](https://visualstudiomagazine.com/articles/list/features.aspx)
+  - [PDF Back Issues](https://visualstudiomagazine.com/research/list/back-issues.aspx)
+  - [HTML Issue Archive](https://visualstudiomagazine.com/issues/issue-archive.aspx)
+  - [Archive](https://visualstudiomagazine.com/pages/topic-pages/archive.aspx)
+  - [Code Samples](https://visualstudiomagazine.com/articles/list/code.aspx)
+  - [.NET](https://visualstudiomagazine.com/pages/topic-pages/net-tutorials.aspx)
+  - [Agile/Scrum](https://visualstudiomagazine.com/articles/list/agile-and-scrum.aspx)
+  - [ALM](https://visualstudiomagazine.com/articles/list/alm.aspx)
+  - [Open Source](https://visualstudiomagazine.com/articles/list/open-source.aspx)
+  - [SharePoint](https://visualstudiomagazine.com/articles/list/sharepoint.aspx)
+  - [Cross-Platform C#](https://visualstudiomagazine.com/articles/list/mono-for-android.aspx)
+  - [Mobile Corner](https://visualstudiomagazine.com/articles/list/mobile-corner.aspx)
+
+- [![](https://visualstudiomagazine.com/articles/2026/10/28/~/media/ECG/shared/img/socialmedia/linkedin_light.ashx)](https://linkedin.com/company/visual-studio-magazine)
+- [![](https://visualstudiomagazine.com/articles/2026/10/28/~/media/ECG/shared/img/socialmedia/twitter_x_light.ashx)](https://twitter.com/VSMdev)
+- [![ok](https://visualstudiomagazine.com/articles/2026/10/28/~/media/ECG/shared/img/socialmedia/tiktok_light.ashx)](https://www.tiktok.com/@bytesizetechnews)
+- [![](https://visualstudiomagazine.com/articles/2026/10/28/~/media/ECG/shared/img/socialmedia/instagram_light.ashx)](https://www.instagram.com/bytesizetechnews/)
+- [![](https://visualstudiomagazine.com/articles/2026/10/28/~/media/ECG/shared/img/socialmedia/youtube_light.ashx)](https://youtube.com/@converge360)
+- ![Search](https://visualstudiomagazine.com/~/media/ECG/redmondmag/design/2019/search.svg)
+- ![Close Search](https://visualstudiomagazine.com/~/media/ECG/redmondmag/design/2019/searchclose.svg)
+
+- [Azure](https://visualstudiomagazine.com/pages/topic-pages/azure.aspx)
+- [Visual Studio](https://visualstudiomagazine.com/pages/topic-pages/visual-studio-tutorials.aspx)
+- [Visual Studio Code](https://visualstudiomagazine.com/pages/topic-pages/visual-studio-code-news-and-how-to.aspx)
+- [Blazor/ASP.NET](https://visualstudiomagazine.com/pages/topic-pages/html5-javascript-tutorials.aspx)
+- [.NET](https://visualstudiomagazine.com/pages/topic-pages/net-core.aspx)
+- [C#/VB/TypeScript](https://visualstudiomagazine.com/pages/topic-pages/c-sharp-vb-tutorials.aspx)
+- [.NET MAUI/Mobile](https://visualstudiomagazine.com/pages/topic-pages/mobile-how-to.aspx)
+- [AI/Machine Learning](https://visualstudiomagazine.com/pages/topic-pages/ai-and-machine-learning.aspx)
+
+[News](https://visualstudiomagazine.com/articles/list/news.aspx)
+
+### VS Code 1.144 Unleashes Copilot Fusion, AI Image Generation and Computer Use
+
+- By [David Ramel](https://visualstudiomagazine.com/forms/emailtoauthor.aspx?AuthorItem={53762E17-6187-46B4-8C04-9DFA282EBB67}&ArticleItem={B97D0404-11C2-4FF1-9F0A-502ABB107A05})
+- 10/28/2026
+
+Microsoft has released Visual Studio Code 1.144, packing its latest AI-focused editor update with Copilot Fusion multi-model orchestration, AI image generation, experimental desktop computer control and expanded cloud agent automation.
+
+The [October 28 release notes](https://code.visualstudio.com/updates/v1_144) emphasize keeping agent sessions running across environments, choosing models for different tasks and giving developers more control over automated code changes.
+
+"This release helps you keep agent work moving across environments, find the right models for each task, and stay in control of changes and tool calls," Microsoft said.
+
+The release coincides with GitHub Universe and consolidates several previously introduced capabilities while adding new functionality across models, agent management, security and customization.
+
+**Copilot Fusion Orchestrates Multiple Models**
+
+One of the biggest changes is the general availability of GitHub Copilot Fusion, which combines Project HydraFusion's multi-model orchestration with Copilot's task-aware model selection.
+
+Instead of manually choosing a model, developers can let Fusion select models, reasoning effort and execution patterns based on the task. A simple request might use one model, while a more complex task could involve separate models generating, reviewing and critiquing a solution.
+
+Fusion provides Standard, High and Max effort levels. High and Max are available on Copilot Pro+, Max, Business and Enterprise plans.
+
+Users are billed for each model Fusion invokes at its standard rate. Microsoft said paid Copilot plans receive a 30% discount on Fusion usage through November 30, 2026.
+
+The update also expands model comparisons, sometimes called Agent Bake-Off, allowing developers to run the same prompt against multiple models and compare results. Comparisons now work without an open project or an existing Git commit, although they are not supported in Dev Containers.
+
+[![VS Code Compare Models picker with options for selecting AI models and configuring a judge.](https://visualstudiomagazine.com/articles/2026/10/28/~/media/ECG/visualstudiomagazine/Images/2026/10/compare_models_picker_s.ashx)](https://visualstudiomagazine.com/articles/2026/10/28/~/media/ECG/visualstudiomagazine/Images/2026/10/compare_models_picker.ashx)**\[Click on image for larger view.\]** Compare Models Picker _(source: Microsoft)._
+
+**Image Generation and Desktop Computer Use**
+
+VS Code 1.144 introduces preview support for generating and editing images directly in Copilot Chat using GPT Image 2.5 Flare.
+
+Developers can request website graphics, icons, backgrounds and wireframes, or provide existing images for modification. Image generation consumes AI credits beyond those used by the conversation model, and an optional setting adds a visible AI-generated watermark.
+
+Another addition is experimental Computer Use, which lets Copilot agents interact with desktop applications on Windows and macOS. The capability works with locally running Copilot harness sessions and requires user authorization before activation.
+
+Developers can enable the feature with the /computer on command and disable it with /computer off.
+
+**Cloud Sessions, Automations and Agent Controls**
+
+The update also expands support for agents running independently of a developer's local machine.
+
+Cloud sessions execute on GitHub infrastructure and remain accessible from VS Code, GitHub.com and GitHub Mobile. They require a paid Copilot plan and remain subject to organizational policies.
+
+New cloud automations, currently in preview, let developers schedule agent tasks or trigger them through repository events such as issue assignments and pull request activity. Automations can be created and managed directly from the Agents window.
+
+Microsoft also published version 1.0 of the Agent Host Protocol, an open protocol for communicating with agent sessions across local and remote environments.
+
+For security, assisted permissions are now generally available. The feature uses an AI-based risk assessment to approve lower-risk tool calls automatically while requiring explicit approval for higher-risk or uncertain operations. Folder isolation is required, and administrators can restrict its use.
+
+An experimental working-set feature also lets developers review Copilot's file edits and selectively keep or undo changes from the editor.
+
+**Agent Marketplace, Connectors and Shared Memory**
+
+VS Code 1.144 expands its agent customization experience with a marketplace-style Browse interface for discovering plugins, skills and other tools.
+
+Copilot connectors, available in preview, provide access to external services through GitHub-managed Model Context Protocol (MCP) servers. Supported integrations include services such as Slack, Notion and Microsoft Learn, with additional offerings available through the connector catalog.
+
+[![VS Code Copilot Connectors catalog showing available external services and integrations.](https://visualstudiomagazine.com/articles/2026/10/28/~/media/ECG/visualstudiomagazine/Images/2026/10/copilot_connectors_s.ashx)](https://visualstudiomagazine.com/articles/2026/10/28/~/media/ECG/visualstudiomagazine/Images/2026/10/copilot_connectors.ashx)**\[Click on image for larger view.\]** Copilot Connectors Catalog _(source: Microsoft)._
+
+The release also adds Copilot Memory support to Copilot harness sessions. Agents can recall repository information and user preferences across sessions, with memories governed by GitHub settings and organizational policies.
+
+Other improvements include more flexible nested sessions, a consolidated Remote Environments dialog, expanded Voice Mode support, enhanced issue reporting and improved editing assistance for custom agent configuration files.
+
+Visual Studio Code 1.144 is available now for Windows, macOS and Linux.
+
+About the Author
+
+[David Ramel](mailto:dramel@Converge360.com) is an editor and writer at Converge 360.
+
+
+[Printable Format](https://visualstudiomagazine.com/articles/2026/10/28/vs-code-1-144-unleashes-copilot-fusion-ai-image-generation-and-computer-use.aspx?p=1)
+
+[comments powered by Disqus](http://disqus.com/)
+
+#### Featured
+
+- [![](https://visualstudiomagazine.com/articles/2026/10/28/-/media/ECG/redmondmag/Images/IntroImagesBigSmall/ColorfulBlockIconsSmall.jpg)](https://visualstudiomagazine.com/articles/2026/10/30/azure-developer-cli-adds-a-look-before-you-deploy.aspx)
+
+### [Azure Developer CLI Adds a Look Before You Deploy](https://visualstudiomagazine.com/articles/2026/10/30/azure-developer-cli-adds-a-look-before-you-deploy.aspx)
+
+
+
+October updates add deployment previews, Container Apps express support and environment cleanup, alongside stable extension APIs and a breaking Go API migration.
+
+
+
+
+
+
+- [![Circl](https://visualstudiomagazine.com/articles/2026/10/28/-/media/ECG/redmondmag/Images/IntroImagesBigSmall/ColorCircleSmall.jpg)](https://visualstudiomagazine.com/articles/2026/10/30/azure-sql-hyperscale-is-distributed-with-one-writer.aspx)
+
+### [Azure SQL Hyperscale Is Distributed -- With One Writer](https://visualstudiomagazine.com/articles/2026/10/30/azure-sql-hyperscale-is-distributed-with-one-writer.aspx)
+
+
+
+Microsoft explains how Hyperscale separates compute, logging and storage while retaining a single primary for writes and SQL Server transaction semantics.
+
+
+
+
+
+- [![](https://visualstudiomagazine.com/articles/2026/10/28/-/media/ECG/redmondmag/Images/IntroImagesBigSmall/ColorBlocksYellowSmall.jpg)](https://visualstudiomagazine.com/articles/2026/10/30/microsoft-tests-whether-eval-folder-names-change-ai-agent-behavior.aspx)
+
+### [Microsoft Tests Whether 'Eval' Folder Names Change AI Agent Behavior](https://visualstudiomagazine.com/articles/2026/10/30/microsoft-tests-whether-eval-folder-names-change-ai-agent-behavior.aspx)
+
+
+
+Experiments with GitHub Copilot CLI found greater test awareness but no statistically significant change in agent behavior.
+
+
+
+
+
+- [![](https://visualstudiomagazine.com/articles/2026/10/28/-/media/ECG/visualstudiomagazine/Images/introimages/devblog8.jpg)](https://visualstudiomagazine.com/articles/2026/10/29/github-lets-developers-control-vs-code-ai-agents-from-their-phones.aspx)
+
+### [GitHub Lets Developers Control VS Code AI Agents from Their Phones](https://visualstudiomagazine.com/articles/2026/10/29/github-lets-developers-control-vs-code-ai-agents-from-their-phones.aspx)
+
+
+
+New Agent Host functionality lets developers direct agents running on their own machines through GitHub Mobile, while maintaining sessions across VS Code windows and custom clients.
+
+
+
+
+
+
+Most   Popular
+
+- Most Popular Articles
+- Most Emailed Articles
+
+### [VS Code 1.144 Unleashes Copilot Fusion, AI Image Generation and Computer Use](https://visualstudiomagazine.com/articles/2026/10/28/vs-code-1-144-unleashes-copilot-fusion-ai-image-generation-and-computer-use.aspx)
+
+### [Azure Developer CLI Adds a Look Before You Deploy](https://visualstudiomagazine.com/articles/2026/10/30/azure-developer-cli-adds-a-look-before-you-deploy.aspx)
+
+### [Microsoft Plans Multi-Gigawatt Azure Maia AI Deployments Starting in 2027](https://visualstudiomagazine.com/articles/2026/10/28/microsoft-plans-multi-gigawatt-azure-maia-ai-deployments-starting-in-2027.aspx)
+
+### [GitHub Copilot Turns Microsoft Teams Bug Notifications Into Pull Requests](https://visualstudiomagazine.com/articles/2026/10/28/github-copilot-turns-microsoft-teams-bug-notifications-into-pull-requests.aspx)
+
+### [React Native Windows 0.85 Removes Legacy Architecture](https://visualstudiomagazine.com/articles/2026/10/27/react-native-windows-0-85-removes-legacy-architecture.aspx)
+
+Subscribe on YouTube
+
+[Subscribe on our YouTube](https://www.youtube.com/channel/UCdvQHB5bDzZrlBuAYC5EiXw?sub_confirmation=1)
+
+.NET Insight
+
+Sign up for our newsletter.
+
+Email Address\*\*\*Country\*United States of AmericaAfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntarcticaAntigua and BarbudaArgentinaArmeniaArubaAustraliaAzerbaijanAustriaBahamasBahrainBangladeshBarbadosBelarusBelgiumBelizeBeninBermudaBhutanBolivia, Plurinational State ofBonaire, Sint Eustatius and SabaBosnia and HerzegovinaBotswanaBouvet IslandBrazilBritish Indian Ocean TerritoryBrunei DarussalamBulgariaBurkina FasoBurundiCambodiaCameroonCanadaCape Verde (Cabo Verde)Cayman IslandsCuraçaoCentral African RepublicChadChileChinaChristmas IslandCocos (Keeling) IslandsColombiaComorosCongoCongo, the Democratic Republic of theCook IslandsCosta RicaCôte d'IvoireCroatiaCubaCyprusCzech RepublicDenmarkDjiboutiDominicaDominican RepublicEcuadorEgyptEl SalvadorEquatorial GuineaEritreaEstoniaEthiopiaFalkland Islands (Malvinas)Faroe IslandsFijiFinlandFranceFrench GuianaFrench PolynesiaFrench Southern TerritoriesGabonGambiaGeorgiaGermanyGhanaGibraltarGreeceGreenlandGrenadaGuadeloupeGuamGuatemalaGuernseyGuineaGuinea-BissauGuyanaHaitiHeard Island and McDonald IslandsHoly See (Vatican City State)HondurasHong KongHungaryIcelandIndiaIndonesiaIran, Islamic Republic ofIraqIrelandIsle of ManIsraelItalyJamaicaJapanJerseyJordanKazakhstanKenyaKiribatiKorea, Democratic People's Republic ofKorea, Republic ofKuwaitKyrgyzstanLao People's Democratic RepublicLatviaLebanonLesothoLiberiaLibyaLiechtensteinLithuaniaLuxembourgMacaoMacedonia, the former Yugoslav Republic ofMadagascarMalawiMalaysiaMaldivesMaliMaltaMarshall IslandsMartiniqueMauritaniaMauritiusMayotteMexicoMicronesia, Federated States ofMoldova, Republic ofMonacoMongoliaMontenegroMontserratMoroccoMozambiqueMyanmarNamibiaNauruNepalNetherlandsNew CaledoniaNew ZealandNicaraguaNigerNigeriaNiueNorfolk IslandNorthern Mariana IslandsNorwayPakistanOmanPalauPalestinian Territory, OccupiedPanamaParaguayPapua New GuineaPeruPhilippinesPitcairnPolandPortugalPuerto RicoQatarRéunionRomaniaRussian FederationRwandaSaint BarthélemySaint Helena, Ascension and Tristan da CunhaSaint Kitts and NevisSaint LuciaSaint Martin (French part)Saint Pierre and MiquelonSaint Vincent and the GrenadinesSamoaSan MarinoSao Tome and PrincipeSaudi ArabiaSenegalSerbiaSeychellesSierra LeoneSingaporeSint Maarten (Dutch part)SlovakiaSloveniaSolomon IslandsSomaliaSouth AfricaSouth Georgia and the South Sandwich IslandsSouth SudanSpainSri LankaSudanSurinameSvalbard and Jan MayenEswatini (Swaziland)SwedenSwitzerlandSyrian Arab RepublicTaiwan, Province of ChinaTajikistanTanzania, United Republic ofThailandTimor-LesteTogoTokelauTongaTrinidad and TobagoTunisiaTurkeyTurkmenistanTurks and Caicos IslandsTuvaluUgandaUkraineUnited Arab EmiratesUnited KingdomUnited States Minor Outlying IslandsUruguayUzbekistanVanuatuViet NamVenezuela, Bolivarian Republic ofVirgin Islands, BritishVirgin Islands, U.S.Wallis and FutunaWestern SaharaYemenZambiaZimbabwe\*
+
+I agree to this site's [Privacy Policy](https://1105media.com/pages/privacy-policy.aspx)
+
+![](https://visualstudiomagazine.com/Captcha.ashx?id=156744B540F54B4E961B786644456747)Please type the letters/numbers you see above.
+
+- Most Popular Articles
+- Most Emailed Articles
+
+### [VS Code 1.144 Unleashes Copilot Fusion, AI Image Generation and Computer Use](https://visualstudiomagazine.com/articles/2026/10/28/vs-code-1-144-unleashes-copilot-fusion-ai-image-generation-and-computer-use.aspx)
+
+### [Azure Developer CLI Adds a Look Before You Deploy](https://visualstudiomagazine.com/articles/2026/10/30/azure-developer-cli-adds-a-look-before-you-deploy.aspx)
+
+### [Microsoft Plans Multi-Gigawatt Azure Maia AI Deployments Starting in 2027](https://visualstudiomagazine.com/articles/2026/10/28/microsoft-plans-multi-gigawatt-azure-maia-ai-deployments-starting-in-2027.aspx)
+
+### [GitHub Copilot Turns Microsoft Teams Bug Notifications Into Pull Requests](https://visualstudiomagazine.com/articles/2026/10/28/github-copilot-turns-microsoft-teams-bug-notifications-into-pull-requests.aspx)
+
+### [React Native Windows 0.85 Removes Legacy Architecture](https://visualstudiomagazine.com/articles/2026/10/27/react-native-windows-0-85-removes-legacy-architecture.aspx)
+
+[![Visual Studio Magazine Readers Choice Awards](https://visualstudiomagazine.com/articles/2026/10/28/~/media/ECG/visualstudiomagazine/Microsites/2026/readersChoiceAwards/readerschoiceawards2026647.jpg?source=homepage_readerschoice)](https://visualstudiomagazine.com/microsites/readers-choice-awards/2026/home.aspx)
+
+## Upcoming Training Events
+
+0
+
+AM
+
+
+[Live! 360 6-Week Training & Certification Course: Mastering the Microsoft AI Framework: Building Enterprise-Ready AI Agents with Microsoft Foundry](https://live360events.com/events/training-seminars/2026/oct6/home.aspx)
+
+October 6–November 10, 2026
+
+[VSLive! 6-Week Training & Certification Course: Blazor Developer Accelerator: Hands-On Skills for Real-World .NET Teams](https://vslive.com/events/training-seminars/2026/oct8/home.aspx)
+
+October 7 – November 11, 2026
+
+[Live! 360 Orlando](https://live360events.com/events/orlando-2026/home.aspx)
+
+November 15-20, 2026
+
+[Artificial Intelligence Live! Orlando](https://attendailive.com/ecg/live360events/events/orlando-2026/ailive.aspx)
+
+November 15-20, 2026
+
+[AI Enterprise Architecture Live! Orlando](https://aienterpriselive.com/ecg/live360events/events/orlando-2026/aiarchitectlive.aspx)
+
+November 15-20, 2026
+
+[Cybersecurity & Ransomware Live! Orlando](https://cyberlive360.com/ecg/live360events/events/orlando-2026/cyberlive.aspx)
+
+November 15-20, 2026
+
+[Data Platform Live! Orlando](https://datalive360.com/ecg/live360events/events/orlando-2026/dataplatform.aspx)
+
+November 15-20, 2026
+
+[Visual Studio Live! Orlando](https://vslive.com/ECG/live360events/Events/Orlando-2026/VSLive.aspx)
+
+November 15-20, 2026
+
+[Live! 360 2-Day Hands-On Seminar: AI-Powered .NET Development with Claude & Claude Code](https://live360events.com/events/training-seminars/2026/dec8/home.aspx)
+
+December 8-9, 2026
+
+[Pure AI 3-Hour Virtual Training Workshop: AI Agents for Everyday Business - Automate Your Work Without Coding](https://pureai.com/events/training-seminars/2026/dec9/home.aspx)
+
+December 9, 2026
+
+[VSLive! 4-Day Hands-On Training Seminar: Immersive .NET Full Stack Training with CoPilot: 4-Day Hands-On Experience](https://vslive.com/events/training-seminars/2026/dec15/home.aspx)
+
+December 15-18, 2026
+
+[Visual Studio Live! Las Vegas](https://vslive.com/Events/las-vegas-2027/home.aspx)
+
+March 22-26, 2027
+
+[Visual Studio Live! Austin](https://vslive.com/Events/austin-2027/home.aspx)
+
+May 2-6, 2027
+
+[Visual Studio Live! @ Microsoft HQ](https://vslive.com/Events/microsofthq-2027/home.aspx)
+
+August 2-6, 2027
+
+### Free Webcasts
+
+- [Human-in-the-Loop in the Age of AI: More Work for You, Not Less](https://visualstudiomagazine.com/webcasts/2026/10/human-in-the-loop-in-the-age-of-ai-more-work-for-you-not-less.aspx)
+- [Low-Code AI Development in the Enterprise: What's Secure, What's Scalable, and What's a Trap Summit](https://visualstudiomagazine.com/webcasts/2026/12/low-code-ai-development-in-the-enterprise--summit-december-10.aspx)
+- [DemoCast \| Advanced Data Visualization & Analytics](https://visualstudiomagazine.com/webcasts/2026/11/demo-cast-advanced-data-visualization-and-analytics.aspx)
+- [Operating at galactic scale: Inside Sumo Logic’s agentic security program](https://visualstudiomagazine.com/webcasts/2026/07/sumo-logic-operating-at-galactic-scale-inside-sumo-logics-agentic-security-program.aspx)

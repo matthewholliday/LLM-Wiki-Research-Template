@@ -8,7 +8,11 @@ Subject overviews, concepts, comparisons, and syntheses that bring together the 
 
 | Topic | Scope | Evidence checked |
 | --- | --- | --- |
+| [Drawing and visual capabilities in coding agents](agent-visual-capabilities.md) | Native image generation, editable canvas integrations, host rendering, and orchestrator graph visualization | 2026-11-02 |
 | [Agent harness session restart and rehydration](agent-harness-session-rehydration.md) | Six harnesses and orchestration systems, state preservation, and interrupted side effects | 2026-10-31 |
+| [Accessibility of agentic coding interfaces](agentic-coding-ui-accessibility.md) | Screen reader and low-vision access to IDE, terminal, and desktop coding agents | 2026-11-01 |
+| [Programmatic tool calling: precedents and implementations](programmatic-tool-calling-precedents.md) | Code actions, Code Mode, and PTC from PAL and CodeAct to Claude, OpenAI, Codex CLI, Cloudflare, goose, OpenCode, and Droid | 2026-11-01 |
+| [How Factory Droid 1.0 works](factory-droid-1-0-harness.md) | Droid 1.0 harness design: Script-based tool calling, Agent Factory loop, caching, safeguards, latency, SDK, and claim quality | 2026-11-01 |
 
 ## Adding a topic
 

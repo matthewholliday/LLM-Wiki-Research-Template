@@ -1,0 +1,244 @@
+Title: GitHub - excalidraw/excalidraw-mcp: Fast and streamable Excalidraw MCP App · GitHub
+Requested URL: https://github.com/excalidraw/excalidraw-mcp
+Resolved URL: https://github.com/excalidraw/excalidraw-mcp
+Retrieved: 2026-11-02
+Format: FetchUrl Markdown text snapshot, not original HTML. Lines of 10,000 or more characters (embedded metadata or oversized content) omitted.
+
+[Skip to content](https://github.com/excalidraw/excalidraw-mcp#start-of-content)
+
+You signed in with another tab or window. [Reload](https://github.com/excalidraw/excalidraw-mcp) to refresh your session.You signed out in another tab or window. [Reload](https://github.com/excalidraw/excalidraw-mcp) to refresh your session.You switched accounts on another tab or window. [Reload](https://github.com/excalidraw/excalidraw-mcp) to refresh your session.Dismiss alert
+
+{{ message }}
+
+main
+
+[**16** Branches](https://github.com/excalidraw/excalidraw-mcp/branches) [**5** Tags](https://github.com/excalidraw/excalidraw-mcp/tags)
+
+[Go to Branches page](https://github.com/excalidraw/excalidraw-mcp/branches)[Go to Tags page](https://github.com/excalidraw/excalidraw-mcp/tags)
+
+Go to file
+
+Code
+
+Open more actions menu
+
+## Latest commit
+
+[![antonpk1](https://avatars.githubusercontent.com/u/105124934?v=4&size=40)](https://github.com/antonpk1)[antonpk1](https://github.com/excalidraw/excalidraw-mcp/commits?author=antonpk1)
+
+[fix: mobile fullscreen layout — safe area insets + export button (](https://github.com/excalidraw/excalidraw-mcp/commit/157aa23ceb1976008aadc89eb05e3444060f09d6) [#55](https://github.com/excalidraw/excalidraw-mcp/pull/55) [)](https://github.com/excalidraw/excalidraw-mcp/commit/157aa23ceb1976008aadc89eb05e3444060f09d6)
+
+Open commit detailssuccess
+
+8 months agoMar 24, 2026
+
+[157aa23](https://github.com/excalidraw/excalidraw-mcp/commit/157aa23ceb1976008aadc89eb05e3444060f09d6) · 8 months agoMar 24, 2026
+
+## History
+
+[76 Commits](https://github.com/excalidraw/excalidraw-mcp/commits/main/)
+
+Open commit details
+
+[View commit history for this file.](https://github.com/excalidraw/excalidraw-mcp/commits/main/) 76 Commits
+
+## Folders and files
+
+| Name | Name | Last commit message | Last commit date |
+| --- | --- | --- | --- |
+| [api](https://github.com/excalidraw/excalidraw-mcp/tree/main/api "api") | [api](https://github.com/excalidraw/excalidraw-mcp/tree/main/api "api") | [feat: server-side checkpoint storage](https://github.com/excalidraw/excalidraw-mcp/commit/32d0bcd90aaa710c890bf9d626c62715c7b2ccbc "feat: server-side checkpoint storage  - Add CheckpointStore interface with File, Memory, and Redis backends - Server resolves restoreCheckpoint references in create_view (no recursive checkpoints) - Checkpoints validated on restore (isError if missing) - Widget uses callServerTool for checkpoint load during streaming - localStorage keyed by checkpointId for local cache (fast path) - User edits in fullscreen sync to server via save_checkpoint - Camera aspect ratio hint (nudges toward 4:3) - Delete cascades to bound text (containerId) - convertRawElements preserves cameraUpdate through conversion - Camera fallback from base when new elements have no cameraUpdate - 18-char checkpoint IDs (crypto.randomUUID) for global uniqueness") | 9 months agoFeb 8, 2026 |
+| [docs](https://github.com/excalidraw/excalidraw-mcp/tree/main/docs "docs") | [docs](https://github.com/excalidraw/excalidraw-mcp/tree/main/docs "docs") | [Update demo GIF with final version](https://github.com/excalidraw/excalidraw-mcp/commit/42749ad09f5f5b528614e4f64a30da19056bdaa5 "Update demo GIF with final version") | 9 months agoFeb 9, 2026 |
+| [scripts](https://github.com/excalidraw/excalidraw-mcp/tree/main/scripts "scripts") | [scripts](https://github.com/excalidraw/excalidraw-mcp/tree/main/scripts "scripts") | [build: make build work cross-os (](https://github.com/excalidraw/excalidraw-mcp/commit/9d8220516748fb4fd5ebc6da6511bdde5c02a298 "build: make build work cross-os (#24)") [#24](https://github.com/excalidraw/excalidraw-mcp/pull/24) [)](https://github.com/excalidraw/excalidraw-mcp/commit/9d8220516748fb4fd5ebc6da6511bdde5c02a298 "build: make build work cross-os (#24)") | 9 months agoFeb 13, 2026 |
+| [src](https://github.com/excalidraw/excalidraw-mcp/tree/main/src "src") | [src](https://github.com/excalidraw/excalidraw-mcp/tree/main/src "src") | [fix: mobile fullscreen layout — safe area insets + export button (](https://github.com/excalidraw/excalidraw-mcp/commit/157aa23ceb1976008aadc89eb05e3444060f09d6 "fix: mobile fullscreen layout — safe area insets + export button (#55)  On iOS devices in fullscreen mode, the Excalidraw toolbar was rendering under the status bar/notch, making toolbar buttons unclickable. The 'Open in Excalidraw' export button also didn't fit in the top-right alongside the lock/hand icons on narrow viewports.  Changes (both gated on viewport width <=640px — desktop unchanged):  1. Bridge hostContext.safeAreaInsets to Excalidraw's native    --sat/--sar/--sab/--sal CSS variables. Excalidraw's .FixedSideContainer    already reads these to offset its floating UI chrome, keeping the    canvas full-bleed. env(safe-area-inset-*) returns 0 inside cross-origin    iframes on iOS, so host-supplied pixel values are the only reliable    source.  2. Move the export button from renderTopRightUI to a floating slot below    the toolbar row on narrow viewports, rendered as icon-only.") [#55](https://github.com/excalidraw/excalidraw-mcp/pull/55) [)](https://github.com/excalidraw/excalidraw-mcp/commit/157aa23ceb1976008aadc89eb05e3444060f09d6 "fix: mobile fullscreen layout — safe area insets + export button (#55)  On iOS devices in fullscreen mode, the Excalidraw toolbar was rendering under the status bar/notch, making toolbar buttons unclickable. The 'Open in Excalidraw' export button also didn't fit in the top-right alongside the lock/hand icons on narrow viewports.  Changes (both gated on viewport width <=640px — desktop unchanged):  1. Bridge hostContext.safeAreaInsets to Excalidraw's native    --sat/--sar/--sab/--sal CSS variables. Excalidraw's .FixedSideContainer    already reads these to offset its floating UI chrome, keeping the    canvas full-bleed. env(safe-area-inset-*) returns 0 inside cross-origin    iframes on iOS, so host-supplied pixel values are the only reliable    source.  2. Move the export button from renderTopRightUI to a floating slot below    the toolbar row on narrow viewports, rendered as icon-only.") | 8 months agoMar 24, 2026 |
+| [.gitignore](https://github.com/excalidraw/excalidraw-mcp/blob/main/.gitignore ".gitignore") | [.gitignore](https://github.com/excalidraw/excalidraw-mcp/blob/main/.gitignore ".gitignore") | [build: make build work cross-os (](https://github.com/excalidraw/excalidraw-mcp/commit/9d8220516748fb4fd5ebc6da6511bdde5c02a298 "build: make build work cross-os (#24)") [#24](https://github.com/excalidraw/excalidraw-mcp/pull/24) [)](https://github.com/excalidraw/excalidraw-mcp/commit/9d8220516748fb4fd5ebc6da6511bdde5c02a298 "build: make build work cross-os (#24)") | 9 months agoFeb 13, 2026 |
+| [.mcpbignore](https://github.com/excalidraw/excalidraw-mcp/blob/main/.mcpbignore ".mcpbignore") | [.mcpbignore](https://github.com/excalidraw/excalidraw-mcp/blob/main/.mcpbignore ".mcpbignore") | [Initial commit: Excalidraw MCP App Server](https://github.com/excalidraw/excalidraw-mcp/commit/ae9ee6964294793b6bc025b2c9a12be5834a2504 "Initial commit: Excalidraw MCP App Server") | 9 months agoFeb 4, 2026 |
+| [.npmrc](https://github.com/excalidraw/excalidraw-mcp/blob/main/.npmrc ".npmrc") | [.npmrc](https://github.com/excalidraw/excalidraw-mcp/blob/main/.npmrc ".npmrc") | [chore: use pnpm](https://github.com/excalidraw/excalidraw-mcp/commit/a8beae39cade41888f3ebc5757074d5d085fd3c4 "chore: use pnpm") | 9 months agoFeb 13, 2026 |
+| [CLAUDE.md](https://github.com/excalidraw/excalidraw-mcp/blob/main/CLAUDE.md "CLAUDE.md") | [CLAUDE.md](https://github.com/excalidraw/excalidraw-mcp/blob/main/CLAUDE.md "CLAUDE.md") | [chore: add dev vite server (](https://github.com/excalidraw/excalidraw-mcp/commit/8a3e36d39f0d1154461acd1cdf82fa0483c0db6b "chore: add dev vite server (#34)") [#34](https://github.com/excalidraw/excalidraw-mcp/pull/34) [)](https://github.com/excalidraw/excalidraw-mcp/commit/8a3e36d39f0d1154461acd1cdf82fa0483c0db6b "chore: add dev vite server (#34)") | 9 months agoFeb 17, 2026 |
+| [README.md](https://github.com/excalidraw/excalidraw-mcp/blob/main/README.md "README.md") | [README.md](https://github.com/excalidraw/excalidraw-mcp/blob/main/README.md "README.md") | [feat:](https://github.com/excalidraw/excalidraw-mcp/commit/c6d419cf34afac7fb3cd082f51c0f9a919dcacbd "feat: `/` root path mcp (#36)")`/` [root path mcp (](https://github.com/excalidraw/excalidraw-mcp/commit/c6d419cf34afac7fb3cd082f51c0f9a919dcacbd "feat: `/` root path mcp (#36)") [#36](https://github.com/excalidraw/excalidraw-mcp/pull/36) [)](https://github.com/excalidraw/excalidraw-mcp/commit/c6d419cf34afac7fb3cd082f51c0f9a919dcacbd "feat: `/` root path mcp (#36)") | 9 months agoFeb 18, 2026 |
+| [index-dev.html](https://github.com/excalidraw/excalidraw-mcp/blob/main/index-dev.html "index-dev.html") | [index-dev.html](https://github.com/excalidraw/excalidraw-mcp/blob/main/index-dev.html "index-dev.html") | [chore: add dev vite server (](https://github.com/excalidraw/excalidraw-mcp/commit/8a3e36d39f0d1154461acd1cdf82fa0483c0db6b "chore: add dev vite server (#34)") [#34](https://github.com/excalidraw/excalidraw-mcp/pull/34) [)](https://github.com/excalidraw/excalidraw-mcp/commit/8a3e36d39f0d1154461acd1cdf82fa0483c0db6b "chore: add dev vite server (#34)") | 9 months agoFeb 17, 2026 |
+| [manifest.json](https://github.com/excalidraw/excalidraw-mcp/blob/main/manifest.json "manifest.json") | [manifest.json](https://github.com/excalidraw/excalidraw-mcp/blob/main/manifest.json "manifest.json") | [chore: bump version to 0.3.2](https://github.com/excalidraw/excalidraw-mcp/commit/a617657e56337bf195a27612b9d595e539e35c55 "chore: bump version to 0.3.2") | 9 months agoFeb 9, 2026 |
+| [package.json](https://github.com/excalidraw/excalidraw-mcp/blob/main/package.json "package.json") | [package.json](https://github.com/excalidraw/excalidraw-mcp/blob/main/package.json "package.json") | [chore: add dev vite server (](https://github.com/excalidraw/excalidraw-mcp/commit/8a3e36d39f0d1154461acd1cdf82fa0483c0db6b "chore: add dev vite server (#34)") [#34](https://github.com/excalidraw/excalidraw-mcp/pull/34) [)](https://github.com/excalidraw/excalidraw-mcp/commit/8a3e36d39f0d1154461acd1cdf82fa0483c0db6b "chore: add dev vite server (#34)") | 9 months agoFeb 17, 2026 |
+| [pnpm-lock.yaml](https://github.com/excalidraw/excalidraw-mcp/blob/main/pnpm-lock.yaml "pnpm-lock.yaml") | [pnpm-lock.yaml](https://github.com/excalidraw/excalidraw-mcp/blob/main/pnpm-lock.yaml "pnpm-lock.yaml") | [chore: use pnpm](https://github.com/excalidraw/excalidraw-mcp/commit/a8beae39cade41888f3ebc5757074d5d085fd3c4 "chore: use pnpm") | 9 months agoFeb 13, 2026 |
+| [tsconfig.json](https://github.com/excalidraw/excalidraw-mcp/blob/main/tsconfig.json "tsconfig.json") | [tsconfig.json](https://github.com/excalidraw/excalidraw-mcp/blob/main/tsconfig.json "tsconfig.json") | [Initial commit: Excalidraw MCP App Server](https://github.com/excalidraw/excalidraw-mcp/commit/ae9ee6964294793b6bc025b2c9a12be5834a2504 "Initial commit: Excalidraw MCP App Server") | 9 months agoFeb 4, 2026 |
+| [tsconfig.server.json](https://github.com/excalidraw/excalidraw-mcp/blob/main/tsconfig.server.json "tsconfig.server.json") | [tsconfig.server.json](https://github.com/excalidraw/excalidraw-mcp/blob/main/tsconfig.server.json "tsconfig.server.json") | [Move server.ts and main.ts into src/](https://github.com/excalidraw/excalidraw-mcp/commit/f321182507c38184dd9889b13f28c182bd77064f "Move server.ts and main.ts into src/") | 9 months agoFeb 7, 2026 |
+| [vercel.json](https://github.com/excalidraw/excalidraw-mcp/blob/main/vercel.json "vercel.json") | [vercel.json](https://github.com/excalidraw/excalidraw-mcp/blob/main/vercel.json "vercel.json") | [fix(mcp): root route alias for /mcp not working (](https://github.com/excalidraw/excalidraw-mcp/commit/542091bff3517f965b67b77dd5af5566817f682d "fix(mcp): root route alias for /mcp not working (#40)") [#40](https://github.com/excalidraw/excalidraw-mcp/pull/40) [)](https://github.com/excalidraw/excalidraw-mcp/commit/542091bff3517f965b67b77dd5af5566817f682d "fix(mcp): root route alias for /mcp not working (#40)") | 9 months agoFeb 20, 2026 |
+| [vite.config.dev.ts](https://github.com/excalidraw/excalidraw-mcp/blob/main/vite.config.dev.ts "vite.config.dev.ts") | [vite.config.dev.ts](https://github.com/excalidraw/excalidraw-mcp/blob/main/vite.config.dev.ts "vite.config.dev.ts") | [chore: add dev vite server (](https://github.com/excalidraw/excalidraw-mcp/commit/8a3e36d39f0d1154461acd1cdf82fa0483c0db6b "chore: add dev vite server (#34)") [#34](https://github.com/excalidraw/excalidraw-mcp/pull/34) [)](https://github.com/excalidraw/excalidraw-mcp/commit/8a3e36d39f0d1154461acd1cdf82fa0483c0db6b "chore: add dev vite server (#34)") | 9 months agoFeb 17, 2026 |
+| [vite.config.ts](https://github.com/excalidraw/excalidraw-mcp/blob/main/vite.config.ts "vite.config.ts") | [vite.config.ts](https://github.com/excalidraw/excalidraw-mcp/blob/main/vite.config.ts "vite.config.ts") | [build: make build work cross-os (](https://github.com/excalidraw/excalidraw-mcp/commit/9d8220516748fb4fd5ebc6da6511bdde5c02a298 "build: make build work cross-os (#24)") [#24](https://github.com/excalidraw/excalidraw-mcp/pull/24) [)](https://github.com/excalidraw/excalidraw-mcp/commit/9d8220516748fb4fd5ebc6da6511bdde5c02a298 "build: make build work cross-os (#24)") | 9 months agoFeb 13, 2026 |
+| View all files |
+
+## Repository files navigation
+
+# Excalidraw MCP App Server
+
+[Permalink: Excalidraw MCP App Server](https://github.com/excalidraw/excalidraw-mcp#excalidraw-mcp-app-server)
+
+MCP server that streams hand-drawn Excalidraw diagrams with smooth viewport camera control and interactive fullscreen editing.
+
+[![Demo](https://github.com/excalidraw/excalidraw-mcp/raw/main/docs/demo.gif)](https://github.com/excalidraw/excalidraw-mcp/blob/main/docs/demo.gif)[![Demo](https://github.com/excalidraw/excalidraw-mcp/raw/main/docs/demo.gif)](https://github.com/excalidraw/excalidraw-mcp/blob/main/docs/demo.gif)[Open Demo in new window](https://github.com/excalidraw/excalidraw-mcp/blob/main/docs/demo.gif)
+
+## Install
+
+[Permalink: Install](https://github.com/excalidraw/excalidraw-mcp#install)
+
+Works with any client that supports [MCP Apps](https://modelcontextprotocol.io/docs/extensions/apps) — Claude, ChatGPT, VS Code, Goose, and others. If something doesn't work, please [open an issue](https://github.com/antonpk1/excalidraw-mcp-app/issues).
+
+### Remote (recommended)
+
+[Permalink: Remote (recommended)](https://github.com/excalidraw/excalidraw-mcp#remote-recommended)
+
+### `https://mcp.excalidraw.com`
+
+[Permalink: https://mcp.excalidraw.com](https://github.com/excalidraw/excalidraw-mcp#httpsmcpexcalidrawcom)
+
+For apps that don't yet have an official integration, you can add a custom MCP / connector (naming can vary between apps).
+
+### Local
+
+[Permalink: Local](https://github.com/excalidraw/excalidraw-mcp#local)
+
+**Option A: Download Extension**
+
+1. Download `excalidraw-mcp-app.mcpb` from [Releases](https://github.com/antonpk1/excalidraw-mcp-app/releases)
+2. Double-click to install in Claude Desktop
+
+**Option B: Build from Source**
+
+```
+git clone https://github.com/excalidraw/excalidraw-mcp.git
+cd excalidraw-mcp-app
+pnpm install && pnpm run build
+```
+
+Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
+
+```
+{
+  "mcpServers": {
+    "excalidraw": {
+      "command": "node",
+      "args": ["/path/to/excalidraw-mcp-app/dist/index.js", "--stdio"]
+    }
+  }
+}
+```
+
+Restart Claude Desktop.
+
+## Usage
+
+[Permalink: Usage](https://github.com/excalidraw/excalidraw-mcp#usage)
+
+Example prompts:
+
+- "Draw a cute cat using excalidraw"
+- "Draw an architecture diagram showing a user connecting to an API server which talks to a database"
+
+## What are MCP Apps and how can I build one?
+
+[Permalink: What are MCP Apps and how can I build one?](https://github.com/excalidraw/excalidraw-mcp#what-are-mcp-apps-and-how-can-i-build-one)
+
+Text responses can only go so far. Sometimes users need to interact with data, not just read about it. [MCP Apps](https://github.com/modelcontextprotocol/ext-apps/) is an official Model Context Protocol extension that lets servers return interactive HTML interfaces (data visualizations, forms, dashboards) that render directly in the chat.
+
+- **Getting started for humans**: [documentation](https://modelcontextprotocol.io/docs/extensions/apps)
+- **Getting started for AIs**: [skill](https://github.com/modelcontextprotocol/ext-apps/blob/main/plugins/mcp-apps/skills/create-mcp-app/SKILL.md)
+
+## Contributing
+
+[Permalink: Contributing](https://github.com/excalidraw/excalidraw-mcp#contributing)
+
+PRs welcome! See [Local](https://github.com/excalidraw/excalidraw-mcp#local) above for build instructions.
+
+### Deploy your own instance
+
+[Permalink: Deploy your own instance](https://github.com/excalidraw/excalidraw-mcp#deploy-your-own-instance)
+
+You can deploy your own copy to Vercel in a few clicks:
+
+1. Fork this repo
+2. Go to [vercel.com/new](https://vercel.com/new) and import your fork
+3. No environment variables needed — just deploy
+4. Your server will be at `https://your-project.vercel.app/mcp`
+
+### Release checklist
+
+[Permalink: Release checklist](https://github.com/excalidraw/excalidraw-mcp#release-checklist)
+
+For maintainers
+
+```
+# 1. Bump version in manifest.json and package.json
+# 2. Build and pack
+pnpm run build && mcpb pack .
+
+# 3. Create GitHub release
+gh release create v0.3.0 excalidraw-mcp-app.mcpb --title "v0.3.0" --notes "What changed"
+
+# 4. Deploy to Vercel
+vercel --prod
+```
+
+## Credits
+
+[Permalink: Credits](https://github.com/excalidraw/excalidraw-mcp#credits)
+
+Built with [Excalidraw](https://github.com/excalidraw/excalidraw) — a virtual whiteboard for sketching hand-drawn like diagrams.
+
+## License
+
+[Permalink: License](https://github.com/excalidraw/excalidraw-mcp#license)
+
+MIT
+
+## About
+
+Fast and streamable Excalidraw MCP App
+
+[mcp.excalidraw.com](https://mcp.excalidraw.com/)
+
+### Resources
+
+[Readme](https://github.com/excalidraw/excalidraw-mcp#readme-ov-file)
+
+[Activity](https://github.com/excalidraw/excalidraw-mcp/activity)
+
+[Custom properties](https://github.com/excalidraw/excalidraw-mcp/custom-properties)
+
+### Stars
+
+**5.6k** stars
+
+### Watchers
+
+**14** watching
+
+### Forks
+
+[**533** forks](https://github.com/excalidraw/excalidraw-mcp/forks)
+
+[Report repository](https://github.com/contact/report-content?content_url=https%3A%2F%2Fgithub.com%2Fexcalidraw%2Fexcalidraw-mcp&report=excalidraw+%28user%29)
+
+## [Releases](https://github.com/excalidraw/excalidraw-mcp/releases) 5 (5)
+
+[v0.3.2Latest\\
+\\
+9 months agoFeb 9, 2026](https://github.com/excalidraw/excalidraw-mcp/releases/tag/v0.3.2)
+
+[\+ 4 releases](https://github.com/excalidraw/excalidraw-mcp/releases)
+
+## [Contributors](https://github.com/excalidraw/excalidraw-mcp/graphs/contributors) 6 (6)
+
+- [![@antonpk1](https://avatars.githubusercontent.com/u/105124934?s=64&v=4)](https://github.com/antonpk1)
+- [![@dwelle](https://avatars.githubusercontent.com/u/5153846?s=64&v=4)](https://github.com/dwelle)
+- [![@claude](https://avatars.githubusercontent.com/u/81847?s=64&v=4)](https://github.com/claude)
+- [![@debu-sinha](https://avatars.githubusercontent.com/u/5815352?s=64&v=4)](https://github.com/debu-sinha)
+- [![@sachinsmc](https://avatars.githubusercontent.com/u/17000862?s=64&v=4)](https://github.com/sachinsmc)
+- [![@Avcharov](https://avatars.githubusercontent.com/u/72924156?s=64&v=4)](https://github.com/Avcharov)
+
+## Languages
+
+- [TypeScript90.8%](https://github.com/excalidraw/excalidraw-mcp/search?l=typescript)
+- [JavaScript4.5%](https://github.com/excalidraw/excalidraw-mcp/search?l=javascript)
+- [CSS4.1%](https://github.com/excalidraw/excalidraw-mcp/search?l=css)
+- [HTML0.6%](https://github.com/excalidraw/excalidraw-mcp/search?l=html)
+
+You can’t perform that action at this time.

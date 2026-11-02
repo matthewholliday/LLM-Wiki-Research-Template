@@ -1,0 +1,131 @@
+Source URL: https://github.com/openai/codex/issues/20489
+Effective URL: https://github.com/openai/codex/issues/20489
+Title: GitHub Issue #20489: Add a screen-reader-friendly Codex TUI mode (Public)
+Captured: 2026-11-01 via FetchUrl Markdown extraction (text snapshot, not original HTML). Long CSS/style lines removed.
+
+---
+
+Title: Add a screen-reader-friendly Codex TUI mode
+URL: https://github.com/openai/codex/issues/20489
+Description: Body: I know external contributions may not be open right now, but I have a local fix ready if the team wants it or wants to use it as a reference.
+
+VoiceOver users currently hear decorative terminal UI as content while Codex is working. For example, active command/status rows can be announced as repeated spaces, bullets, "running", and box-drawing characters. This interrupts reading code and makes it hard to review terminal output while Codex is still producing updates.
+
+The main pain points:
+
+- Live command/status rows are re-rendered with spinner/bullet/shimmer-style decoration.
+- Box drawing such as `│` and `└` is announced as "box drawing".
+- When new content arrives, VoiceOver may re-read older completed transcript content, causing the user to lose their place.
+
+Recommended behavior:
+
+- Add `codex --screen-reader` or `codex --accessible`.
+- Disable spinner/shimmer/decorative bullets in that mode.
+- Render plain indentation instead of box drawing.
+- Minimize redraws that cause completed history to be treated as new spoken content.
+- Keep the current visual TUI unchanged for users who want it.
+
+I have a branch with a first patch that starts by making the no-animation path quieter for active exec/status rows and removing box drawing from exec output prefixes.
+
+
+Status: open
+Labels: enhancement, TUI
+
+Comments:
+
+User: taylorarndt
+Message: I pushed the local reference branch here: https://github.com/taylorarndt/codex/tree/fix/voiceover-screen-reader-tui\n\nVerification run locally:\n\n```text\ncargo test -p codex-tui\n```\n\nThe patch keeps the default visual TUI path unchanged and only makes the existing no-animation path quieter: active exec/status rows omit spinner/bullet decoration, and exec output prefixes use plain indentation instead of box drawing.
+
+User: github-actions[bot]
+Message: Potential duplicates detected. Please review them and close your issue if it is a duplicate.
+
+- #18978
+- #20063
+
+*Powered by [Codex Action](https://github.com/openai/codex-action)*
+
+User: etraut-openai
+Message: Thanks for the suggestion. As you are aware, we already have the beginnings of this with the `animations = false` config flag, which you can add to the `[tui]` section of your config file. This disables all spinners, shimmers, and other animations that can interfere with a screen reader. I like the approach you've explored where we build upon this existing feature for incremental improvements.
+
+User: taylorarndt
+Message: Update on the proof-of-concept branch: I expanded it to remove additional box-drawing prefixes from more transcript surfaces, including status details, unified exec interaction input, MCP detail rows, plan updates, image/file detail rows, multi-agent event details, and multi-file diff headers.\n\nFor local macOS VoiceOver testing, I am also running the patched binary with no alternate screen so the terminal behaves more like normal scrollback instead of a fullscreen redraw surface. That is a mitigation for the issue where VoiceOver can start reading from the top/older history when new content arrives.\n\nI also found another related Mac issue: character echo while typing in the TUI composer is not reliable for VoiceOver, likely because the terminal UI owns raw keyboard input rather than exposing a native text field. I think that should be part of the screen-reader-friendly mode design as well.\n\nVerification still passes locally:\n\n```text\ncargo test -p codex-tui\n```
+
+User: etraut-openai
+Message: I've introduced a small change that fixes some recent regressions. Animations were added that were not conditioned on the `tui.animations` config key. These are not fix, and I've restructured the code to help avoid future regressions like this. 
+
+This doesn't address the full feature request, but it's a start.
+
+User: alexoloopios
+Message: I just came across this, I wonder if there's much progress on this as the last thing that was done appears to have been back in May.
+
+User: Menelion
+Message: @etraut-openai Sorry to be that guy, but just wanted to point out that your competitor (a company starting with A, and their assistant name starts with C) already implemented a decent thing in their TUI. Not perfect maybe, but very, very decent. Thanks!
+
+User: fcnjd
+Message: @etraut-openai As a screenreader user, I found a config value `tui.screen_reader_detection_done` auto added and correctly set to true, which looks like work has started on this. That's very awesome to see, but please keep in mind: Every screenreader together with every workflow of the persons using it is different. Therefore, what @Menelion mentioned is technically correct, but not everything that was done is always helpful. As an example, in above mentioned software I don't use the screenreader mode, and have manually reverted Codex to show animations. As a Braille display user, it is actually helping me: Since Codex prefixed the window title with a Braille ASCII character while it was doing work, I could continue my other stuff, and just check through the window list with alt+tab. If there's no char before the title, I know that it's my turn again. With animations disabled, I have to visit that window and check if codex is still working, or work is done already. So, many things could help screenreader users in different ways, but please add every change as separate toggle rather than an all-or-nothing mode. Thank you very much, I'd be happy if same mistake isn't also done with Codex.
+
+User: fcnjd
+Message: What I'd also consider an important fix: Use of native terminal's cursor. Currently, when walking through a menu (take the model picker as an example), the selected item is prefixed by a fixed char. That's fine, but terminal cursor always stays at the bottom of the window, requiring more key presses to tether and untether Braille. It would be better if cursor would be placed where it's supposed to be, natively.
+
+User: Engccer
+Message: I would like to add the following concrete requirements to this request for an explicit, persistent screen-reader accessibility mode in Codex CLI.
+
+Tables in assistant responses are difficult to navigate with a screen reader. Interactive choices and decorative output also make it harder to read and operate the CLI efficiently. Please provide a mode that covers both assistant response formatting and terminal interaction:
+
+1. **Linear response formatting:** Prefer labeled lists or plain text instead of tables. When presenting tabular information, preserve the relationships between labels and values in a format that can be read sequentially.
+2. **Explicit numbered selection:** For prompts with choices, announce each option with a number and allow the user to type that number and press Enter to select it. This should work for approval prompts, clarification questions, and CLI menus without requiring visual tracking of a highlighted row. Clearly announce the selected option and validation errors.
+3. **No blank layout rows:** Remove empty lines used for decorative spacing in the accessible transcript and menus. Preserve meaningful whitespace inside code and preformatted content.
+4. **No Astra sparkle effects:** Disable Astra stars/sparkles, shimmer effects, spinners, and other decorative animation in this mode. The Astra decoration is also discussed in #44561. Convey working, waiting for input, and completed states through stable, readable text.
+5. **Complete keyboard access to history:** Make all earlier prompts, responses, tool output, and choices available for review with the keyboard and a screen reader, including content outside the current viewport. Provide predictable navigation and preserve the user's reading position when new output arrives.
+
+Please expose this as a discoverable mode that can be enabled explicitly and saved in configuration. Screen-reader detection and `tui.animations = false` are useful starting points, but the requested mode also needs to address response structure, selection controls, spacing, and transcript navigation. Individual settings should remain adjustable to accommodate different speech and Braille workflows.
+
+Current environment: Codex CLI 0.159.3 on Windows. These are requested accessibility behaviors, not a claim that every individual behavior above has been independently tested as a regression in this version.
+
+
+User: chrisnestrud
+Message: Adding a concrete SSH reproduction to the screen-reader mode request.
+
+**Environment**
+- Codex CLI 0.160.0 running on a remote Linux host
+- JAWS 2026.2510 on Windows
+- Reproduced with SecureCRT 9.7.2 using Xterm emulation and with Windows OpenSSH 9.9p2 (OpenSSL 3.2.4)
+
+**Observed**
+During a short response, JAWS Speech History reads partial answer phrases, then the completed sentence, while repeating prompt, model, and status text between them. The final Codex session contains one assistant response. The SecureCRT VT capture contains repeated writes of the same answer and UI text at cursor-addressed screen positions.
+
+Abridged example: “The Earth is about …” / “150 million kilometers …” / “The Earth is about 150 million kilometers …”, interleaved with repeated “Ask Codex to do anything” and model/status lines.
+
+This makes the response hard to follow while it is generating. I see the same kind of repeated speech through both SSH clients, with JAWS on the Windows side. Since Codex is running remotely, its Linux screen-reader probe may not detect JAWS on the SSH client.
+
+Could an explicit screen-reader mode provide stable, append-oriented updates while keeping live previews as the default? For example, it could announce completed short phrases or sentences once, leave already-announced text unchanged, and publish the unfinished tail when it becomes safe. Concise status updates such as elapsed time can remain.
+
+The live prose preview added in #45135 may increase redraws of changing text, though I can’t establish it as the root cause. Related reports: #11823 covers repeated/partial screen-reader announcements; #44956 motivated streaming prose previews.
+
+
+User: Engccer
+Message: Following up on the history-navigation requirement in [my earlier comment](https://github.com/openai/codex/issues/20489#issuecomment-5924004558), I am encountering a concrete problem with Codex CLI in a terminal on macOS using VoiceOver.
+
+**Observed behavior:** VoiceOver can access only the last portion of the conversation. I cannot use VoiceOver navigation to review earlier user messages and assistant responses. This makes it difficult to revisit instructions or answers during a longer session.
+
+**Requested behavior:** Please make the full retained conversation accessible through keyboard and VoiceOver navigation, including messages outside the currently visible portion of the terminal. I should be able to move backward through earlier messages and then forward again in conversation order. New output should preserve my reading position while I am reviewing history.
+
+The terminal emulator, macOS version, and Codex CLI version for this macOS report have not yet been recorded. The Windows version mentioned in my earlier comment does not describe this environment.
+
+User: Engccer
+Message: Following up on [my earlier macOS VoiceOver report](https://github.com/openai/codex/issues/20489#issuecomment-6047206014): I have now confirmed a working workaround in actual screen-reader use.
+
+Environment: Codex CLI 0.164.0, macOS 27.0.1, Apple Terminal, VoiceOver.
+
+Previously, VoiceOver could access only the last visible portion of the conversation. After resuming the same conversation with `--no-alt-screen`, I could read all of the conversation history in that session. This is a user-tested result, not just an inference from configuration or source code. Animations were already disabled before this test.
+
+Please make the behavior of `--no-alt-screen` the default when the proposed explicit screen-reader mode is enabled. Its persistent configuration equivalent is:
+
+```toml
+[tui]
+alternate_screen = "never"
+```
+
+Users should not have to discover a separate terminal-rendering flag to access earlier messages. Please keep this setting individually adjustable for different screen-reader and Braille workflows.
+
+This resolves the history-access problem in my tested macOS setup; it does not establish that every accessibility issue is resolved. I am also enabling this preference on Windows, but have not yet verified the Windows screen-reader behavior. The broader requests for linear response formatting, numbered selection, and stable reading position still stand.

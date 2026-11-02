@@ -1,0 +1,72 @@
+Source URL: https://github.com/anomalyco/opencode/issues/8565
+Effective URL: https://github.com/anomalyco/opencode/issues/8565
+Title: GitHub Issue #8565: [FEATURE]:Accessibility mode for screen reader users (Public)
+Captured: 2026-11-01 via FetchUrl Markdown extraction (text snapshot, not original HTML). Long CSS/style lines removed.
+
+---
+
+Title: [FEATURE]:Accessibility mode for screen reader users
+URL: https://github.com/anomalyco/opencode/issues/8565
+Description: Body: ### Feature hasn't been suggested before.
+
+- [x] I have verified this feature I'm about to request hasn't been suggested before.
+
+### Describe the enhancement you want to request
+
+At the moment, Opencode is actively hostile to any screen readers trying to use the TUI. Emojis, animations and unicode characters add extra noise the text to speech voice is reading to a blind user, which are only there for visual effects in the first place. An accessibility mode would remove those and replace them with more textual equivalents, for instance the spinner being changed to some text when the AI is working and not constantly updating, as this makes the screen reader's review focus jump to the bottom of the window or close to it every time a text update happens.
+
+Status: closed (not_planned)
+Assignees: kommander
+Labels: opentui, discussion
+
+Comments:
+
+User: github-actions[bot]
+Message: This issue might be a duplicate of existing issues. Please check:
+- #6240: Add hints toggle to declutter UI - Proposes hiding UI hints like keyboard shortcuts to reduce screen clutter
+- #4786: Focus mode to toggle off all the decorations - Requests a mode to hide UI decorations and focus on content
+
+Both of these issues address similar concerns about reducing visual noise and clutter in the TUI interface. Your accessibility focus for screen readers is a compelling use case that could strengthen those feature requests. Feel free to ignore if your specific case requires a different approach.
+
+User: taylorarndt
+Message: what is  the status of this issue?
+
+User: destructatron
+Message: I'm not sure honestly. It's got some attention in another issue since this one got mentioned, I have a PR that I've been cleaning up and getting rid of merge conflicts for over the past month, but apart from that, crickets on the PR except for someone else who wants this implemented. It's perfectly good code, I tested it and it works, standards checks pass, etc.
+
+User: taylorarndt
+Message: Does all the providers  work after your changes? is there a way I can try it? 
+
+User: taylorarndt
+Message: Thanks for looking this @kommander  did you see the pr that goes with this issue? What can we do to get this merged. https://github.com/anomalyco/opencode/pull/8563 @destructatron  I think we are making progress.
+
+User: destructatron
+Message: For now until this hopefully gets merged, the PR is literally just an a11y-fixes branch of my opencode fork. So you can clone opencode from my account, and switch to the a11y-fixes branch. it needs a tui.accessibility entry in opencode.json with values, those values are in the docs for that branch. Also, yeah the providers work. The only thing that was changed was how you navigate dialogs and stuff. Activating them still calls the same functions the normal TUI does, just the way you do it is different and more screen reader friendly.
+
+User: kommander
+Message: Thank you for your effort here. Doing this in opencode via memoized values and branching explodes complexity and we would not be able to maintain that at the moment. There are efforts to support accessibility features on a lower level in the OpenTUI lib: [https://github.com/anomalyco/opentui/issues/423](<https://github.com/anomalyco/opentui/issues/423>) - there is currently no capacity though.
+
+User: github-actions[bot]
+Message: To stay organized issues are automatically closed after 60 days of no activity. If the issue is still relevant please open a new one.
+
+User: rayo-alcantar
+Message: This solution seems optimal to me. At the moment the only cli that added this was Gemini CLI, with the --screenReader argument.
+
+User: king-dahmanus
+Message: This is an expansion of this feature request to hopefully make it more likely to be implemented:
+
+The Opencode GUI is not accessible to screen readers, agent messages can't be read and I didn't explore further beyond that to determin the specifics since it's unusable.
+
+TUI is a bit better. Messages can be read somewhat, agent questions can be answered with some mental gymnastics like remembering that the first option doesn't actually get announced and gets a duplicate of the second option. Also, without an external Addon for the NVDA screen reader that only accidentally improves experience of Opencode because it's just called Terminal Access, we can't actually read the messages without moving the mouse randomly up and down until it focuses on the window and reads the whole screen from top to bottom (every new session alert, every context report, every todo item even when it's actually buggy and shows random bits of outdated statistics instead of a handful of real todo items).
+
+Here's a list of some issues with accessibility:
+•When a question appears, the first option does not get read even when focused with the cursor using up and down arrow keys.
+•Menus, such as the model selection and session switching, are inaccessible. No announcement of the currently focused item, the only way to know is to read the full terminal until the screen reader interrupts a random line with a recognizable element of the menu in question (fri 31 July, Big Pickle). This approach does not actually tell whether things like "search" are clickable and thus the first item, or whether they are unfocusable headings, so selection entails a lot of mental guesswork.
+•No ability to read the current happenings while the agent is thinking or executing except with a random NVDA addon that only worked by accident and was not designed for Opencode TUI.
+
+Easy proposal: fix the bugs as they appear, and/or make an accessibility mode for the TUI specifically to trim constantly repeating elements like session info and context, menu accessibility enhancement, etc.
+
+Hard proposal: remake the GUI to be accessible or have an accessibility mode where everything is properly supported, following the Web Content Accessibility Guidelines' standard, i.e: appropriate use of heading levels for message separation and message content, expandable/collapsable sections in buttons for thoughts and code execution, handling of slash commands, and so on.
+
+Thank you for this great project, hope this issue gets resolved.
+Regards.

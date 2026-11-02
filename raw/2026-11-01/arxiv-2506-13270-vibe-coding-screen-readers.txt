@@ -1,0 +1,1272 @@
+Source URL: https://arxiv.org/html/2506.13270v1
+Effective URL: https://arxiv.org/html/2506.13270v1
+Title: Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape
+Captured: 2026-11-01 via FetchUrl Markdown extraction (text snapshot, not original HTML). Long CSS/style lines removed.
+
+---
+
+[Skip to main content](https://arxiv.org/html/2506.13270v1#infobox)
+
+Title:
+
+Content selection saved. Describe the issue below:
+
+Description:
+
+[License: arXiv.org perpetual non-exclusive license](https://info.arxiv.org/help/license/index.html#licenses-available)
+
+arXiv:2506.13270v1 \[cs.HC\] 16 Jun 2025
+
+# Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape
+
+DOI: [XXXXXXX.XXXXXXX](https://doi.org/XXXXXXX.XXXXXXX)ISBN: 978-1-4503-XXXX-X/2018/06CCS: Human-centered computing HCI theory, concepts and modelsCCS: Human-centered computing Empirical studies in accessibilityCCS: Software and its engineering Software creation and managementCCS: Computing methodologies Artificial intelligence
+
+Nan Chen
+Affiliation: Microsoft Research, Shanghai, Chinaemail: [nanchen@microsoft.com](mailto:nanchen@microsoft.com), Luna K. Qiu
+Affiliation: Microsoft Research, Shanghai, Chinaemail: [lunaqiu@microsoft.com](mailto:lunaqiu@microsoft.com), Arran Zeyu Wang
+Affiliation: University of North Carolina-Chapel Hill, North Carolina, USAemail: [zeyuwang@cs.unc.edu](mailto:zeyuwang@cs.unc.edu), Zilong Wang
+Affiliation: Microsoft Research, Shanghai, Chinaemail: [wangzilong@microsoft.com](mailto:wangzilong@microsoft.com) and Yuqing Yang
+Affiliation: Microsoft Research, Shanghai, Chinaemail: [Yuqing.Yang@microsoft.com](mailto:Yuqing.Yang@microsoft.com)
+
+Received  5 June 2009
+
+###### Abstract.
+
+The rise of generative AI agents has reshaped human-computer interaction and computer-supported cooperative work by shifting users’ roles from direct task execution to supervising machine-driven actions, especially in programming (e.g., “ _vibe coding_”).
+However, there is limited understanding of how screen reader users engage with these systems in practice.
+To address this gap, we conducted a longitudinal study with 16 screen reader users, exploring their experiences with AI code assistants in daily programming scenarios.
+Participants first completed a tutorial with _GitHub Copilot_, then performed a programming task and provided initial feedback. After two weeks of AI-assisted programming, follow-up studies assessed changes in their practices and perceptions.
+Our findings demonstrate that advanced code assistants not only enhance their programming capabilities but also bridge accessibility gaps.
+While the assistant proved beneficial, there remains potential to improve how users convey intent and interpret outputs.
+They also experienced difficulties managing multiple views and maintaining situational awareness.
+More broadly, they encountered barriers in learning advanced tools and expressed a need to retain control.
+Based on these insights, we provide design recommendations for more accessible and inclusive AI-assisted tools.
+
+###### Keywords:
+
+Generative AI, AI Code Assistant, Screen Reader Users, Program Synthesis, Human-AI Interaction and Collaboration, Visual Impairments
+
+## 1\. Introduction
+
+Recent advances in generative artificial intelligence (AI) have profoundly transformed how individuals interact with digital systems and perform tasks across diverse domains. AI-driven tools now support personalized learning in education ( [Kumar et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib42 "")), enable intuitive data visualization ( [Chen et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib20 "")), and streamline information communication ( [Wester et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib82 "")). Among these domains, software development stands out as one of the most promising fields ( [Chen et al., 2021](https://arxiv.org/html/2506.13270v1#bib.bib19 ""); [Liang et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib43 "")).
+
+With the emergence of LLM-based agents ( [Xi et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib86 "")), modern AI code assistants such as _GitHub Copilot_( [GitHub, 2025a](https://arxiv.org/html/2506.13270v1#bib.bib31 "")) and _Cursor_( [Cursor, 2025a](https://arxiv.org/html/2506.13270v1#bib.bib22 "")) are realizing the long-standing vision of intelligent programming support ( [Barstow, 1984](https://arxiv.org/html/2506.13270v1#bib.bib11 "")).
+These tools offer advanced intelligence and automation beyond simple code completion. They can retrieve files, edit code, and correct errors based on execution results—capabilities that are further empowered by the introduction of Agent modes ( [Visual Studio Code Team, 2025](https://arxiv.org/html/2506.13270v1#bib.bib76 ""); [Cursor, 2025b](https://arxiv.org/html/2506.13270v1#bib.bib23 "")).
+Building upon these advancements, a new interaction paradigm—“ _vibe coding_” ( [Review, 2025](https://arxiv.org/html/2506.13270v1#bib.bib60 ""); [Wikipedia contributors, 2024](https://arxiv.org/html/2506.13270v1#bib.bib84 ""))—has emerged, where developers express goals in natural language queries while AI takes on more programming work. This shift makes coding more accessible and redefines developers’ roles from manual coding to guiding and refining AI outputs.
+
+Yet questions remain about whether people with visual impairments can benefit similarly from these advanced AI code assistants.
+These programmers face persistent accessibility and collaboration challenges. They often rely on screen readers to code ( [Mealin and Murphy-Hill, 2012](https://arxiv.org/html/2506.13270v1#bib.bib45 ""); [Albusays and Ludi, 2016](https://arxiv.org/html/2506.13270v1#bib.bib5 "")) while many programming tools are designed with graphical user interfaces (GUIs) that are difficult to access ( [Morris et al., 2018](https://arxiv.org/html/2506.13270v1#bib.bib47 ""); [Sharif et al., 2021](https://arxiv.org/html/2506.13270v1#bib.bib66 "")). Collaborative tasks—such as interpreting design documents ( [Pandey et al., 2021](https://arxiv.org/html/2506.13270v1#bib.bib54 "")) or adapting to sighted programmers’ coding styles ( [Pandey et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib55 ""))—can further increase cognitive load ( [Whitehead, 2007](https://arxiv.org/html/2506.13270v1#bib.bib83 ""); [Hegde and Dewan, 2008](https://arxiv.org/html/2506.13270v1#bib.bib36 ""); [Begel et al., 2010](https://arxiv.org/html/2506.13270v1#bib.bib13 "")).
+Prior work has examined how generative AI tools affect users with visual impairments ( [Shinohara et al., 2022](https://arxiv.org/html/2506.13270v1#bib.bib67 ""); [Adnin and Das, 2024](https://arxiv.org/html/2506.13270v1#bib.bib3 ""); [Perera et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib56 ""); [Alharbi et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib7 "")) and their use of basic code completion or chatbots ( [Flores-Saviaga et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib30 "")). However, less is known about how screen reader users work with more advanced AI assistants that enable autonomous, dynamic workflows.
+To address these gaps, we investigate the following research questions:
+
+- •
+
+
+\[RQ1\]
+
+
+
+How do screen reader users collaborate with advanced AI code assistants, and how do these tools empower them?
+
+- •
+
+
+\[RQ2\]
+
+
+
+What new challenges do screen reader users encounter when using advanced AI code assistants?
+
+
+We conducted a two-week, three-phase longitudinal study (see [Figure 2](https://arxiv.org/html/2506.13270v1#S3.F2 "Figure 2 ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")) involving 16 screen reader users with diverse experience in programming and AI-assisted coding.
+In the initial study, participants completed a tutorial and a programming task simulating real-world scenarios, followed by a semi-structured interview.
+Next, given participants’ limited experience with advanced code assistants, we encouraged them to explore these features during two weeks of regular programming tasks, and documented both positive and negative experiences.
+Finally, we held follow-up interviews to reflect on their real-world usage and the challenges they encountered.
+
+Our findings reveal that advanced code assistants not only enhance screen reader users’ programming capabilities (e.g., code writing and comprehension), but also help bridge accessibility gaps in areas such as UI development.
+Participants favored more advanced and automated features, shifting their roles from directly performing programming tasks to supervising AI-driven actions. However, two critical aspects of this shift—communicating with the AI and reviewing its outputs—remained challenging for participants.
+Additionally, code assistants introduced new difficulties, including the need to switch between multiple views and to maintain awareness of system status and next steps.
+Users also experienced learning challenges with advanced tools and emphasized the importance of maintaining control.
+Based on these findings, we present design recommendations to improve the accessibility of AI-assisted coding and offer broader implications for inclusive human-AI interaction and collaboration.
+In summary, our work makes several contributions to the field of human-computer interaction (HCI) and computer-supported cooperative work (CSCW) (see [Figure 1](https://arxiv.org/html/2506.13270v1#S1.F1 "Figure 1 ‣ 1. Introduction ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") for a detailed roadmap):
+
+- •
+
+
+We provide an in-depth investigation into how screen reader users engage with advanced AI code assistants, exploring both the value and empowerment AI offers.
+
+- •
+
+
+We highlight the need for more accessible communication and review workflows, while also identifying new barriers—managing multiple views and maintaining situational awareness.
+
+- •
+
+
+We discuss broader challenges, including difficulties in learning advanced tools and the need to maintain a sense of control, and offer actionable design recommendations to enhance accessibility in human-AI collaboration.
+
+
+![Refer to caption](https://arxiv.org/html/2506.13270v1/Figure/insights.png)Figure 1. An overview roadmap of the main insights and implications of this paper. From left to right: users’ overarching behavior patterns ( [section 4](https://arxiv.org/html/2506.13270v1#S4 "4. Results Overview: Overarching User Behavior Patterns ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")), design opportunities emerging from practices, ( [section 5](https://arxiv.org/html/2506.13270v1#S5 "5. In-Depth Analysis: On Accessible Human-AI Interaction and Collaboration ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")), and broader implications for future human-AI interaction and collaboration research and design ( [section 6](https://arxiv.org/html/2506.13270v1#S6 "6. Discussion ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")).
+
+## 2\. Related Work
+
+### 2.1. Human-AI Collaboration with Code Assistants
+
+In recent years, AI-powered code assistants ( [Cursor, 2025a](https://arxiv.org/html/2506.13270v1#bib.bib22 ""); [Cline, 2025](https://arxiv.org/html/2506.13270v1#bib.bib21 ""); [GitHub, 2025a](https://arxiv.org/html/2506.13270v1#bib.bib31 "")) have emerged, transforming human-machine collaboration by enhancing developer productivity through features like code completion, natural language explanations, code editing, and enabling an interactive and conversational coding experience ( [Akhoroz and Yildirim, 2025](https://arxiv.org/html/2506.13270v1#bib.bib4 ""); [Denny et al., 2023](https://arxiv.org/html/2506.13270v1#bib.bib25 ""); [Review, 2025](https://arxiv.org/html/2506.13270v1#bib.bib60 "")).
+These advancements raise important questions about users’ successes and challenges when interacting with these tools ( [Bird et al., 2022](https://arxiv.org/html/2506.13270v1#bib.bib14 ""); [Etsenake and Nagappan, 2024](https://arxiv.org/html/2506.13270v1#bib.bib27 ""); [Sergeyuk et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib64 ""); [Sergeyuk et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib63 ""); [Jiang et al., 2022](https://arxiv.org/html/2506.13270v1#bib.bib37 "")).
+
+Past efforts in this topic have explored diverse aspects of code assistants’ influences, including their usability ( [Liang et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib43 ""); [Dakhel et al., 2023](https://arxiv.org/html/2506.13270v1#bib.bib24 "")), impact on productivity ( [Ziegler et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib90 ""); [Weisz et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib79 "")), user behavior ( [Mozannar et al., 2024a](https://arxiv.org/html/2506.13270v1#bib.bib49 ""); [Barke et al., 2023](https://arxiv.org/html/2506.13270v1#bib.bib10 "")), security implications ( [Asare et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib8 ""); [Perry et al., 2023](https://arxiv.org/html/2506.13270v1#bib.bib57 "")), and educational benefits ( [Kazemitabaar et al., 2023](https://arxiv.org/html/2506.13270v1#bib.bib39 ""); [Puryear and Sprint, 2022](https://arxiv.org/html/2506.13270v1#bib.bib59 "")).
+These tools have demonstrated potential in various programming tasks, such as explaining code, generating tests, and fixing bugs ( [Wermelinger, 2023](https://arxiv.org/html/2506.13270v1#bib.bib81 "")).
+Ziegler et al. ( [Ziegler et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib90 "")) demonstrated that AI programming tools significantly enhance developer productivity, with novice developers experiencing the most substantial improvements.
+A recent study ( [Barke et al., 2023](https://arxiv.org/html/2506.13270v1#bib.bib10 "")) examined how developers interact with Copilot to solve different programming tasks and revealed two archetypal patterns: _acceleration_ when people know their next steps, and _exploration_ when they need to explore what to do next.
+Another empirical study ( [Tang et al., 2023](https://arxiv.org/html/2506.13270v1#bib.bib73 "")) examined how developers validate and repair AI-generated code to ensure correctness and reliability.
+While Copilot improves enterprise productivity, Weisz et al. ( [Weisz et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib79 "")) found that adoption barriers include a lack of trust in AI-generated code and a perceived disconnect from its outputs, which hinder its adoption. These trust issues worsen due to buggy outputs and reproducibility problems ( [Dakhel et al., 2023](https://arxiv.org/html/2506.13270v1#bib.bib24 "")), reducing confidence in the tool’s reliability ( [Wang et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib77 "")).
+Liu et al. ( [Liu et al., 2023](https://arxiv.org/html/2506.13270v1#bib.bib44 "")) noted that the abstraction gap between developers and large language models (LLMs) for code generation introduces additional challenges.
+Addressing these limitations is crucial for improving AI code assistants’ robustness and usability.
+
+Researchers are also examining AI code assistants’ collaborative impact.
+Shah et al. ( [Shah et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib65 "")) studied code assistants in classroom settings, taking the first step toward understanding how senior students utilize GitHub Copilot to navigate and modify large code bases—skills crucial for their future software engineering careers.
+In open-source software development, GitHub Copilot moderately improves individual productivity and participation but increases coordination costs, with a 41.6% increase in integration time ( [Song et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib69 "")). These findings highlight both the opportunities and challenges in integrating AI code assistants into collaborative workflows.
+
+With the advancement of code assistants, a new interaction paradigm, known as “ _vibe coding_” ( [Review, 2025](https://arxiv.org/html/2506.13270v1#bib.bib60 ""); [Wikipedia contributors, 2024](https://arxiv.org/html/2506.13270v1#bib.bib84 "")) has emerged and gained widespread adoption. In this paradigm, programmers express their intent in natural language while the code assistant autonomously implements the functionality. However, whether screen reader users can experience the same convenience and ease remains largely unexplored. This work aims to address this research gap.
+
+### 2.2. Programming and Cooperative Challenges for People with Visual Impairments
+
+StackOverflow’s annual developer survey ( [Stack Overflow, 2022](https://arxiv.org/html/2506.13270v1#bib.bib70 "")), one of the most credible surveys of programmers worldwide, reported that approximately 1.7% of respondents identified as having a visual impairment in 2022.
+This indicates that individuals with visual impairments form a stable and significant group within the programming community.
+However, despite the support of assistive technologies such as screen readers, screen magnifiers, and braille displays, programmers with visual impairments continue to face unique and persistent challenges ( [Siegfried, 2006](https://arxiv.org/html/2506.13270v1#bib.bib68 ""); [Mealin and Murphy-Hill, 2012](https://arxiv.org/html/2506.13270v1#bib.bib45 ""); [Albusays and Ludi, 2016](https://arxiv.org/html/2506.13270v1#bib.bib5 "")).
+
+The challenges faced by developers with visual impairments are multifaceted and fall into five areas ( [Mountapmbeme et al., 2022](https://arxiv.org/html/2506.13270v1#bib.bib48 "")): navigation, comprehension, editing, debugging, and skimming.
+While screen readers are essential for enabling non-visual code access, their inherently linear and auditory nature makes these activities more time-consuming and cognitively demanding ( [Potluri et al., 2018](https://arxiv.org/html/2506.13270v1#bib.bib58 ""); [Albusays et al., 2017](https://arxiv.org/html/2506.13270v1#bib.bib6 "")).
+The linear output makes it challenging to quickly grasp code structure or locate specific information—tasks which sighted developers easily accomplish through visual cues such as indentation and color-coding ( [Kearney-Volpe and Hurst, 2021](https://arxiv.org/html/2506.13270v1#bib.bib40 "")).
+Many developers with visual impairments prefer text editors over integrated development environments (IDEs) because text editors tend to work better with assistive technologies ( [Albusays and Ludi, 2016](https://arxiv.org/html/2506.13270v1#bib.bib5 "")).
+Though IDEs like _Visual Studio Code_( [Seo and Rogge, 2023](https://arxiv.org/html/2506.13270v1#bib.bib62 "")) have made efforts to improve accessibility, they and the broader programming ecosystem remain challenging for users with visual impairments due to their heavy reliance on visual interfaces and limited screen reader compatibility ( [Mountapmbeme et al., 2022](https://arxiv.org/html/2506.13270v1#bib.bib48 ""); [Pandey et al., 2021](https://arxiv.org/html/2506.13270v1#bib.bib54 "")).
+Furthermore, tools and resources beyond IDEs present even greater accessibility challenges ( [Storer et al., 2021](https://arxiv.org/html/2506.13270v1#bib.bib71 "")). Command line interfaces, for instance, create additional accessibility issues due to their unstructured text nature( [Sampath et al., 2021](https://arxiv.org/html/2506.13270v1#bib.bib61 "")).
+
+Cooperation, a cornerstone of modern software development, presents its own set of barriers for developers with visual impairments.
+Pandey et al. ( [Pandey et al., 2021](https://arxiv.org/html/2506.13270v1#bib.bib54 "")) identified several challenging tasks: pair programming (which depends on shared screens and often lacks assistive technologies on colleagues’ machines) and code reviews (which require visual comparison and reasoning about code changes).
+Furthermore, understanding existing code written by other developers or learning new functionalities and APIs of programming languages can pose significant barriers since most documentation and explanations typically rely on visual reasoning and diagrams ( [Zen et al., 2023](https://arxiv.org/html/2506.13270v1#bib.bib88 "")).
+Additionally, since sighted developers and developers with visual impairments access information differently, existing code readability norms—shaped by the preferences of sighted developers—can make it difficult for developers with visual impairments to read code written by their sighted peers ( [Pandey et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib55 "")).
+Further, some developers with visual impairments may hesitate to ask for sighted assistance, fearing they might appear less competent or burden their colleagues, as they often face marginalization in mainstream development ( [Johnson et al., 2022](https://arxiv.org/html/2506.13270v1#bib.bib38 "")). These challenges become particularly acute when working with UI frameworks and web development ( [Pandey et al., 2022](https://arxiv.org/html/2506.13270v1#bib.bib53 ""); [Ferrari and Hurst, 2021](https://arxiv.org/html/2506.13270v1#bib.bib28 "")).
+
+Our work aims to investigate whether advanced AI code assistants can alleviate the challenges faced by screen reader developers or introduce new barriers. Through our findings, we hope to propose actionable design recommendations that promote more accessible programming experiences for screen reader developers in the future.
+
+### 2.3. Human-AI Interaction for People with Visual Impairments
+
+In recent years, broader studies have begun to explore how individuals with visual impairments interact and engage with AI tools ( [Atcheson et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib9 ""); [Tang et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib74 ""); [Perera et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib56 ""); [Gonzalez Penuela et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib34 ""); [Xie et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib87 "")).
+Adnin et al. ( [Adnin and Das, 2024](https://arxiv.org/html/2506.13270v1#bib.bib3 "")) conducted interviews to investigate how blind individuals incorporate mainstream generative AI tools, such as ChatGPT and _Be My AI_( [Be My Eyes, 2025](https://arxiv.org/html/2506.13270v1#bib.bib12 "")), into their everyday lives. They found that blind users navigate various accessibility challenges, inaccuracies, hallucinations, and idiosyncrasies associated with GenAI.
+Perera et al. ( [Perera et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib56 "")) found that screen reader users faced significant accessibility challenges with GenAI in productivity tools, which diminishes their productivity and independence.
+Gonzalez et al. ( [Gonzalez Penuela et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib33 "")) found that in scene description tasks, users were sometimes able to infer useful information even from poor or partially correct descriptions; as a result, their satisfaction and trust did not always align with the actual description accuracy.
+In addition, these tools often lack context awareness and struggle to understand users’ intentions accurately, creating additional challenges for users with visual impairments ( [Xie et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib87 "")).
+To address these challenges, blind people develop adaptive strategies, such as comparing outputs from multiple LLMs to achieve optimal results ( [Alharbi et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib7 "")).
+
+A recent study of 10 developers with visual impairments examined the impact of AI code assistants ( [Flores-Saviaga et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib30 "")). While code assistants streamline repetitive tasks and spark new ideas, they also introduce accessibility barriers through overwhelming suggestions and complex context switching.
+However, the implications of advanced intelligence and automation features—such as automatic file modifications and iterative error correction—remain unexplored.
+Furthermore, their findings were based on limited, short-term interactions with IDE-integrated code assistants rather than extended real-world use.
+Our work addresses these gaps through a two-week, three-phase longitudinal study. We reveal underexplored challenges and opportunities with advanced intelligence and automation features, and propose actionable design recommendations to enhance these tools’ accessibility and usability for screen reader developers.
+
+## 3\. Methodology
+
+During participant recruitment, we found that most users had limited familiarity and experience with IDE-integrated AI code assistants.
+Since a single interview would not provide sufficient insight into their practical use and the challenges they face, we therefore conducted a two-week, three-phase study (see [Figure 2](https://arxiv.org/html/2506.13270v1#S3.F2 "Figure 2 ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")).
+The first phase ( [subsection 3.3](https://arxiv.org/html/2506.13270v1#S3.SS3 "3.3. Initial Study ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")) comprised participants completing a GitHub Copilot tutorial, working on a predefined programming task with Copilot’s assistance, and participating in a semi-structured interview to share their initial impressions.
+In the second phase ( [subsection 3.4](https://arxiv.org/html/2506.13270v1#S3.SS4 "3.4. Two-Week Exploration Phase ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")), participants incorporated Copilot into their daily programming work for two weeks, documenting significant experiences (both positive and negative) using a diary template.
+The final phase ( [subsection 3.5](https://arxiv.org/html/2506.13270v1#S3.SS5 "3.5. Follow-up Study ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")) consisted of a follow-up study examining participants’ real-world experiences with code assistants.
+This mixed-methods approach captured both in-depth, task-based insights and longitudinal, in-situ usage patterns.
+This study was approved by our Institutional Review Board (IRB).
+
+Figure 2. Overview of the three-phase study design. The study included an initial study with 16 participants, a two-week phase where participants used Copilot in regular programming and record their experiences (in total of 31 recorded cases collected), and a follow-up study.
+
+### 3.1. Copilot-assisted Programming
+
+GitHub Copilot ( [GitHub, 2025a](https://arxiv.org/html/2506.13270v1#bib.bib31 "")), released in 2021, is a widely recognized AI code assistant, with numerous studies examining how humans interact with and are impacted by it ( [Barke et al., 2023](https://arxiv.org/html/2506.13270v1#bib.bib10 ""); [Flores-Saviaga et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib30 ""); [Mozannar et al., 2024a](https://arxiv.org/html/2506.13270v1#bib.bib49 "")).
+In this study, we selected Copilot within Visual Studio Code (VS Code) because of its widespread adoption, advanced feature set, and strong accessibility support ( [GitHub, 2025b](https://arxiv.org/html/2506.13270v1#bib.bib32 "")).
+Copilot’s core features include code completion, inline chat, and a dedicated chat panel (see [Figure 3](https://arxiv.org/html/2506.13270v1#S3.F3 "Figure 3 ‣ 3.1. Copilot-assisted Programming ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")). _Code completion_ ( [Figure 3](https://arxiv.org/html/2506.13270v1#S3.F3 "Figure 3 ‣ 3.1. Copilot-assisted Programming ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") (a)) provides real-time suggestions as users type. _Inline chat_ ( [Figure 3](https://arxiv.org/html/2506.13270v1#S3.F3 "Figure 3 ‣ 3.1. Copilot-assisted Programming ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") (b)) enables direct conversational interactions from the editor or terminal, allowing users to request code explanations or modifications for selected code snippets. The chat panel ( [Figure 3](https://arxiv.org/html/2506.13270v1#S3.F3 "Figure 3 ‣ 3.1. Copilot-assisted Programming ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") (c)) serves as an integrated conversational interface, where users can pose programming questions, request code suggestions, and seek explanations.
+
+The chat panel features three distinct modes: (1) _Ask mode_, for general programming queries and code generation; (2) _Edit mode_, for automatic application of Copilot-generated changes to one or more files in the workspace; and (3) _Agent mode_, where Copilot autonomously plans and executes multi-step tasks, including searching for relevant files, making code edits, and running terminal commands, iteratively refining its outputs as needed.
+At the bottom of the chat panel, users can send their requests and attach additional context—such as files, terminal outputs, or other relevant information—and switch between different modes and models to customize their interactions.
+Users can review and modify Copilot’s code changes directly within the editor ( [Figure 3](https://arxiv.org/html/2506.13270v1#S3.F3 "Figure 3 ‣ 3.1. Copilot-assisted Programming ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") (1)) and navigate the message list ( [Figure 3](https://arxiv.org/html/2506.13270v1#S3.F3 "Figure 3 ‣ 3.1. Copilot-assisted Programming ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") (2)). For accessibility, Copilot also offers features such as automatic playback of generated AI responses and an accessible view ( [Figure 3](https://arxiv.org/html/2506.13270v1#S3.F3 "Figure 3 ‣ 3.1. Copilot-assisted Programming ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") (3)), which displays responses in a plain-text format, making it easier for screen reader users to access the information.
+
+![Refer to caption](https://arxiv.org/html/2506.13270v1/copilot.png)Figure 3. Overview of GitHub Copilot features. (a) Code Completion provides real-time code suggestions as users type. (b) Inline Chat enables seamless conversational interaction with the AI directly within the editor or terminal. (c) Chat Panel supports multi-turn conversations with three modes (i.e., _Ask mode_, _Edit mode_, and _Agent mode_). Users can review Copilot responses in three ways: (1) directly reviewing and editing generated code in the editor, (2) navigating the message list in the chat panel, and (3) accessing responses in the accessible view.
+
+### 3.2. Participants
+
+We recruited 16 screen reader users (2 female, 14 male) who had experience using AI for programming support.
+All participants used screen readers (such as _NVDA_( [NV Access, 2025](https://arxiv.org/html/2506.13270v1#bib.bib52 ""))) as their primary method of accessing development environments.
+13 participants were totally blind, while 3 had low vision; of these, P8 and P9 could perceive the screen focus location.
+Among these participants, 7 had prior experience with Copilot, though most had only used the _code completion_ feature and not extensively; only P12 had used the _Ask mode_.
+P10 and P14 had experience with _Cursor_( [Cursor, 2025a](https://arxiv.org/html/2506.13270v1#bib.bib22 "")) (both _Ask mode_ and _Agent mode_), and P16 had used _Cline_( [Cline, 2025](https://arxiv.org/html/2506.13270v1#bib.bib21 "")) for _code completion_, _Ask mode_, and _Edit mode_.
+See [Table 1](https://arxiv.org/html/2506.13270v1#S3.T1 "Table 1 ‣ 3.2. Participants ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") for a summary of participant demographics.
+Each participant received $70 USD (or local equivalent) as compensation for their time and effort, or $55 USD if they did not participate in the follow-up, plus an additional $10 USD to cover a one-month GitHub Copilot subscription.
+
+Table 1. Participants’ demographic and study-related information. Status denotes the participant’s visual status.
+Exp. indicates years of programming experience.
+Freq. denotes coding frequency, categorized as: Daily (multiple times per day), Weekly (multiple times per week), or Monthly (multiple times per month).
+Lang. represents the programming language used during the task.
+Res. indicates the number of completed requirements out of the total for each task.
+
+|     |     |     |     |     |     |     |     |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| ID | Gender | Age | Status | Exp. | Occupation | AI Code Assistant Usage | Freq. | Lang. | Task | Res. |
+| P1 | Male | 34 | Blind | 7 | Freelancer | Copilot, ChatGPT | Daily | Python | T2 | 1/2 |
+| P2 | Male | 39 | Blind | 19 | Game Dev. | Copilot, ChatGPT, Gemini, DeepSeek, Doubao | Daily | JavaScript | T4 | 3/9 |
+| P3 | Male | 29 | Blind | 2 | Masseur | Claude, ChatGPT, Grok, DeepSeek | Daily | Python | T3 | 1/2 |
+| P4 | Male | 42 | Blind | 10 | Software Eng. | ChatGPT, Doubao | Monthly | Python | T4 | 9/10 |
+| P5 | Male | 24 | Blind | 3 | Accessibility Testing & Dev. | ChatGPT, Gemini | Daily | JavaScript | T2 | 1/2 |
+| P6 | Male | 36 | Blind | 18 | Accessibility Testing & Dev. | ChatGPT | Daily | Python | T3 | 1/2 |
+| P7 | Female | 27 | Blind | 7 | Freelancer | - | Monthly | Python | T4 | 6/10 |
+| P8 | Male | 41 | Low Vision | 21 | Developer | DeepSeek, Doubao | Monthly | Python | T3 | 1/2 |
+| P9 | Female | 22 | Low Vision | 1 | Student | ChatGPT, DeepSeek, Copilot | Daily | Python | T2 | 0/2 |
+| P10 | Male | 28 | Blind | 9 | Accessibility Optimization | ChatGPT, Cursor, Copilot | Daily | Python | T1 | 2/2 |
+| P11 | Male | 29 | Low Vision | 5 | Accessibility Testing & Dev. | DeepSeek, Doubao | Weekly | JavaScript | T1 | 0/2 |
+| P12 | Male | 24 | Blind | 3 | Student | ChatGPT, DeepSeek, Copilot | Weekly | Python | T1 | 0/2 |
+| P13 | Male | 32 | Blind | 10 | Accessibility Testing | Doubao, Gemini, ChatGPT, DeepSeek | Daily | Python | T1 | 1/2 |
+| P14 | Male | 29 | Blind | 6 | Software Eng. | Cursor, ChatGPT, Gemini, Copilot | Weekly | Python | T4 | 8/10 |
+| P15 | Male | 35 | Blind | 10 | Accessibility Testing & Dev. | ChatGPT, DeepSeek, Copilot | Daily | Python | T3 | 1/2 |
+| P16 | Male | 45 | Blind | 10 | Masseur | DeepSeek, CLine | Weekly | Python | T2 | 0/2 |
+
+### 3.3. Initial Study
+
+Each study session was conducted remotely, with participants using their own familiar devices and screen readers. Before the study, participants installed the GitHub Copilot extension and set up a suitable Python or Node.js environment. We provided a step-by-step preparation guide and an accessible Copilot user manual, including feature overview, usage instructions, and keyboard shortcuts. Reviewing these materials was optional.
+Each session lasted 110-140 minutes, depending on how quickly participants became comfortable with Copilot.
+With participants’ consent, we recorded their shared screen activity and audio for analysis.
+
+The initial user study consisted of four main steps:
+(1) A background interview about participants’ programming experience and AI code assistant usage.
+(2) A tailored Copilot tutorial based on prior experience, focusing on the introduction of key features and how to use them with screen readers, was provided. Participants were encouraged to try features they had not previously used, such as inline chat, mode switching, context setting, and different output reviewing methods. After addressing the questions, we proceeded with the coding tasks.
+(3) A programming task randomly chosen from four options ( [Table 2](https://arxiv.org/html/2506.13270v1#S3.T2 "Table 2 ‣ 3.3.1. Task ‣ 3.3. Initial Study ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")), with approximately one hour for completion. If unfinished, the task ended with the participant’s consent.
+Participants were asked to enable VS Code’s screencast mode to make their keyboard input visible, and were encouraged to think aloud—describing their thoughts, strategies, and decision-making processes while interacting with Copilot. They could use Copilot as usual or ignore it if preferred. The interviewer provided assistance and clarification as needed, particularly for accessibility barriers and Copilot usage challenges.
+(4) Participants rated their Copilot experience on a 7-point Likert scale (Appendix [Table C](https://arxiv.org/html/2506.13270v1#Ax2.T3 "Table C ‣ Appendix 2: List of Questions during Interviews ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")), followed by a semi-structured interview about their usage patterns, challenges, and observations (Appendix [Table A](https://arxiv.org/html/2506.13270v1#Ax2.T1 "Table A ‣ Appendix 2: List of Questions during Interviews ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")). Participants with experience using other code assistants shared their comparative perspectives.
+
+#### 3.3.1. Task
+
+We selected four common collaborative programming tasks (see [Table 2](https://arxiv.org/html/2506.13270v1#S3.T2 "Table 2 ‣ 3.3.1. Task ‣ 3.3. Initial Study ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")) representing a broad spectrum of real-world software development activities.
+These tasks required participants to implement new features based on the existing codebase and requirements (T1, T2), analyze and format data (T3), and debug others’ code (T4). In summary, these tasks covered requirements analysis, code comprehension, testing, debugging, and documentation.
+
+Each task was adapted from prior AI code assistant studies( [Barke et al., 2023](https://arxiv.org/html/2506.13270v1#bib.bib10 ""); [Mozannar et al., 2024b](https://arxiv.org/html/2506.13270v1#bib.bib50 "")) and benchmark datasets( [Zhang et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib89 "")).
+However, we found that many published tasks were easily resolved by current LLMs with simple prompts, which may be due to their solutions being available online and used as training data.
+Therefore, we revised these tasks and validated them with four professional sighted engineers (each with over five years of experience), with each task reviewed by two engineers, to ensure that advanced LLMs could not solve them in a single attempt.
+With Copilot’s assistance, they completed T1 and T2 in approximately 30 minutes each, T3 in around 20 minutes (the simplest), while T4 proved most challenging—they resolved most bugs within 40 minutes.
+This ensured that participants would interact iteratively with Copilot, allowing us to observe how they reviewed outputs, addressed errors, and engaged in problem-solving throughout the process.
+
+Table 2. Overview of the four programming tasks used in our study. Each task required participants to work with code, documentation, or data originally created by others, simulating realistic collaborative scenarios such as extending existing codebases, writing shareable data reports, or debugging.
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+| ID | Task | Files | Description |
+| T1 | Chat Server ( [Barke et al., 2023](https://arxiv.org/html/2506.13270v1#bib.bib10 "")) | 3 source files <br>\+ 1 README | 1\. Implement server-side logic of a chat application, involving a small state machine. <br>2\. Add a _quit_ command involving changes to two files. |
+| T2 | Chat Client ( [Barke et al., 2023](https://arxiv.org/html/2506.13270v1#bib.bib10 "")) | 3 source files <br>\+ 1 README | 1\. Implement networking code for a chat application, using a custom cryptographic API and standard but often unfamiliar socket API. <br>2\. Same as the second point of _T1_. |
+| T3 | Data Analysis ( [Zhang et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib89 "")) | 1 csv file <br>\+ 1 report.md | 1\. Directly manipulate the data in the CSV file and populate the results into the report according to the specified table format. <br>2\. Perform data cleaning, conduct correlation analysis, and insert the processed values back into the report. |
+| T4 | Calculator ( [Mozannar et al., 2024b](https://arxiv.org/html/2506.13270v1#bib.bib50 "")) | 1 source file | Identify and fix issues in a calculator class, including missing edge case handling and logical errors such as failing to handle invalid operations like division by zero, and incorrect undo logic. The original Python version fails 10 test cases, while the JavaScript version fails 9, as a Python-specific conversion error does not occur in JavaScript syntax. |
+
+### 3.4. Two-Week Exploration Phase
+
+After the initial study, participants spent two weeks using GitHub Copilot in their regular programming activities.
+We provided a structured diary template to record notable positive and negative experiences, focusing on participants’ intentions, features used, satisfaction, and improvement suggestions.
+We included two example entries (one positive, one negative) as references.
+
+### 3.5. Follow-up Study
+
+The follow-up study was conducted approximately two weeks after the exploration phase, lasting about 30 minutes per participant. All except one participant(unavailable due to scheduling) took part and shared their two-week experiences.
+The follow-up session consisted of two parts: (1) a reflection, in which participants elaborated on their documented experiences; and (2) a 7-point Likert scale and semi-structured interview (Appendix [Table B](https://arxiv.org/html/2506.13270v1#Ax2.T2 "Table B ‣ Appendix 2: List of Questions during Interviews ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")). The Likert scale questions were identical to those in the initial study ( [subsection 3.3](https://arxiv.org/html/2506.13270v1#S3.SS3 "3.3. Initial Study ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")); for any changes in ratings, participants were asked to explain the reasons. The semi-structured interview further explored their current Copilot usage patterns and any new accessibility or usability challenges encountered.
+
+### 3.6. Data Analysis
+
+We analyzed the recorded videos, transcripts, Copilot’s chat logs, and user-shared diary records. To ensure the robustness and richness of our analysis, we triangulated findings across these multiple data sources. Our data analysis methodology was theoretically informed and built upon Activity Theory ( [Engestrom, 2000](https://arxiv.org/html/2506.13270v1#bib.bib26 "")) and Grounded Theory ( [Charmaz, 2015](https://arxiv.org/html/2506.13270v1#bib.bib16 "")), as the full procedure is described below.
+
+To systematically analyze how participants engaged with the AI code assistant during the programming process, we first coded their task processes, extracting both their interaction behaviors with encountered problems. We began by randomly selecting one participant’s case from each of the four tasks and annotated these cases with as much thick description as possible ( [Abbott, 2023](https://arxiv.org/html/2506.13270v1#bib.bib2 "")). After agreeing on the annotation standards, we annotated the cases for all participants based on these criteria. During annotation, we repeatedly reviewed video recordings to clarify ambiguous steps or behaviors not evident from transcripts alone, focusing particularly on text entries and keyboard shortcuts. We also conducted open coding for interview responses and user diary records, creating written summaries of each participant’s initial and follow-up study results.
+
+Two authors independently coded the initial transcripts and observation notes. Group discussions—including a third author who also participated in the interviews—were then held to align codes and resolve discrepancies. Regular meetings were conducted to review and iteratively refine the coding schema and emerging themes, ensuring consistency across all annotations. We conducted thematic analysis and codebook refinement iteratively, with multiple rounds of discussion among coders to finalize the set of themes.
+
+In developing the activity schema, we drew on prior work modeling user interaction behaviors ( [Mozannar et al., 2024a](https://arxiv.org/html/2506.13270v1#bib.bib49 ""); [Barke et al., 2023](https://arxiv.org/html/2506.13270v1#bib.bib10 "")) and categorized participants’ interaction behaviors into the following activities. We focused on programming-related activities, excluding unrelated interactions (e.g., resolving network problems).
+Among the observed activities, three represent the most fundamental procedures in resolving a programming task, which we collectively refer to as Coding:
+
+- •
+
+
+Analysis: Analyzing task requirements to determine necessary code edits.
+
+- •
+
+
+Comprehension: Understanding the structure, logic, and purpose of existing code.
+
+- •
+
+
+Writing: Implementing code based on requirements, which includes adding new functionalities, writing analysis results to files, debugging existing bugs, and installing dependencies.
+
+
+Other activities emerged specifically from AI assistant interactions:
+
+- •
+
+
+Prompt Engineering: Converting intentions into natural language queries and configuring appropriate settings (e.g., mode, model, and context) for the AI assistant.
+
+- •
+
+
+Reviewing: Navigating and examining the code or responses to evaluate the suggestions.
+
+- •
+
+
+Validation: Verifying that code suggestions meet requirements through executable actions, such as running the code or writing test cases.
+
+- •
+
+
+Fixing: Resolving errors identified in the code suggestions.
+
+
+## 4\. Results Overview: Overarching User Behavior Patterns
+
+[Figure 1](https://arxiv.org/html/2506.13270v1#S1.F1 "Figure 1 ‣ 1. Introduction ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") presents an overview roadmap of our main results and insights, which are discussed in the following sections.
+In this section, we focus on the overall interaction and collaboration behaviors observed from users’ usage patterns and feedback.
+A summary of users’ self-reported ratings on various aspects of their experience is shown in Appendix [Figure A](https://arxiv.org/html/2506.13270v1#Ax1.F1 "Figure A ‣ Appendix 1: Changes in Self-Reported Ratings of Using AI Code Assistants ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape").
+
+### 4.1. Human-AI Collaboration Patterns in Programming Tasks
+
+[Figure 4](https://arxiv.org/html/2506.13270v1#S4.F4 "Figure 4 ‣ 4.1. Human-AI Collaboration Patterns in Programming Tasks ‣ 4. Results Overview: Overarching User Behavior Patterns ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") illustrates how four representative participants collaborated with the code assistant to complete their programming tasks and where they encountered challenges.
+These cases show that the code assistant not only helped participants in writing code, but also provided valuable support in requirements analysis, code comprehension, validation, and fixing.
+On average, participants spent 61.14 minutes on programming tasks—with 43.88 minutes on programming-related activities, of which 38.29 minutes were human efforts. [Figure 5](https://arxiv.org/html/2506.13270v1#S4.F5 "Figure 5 ‣ 4.1. Human-AI Collaboration Patterns in Programming Tasks ‣ 4. Results Overview: Overarching User Behavior Patterns ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") shows the average time spent on each activity.
+
+![Refer to caption](https://arxiv.org/html/2506.13270v1/Figure/timelines.png)Figure 4. Four users’ timelines—P1 (task: T2), P2 (task: T4), P10 (task: T1), and P15 (task: T3)—during their programming task. Code Assistant indicates when the assistant generated a response or performed an action after receiving a user’s prompt or acceptance. Accessibility Issues denote points where users encountered difficulties that hindered smooth operation during the activity.![Refer to caption](https://arxiv.org/html/2506.13270v1/Figure/fig_human_ai.png)Figure 5. Average time spent by participants on different activity types during programming tasks, categorized by human and assistant contributions.
+
+Among all activities, Reviewing was the most time-consuming, with users spending an average of 11.73 minutes examining the code assistant’s responses.
+Participants reviewed suggestions using various methods: the code editor (2.06 times, 2.61 minutes before accepting; 2.56 times, 2.47 minutes after accepting), the message list (2.50 times, 2.14 minutes), and the accessible view (3.44 times, 3.18 minutes).
+They also reviewed responses via automatic playback and the diff view in the inline chat. Participants switched between these methods based on the complexity of the suggestions and their personal preferences.
+To reduce the burden of manual review, some participants (6 out of 16) sought assistance from the code assistant.
+For example, P5, P10, and P14 asked the assistant to evaluate the completeness of the generated code in meeting specific requirements (e.g., “ _please check the coverage of my unit tests_”), while P1 and P12 inquired about the functionality of the generated code (e.g., “ _Does this code handle incoming messages from the client?_”). Additionally, P6 requested a credibility assessment of the output to ensure its reliability.
+See more details and challenges about reviewing in [subsection 5.2](https://arxiv.org/html/2506.13270v1#S5.SS2 "5.2. Reviewing Generated Responses ‣ 5. In-Depth Analysis: On Accessible Human-AI Interaction and Collaboration ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape").
+
+The second most time-consuming activity was Prompt Engineering, averaging 7.51 minutes per user with 8.38 prompts sent.
+During this time, users spent 5.92 minutes crafting and refining prompts, plus 1.59 minutes on preparation—opening the chat panel, switching modes, selecting models, and configuring context.
+Participants communicated their intentions to the code assistant through prompt engineering, seeking assistance across a range of tasks. These included traditional programming activities such as writing (3.69 prompts), requirements analysis (0.50 prompts), and code comprehension (0.44 prompts). They also leveraged the assistant for validation (1.50 prompts) by executing code or writing test cases, and for fixing (1.50 prompts) to address defects in the AI output. An additional 0.25 prompts addressed miscellaneous needs outside our predefined categories, such as verifying the code assistant’s access to specific files.
+In [subsection 5.1](https://arxiv.org/html/2506.13270v1#S5.SS1 "5.1. Communicating with AI Code Assistant ‣ 5. In-Depth Analysis: On Accessible Human-AI Interaction and Collaboration ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape"), we discuss in detail how participants communicated with the code assistant and the challenges they encountered.
+
+### 4.2. User Experiences: AI’s Value and Empowerment
+
+Participants collectively shared 31 real-world use cases with us, 16 reported as satisfactory, and 15 as unsatisfactory.
+Overall, participants agreed that the code assistant improved their efficiency, enhanced their programming skills, and lowered the barrier to adopting new technologies. As P13 noted, “ _With a code assistant like this, it’s much easier to get started with programming. In everyday life, we have all kinds of needs, and being able to program more easily helps us better meet personalized and customized requirements._”
+
+These collected cases illustrate how the code assistant supported participants in diverse programming scenarios.
+Some participants used AI code assistants for learning purposes, such as exploring new programming languages or identifying suitable technical frameworks and libraries.
+Others leveraged the assistants in development tasks, including adding features to open-source projects, processing subtitle files for audio-described videos, inspecting and optimizing legacy codebases, and drafting software documentation.
+Additionally, several cases highlighted how code assistants bridged accessibility gaps by allowing users to perform tasks that would otherwise be challenging or impossible, such as developing user interfaces (UI), recognizing pin diagrams of electronic components, and converting code screenshots from blogs into editable code.
+
+UI development( [Pandey et al., 2021](https://arxiv.org/html/2506.13270v1#bib.bib54 ""); [Pandey et al., 2022](https://arxiv.org/html/2506.13270v1#bib.bib53 "")) was mentioned as particularly challenging due to its visual nature, yet emerged as the most common scenario among participants. The following two cases illustrate both the opportunities and limitations that Copilot presented in this context:
+
+- •
+
+
+Case from P10: “ _I primarily worked on backend development in the past, as my visual impairment made it difficult for me to handle UI tasks effectively. \[…\] I turned UI-related user feedback into prompts for Copilot to make changes, then asked it to check its generated code and sent interface screenshots for further inspection. I also double-checked the code myself. Once I was confident, I asked a sighted colleague to verify the interface and made further adjustments based on their suggestions. \[…\] It can generate a usable interface, even if the visual design may be basic. Still, this has made my workflow much easier. Before, when I wrote UIs, I focused solely on preventing element overlap—a task that required significant mental energy to determine proper component placement. Now, with Copilot, I no longer have to handle this challenging process alone._”
+
+- •
+
+
+Case from P11: “ _I wanted to provide Copilot with an image and have it help me implement a UI. However, when I asked Copilot if it could assist with images, it responded ‘no.’ I tried switching models several times, but the answer was always the same, so I had to give up._”
+
+
+### 4.3. Feature Preferences: Automation vs. Control
+
+As shown in [Figure 6](https://arxiv.org/html/2506.13270v1#S4.F6 "Figure 6 ‣ 4.3. Feature Preferences: Automation vs. Control ‣ 4. Results Overview: Overarching User Behavior Patterns ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")(a), the most advanced and automated _Agent mode_ was used most frequently during programming tasks, followed by the _Edit mode_ and _Ask mode_. Many participants were eager to try and use the highly automated _Agent mode_ to complete their tasks. As P1 commented, “ _I find Agent mode to be the most powerful, as it includes all the features of Edit mode. I feel that just using this mode is sufficient for my needs._”
+In the follow-up study ( [Figure 6](https://arxiv.org/html/2506.13270v1#S4.F6 "Figure 6 ‣ 4.3. Feature Preferences: Automation vs. Control ‣ 4. Results Overview: Overarching User Behavior Patterns ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")(b)), however, usage patterns shifted: 12 out of 15 participants reported frequently using _Ask mode_, 10 used _Agent mode_, and 5 used _Edit mode_. This shift reflected participants’ growing desire for control.
+
+Most participants viewed _Ask mode_ as a safer choice because it required explicit confirmation before modifying files. As P11 explained, “ _I like to discuss my plan or ask for explanations in Ask mode first, before letting Copilot touch my files._” This approach allowed them to use _Ask mode_ for brainstorming, learning, or clarifying requirements before switching to Edit or Agent mode for actual code changes.
+
+Not everyone shared the same level of comfort with the more autonomous modes. P2, P10, and P12 preferred _Edit mode_ but rarely used _Agent mode_. P12 worried about losing control, stating, “ _I worry that Agent mode will make too many changes._”
+P13, despite frequently used _Agent mode_, noted, “ _I only use Agent mode to generate code, not to execute commands automatically. Letting it execute feels unreliable and doesn’t fit my habit of using external terminal tools; running code myself feels more familiar and gives me more confidence._”
+For P10, it was a matter of efficiency: “ _Agent mode takes too long and doesn’t search files the way I want. It does a lot of unnecessary things and wastes my usage quota. I know exactly which files I need, so Edit mode is sufficient for me._”
+For others, even _Edit mode_ felt risky. P6 and P7 rarely used either _Edit mode_ or _Agent mode_, expressing a strong sense of discomfort with the assistant making direct changes to their files. As P6 described, “ _Agent mode is hard to manage. It edits my files directly, but it’s not easy for me to review, and I’m never sure if I’ve checked everything, especially when multiple blocks are modified. The status notifications also confuse me, and I don’t know what step it’s on._”
+
+Inline chat, by contrast, earned praise from P1 and P6 for offering precise control. P6 noted, “ _With inline chat, I can select specific code and make small changes. The diff view opens automatically, making it easy to review code differences and giving me a greater sense of control._” P1 agreed but pointed out a trade-off: “ _I felt that inline chat was less stable because of how the window floats. A fixed window feels more stable._”
+
+Code completion was less popular among our participants.
+While some initially felt overwhelmed or distracted ( [Flores-Saviaga et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib30 "")), many eventually adapted and found the auditory cues less disruptive. Others encountered practical issues, such as the Tab key conflicting with indentation, uncertainty about when suggestions would appear, and less manual coding resulted in fewer code completions.
+
+Figure 6. Usage and user preference for different Copilot features. (a) Initial study: Number of times each feature was used during programming tasks. (b) Follow-up study: Number of participants reporting frequent use of each feature.
+
+## 5\. In-Depth Analysis: On Accessible Human-AI Interaction and Collaboration
+
+In this section, we further investigate user interaction patterns, especially in communicating with AI ( [subsection 5.1](https://arxiv.org/html/2506.13270v1#S5.SS1 "5.1. Communicating with AI Code Assistant ‣ 5. In-Depth Analysis: On Accessible Human-AI Interaction and Collaboration ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")), reviewing AI-generated responses ( [subsection 5.2](https://arxiv.org/html/2506.13270v1#S5.SS2 "5.2. Reviewing Generated Responses ‣ 5. In-Depth Analysis: On Accessible Human-AI Interaction and Collaboration ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")), switching between views ( [subsection 5.3](https://arxiv.org/html/2506.13270v1#S5.SS3 "5.3. Switching Between Views ‣ 5. In-Depth Analysis: On Accessible Human-AI Interaction and Collaboration ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")), and maintaining awareness of system status and next steps ( [subsection 5.4](https://arxiv.org/html/2506.13270v1#S5.SS4 "5.4. System Status and Next Steps ‣ 5. In-Depth Analysis: On Accessible Human-AI Interaction and Collaboration ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape")).
+These findings highlight the real-world opportunities and challenges of accessible human-AI interaction and collaboration for screen reader users.
+
+### 5.1. Communicating with AI Code Assistant
+
+To ensure accurate interpretation of their intent, participants typically began by configuring the session through the selection of mode, model, and context. After setup, they composed prompts in natural language and submitted them to the assistant. While this process appears straightforward, participants encountered challenges both in basic interaction and in higher-level decisions, such as prompt formulation and model selection for specific needs.
+
+#### 5.1.1. Interaction Experience
+
+Copilot’s rich set of keyboard shortcuts significantly improved participants’ efficiency, convenience, and sense of control in their workflow. As P3 put it, “ _I honestly rely on keyboard shortcuts a lot. Without them, I’d probably get lost in the interface. They really help me stay focused and in control._” The thoughtful shortcut design was especially appreciated. P14 noted, “ _I can use the same shortcut to open and close the chat panel, which is very convenient._” These shortcuts not only improved efficiency but also gave users a greater sense of control and confidence when working with the assistant.
+
+For screen reader users, keyboard shortcuts are a double-edged sword. Many participants expressed frustration when shortcuts conflicted with their established keyboard habits, leading to unexpected behaviors or workflow disruptions.
+Nearly all participants struggled with the up and down arrow keys in the input box—rather than moving between lines in a multi-line prompt, these keys cycled through previous commands, often without users realizing it. As P13 put it, “ _It makes editing multi-line prompts cumbersome._” Some users, like P5, worked around this by composing complex prompts in their clipboard editor to avoid accidental shortcut triggers and enable multi-line editing.
+Context-dependent shortcut behavior created additional confusion. For example, P4 found that pressing Ctrl+I once opened inline chat, but pressing it again unexpectedly opened the command panel, resulting in accidental command input. Similarly, P2 reported that (Ctrl+Enter) in the chat panel would accept a code change, but in the editor, it opened the code completion suggestions panel and shifted the focus to a new window. As P2 expressed, “ _Where am I? How do I close this?_” These contextual inconsistencies in shortcut behavior disrupted workflows and increased cognitive load, highlighting the need for more consistent and predictable shortcut design.
+
+Participants sometimes struggled to obtain timely feedback about current session settings, such as selected mode, model, or context. To check their selected mode or model, they had to open the selector rather than accessing this information directly when focusing on the selector. As P11 described, “ _After writing some code and returning to the chat panel, I forget which mode I selected before. Now it takes several steps to find out my previous choice, which is a bit troublesome._”
+A similar issue occurred with configured context. By default, Copilot uses the open file or selected lines as context, but several participants found it difficult to determine exactly what content was included. As P9 explained, “ _I selected several lines in the editor, but only the file name was announced. I couldn’t tell what was actually being used as context by Copilot._” These challenges highlight the need for more accessible and immediate feedback on session settings for screen reader users.
+
+Implications•Designing consistent and predictable keyboard shortcuts can help users efficiently access key functions and reduce unnecessary navigation within the interface.•Providing accessible and timely access to session settings enables screen reader users to maintain awareness and control with less cognitive effort.
+
+#### 5.1.2. Prompt and Model Selection
+
+Beyond interaction, participants also faced challenges in translating intent into effective prompts, particularly in deciding how much detail to include. When prompts were too concise, Copilot sometimes made incorrect assumptions. For example, P4’s brief prompt like “ _please check if there are errors in the code_” led Copilot to suggest changes to calculation rules that were already documented as unchangeable.
+P9 shared, “ _There was a time when the model made an implicit choice, like importing data row-wise or column-wise, without asking me or clarifying what it was doing. The code was executable, but I only noticed the data processing error when I carefully reviewed the code afterwards._”
+In response, some participants (e.g., P7) provided highly detailed prompts and revised them frequently to avoid misunderstandings and minimize corrections, resulting in increased time spent on prompt crafting and refinement.
+
+This behavior stemmed from uncertainty about the code assistant’s capabilities. As P14 put it, “ _Although there are many models to choose from, I don’t know which models are reliable for which tasks, nor when they might make mistakes._” Similarly, after using Copilot for software documentation, P10 expressed a desire for more specialized models: “ _It would be better if there were a dedicated model for writing documentation. Right now, it’s hard to decide which model is best for documentation. If I could clearly know which model performs best for which task, I would be more confident in my choice._”
+
+Over time, participants developed their own strategies for crafting prompts to communicate more effectively. For example, P8 shared, “ _I now list requirements one by one, and specify the expected outcome. I try to communicate all my needs as clearly as possible, because otherwise, the process of checking the assistant’s reply and then revising the prompt for another response can be quite slow._” P10 emphasized the importance of actively guiding the assistant, “ _It should be you use AI, not AI uses you. At first, I would just let the model do its thing. But over time, I realized that doesn’t work, the model can easily go off track if you don’t guide it. Now, when I have a complex task, I first ask it to clarify and confirm my needs, and only then do I let it modify the code or I make the changes myself. I find I need to give explicit instructions to keep things under control. I’ll say things like ’do not modify the code yet’ or ’make changes step by step’ to make sure it doesn’t rush ahead and change things based on its own assumptions instead of mine._”
+
+Implications•As users become more familiar with the assistant’s capabilities, code assistants should also actively help reduce misunderstandings by prompting users to clarify their intent or provide more details when requests are ambiguous, thereby supporting human-AI co-evolution for better communication.•Providing users with clearer guidance for model selection or automatically recommending suitable models based on user prompts to support more confident collaboration.
+
+### 5.2. Reviewing Generated Responses
+
+Reviewing the outputs from code assistants—both textual explanations and code snippets—is critical for users to understand and evaluate the assistant’s suggestions. However, participants reported several challenges in this process. For example, P16 shared, “ _reviewing responses in CLine wasn’t smooth because of its poor accessibility. So I often just accepted suggestions automatically, then read the files and tested the code, but that made it harder for me to notice what had actually changed._” Similarly, P14 noted, “ _In Cursor, it’s not easy to browse the assistant’s responses efficiently. If there were an easier way to navigate the message list, I would feel more confident about the changes._”
+
+GitHub Copilot provides four primary ways for users to review generated responses: (1) displaying code changes directly in the code editor; (2) structured presentation of messages and code changes in a message list; (3) presenting responses in a plain-text accessible view; and (4) automatic playback of responses via screen reader upon generation.
+Despite these options, participants highlighted the need for more accessible and efficient ways to review and verify assistant-generated content, particularly in tracking code modifications or navigating through multiple responses.
+
+#### 5.2.1. Code Editor
+
+After code edits are applied, users typically return to the editor to review file modifications in detail ( [Figure 3](https://arxiv.org/html/2506.13270v1#S3.F3 "Figure 3 ‣ 3.1. Copilot-assisted Programming ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") (1)).
+VS Code uses earcons ( [Seo and Rogge, 2023](https://arxiv.org/html/2506.13270v1#bib.bib62 "")) (sound cues) to help screen reader users perceive these changes and provide keyboard shortcuts for navigation between modifications.
+
+For programmers, reviewing code directly in the editor is intuitive.
+Meaningful comments in generated code help users understand the logic and reduce the need to switch between views. As P3 shared in the follow-up study, “ _I usually check the modified code directly in the editor first. It’s more straightforward, and with comments, I can generally understand the changes. If I can’t, then I’ll look at the textual explanation._”
+
+Participants also valued sound cues for code modifications.
+P13 commented, “ _The accessible experience isn’t just about adding labels or shortcuts. Having more types of cues, like sound effects, really helps me understand changes better. If there are too many text prompts mixed in, it might actually interfere with my understanding of the code._”
+Meanwhile, some participants found them confusing or difficult to distinguish, which occasionally hindered their ability to interpret code changes accurately. P7 shared, “ _It’s easy to mix up the sound effects and forget what they mean._” P5 added in the follow-up study, “ _I wish there were more direct explanations._” P13, who praised sound cues, also mentioned, “ _At first, I couldn’t tell the different sound effects apart, but since I’m familiar with the code, I could roughly guess whether it was an addition, deletion, or modification. Over time, I gradually got used to them and came to appreciate the benefits of sound cues._”
+
+Participants also expressed a need to clearly understand and track changes.
+P3 explained, “ _When browsing code differences in the diff view, the mixing of unchanged, deleted, and added code makes it hard to follow the changes. Since I can’t scan visually, I have to remember what I just heard. If I could switch between old and new code with a shortcut, it would help me understand the changes better._”
+Another challenge was tracking the number, location, and status of changed code blocks.
+P11 said, “ _If there are many code block changes, I get confused and don’t know how many I have not reviewed. If it could tell me how many items there are and which one I’m on, I’d be clearer._”
+P3 also mentioned, “ _Automatically jumping to the next change after I accept a code change confuses me and makes me lose track of where I am. I wish I could control whether to jump, and if it would automatically read the code line after jumping, that would be more convenient._”
+
+Implications•Support accessible change tracking with sound cues or textual prompts. While sound cues are efficient, some users may have difficulty distinguishing them. Providing concise textual descriptions as an optional feature can help these users understand changes or assist them as they adapt.•Group related information together to reduce navigation effort and cognitive load. For example, including comments in the generated code, or presenting entire changed or unchanged code blocks for each module separately.
+
+#### 5.2.2. Message List
+
+The message list presents each user message and the corresponding assistant response as individual blocks ( [Figure 3](https://arxiv.org/html/2506.13270v1#S3.F3 "Figure 3 ‣ 3.1. Copilot-assisted Programming ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") (2)), allowing users to efficiently navigate between them.
+
+Participants appreciated the structured format of the message list, as it clearly organizes user messages and assistant responses. P10 commented, “ _Compared to the unstructured layout in Cursor, Copilot puts all user messages and responses in a single list, so it’s much easier for me to navigate._” P1 shared that his preference shifted from the accessible view to the message list, stating, “ _The message list has stronger presentation capabilities. VS Code is much like a website. I prefer switching the screen reader to browse mode111Browse mode: A screen reader mode that enables users to navigate content using virtual cursors and structural shortcuts (e.g., headings, buttons) without directly interacting with the application., where I can use familiar shortcuts to jump between headings with H, buttons with B, and code blocks with E, and use the arrow keys to read text_”
+
+Navigation within the message list also posed challenges. While some users enjoyed switching between browse and focus modes222
+
+
+
+Focus mode: A screen reader mode where keystrokes are passed directly to the application, allowing users to interact with interface elements and input text in real time., others found it unfamiliar or uncomfortable. P5 said, “ _After opening a complex application like VS Code, I don’t switch the screen reader mode anymore. When I navigate to a block in the message list, the information is linear and hard to understand._” P9 noted, “ _Replies are sometimes too long, making it inconvenient to browse with arrow keys. If there were a table of contents, it would be much easier._” P5 mentioned during the tutorial, “ _The code block in the message list is an editable input box. Once I enter it, pressing Tab edits inside, and it’s hard to exit._”
+
+In addition, users pointed out that when using _Agent mode_ for multi-turn automatic iteration, all results and changes were presented in a single response block, which was not well structured and made it difficult to locate information. P15 remarked, “ _It would be easier to find the latest changes if automatic iterative fixes were broken down into sections or had headings. Right now, the replies are too long and not well segmented, so it’s hard to quickly locate what’s new._”
+
+In addition, participants had higher expectations for the content of responses.
+Due to concerns about model hallucinations, users often cross-checked generated code with existing code to verify whether referenced methods or properties actually existed. As P12 described, “ _If it could verify whether a referenced function from a non-Python standard library actually exists, and accurately tell me which class and function it’s in, I’d trust its suggestions more. Now, I suspect it’s making things up, which increases my verification time._”
+Other users found that, especially with complex tasks, the model sometimes only partially completed the requirements without making this explicit. For example, P6 submitted an entire report file and expected Copilot to complete all tasks, but only after being notified did the user realize that only the first subtask was completed. P6 said, “ _If it hasn’t read everything, it should tell me._” P2 also noted, “ _It sometimes skips difficult parts and only responds after being prompted again. I can understand this, but if it could indicate what has and hasn’t been completed, I’d be more aware of the situation._”
+
+Implications•Present messages in a structured and navigable way. Group related messages, add headings, or provide a table of contents to help users quickly locate relevant content and reduce cognitive load.•Ensure transparency and verifiability of response content. Reducing model hallucinations and providing more references as evidence can help users quickly verify information and increase trust in the assistant’s suggestions.
+
+#### 5.2.3. Accessible View
+
+The accessible view ( [Figure 3](https://arxiv.org/html/2506.13270v1#S3.F3 "Figure 3 ‣ 3.1. Copilot-assisted Programming ‣ 3. Methodology ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") (3)) in Copilot is designed to alleviate navigation difficulties in the message list. It presents information in a single, plain-text window, allowing users to browse all details using only basic arrow key navigation.
+
+Many participants expressed a preference for the accessible view, citing its ease of learning and simplicity of operation.
+For example, P1 shared, “ _Using the accessible view reduces view switching. After composing my input in the text box, I can keep my focus unchanged. Once the response is generated, I open the accessible view directly from the input box, and after exiting, my focus remains in the input box._” P1 further noted, “ _When I open the accessible view, I can be sure my focus is at the top._” P3 also stated in the follow-up study, “ _Compared to the message list, I use the accessible view more often. Navigating the message list requires too many key operations._”
+However, this convenience comes at the cost of reduced expressiveness. For example, P6 noted that “ _the accessible view sometimes includes markup language or presents formatted information like tables in ways that are difficult to interpret._”
+
+There are also shortcomings related to information completeness, as the accessible view sometimes displays less information than the message list.
+For instance, P5 found that the accessible view only showed the changed code, without indicating which files were affected.
+Additionally, both P2 and P7 suggested that automatic updates to the accessible view would improve usability, as it currently requires manual refreshing to display newly generated content.
+
+Implications•Less is more. Interfaces with fewer UI elements are often easier for screen reader users to control, allowing them to access more information. Providing such a streamlined option can make the tool more approachable and user-friendly. However, it is important to ensure that this simplicity does not come at the expense of information completeness.
+
+#### 5.2.4. Automatic Playback
+
+Automatic playback of responses after they are generated is another accessibility feature provided by Copilot to support accessible review. participants praised the convenience brought by automatic playback. As P4 noted, “ _Automatic reading is convenient; I can hear the generated result without any extra operation._” P6 also mentioned, “ _For simple replies, listening is sufficient for me to understand the content, so I do not need to check it again. This is very convenient._”
+However, some users found it could be disruptive.
+P1 said, “ _After the result is generated, I don’t want it to be read automatically. Just a sound cue is enough. Even if it is read, it is often a long segment. Since the reading is purely linear, it can be difficult to understand._”
+
+Implications•Accessibility features can be a double-edged sword: while they provide convenience, they may also disrupt some users. Like the accessible view, making such features optional allows users to choose what best fits their needs and can better accommodate individual preferences.
+
+### 5.3. Switching Between Views
+
+Interacting with code assistants within an IDE requires users to switch between more views (e.g., editor, message list) to complete tasks. As noted by Flores et al. ( [Flores-Saviaga et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib30 "")), we also observed that users frequently encountered difficulties when switching between different views, a challenge that was particularly evident in the highly automated _Agent mode_.
+
+Participants reported that managing focus across multiple views was challenging and sometimes led to confusion or errors. For example, P7 shared, “ _Sometimes I don’t know where my focus is._” During the programming task, P7 accidentally triggered a shortcut that moved the focus from the chat input box to the editor, resulting in text entered into an open file instead. Similarly, P4 described frequent focus jumps between the chat window and the editor while navigating in the inline chat, stating, “ _How can I get back to the previous window?_”
+
+This complexity was evident when participants needed to gather information from multiple views to understand the assistant’s feedback.
+The introduction of _Agent mode_, which allows automatic code modifications and execution, further exacerbated these challenges. While _Agent mode_ uses the built-in terminal, users had to manage an additional but unfamiliar view. Most participants reported a preference for using external terminals rather than the built-in terminal, as they were concerned about focus traps or found switching between views cumbersome.
+For instance, after automatic execution, P15 had to switch between the editor and the message list to review code changes and explanations. Although the message list indicated a successful result, the terminal showed an error. Only after being noticed by the interviewer did P15 check the terminal and discover the failure.
+P14 also said, “ _I found that terminal output isn’t clearly announced, so I can’t always tell if a command has run or what happened. Even though I can run code in the chat panel, I still need to switch to the terminal to check the results, which adds extra burden._”
+
+Additionally, participants found it difficult to verify results across multiple views. For example, after printing data analysis results in the terminal, P3 and P8 tried to use the terminal output as context for Copilot, hoping it would insert the results into their reports.
+However, the assistant inserted hallucinated data instead of the actual output. After being reminded, users spent significant time understanding the error and had to frequently switch between different views to compare the data. P8 remarked, “ _How can we verify it? It can lie._” P3 added, “ _If it could write the correct result directly into the file, it would save me a lot of steps. But if I still have to check like this, I’d rather copy and paste it myself._”
+
+Implications•All in One. Centralizing key information and actions within a single panel can help users complete tasks more efficiently and with less cognitive effort. For example, if the assistant can execute commands and display correct results directly in the chat panel, users do not need to switch between the chat, editor, and terminal to verify outcomes.•Supporting self-verification mechanisms and providing reliable feedback can reduce the need for users to manually cross-check results. For example, the assistant could automatically compare outputs, such as checking whether the generated text matches the source content.
+
+### 5.4. System Status and Next Steps
+
+After submitting a request to the code assistant, users must wait for a response to be generated. Timely status notifications are essential for helping users understand the current system state and alleviating uncertainty during the waiting period. As P10 described, “ _Cursor does not provide status notifications well. I keep checking to see if the response is finished. Copilot, on the other hand, plays a continuous sound while generating a response, so I can work on other tasks in parallel and return when I hear it is done._”
+
+However, in _Agent mode_, where there are many possible states, status notifications are not clear enough.
+Participants frequently asked, “ _What happened? What should I do next?_”
+During response generation, the system continuously announces “ _Working_” and “ _Progress_” accompanied by sound effects to indicate ongoing processing.
+When _Agent mode_ generates terminal commands and waits for user confirmation before executing them, the system announces “ _Action required: Run command in terminal,_” but then continues to say “ _Progress,_” making it unclear that the assistant is waiting for the user to take action.
+For example, after hearing such notifications, P4 asked, “ _Do I need to execute the command now? What exactly is the command?_”
+P7 noted, “ _Status notifications are brief. If I miss them, I don’t know what happened._”
+To keep the study moving forward, the interviewer would relay status information to the participant whenever they asked. In response, P3 remarked, “ _You are my accessibility feature._”
+
+Beyond clearer instructions, some participants wanted greater transparency in the process, enabling them to judge earlier whether the assistant’s actions aligned with their expectations.
+P8 commented, “ _I can hear it is processing, but I don’t know what it is doing. Visually, I can vaguely see text being generated, but there is no timely notification of the content. Only after the generation is complete do I hear everything._” P4 also felt, “ _The notifications during execution are not specific enough. Now it just says ’Progress,’ but often does not indicate what is actually happening. Whether it is executing code or starting to make fixes?_”
+
+Conversely, some users found continuous status notifications distracting.
+P14 said, “ _While the response is being generated, I want to check the content that’s already returned. When I switch to browse mode in the message list to review, the ‘progress’ notification interrupts what I’m listening to, so I have to go back and listen to the same sentence again._”
+P5 shared, “ _When using Agent mode, sometimes the response is slow, so I switch to other software to work on other tasks in parallel. In these cases, the notifications interrupt my thinking, and I try to ignore Copilot’s sound effects. I hope it only notifies me when my action is required._”
+
+Implications•Status notifications should be clear so users can easily distinguish between actions performed by the AI and those requiring user intervention. AI assistants should also provide transparency by indicating what the assistant is currently doing, which helps reduce uncertainty.•Users should be able to check the assistant’s current status on demand in case they missed previous notifications. For example, a convenient shortcut could allow users to easily find out what the assistant is doing and what actions are required.•A “Do not disturb” mode could be provided, so that the assistant only notifies users when their input is required, reducing unnecessary interruptions.
+
+## 6\. Discussion
+
+Our findings reveal the unique needs, challenges, and design considerations of screen reader users.
+Many interaction patterns, interface complexities, and accessibility barriers observed also apply to other AI tools such as Microsoft Copilot ( [Microsoft, 2025](https://arxiv.org/html/2506.13270v1#bib.bib46 "")), Google Gemini in Workspace ( [Google, 2025](https://arxiv.org/html/2506.13270v1#bib.bib35 "")), and Notion AI ( [Notion, 2025](https://arxiv.org/html/2506.13270v1#bib.bib51 "")), which feature complex UI workspaces and conversation-based interactions ( [Chaves and Gerosa, 2021](https://arxiv.org/html/2506.13270v1#bib.bib17 ""); [Casheekar et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib15 "")).
+As these interaction paradigms become widespread, ensuring accessibility is critical—driving innovations that improve usability for everyone. Building on prior design principles for generative AI ( [Weisz et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib78 ""); [Tahaei et al., 2023](https://arxiv.org/html/2506.13270v1#bib.bib72 "")), we offer implications for designing accessible AI tools and inclusive human-AI collaboration.
+
+### 6.1. Barriers to Learning for Screen Reader Users
+
+While code assistants are widely adopted in the developer community, many screen reader developers have limited exposure to or expertise with these tools.
+However, once introduced, participants expressed strong interest and willingness to use code assistants, recognizing their benefits across development tasks, consistent with prior findings ( [Flores-Saviaga et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib30 "")).
+This gap between interest and adoption highlights several critical barriers to learning and onboarding for screen reader users.
+
+A key barrier to effective learning is the inaccessibility of code assistant tools, a long-standing issue in the accessibility of programming tools. ( [Mountapmbeme et al., 2022](https://arxiv.org/html/2506.13270v1#bib.bib48 ""); [Pandey et al., 2021](https://arxiv.org/html/2506.13270v1#bib.bib54 "")).
+Participants who had used Cursor and Cline reported significant challenges with these tools. P14 described, “ _Some UI elements on the Cursor, like code blocks and chat input fields, lack clear labels or distinction in their types. For example, both appear as ‘Input’ components, making it difficult for me to tell them apart. To address this, I write custom NVDA plugins to process these elements and add more meaningful labels. Additionally, when the code assistant makes changes to my files, it’s often hard to understand what modifications were made. I rely on git diff to see the changes, which is not always the most intuitive solution._”
+
+The complexity of elements in interfaces also increases cognitive load and anxiety when exploring tool functionalities with a screen reader.
+P5 noted, “ _For such complex software, I don’t attempt to navigate through all the elements—there are too many. I worry about getting stuck in an element and being unable to exit._”
+P1 described the challenge of regaining their location after an unintended action, a difficulty that is compounded by the compatibility and accessibility issues of using a screen reader, IDE, and operating system together: “ _It’s challenging to return to my previous location if I accidentally trigger a new window._”
+For example, although Copilot includes an undo function to revert code changes, it was not introduced during the tutorial. Many participants were unaware of its existence and later inquired about whether such a feature was available.
+When informed about the presence of an undo button within the message block, P5 responded, “ _That feature is hard to find. I rarely go back to my own messages. If it had been placed in the assistant’s response block, I might have noticed it._”
+Instead, he demonstrated an alternative interaction strategy: “ _I just asked Copilot to undo using natural language, and it seemed to work._”
+
+The lack of accessible learning resources often leads to screen reader users spending considerably more time learning new tools. Key gaps include screen reader-specific documentation—particularly for new features—and community-based technical sharing. Similar challenges have also been observed in the context of productivity applications ( [Perera et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib56 "")).
+As P14 recalled, “ _When Cursor became popular, none of the recommendations mentioned how to operate it with a screen reader. I had to rely on general tutorials and my own experience to figure things out._” P13 further elaborated, “ _I usually start by looking for official documentation, but that depends on whether the developer provides it. After that, I browse technical blogs, whether text or video. However, most of these are aimed at sighted users, so I typically need to convert them into an accessible format myself. For example, if it says ‘click here,’ I try to figure out where that is based on the context. If the software design follows familiar patterns, it’s easier to understand, but if not, it can be pretty challenging._”
+
+### 6.2. Toward a Sense of Control
+
+As discussed in [subsection 4.3](https://arxiv.org/html/2506.13270v1#S4.SS3 "4.3. Feature Preferences: Automation vs. Control ‣ 4. Results Overview: Overarching User Behavior Patterns ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape"), although automation can improve efficiency and reduce effort for screen reader users, maintaining control over both the interface and AI collaboration is equally vital. Specifically, users emphasized the need for transparency and predictability in anticipating their own actions and AI’s behavior. Uncertainty regarding the current focus or ambiguity about what the AI has done or is doing, often creates discomfort and impairs their interaction experience.
+
+Customization: Less or More.
+To meet diverse user needs, software tools have introduced increasingly rich features. However, for screen reader users, more features don’t always mean better usability.
+In [subsection 5.2](https://arxiv.org/html/2506.13270v1#S5.SS2 "5.2. Reviewing Generated Responses ‣ 5. In-Depth Analysis: On Accessible Human-AI Interaction and Collaboration ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape"), users showed varying preferences between the structured message list ( _more_) and the plain-text accessible view ( _less_). While the message list enhances readability and efficient key navigation, users unfamiliar with shortcuts found it challenging and frustrating. The simpler accessible view, though limited to line-by-line navigation with arrow keys, offered greater clarity and control.
+This trade-off extends to users’ choice of development environments. P4, for example, preferred reading code in Notepad, finding VS Code “too complex” with “too many interaction steps.”
+Prior studies ( [Mealin and Murphy-Hill, 2012](https://arxiv.org/html/2506.13270v1#bib.bib45 ""); [Albusays and Ludi, 2016](https://arxiv.org/html/2506.13270v1#bib.bib5 "")) similarly report that many screen reader users favor simple editors over feature-rich IDEs, as complex interfaces often hinder accessibility due to increased UI elements and shortcut conflicts.
+Despite limitations, participants valued streamlined workflows and task efficiency—calling for _more_ functional support. Yet, excessive complexity and unpredictability often caused overload—calling for _less_ cognitive and interactional burden. This tension highlights the need for customizable, user-centered design. As echoed in prior work ( [Perera et al., 2025](https://arxiv.org/html/2506.13270v1#bib.bib56 "")), supporting users in adjusting interaction complexity may be key to balancing usability and efficiency.
+
+Greater Automation, Increased Risks.
+While users generally appreciated advanced features such as _Agent mode_, these highly automated interactions also introduced new challenges—particularly concerning transparency, control, and unintended changes. As noted in [subsection 5.4](https://arxiv.org/html/2506.13270v1#S5.SS4 "5.4. System Status and Next Steps ‣ 5. In-Depth Analysis: On Accessible Human-AI Interaction and Collaboration ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape"), participants emphasized the need for clear and timely status updates during task execution to track AI actions. Similarly, in [subsection 5.2](https://arxiv.org/html/2506.13270v1#S5.SS2 "5.2. Reviewing Generated Responses ‣ 5. In-Depth Analysis: On Accessible Human-AI Interaction and Collaboration ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape"), users emphasized the need to examine and verify outcomes, especially for direct file modifications.
+For instance, P10 described _Agent mode_ as “powerful” but noted its tendency to “ _randomly change_” content that was not intended to be altered, reducing confidence in AI oversight.
+This reflects a classic automation paradox: increased system autonomy can diminish users’ sense of control and raise concerns about potential errors. To cope with these risks, some participants reported adopting compensatory strategies, such as version control with Git (P2), to maintain oversight and recoverability.
+These findings echo prior research on human-AI collaboration ( [Wen and Imamizu, 2022](https://arxiv.org/html/2506.13270v1#bib.bib80 ""); [Kocielnik et al., 2019](https://arxiv.org/html/2506.13270v1#bib.bib41 ""); [Chen et al., 2022](https://arxiv.org/html/2506.13270v1#bib.bib18 "")), which stresses the importance of transparency, user agency, and trust.
+
+### 6.3. For the Future: Towards Accessible Human-AI Collaboration Design
+
+Building on the insights from [section 5](https://arxiv.org/html/2506.13270v1#S5 "5. In-Depth Analysis: On Accessible Human-AI Interaction and Collaboration ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") and the preceding discussion, we propose actionable design principles and guidelines for future AI tools to achieve more accessible and inclusive human-AI interaction and collaboration:
+
+- •
+
+
+UI Complexity and Consistent Interaction:
+Complex UIs and excessive interactions are among the most significant barriers.
+Designs should prioritize simplicity, predictability, and efficiency, especially for core workflows.
+While multiple AI modes could be useful, each should have a minimal learning curve, clear transitions between modes, and consistent interactions across views.
+
+- •
+
+
+Transparent Status and Error Recovery:
+Users need clear, real-time, and non-visual feedback about AI status, progress, and completed actions, with emphasis on error discovery, understanding, and recovery.
+Features like undo capabilities, accessible action tracking, and informative error messages are crucial for reducing adoption barriers and enabling screen reader users to confidently explore and leverage new technologies.
+
+- •
+
+
+Beyond Tool Design:
+Accessibility should be integrated throughout the entire user journey—from onboarding to everyday use. This involves not only improving tool accessibility, but also providing comprehensive, screen reader-specific documentation and tutorials.
+AI can assist by enabling conversational Q&A about new features within the tool.
+As AI capabilities advance, systems could automatically generate step-by-step instructions and audio demonstrations tailored for screen readers from complex documentation.
+
+
+### 6.4. Limitation and Future Work
+
+While our study offers valuable insights into accessible human-AI collaboration, several limitations may be noted.
+Despite our efforts to recruit a diverse group of screen reader users with programming experience, only two participants identified as female. This limitation reflects broader challenges in achieving gender diversity within HCI and accessibility research, particularly in the domain of programming ( [Pandey et al., 2021](https://arxiv.org/html/2506.13270v1#bib.bib54 ""); [Flores-Saviaga et al., 2022](https://arxiv.org/html/2506.13270v1#bib.bib29 "")).
+Besides, our investigation does not include cognitively impaired users, who may also have the demands to approach data and programs ( [Wu et al., 2024](https://arxiv.org/html/2506.13270v1#bib.bib85 ""); [Taylor, 2018](https://arxiv.org/html/2506.13270v1#bib.bib75 "")).
+Future work should explore more diverse and inclusive user backgrounds and usage contexts to provide a more generalized paradigm for accessible human-AI interaction and collaboration.
+
+## 7\. Conclusion
+
+This paper presents a two-week, three-phase longitudinal study exploring screen reader users’ engagement with advanced AI code assistants and their impact on programming practice.
+Our research uncovers how AI code assistants enhance programming capabilities and bridge accessibility gaps.
+While AI code assistants offer clear benefits, users still need better support for communication, output review, view management, situational awareness, learning advanced features, and maintaining control. Drawing on these findings, we propose actionable implications and practical design recommendations to guide future development of AI-assisted tools that empower screen reader users and foster accessible, inclusive human-AI collaboration.
+We anticipate that our work can inspire advanced research and engineering efforts to promote an inclusive era of future AI-assisted tools, enabling all users to benefit from the “ _vibe_” brought by AI.
+
+## References
+
+- Abbott (2023)
+Katherine Abbott. 2023.
+
+_Participant Observation_.
+
+Springer International Publishing, Cham, 4998–5000.
+
+[doi:10.1007/978-3-031-17299-1\_2083](https://doi.org/10.1007/978-3-031-17299-1_2083 "")
+- Adnin and Das (2024)
+Rudaiba Adnin and Maitraye Das. 2024.
+
+" I look at it as the king of knowledge": How Blind People Use and Understand Generative AI Tools. In _Proceedings of the 26th International ACM SIGACCESS Conference on Computers and Accessibility_. 1–14.
+
+- Akhoroz and Yildirim (2025)
+Mehmet Akhoroz and Caglar Yildirim. 2025.
+
+Conversational AI as a Coding Assistant: Understanding Programmers’ Interactions with and Expectations from Large Language Models for Coding.
+
+_arXiv preprint arXiv:2503.16508_ (2025).
+
+- Albusays and Ludi (2016)
+Khaled Albusays and Stephanie Ludi. 2016.
+
+Eliciting programming challenges faced by developers with visual impairments: exploratory study. In _Proceedings of the 9th international workshop on cooperative and human aspects of software engineering_. 82–85.
+
+- Albusays et al. (2017)
+Khaled Albusays, Stephanie Ludi, and Matt Huenerfauth. 2017.
+
+Interviews and observation of blind software developers at work to understand code navigation challenges. In _Proceedings of the 19th International ACM SIGACCESS Conference on Computers and Accessibility_. 91–100.
+
+- Alharbi et al. (2024)
+Rahaf Alharbi, Pa Lor, Jaylin Herskovitz, Sarita Schoenebeck, and Robin N Brewer. 2024.
+
+Misfitting With AI: How Blind People Verify and Contest AI Errors. In _Proceedings of the 26th International ACM SIGACCESS Conference on Computers and Accessibility_. 1–17.
+
+- Asare et al. (2024)
+Owura Asare, Meiyappan Nagappan, and N Asokan. 2024.
+
+A user-centered security evaluation of copilot. In _Proceedings of the IEEE/ACM 46th International Conference on Software Engineering_. 1–11.
+
+- Atcheson et al. (2025)
+Alex Atcheson, Omar Khan, Brian Siemann, Anika Jain, and Karrie Karahalios. 2025.
+
+" I’d Never Actually Realized How Big An Impact It Had Until Now": Perspectives of University Students with Disabilities on Generative Artificial Intelligence.
+
+(2025).
+
+- Barke et al. (2023)
+Shraddha Barke, Michael B James, and Nadia Polikarpova. 2023.
+
+Grounded copilot: How programmers interact with code-generating models.
+
+_Proceedings of the ACM on Programming Languages_ 7, OOPSLA1 (2023), 85–111.
+
+- Barstow (1984)
+David R. Barstow. 1984.
+
+A Perspective on Automatic Programming.
+
+_AI Magazine_ 5, 1 (Mar. 1984), 5.
+
+- Be My Eyes (2025)
+Be My Eyes. 2025.
+
+Introducing Be My AI.
+
+[https://www.bemyeyes.com/blog/introducing-be-my-ai/](https://www.bemyeyes.com/blog/introducing-be-my-ai/ "").
+
+Accessed: 2025-05-03.
+
+- Begel et al. (2010)
+Andrew Begel, Yit Phang Khoo, and Thomas Zimmermann. 2010.
+
+Codebook: discovering and exploiting relationships in software repositories. In _Proceedings of the 32nd ACM/IEEE International Conference on Software Engineering-Volume 1_. 125–134.
+
+- Bird et al. (2022)
+Christian Bird, Denae Ford, Thomas Zimmermann, Nicole Forsgren, Eirini Kalliamvakou, Travis Lowdermilk, and Idan Gazit. 2022.
+
+Taking Flight with Copilot: Early insights and opportunities of AI-powered pair-programming tools.
+
+_Queue_ 20, 6 (2022), 35–57.
+
+- Casheekar et al. (2024)
+Avyay Casheekar, Archit Lahiri, Kanishk Rath, Kaushik Sanjay Prabhakar, and Kathiravan Srinivasan. 2024.
+
+A contemporary review on chatbots, AI-powered virtual conversational agents, ChatGPT: Applications, open challenges and future research directions.
+
+_Computer Science Review_ 52 (2024), 100632.
+
+- Charmaz (2015)
+Kathy Charmaz. 2015.
+
+Grounded theory.
+
+_Qualitative psychology: A practical guide to research methods_ 3 (2015), 53–84.
+
+- Chaves and Gerosa (2021)
+Ana Paula Chaves and Marco Aurelio Gerosa. 2021.
+
+How should my chatbot interact? A survey on social characteristics in human–chatbot interaction design.
+
+_International Journal of Human–Computer Interaction_ 37, 8 (2021), 729–758.
+
+- Chen et al. (2022)
+Janet X Chen, Allison McDonald, Yixin Zou, Emily Tseng, Kevin A Roundy, Acar Tamersoy, Florian Schaub, Thomas Ristenpart, and Nicola Dell. 2022.
+
+Trauma-informed computing: Towards safer technology experiences for all. In _Proceedings of the 2022 CHI conference on human factors in computing systems_. 1–20.
+
+- Chen et al. (2021)
+Mark Chen, Jerry Tworek, and Heewoo Jun et al. 2021.
+
+Evaluating Large Language Models Trained on Code.
+
+arXiv:2107.03374 \[cs.LG\]
+
+[https://arxiv.org/abs/2107.03374](https://arxiv.org/abs/2107.03374 "")
+- Chen et al. (2024)
+Nan Chen, Yuge Zhang, Jiahang Xu, Kan Ren, and Yuqing Yang. 2024.
+
+Viseval: A benchmark for data visualization in the era of large language models.
+
+_IEEE Transactions on Visualization and Computer Graphics_ (2024).
+
+- Cline (2025)
+Cline. 2025.
+
+Cline.
+
+[https://cline.bot/](https://cline.bot/ "").
+
+Accessed: 2025-05-03.
+
+- Cursor (2025a)
+Cursor. 2025a.
+
+Cursor.
+
+[https://www.cursor.com/](https://www.cursor.com/ "").
+
+Accessed: 2025-05-03.
+
+- Cursor (2025b)
+Cursor. 2025b.
+
+Introducing Agent Mode in Cursor.
+
+[https://docs.cursor.com/chat/agent](https://docs.cursor.com/chat/agent "").
+
+Accessed: 2025-05-05.
+
+- Dakhel et al. (2023)
+Arghavan Moradi Dakhel, Vahid Majdinasab, Amin Nikanjam, Foutse Khomh, Michel C Desmarais, and Zhen Ming Jack Jiang. 2023.
+
+Github copilot ai pair programmer: Asset or liability?
+
+_Journal of Systems and Software_ 203 (2023), 111734.
+
+- Denny et al. (2023)
+Paul Denny, Viraj Kumar, and Nasser Giacaman. 2023.
+
+Conversing with copilot: Exploring prompt engineering for solving cs1 problems using natural language. In _Proceedings of the 54th ACM technical symposium on computer science education V. 1_. 1136–1142.
+
+- Engestrom (2000)
+Yrjo Engestrom. 2000.
+
+Activity theory as a framework for analyzing and redesigning work.
+
+_Ergonomics_ 43, 7 (2000), 960–974.
+
+- Etsenake and Nagappan (2024)
+Deborah Etsenake and Meiyappan Nagappan. 2024.
+
+Understanding the Human-LLM Dynamic: A Literature Survey of LLM Use in Programming Tasks.
+
+_arXiv preprint arXiv:2410.01026_ (2024).
+
+- Ferrari and Hurst (2021)
+Claire Ferrari and Amy Hurst. 2021.
+
+Accessible web development: Opportunities to improve the education and practice of web development with a screen reader.
+
+_ACM Transactions on Accessible Computing (TACCESS)_ 14, 2 (2021), 1–32.
+
+- Flores-Saviaga et al. (2022)
+Claudia Flores-Saviaga, Shangbin Feng, and Saiph Savage. 2022.
+
+Datavoidant: An AI System for Addressing Political Data Voids on Social Media.
+
+_Proc. ACM Hum.-Comput. Interact._ 6, CSCW2, Article 503 (Nov. 2022), 29 pages.
+
+[doi:10.1145/3555616](https://doi.org/10.1145/3555616 "")
+- Flores-Saviaga et al. (2025)
+Claudia Flores-Saviaga, Benjamin V Hanrahan, Kashif Imteyaz, Steven Clarke, and Saiph Savage. 2025.
+
+The Impact of Generative AI Coding Assistants on Developers Who Are Visually Impaired.
+
+_arXiv preprint arXiv:2503.16491_ (2025).
+
+- GitHub (2025a)
+GitHub. 2025a.
+
+GitHub Copilot.
+
+[https://github.com/features/copilot](https://github.com/features/copilot "").
+
+Accessed: 2025-05-03.
+
+- GitHub (2025b)
+GitHub. 2025b.
+
+GitHub Copilot Accessibility Conformance Report for Visual Studio Code.
+
+[https://accessibility.github.com/conformance/copilot-vs-code/](https://accessibility.github.com/conformance/copilot-vs-code/ "").
+
+Accessed: 2024-05-02.
+
+- Gonzalez Penuela et al. (2024)
+Ricardo E Gonzalez Penuela, Jazmin Collins, Cynthia Bennett, and Shiri Azenkot. 2024.
+
+Investigating use cases of ai-powered scene description applications for blind and low vision people. In _Proceedings of the 2024 CHI Conference on Human Factors in Computing Systems_. 1–21.
+
+- Gonzalez Penuela et al. (2025)
+Ricardo E Gonzalez Penuela, Ruiying Hu, Sharon Lin, Tanisha Shende, and Shiri Azenkot. 2025.
+
+Towards Understanding the Use of MLLM-Enabled Applications for Visual Interpretation by Blind and Low Vision People. In _Proceedings of the Extended Abstracts of the CHI Conference on Human Factors in Computing Systems_. 1–8.
+
+- Google (2025)
+Google. 2025.
+
+Google Gemini in Workspace.
+
+[https://workspace.google.com/solutions/ai/](https://workspace.google.com/solutions/ai/ "").
+
+Accessed: 2025-05-03.
+
+- Hegde and Dewan (2008)
+Rajesh Hegde and Prasun Dewan. 2008.
+
+Connecting programming environments to support ad-hoc collaboration. In _2008 23rd IEEE/ACM international conference on automated software engineering_. IEEE, 178–187.
+
+- Jiang et al. (2022)
+Ellen Jiang, Edwin Toh, Alejandra Molina, Kristen Olson, Claire Kayacik, Aaron Donsbach, Carrie J Cai, and Michael Terry. 2022.
+
+Discovering the syntax and strategies of natural language programming with generative language models. In _Proceedings of the 2022 CHI Conference on Human Factors in Computing Systems_. 1–19.
+
+- Johnson et al. (2022)
+Jazette Johnson, Andrew Begel, Richard Ladner, and Denae Ford. 2022.
+
+Program-l: Online help seeking behaviors by blind and low vision programmers. In _2022 IEEE Symposium on Visual Languages and Human-Centric Computing (VL/HCC)_. IEEE, 1–6.
+
+- Kazemitabaar et al. (2023)
+Majeed Kazemitabaar, Justin Chow, Carl Ka To Ma, Barbara J Ericson, David Weintrop, and Tovi Grossman. 2023.
+
+Studying the effect of AI code generators on supporting novice learners in introductory programming. In _Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems_. 1–23.
+
+- Kearney-Volpe and Hurst (2021)
+Claire Kearney-Volpe and Amy Hurst. 2021.
+
+Accessible web development: Opportunities to improve the education and practice of web development with a screen reader.
+
+_ACM Transactions on Accessible Computing (TACCESS)_ 14, 2 (2021), 1–32.
+
+- Kocielnik et al. (2019)
+Rafal Kocielnik, Saleema Amershi, and Paul N Bennett. 2019.
+
+Will you accept an imperfect ai? exploring designs for adjusting end-user expectations of ai systems. In _Proceedings of the 2019 CHI Conference on Human Factors in Computing Systems_. 1–14.
+
+- Kumar et al. (2024)
+Harsh Kumar, Ilya Musabirov, Mohi Reza, Jiakai Shi, Xinyuan Wang, Joseph Jay Williams, Anastasia Kuzminykh, and Michael Liut. 2024.
+
+Guiding Students in Using LLMs in Supported Learning Environments: Effects on Interaction Dynamics, Learner Performance, Confidence, and Trust.
+
+_Proceedings of the ACM on Human-Computer Interaction_ 8, CSCW2 (2024), 1–30.
+
+- Liang et al. (2024)
+Jenny T. Liang, Chenyang Yang, and Brad A. Myers. 2024.
+
+A Large-Scale Survey on the Usability of AI Programming Assistants: Successes and Challenges. In _Proceedings of the IEEE/ACM 46th International Conference on Software Engineering_ (Lisbon, Portugal) _(ICSE ’24)_. Article 52, 13 pages.
+
+- Liu et al. (2023)
+Michael Xieyang Liu, Advait Sarkar, Carina Negreanu, Benjamin Zorn, Jack Williams, Neil Toronto, and Andrew D. Gordon. 2023.
+
+“What It Wants Me To Say”: Bridging the Abstraction Gap Between End-User Programmers and Code-Generating Large Language Models. In _Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems_ (Hamburg, Germany) _(CHI ’23)_. Association for Computing Machinery, New York, NY, USA, Article 598, 31 pages.
+
+[doi:10.1145/3544548.3580817](https://doi.org/10.1145/3544548.3580817 "")
+- Mealin and Murphy-Hill (2012)
+S. Mealin and E. Murphy-Hill. 2012.
+
+An exploratory study of blind software developers . In _2012 IEEE Symposium on Visual Languages and Human-Centric Computing (VL/HCC 2012)_. IEEE Computer Society, Los Alamitos, CA, USA, 71–74.
+
+[doi:10.1109/VLHCC.2012.6344485](https://doi.org/10.1109/VLHCC.2012.6344485 "")
+- Microsoft (2025)
+Microsoft. 2025.
+
+Microsoft Copilot.
+
+[https://www.microsoft.com/en-us/microsoft-365/copilot](https://www.microsoft.com/en-us/microsoft-365/copilot "").
+
+Accessed: 2025-05-03.
+
+- Morris et al. (2018)
+Meredith Ringel Morris, Jazette Johnson, Cynthia L Bennett, and Edward Cutrell. 2018.
+
+Rich representations of visual content for screen reader users. In _Proceedings of the 2018 CHI conference on human factors in computing systems_. 1–11.
+
+- Mountapmbeme et al. (2022)
+Aboubakar Mountapmbeme, Obianuju Okafor, and Stephanie Ludi. 2022.
+
+Addressing accessibility barriers in programming for people with visual impairments: A literature review.
+
+_ACM Transactions on Accessible Computing (TACCESS)_ 15, 1 (2022), 1–26.
+
+- Mozannar et al. (2024a)
+Hussein Mozannar, Gagan Bansal, Adam Fourney, and Eric Horvitz. 2024a.
+
+Reading between the lines: Modeling user behavior and costs in AI-assisted programming. In _Proceedings of the 2024 CHI Conference on Human Factors in Computing Systems_. 1–16.
+
+- Mozannar et al. (2024b)
+Hussein Mozannar, Valerie Chen, Mohammed Alsobay, Subhro Das, Sebastian Zhao, Dennis Wei, Manish Nagireddy, Prasanna Sattigeri, Ameet Talwalkar, and David Sontag. 2024b.
+
+The RealHumanEval: Evaluating Large Language Models’ Abilities to Support Programmers.
+
+arXiv:2404.02806 \[cs.SE\]
+
+- Notion (2025)
+Notion. 2025.
+
+Notion AI.
+
+[https://www.notion.com/help/guides/category/ai](https://www.notion.com/help/guides/category/ai "").
+
+Accessed: 2025-05-03.
+
+- NV Access (2025)
+NV Access. 2025.
+
+NVDA Screen Reader.
+
+[https://www.nvaccess.org/](https://www.nvaccess.org/ "").
+
+Accessed: 2025-05-03.
+
+- Pandey et al. (2022)
+Maulishree Pandey, Sharvari Bondre, Sile O’Modhrain, and Steve Oney. 2022.
+
+Accessibility of ui frameworks and libraries for programmers with visual impairments. In _2022 IEEE Symposium on Visual Languages and Human-Centric Computing (VL/HCC)_. IEEE, 1–10.
+
+- Pandey et al. (2021)
+Maulishree Pandey, Vaishnav Kameswaran, Hrishikesh V Rao, Sile O’Modhrain, and Steve Oney. 2021.
+
+Understanding accessibility and collaboration in programming for people with visual impairments.
+
+_Proceedings of the ACM on Human-Computer Interaction_ 5, CSCW1 (2021), 1–30.
+
+- Pandey et al. (2024)
+Maulishree Pandey, Steve Oney, and Andrew Begel. 2024.
+
+Towards Inclusive Source Code Readability Based on the Preferences of Programmers with Visual Impairments. In _Proceedings of the 2024 CHI Conference on Human Factors in Computing Systems_. 1–18.
+
+- Perera et al. (2025)
+Minoli Perera, Swamy Ananthanarayan, Cagatay Goncu, and Kim Marriott. 2025.
+
+The Sky is the Limit: Understanding How Generative AI can Enhance Screen Reader Users’ Experience with Productivity Applications. In _Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems_. 1–17.
+
+- Perry et al. (2023)
+Neil Perry, Megha Srivastava, Deepak Kumar, and Dan Boneh. 2023.
+
+Do users write more insecure code with AI assistants?. In _Proceedings of the 2023 ACM SIGSAC conference on computer and communications security_. 2785–2799.
+
+- Potluri et al. (2018)
+Venkatesh Potluri, Priyan Vaithilingam, Suresh Iyengar, Y Vidya, Manohar Swaminathan, and Gopal Srinivasa. 2018.
+
+Codetalk: Improving programming environment accessibility for visually impaired developers. In _Proceedings of the 2018 chi conference on human factors in computing systems_. 1–11.
+
+- Puryear and Sprint (2022)
+Ben Puryear and Gina Sprint. 2022.
+
+Github copilot in the classroom: learning to code with AI assistance.
+
+_Journal of Computing Sciences in Colleges_ 38, 1 (2022), 37–47.
+
+- Review (2025)
+MIT Technology Review. 2025.
+
+What is vibe coding, exactly? — technologyreview.com.
+
+[https://www.technologyreview.com/2025/04/16/1115135/what-is-vibe-coding-exactly/](https://www.technologyreview.com/2025/04/16/1115135/what-is-vibe-coding-exactly/ "").
+
+\[Accessed 05-05-2025\].
+
+- Sampath et al. (2021)
+Harini Sampath, Alice Merrick, and Andrew Macvean. 2021.
+
+Accessibility of command line interfaces. In _Proceedings of the 2021 CHI conference on human factors in computing systems_. 1–10.
+
+- Seo and Rogge (2023)
+JooYoung Seo and Megan Rogge. 2023.
+
+Coding non-visually in visual studio code: collaboration towards accessible development environment for blind programmers. In _Proceedings of the 25th International ACM SIGACCESS Conference on Computers and Accessibility_. 1–9.
+
+- Sergeyuk et al. (2025)
+Agnia Sergeyuk, Yaroslav Golubev, Timofey Bryksin, and Iftekhar Ahmed. 2025.
+
+Using AI-based coding assistants in practice: State of affairs, perceptions, and ways forward.
+
+_Information and Software Technology_ 178 (2025), 107610.
+
+- Sergeyuk et al. (2024)
+Agnia Sergeyuk, Sergey Titov, and Maliheh Izadi. 2024.
+
+In-ide human-ai experience in the era of large language models; a literature review. In _Proceedings of the 1st ACM/IEEE Workshop on Integrated Development Environments_. 95–100.
+
+- Shah et al. (2025)
+Anshul Shah, Anya Chernova, Elena Tomson, Leo Porter, William G Griswold, and Adalbert Gerald Soosai Raj. 2025.
+
+Students’ Use of GitHub Copilot for Working with Large Code Bases. In _Proceedings of the 56th ACM Technical Symposium on Computer Science Education V. 1_. 1050–1056.
+
+- Sharif et al. (2021)
+Ather Sharif, Sanjana Shivani Chintalapati, Jacob O Wobbrock, and Katharina Reinecke. 2021.
+
+Understanding screen-reader users’ experiences with online data visualizations. In _Proceedings of the 23rd International ACM SIGACCESS Conference on Computers and Accessibility_. 1–16.
+
+- Shinohara et al. (2022)
+Kristen Shinohara, Murtaza Tamjeed, Michael McQuaid, and Dymen A Barkins. 2022.
+
+Usability, accessibility and social entanglements in advanced tool use by vision impaired graduate students.
+
+_Proceedings of the ACM on Human-Computer Interaction_ 6, CSCW2 (2022), 1–21.
+
+- Siegfried (2006)
+Robert M Siegfried. 2006.
+
+Visual programming and the blind: the challenge and the opportunity.
+
+_ACM SIGCSE Bulletin_ 38, 1 (2006), 275–278.
+
+- Song et al. (2024)
+Fangchen Song, Ashish Agarwal, and Wen Wen. 2024.
+
+The impact of generative AI on collaborative open-source software development: Evidence from GitHub Copilot.
+
+_arXiv preprint arXiv:2410.02091_ (2024).
+
+- Stack Overflow (2022)
+Stack Overflow. 2022.
+
+Stack Overflow Developer Survey 2022.
+
+[https://survey.stackoverflow.co/2022](https://survey.stackoverflow.co/2022 "").
+
+Accessed: 2025-05-03.
+
+- Storer et al. (2021)
+Kevin M Storer, Harini Sampath, and M Alice Alice Merrick. 2021.
+
+” It’s Just Everything Outside of the IDE that’s the Problem”: Information Seeking by Software Developers with Visual Impairments. In _Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems_. 1–12.
+
+- Tahaei et al. (2023)
+Mohammad Tahaei, Marios Constantinides, and Daniele Quercia et al. 2023.
+
+Human-Centered Responsible Artificial Intelligence: Current & Future Trends. In _Extended Abstracts of the 2023 CHI Conference on Human Factors in Computing Systems_ (Hamburg, Germany) _(CHI EA ’23)_. Article 515, 4 pages.
+
+- Tang et al. (2023)
+Ningzhi Tang, Meng Chen, Zheng Ning, Aakash Bansal, Yu Huang, Collin McMillan, and T Li. 2023.
+
+An empirical study of developer behaviors for validating and repairing ai-generated code. In _13th Workshop on the Intersection of HCI and PL_.
+
+- Tang et al. (2025)
+Xinru Tang, Ali Abdolrahmani, Darren Gergle, and Anne Marie Piper. 2025.
+
+Everyday Uncertainty: How Blind People Use GenAI Tools for Information Access. In _Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems_. 1–17.
+
+- Taylor (2018)
+Matthew S Taylor. 2018.
+
+Computer programming with Pre-K through first-grade students with intellectual disabilities.
+
+_The journal of special education_ 52, 2 (2018), 78–88.
+
+- Visual Studio Code Team (2025)
+Visual Studio Code Team. 2025.
+
+Introducing Copilot Agent Mode.
+
+[https://code.visualstudio.com/blogs/2025/02/24/introducing-copilot-agent-mode](https://code.visualstudio.com/blogs/2025/02/24/introducing-copilot-agent-mode "").
+
+Accessed: 2025-05-05.
+
+- Wang et al. (2024)
+Ruotong Wang, Ruijia Cheng, Denae Ford, and Thomas Zimmermann. 2024.
+
+Investigating and designing for trust in AI-powered code generation tools. In _Proceedings of the 2024 ACM Conference on Fairness, Accountability, and Transparency_. 1475–1493.
+
+- Weisz et al. (2024)
+Justin D Weisz, Jessica He, Michael Muller, Gabriela Hoefer, Rachel Miles, and Werner Geyer. 2024.
+
+Design principles for generative AI applications. In _Proceedings of the 2024 CHI Conference on Human Factors in Computing Systems_. 1–22.
+
+- Weisz et al. (2025)
+Justin D. Weisz, Shraddha Vijay Kumar, Michael Muller, Karen-Ellen Browne, Arielle Goldberg, Katrin Ellice Heintze, and Shagun Bajpai. 2025.
+
+Examining the Use and Impact of an AI Code Assistant on Developer Productivity and Experience in the Enterprise. In _Proceedings of the Extended Abstracts of the CHI Conference on Human Factors in Computing Systems_ _(CHI EA ’25)_. Association for Computing Machinery, New York, NY, USA, Article 673, 13 pages.
+
+[doi:10.1145/3706599.3706670](https://doi.org/10.1145/3706599.3706670 "")
+- Wen and Imamizu (2022)
+Wen Wen and Hiroshi Imamizu. 2022.
+
+The sense of agency in perception, behaviour and human–machine interactions.
+
+_Nature Reviews Psychology_ 1, 4 (2022), 211–222.
+
+- Wermelinger (2023)
+Michel Wermelinger. 2023.
+
+Using GitHub Copilot to solve simple programming problems. In _Proceedings of the 54th ACM Technical Symposium on Computer Science Education V. 1_. 172–178.
+
+- Wester et al. (2024)
+Joel Wester, Bhakti Moghe, Katie Winkle, and Niels van Berkel. 2024.
+
+Facing LLMs: Robot Communication Styles in Mediating Health Information between Parents and Young Adults.
+
+_Proceedings of the ACM on Human-Computer Interaction_ 8, CSCW2 (2024), 1–37.
+
+- Whitehead (2007)
+Jim Whitehead. 2007.
+
+Collaboration in software engineering: A roadmap. In _Future of Software Engineering (FOSE’07)_. IEEE, 214–225.
+
+- Wikipedia contributors (2024)
+Wikipedia contributors. 2024.
+
+Vibe coding.
+
+[https://en.wikipedia.org/wiki/Vibe\_coding](https://en.wikipedia.org/wiki/Vibe_coding "").
+
+Accessed: 2025-05-12.
+
+- Wu et al. (2024)
+Keke Wu, Ghulam Jilani Quadri, Arran Zeyu Wang, David Kwame Osei-Tutu, Emma Petersen, Varsha Koushik, and Danielle Albers Szafir. 2024.
+
+Our Stories, Our Data: Co-designing Visualizations with People with Intellectual and Developmental Disabilities. In _The 26th International ACM SIGACCESS Conference on Computers and Accessibility_ _(ASSETS ’24)_. ACM, 1–17.
+
+[doi:10.1145/3663548.3675615](https://doi.org/10.1145/3663548.3675615 "")
+- Xi et al. (2025)
+Zhiheng Xi, Wenxiang Chen, Xin Guo, Wei He, Yiwen Ding, Boyang Hong, Ming Zhang, Junzhe Wang, Senjie Jin, Enyu Zhou, et al. 2025.
+
+The rise and potential of large language model based agents: A survey.
+
+_Science China Information Sciences_ 68, 2 (2025), 121101.
+
+- Xie et al. (2025)
+Jingyi Xie, Rui Yu, He Zhang, Syed Masum Billah, Sooyeon Lee, and John M Carroll. 2025.
+
+Beyond Visual Perception: Insights from Smartphone Interaction of Visually Impaired Users with Large Multimodal Models.
+
+_arXiv preprint arXiv:2502.16098_ (2025).
+
+- Zen et al. (2023)
+Eliana Zen, Vinicius Kruger Da Costa, and Tatiana Aires Tavares. 2023.
+
+Understanding the accessibility barriers faced by learners with visual impairments in computer programming. In _Proceedings of the XXII Brazilian Symposium on Human Factors in Computing Systems_. 1–11.
+
+- Zhang et al. (2024)
+Yuge Zhang, Qiyang Jiang, XingyuHan XingyuHan, Nan Chen, Yuqing Yang, and Kan Ren. 2024.
+
+Benchmarking Data Science Agents. In _Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)_. 5677–5700.
+
+- Ziegler et al. (2024)
+Albert Ziegler, Eirini Kalliamvakou, X Alice Li, Andrew Rice, Devon Rifkin, Shawn Simister, Ganesh Sittampalam, and Edward Aftandilian. 2024.
+
+Measuring GitHub Copilot’s impact on productivity.
+
+_Commun. ACM_ 67, 3 (2024), 54–63.
+
+
+## Appendix 1: Changes in Self-Reported Ratings of Using AI Code Assistants
+
+We discussed the results on how users’ self-reported Likert scale ratings changed from the initial interview to the follow-up interview (after their two-week exploration) in [Figure A](https://arxiv.org/html/2506.13270v1#Ax1.F1 "Figure A ‣ Appendix 1: Changes in Self-Reported Ratings of Using AI Code Assistants ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape").
+
+![Refer to caption](https://arxiv.org/html/2506.13270v1/Figure/all_changes.png)Figure A. The average changes of users’ self-reported score in the initial and follow-up interviews. The error bars show 95% confidence intervals. See [Table C](https://arxiv.org/html/2506.13270v1#Ax2.T3 "Table C ‣ Appendix 2: List of Questions during Interviews ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") for the full list of all questions.
+
+We found that users generally had a positive view of their interactions with the AI code assistant, and their responses to other questions were consistent with the key findings discussed in [section 4](https://arxiv.org/html/2506.13270v1#S4 "4. Results Overview: Overarching User Behavior Patterns ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape").
+While users’ responses to most questions were just slightly changed without significant differences between the two interviews, we found for question _Q5_—“ _Copilot’s suggestions won’t lead me to develop bad coding habits, such as accepting code without fully understanding it._”—users’ self-reported scores show significant differences at p=0.02,C​o​h​e​n′​s​d=0.64p=\\textbf{0.02},Cohen^{\\prime}s\\,d=0.64, and increase from M​e​a​n=5.0,S​E=0.50Mean=5.0,SE=0.50 to M​e​a​n=6.1,S​E=0.28Mean=6.1,SE=0.28.
+As discussed in [subsection 4.3](https://arxiv.org/html/2506.13270v1#S4.SS3 "4.3. Feature Preferences: Automation vs. Control ‣ 4. Results Overview: Overarching User Behavior Patterns ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") and [subsection 5.2](https://arxiv.org/html/2506.13270v1#S5.SS2 "5.2. Reviewing Generated Responses ‣ 5. In-Depth Analysis: On Accessible Human-AI Interaction and Collaboration ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape"), this may be attributed to participants’ realization, over time, that active engagement in the collaboration with the AI remained necessary. Rather than delegating tasks entirely to the AI, they often took responsibility for reviewing and correcting the outputs, thereby maintaining control over the process.
+
+## Appendix 2: List of Questions during Interviews
+
+We present the full phrase of all our questions used in the interview.
+
+[Table A](https://arxiv.org/html/2506.13270v1#Ax2.T1 "Table A ‣ Appendix 2: List of Questions during Interviews ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") shows the think-aloud questions asked in the initial interview.
+
+Table A. Question phrases by category for the initial interview.
+
+|     |     |
+| --- | --- |
+| Category | Question Phrase |
+| Background | How long have you been learning programming? |
+| (Pre-task) | Can you share your work experience? |
+|  | Have you used AI coding assistants before (e.g., GitHub Copilot, ChatGPT)? Which ones? |
+|  | How frequently do you use them? |
+|  | What kind of tasks do you typically use them for? What benefits do you think they provide? |
+| Thinking | What was your overall thought process when completing the task? |
+| Interaction | Did you find learning and mastering GitHub Copilot easy or difficult? What aspects influenced this experience? |
+|  | Can you describe how easy or difficult it is to understand Copilot’s suggestions? |
+|  | How do you decide which suggestions to accept or reject? How do you evaluate Copilot’s suggestions? |
+|  | How much do you trust Copilot? What could Copilot do to make you trust it more? |
+|  | Have you encountered situations where Copilot generated incorrect answers? How did you handle such situations? |
+|  | Among Copilot’s different features (code completion, inline chat, ask, edit, agent mode), which do you prefer and why? Does it vary by situation? Any specific examples? Why didn’t you use certain modes? |
+| Copilot’s Impact | In your daily programming activities, which tasks or stages do you find most challenging? Please provide examples. |
+|  | Does GitHub Copilot help alleviate the programming challenges you mentioned? Please discuss with specific examples. |
+|  | Additionally, for which tasks do you think Copilot provides the most help? |
+| Difficulties & | What difficulties or challenges have you encountered while using Copilot? If any, what were they? |
+| Expectations | Would you consider using GitHub Copilot long-term? |
+|  | What additional features or improvements would you like Copilot to provide to help you more? |
+
+[Table B](https://arxiv.org/html/2506.13270v1#Ax2.T2 "Table B ‣ Appendix 2: List of Questions during Interviews ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") shows the think-aloud questions asked in the follow-up interview.
+
+Table B. Question phrases by category for the follow-up interview.
+
+|     |     |
+| --- | --- |
+| Category | Question Phrase |
+| Frequency of Use | How often have you used Copilot in the past two weeks? Why? |
+| Modes | Which modes or features did you use more frequently during these two weeks? |
+|  | What specific tasks did you use them for? |
+|  | What benefits or shortcomings did you notice in their usage? |
+| Usage | Do you think Copilot understands your needs well? |
+| Experience | How do you prefer to review responses now? |
+| & Impact | Do you find the process of reviewing and accepting responses smooth? Were there any obstacles or inconveniences? |
+|  | After continuous use of Copilot, has your overall impression of the tool changed? What new insights or discoveries have you made? |
+| Challenges & | During the past two weeks, did you encounter any new difficulties or challenges while using Copilot? |
+| Feedback | After using Copilot for a while, what features or improvements would you most like to see? |
+
+[Table C](https://arxiv.org/html/2506.13270v1#Ax2.T3 "Table C ‣ Appendix 2: List of Questions during Interviews ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape") shows the questions rated on a 1-7 Likert scale in both the initial and follow-up interviews, where 1 indicates strong disagreement and 7 indicates strong agreement.
+
+Table C. Likert scale questions’ IDs and corresponding phrases.
+
+|     |     |
+| --- | --- |
+| QID | Phrase |
+| Q1 | Copilot’s code suggestions make me more efficient in completing programming tasks. |
+| Q2 | Copilot helps me improve my programming skills and inspires new ideas. |
+| Q3 | I can predict when Copilot will generate useful results. |
+| Q4 | I trust Copilot’s code suggestions and am willing to use them directly. |
+| Q5 | Copilot’s suggestions won’t lead me to develop bad coding habits, such as accepting code without fully understanding it. |
+| Q6 | I can efficiently interact with Copilot via keyboard shortcuts or other methods. |
+| Q7 | Copilot’s suggestions are easy to understand and review using a screen reader. |
+| Q8 | I feel that I am actively leading the collaboration with Copilot, instead of passively following its suggestions. |
+| Q9 | Code completion distracts me and makes me feel troubled while programming. |
+| Q10 | I prefer Copilot to provide suggestions automatically rather than manually triggering them. |
+
+## Appendix 3: All Users’ Interaction Timelines
+
+Finally, we presented all 16 users’ interaction timeline during their programming task in [Figure B](https://arxiv.org/html/2506.13270v1#Ax3.F2 "Figure B ‣ Appendix 3: All Users’ Interaction Timelines ‣ Screen Reader Users in the Vibe Coding Era: Adaptation, Empowerment, and New Accessibility Landscape").
+
+![Refer to caption](https://arxiv.org/html/2506.13270v1/Figure/all_timelines.png)Figure B. All users’ action timelines during their programming task.

@@ -1,0 +1,205 @@
+Source URL: https://alphasignal.ai/news/factory-s-droid-1-0-beats-openai-and-anthropic-agents-while-cutting-costs-51x
+Effective URL: https://alphasignal.ai/news/factory-s-droid-1-0-beats-openai-and-anthropic-agents-while-cutting-costs-51x
+HTTP status: 200
+Captured: 2026-11-01
+Format: FetchUrl Markdown text snapshot, not original HTML. Lines over 3000 characters removed.
+
+---
+
+[Skip to main content](https://alphasignal.ai/news/factory-s-droid-1-0-beats-openai-and-anthropic-agents-while-cutting-costs-51x#main-content)
+
+AuthorBy [AlphaSignal Newsroom](https://alphasignal.ai/editorial-team)
+
+Read9 min
+
+Type[News](https://alphasignal.ai/?ct=news)
+
+Topic[Agents](https://alphasignal.ai/topic/agents) · [Development](https://alphasignal.ai/topic/development)
+
+Subtopic[Agent Frameworks](https://alphasignal.ai/topic/agents/agent-frameworks) · [Tool Use](https://alphasignal.ai/topic/agents/tool-use) · [Code Agents](https://alphasignal.ai/topic/agents/code-agents) · [Code Agents](https://alphasignal.ai/topic/development/code-agents)
+
+Takeaways−
+
+- Factory released [Droid 1.0](https://factory.com/news/frontier-harness?utm_source=alphasignal), a frontier agent harness beating native agents on Terminal-Bench 4.
+- Programmatic tool calling is now default: the model writes a JavaScript program that runs hundreds of tools per request.
+- A 312-tool-call Linear cleanup dropped from 36 requests and 3.1M tokens to 2 requests and 61K tokens.
+- Droid scores 65.2% on Opus 5.5 and 57.6% on GPT-6.1 Sol, beating Codex, Claude Code, Cursor, Devin, OpenCode.
+- Base prompt cut 37%, 98% of input tokens served from cache, launch latency down ~70%.
+- Available today as desktop app, CLI, and [Droid SDK](https://github.com/Factory-AI/droid-sdk-typescript?utm_source=alphasignal) on npm.
+
+Factory has released [Droid 1.0](https://factory.com/news/frontier-harness?utm_source=alphasignal), an upgrade to the harness behind its enterprise coding agent. Programmatic tool calling is now the default, allowing the model to generate a short JavaScript program that coordinates hundreds of tool calls in one execution. Factory reports higher Terminal-Bench 4 pass rates than native agents from OpenAI, Anthropic, Cursor, Devin, and OpenCode when each runs the same underlying model.
+
+Every coding agent wraps a model in prompts, tools, result formatting, context management, and an execution loop. That surrounding harness affects accuracy, latency, and cost. Long-running agents may operate for hours across hundreds of turns, with each request resending instructions and conversation history. Reducing model round trips can therefore save more than trimming an individual prompt.
+
+## One script, hundreds of calls
+
+A conventional agent sends a tool call, appends the result to the model’s context, and asks the model to choose the next action. Programmatic tool calling, or PTC, moves the loop into code. The model writes a program that invokes tools, checks results, handles batches, and prints a compact summary for the next model request.
+
+Droid implements PTC through a Script tool that runs JavaScript in a sandbox. The sandbox has no direct file, network, or system access. Its capabilities come from the tool functions that Droid explicitly exposes, so existing permissions still determine which external actions the script can perform.
+
+CodeAct research by Wang et al. found that code-based actions outperformed JSON and text tool calls across 17 models. Factory also cites production implementations from Cloudflare, Anthropic, and OpenAI’s Codex. Droid applies the pattern across several model families and enables it by default where Factory’s evaluations show a benefit.
+
+- **Smaller contexts:** Files, logs, and search results remain inside program variables. The model receives only the values printed by the script.
+- **Fewer model requests:** A single generated program can run many tool calls without resending the full prompt and history after each action.
+- **Explicit control flow:** Loops, batching, validation, and stopping conditions execute as code, reducing the chance that the model skips a planned case.
+- **Parallel execution:** Independent operations can run concurrently through constructs such as `Promise.allSettled()`.
+
+## 151 issues, 61,000 input tokens
+
+Factory’s clearest production example involved moving 151 Linear issues between queues and verifying every change. The task required 312 tool calls. Factory estimates that direct calling, even with 10 calls grouped into each request, would have required 36 requests and about 3.1 million input tokens. Script mode completed the workflow with two model requests and about 61,000 input tokens: one request generated the program, and another interpreted its printed result.
+
+A separate CI sweep checked 5,384 desktop jobs across 547 runs. The script made 550 tool calls in batches of 60 and completed with two model requests, compared with Factory’s estimate of 59 to 187 requests under direct calling. It returned a five-number summary that included 41 failed jobs, leaving more than 99.9% of the raw tool results outside the model’s context.
+
+Across Factory’s production sessions on Claude Opus 5.5, Script mode reduced cost by 15%. Most savings came from the 12.5% of scripts that issued at least six tool calls, indicating that larger batches deliver the strongest economic benefit.
+
+Trimmed Script generated for the Linear cleanup
+
+javascript
+
+```javascript
+const remaining = new Set(readReport('<report>').notAttempted) // 151 issues
+const queues = await Promise.all([listAll('Triage'), listAll('queue 2')])
+const targets = queues.flat().filter((i) => remaining.has(i.id))
+const verified = [], failures = []
+
+for (const batch of chunks(targets, 3)) {
+  await Promise.allSettled(
+    batch.map((i) => setStatus(i, 'Backlog'))
+  )
+
+  const after = await Promise.allSettled(
+    batch.map((i) => getIssue(i))
+  )
+
+  after.forEach((result, index) =>
+    (onlyStatusChanged(batch[index], result.value)
+      ? verified
+      : failures
+    ).push(batch[index].id)
+  )
+
+  if (failures.length) break
+}
+
+text({ verified: verified.length, failures })
+```
+
+The model receives the value passed to `text()`. Raw issue objects, intermediate responses, and verification data remain inside the sandboxed execution.
+
+## Droid leads Factory’s benchmark
+
+Factory tested Droid against Codex, Claude Code, Cursor, Devin, and OpenCode on Terminal-Bench 4, a suite of terminal-based agent tasks. Each comparison used the same underlying model, helping isolate the effect of the harness.
+
+| Model | Droid pass rate | Reported cost per task | Best competitor |
+| --- | --- | --- | --- |
+| GPT-6.1 Sol | 57.6% | $0.79 | Codex at 54.0% |
+| Claude Opus 5.5 | 65.2% | $4.73 | Cursor and OpenCode at 62.1% |
+
+Factory-reported Terminal-Bench 4 results
+
+On the rounded figures, Droid’s GPT-6.1 Sol configuration scored 3.6 percentage points above Codex while costing 12% less per task. It scored 6.6 to 12.6 points above OpenCode and Devin. With Claude Opus 5.5, Droid led the listed competitors by 3.1 to 7.6 points and cost up to 24% less.
+
+Execution metrics showed a similar pattern. Droid used 17% fewer tokens than Claude Code and took 26% less time per passed task on Claude Opus 5.5. On GPT-6.1 Sol, it used 12% fewer tokens than Codex but took 10% longer.
+
+Because Factory ran and reported these tests, the figures remain vendor benchmarks. Independent replication would show how consistently the gains carry across task selection, retry policies, pricing assumptions, and production workloads.
+
+## An agent tunes the agent
+
+Factory uses an internal system called Agent Factory to adapt Droid when new models arrive. The process combines automated checks, benchmark tasks, production traces, controlled experiments, and engineering review:
+
+1. Automation adds a newly released model and runs behavioral assertions, which are tests for expected agent behavior.
+2. Each model receives the same benchmark tasks and a sample of live production traffic.
+3. An analysis agent examines traces for failure patterns that recur across tasks or model families.
+4. The agent proposes a change and states the hypothesis behind it.
+5. A controlled experiment measures the effect on every relevant model family.
+6. An engineer reviews the evidence and decides whether the change ships.
+
+Cross-model acceptance criteria prevent an optimization for one model from silently raising costs for another. Factory tested Script mode simultaneously on GPT-6.1 Sol, Claude Opus 5.5, GLM 5.3, and Kimi K3.
+
+One experiment added line numbers to every file read. The change stopped GPT-6.1 Sol from reopening files through the shell to recover line positions and reduced Claude Opus 5.5’s cost by 22% on one task. The extra numbering added about two tokens per line, raising costs by 8% on GLM 5.3 and 32% on Kimi K3. Factory shipped the feature as an opt-in flag.
+
+## Small cuts with measurable returns
+
+- **Stable prompt caching:** Droid previously inserted newly discovered tools near the top of the tool list, invalidating the cached prompt prefix that followed. It now appends tools to the end. Factory says a typical production request reads 98% of its input from cache, while 98.6% of requests preserve the earlier prompt and add content only at the end.
+- **A smaller base prompt:** Between Droid 0.170.0 and 0.250.0, first-request input fell from 20,887 tokens to 13,055, a 37% reduction. Droid now sends two tool definitions initially instead of 11 and loads the others on demand.
+- **Bounded execution:** Droid stops after three turns without visible output. Three identical tool calls trigger a corrective instruction, and six halt the loop. Compaction summaries, which preserve older conversation state when the context is compressed, now receive a 16,000-token budget instead of 8,000.
+- **Lower launch latency:** Median time to first paint fell from 1,839 milliseconds to 488 milliseconds. Median time until Droid accepted a prompt dropped from 1,876 milliseconds to 618 milliseconds, partly through precompiled code and an upgrade to Bun 1.4.2.
+
+## Where Script mode pays off
+
+Script mode produces its largest gains on long-running work with repeated operations, bounded inputs, and checks that can be expressed in code. Short exploratory sessions with a few tool calls have fewer round trips to eliminate.
+
+| Task shape | Expected fit | Reason |
+| --- | --- | --- |
+| Ticket triage, CI sweeps, bulk migrations | Strong | Large collections can be processed in batches and summarized once. |
+| Repository-wide refactoring | Strong | Scripts can iterate across files and apply consistent validation. |
+| Open-ended debugging | Mixed | New evidence may require another model decision after each step. |
+| Short interactive edits | Limited | A small number of tool calls leaves little overhead to remove. |
+
+Generated scripts can still contain faulty assumptions, incomplete error handling, or unsafe retry behavior. Side-effecting tools need narrow permissions, idempotency controls, rate limits, and verification. The sandbox blocks direct system access, while tool permissions govern the actions available through exposed functions.
+
+## Default models and developer access
+
+- **GPT models:** GPT-6.1 Sol, GPT-6.1 Terra, GPT-6 Astra, GPT-6 Sol, and GPT-5.6 Sol
+- **Claude models:** Claude Fable 5.1, Claude Fable 5, Claude Opus 5.5, and Claude Opus 5
+- **Other models:** Kimi K3
+
+Factory offers Droid through desktop applications for macOS and Windows and through a command-line interface. The [Droid SDK](https://github.com/Factory-AI/droid-sdk-typescript?utm_source=alphasignal), published as `@factory/droid-sdk`, exposes the same harness to Node applications with multi-turn sessions, streaming, and custom Model Context Protocol tools.
+
+## The model turn becomes a larger unit of work
+
+Direct tool calling makes token use rise with the number of model turns because each request carries instructions, tools, and accumulated history. PTC moves repeated operations and intermediate data into a program, allowing one model-generated action to represent a much larger unit of work.
+
+Factory’s Linear example estimates a roughly 51-fold reduction in input tokens, from 3.1 million to 61,000. Total cost will vary with output tokens, tool execution, cache pricing, and model rates, while Factory’s broader production figure shows a 15% cost reduction on Claude Opus 5.5. Together, those numbers explain the practical value of the release: harness design can materially change the cost and reliability of long-running agents even when the underlying model stays the same.
+
++Create new list
+
+[X](https://x.com/intent/tweet?url=https%3A%2F%2Falphasignal.ai%2Fnews%2Ffactory-s-droid-1-0-beats-openai-and-anthropic-agents-while-cutting-costs-51x&text=Factory%27s%20Droid%201.0%20Beats%20OpenAI%20and%20Anthropic%20Agents%20While%20Cutting%20Costs%2051x%20%7C%20AlphaSignal) [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Falphasignal.ai%2Fnews%2Ffactory-s-droid-1-0-beats-openai-and-anthropic-agents-while-cutting-costs-51x) [Facebook](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Falphasignal.ai%2Fnews%2Ffactory-s-droid-1-0-beats-openai-and-anthropic-agents-while-cutting-costs-51x) [Email](mailto:?subject=Factory%27s%20Droid%201.0%20Beats%20OpenAI%20and%20Anthropic%20Agents%20While%20Cutting%20Costs%2051x%20%7C%20AlphaSignal&body=https%3A%2F%2Falphasignal.ai%2Fnews%2Ffactory-s-droid-1-0-beats-openai-and-anthropic-agents-while-cutting-costs-51x) Copy link
+
+Trending
+
+- No trending articles
+
+![](https://www.google.com/s2/favicons?domain=factory.com&sz=64)![](https://www.google.com/s2/favicons?domain=x.com&sz=64)![](https://www.google.com/s2/favicons?domain=github.com&sz=64)3sources
+
+## Comments
+
+![avatar](https://alphasignal.ai/images/default-avatar.png)
+
+## Next Reads
+
+35,920
+
+## [Backplane Lets AI Agents Directly Edit PCB and CAD Hardware Designs](https://alphasignal.ai/news/backplane-lets-ai-agents-directly-edit-pcb-and-cad-hardware-designs)
+
+[![AlphaSignal](https://imagedelivery.net/kokADdxuw1FCXyR2p8D2CQ/3f5942b7-a78f-4fba-dd2a-9e52febee900/public)AlphaSignal](https://alphasignal.ai/company/alphasignal)
+
+·5 days ago·
+
+[![](https://imagedelivery.net/kokADdxuw1FCXyR2p8D2CQ/bb94d178-d9ee-4173-9afc-d8937cdf2600/public)Pro](https://alphasignal.ai/news/backplane-lets-ai-agents-directly-edit-pcb-and-cad-hardware-designs)18,399
+
+## [Anthropic Ships Claude to CarPlay, Adding Voice Mode and 33 Languages](https://alphasignal.ai/news/anthropic-ships-claude-to-carplay-adding-voice-mode-and-33-languages)
+
+[![Claude](https://imagedelivery.net/kokADdxuw1FCXyR2p8D2CQ/30e8aeaf-10d6-48dc-9f21-4b9c448af700/public)Claude](https://alphasignal.ai/company/claudeai)
+
+·3 days ago·
+
+[![](https://imagedelivery.net/kokADdxuw1FCXyR2p8D2CQ/490ebcf4-7db9-4a62-e601-a830c2c3ba00/public)](https://alphasignal.ai/news/anthropic-ships-claude-to-carplay-adding-voice-mode-and-33-languages)11,308
+
+## [Cohere Catches Alibaba's Qwen3.8 Secretly Probing External Cloud Servers](https://alphasignal.ai/news/cohere-catches-alibaba-s-qwen3-8-secretly-probing-external-cloud-servers)
+
+[![Cohere](https://imagedelivery.net/kokADdxuw1FCXyR2p8D2CQ/5117122b-8c41-470c-8483-f0a19566d700/public)Cohere](https://alphasignal.ai/company/cohere)
+
+·6 days ago·
+
+[![](https://imagedelivery.net/kokADdxuw1FCXyR2p8D2CQ/a0d6ca78-7540-4167-48cd-d39cf0edee00/public)](https://alphasignal.ai/news/cohere-catches-alibaba-s-qwen3-8-secretly-probing-external-cloud-servers)10,648
+
+## [OpenAI Gives ChatGPT Pro Subscribers up to $500 in Free API Credits](https://alphasignal.ai/news/openai-gives-chatgpt-pro-subscribers-up-to-500-in-free-api-credits)
+
+[![OpenAI Developers](https://imagedelivery.net/kokADdxuw1FCXyR2p8D2CQ/9c532f22-8425-4583-1982-412172bdf300/public)OpenAI Developers](https://alphasignal.ai/company/openaidevs)
+
+·3 days ago·
+
+[![](https://imagedelivery.net/kokADdxuw1FCXyR2p8D2CQ/6271ab3b-e5c6-493a-908b-aad836002900/public)](https://alphasignal.ai/news/openai-gives-chatgpt-pro-subscribers-up-to-500-in-free-api-credits)
+
+Oct 27, 2026, 2:10 AM EDTOct 29, 2026, 1:32 PM EDTOct 26, 2026, 12:12 PM EDTOct 28, 2026, 7:17 PM EDT

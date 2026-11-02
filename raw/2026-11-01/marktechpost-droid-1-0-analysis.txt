@@ -1,0 +1,1608 @@
+Source URL: https://www.marktechpost.com/2026/10/31/factory-droid-1-0-frontier-harness/
+Effective URL: https://www.marktechpost.com/2026/10/31/factory-droid-1-0-frontier-harness/
+HTTP status: 200
+Captured: 2026-11-01
+Format: FetchUrl Markdown text snapshot, not original HTML. Lines over 3000 characters removed.
+
+---
+
+![](https://cdn-cookieyes.com/assets/images/close.svg)
+
+We use cookies on our website to give you the most relevant experience by remembering your preferences and repeat visits. By clicking “Accept”, you consent to the use of ALL the cookies. .
+
+Cookie settingsREJECTACCEPT
+
+![](https://cdn-cookieyes.com/assets/images/close.svg)
+
+NecessaryAlways Active
+
+Necessary cookies are absolutely essential for the website to function properly. This category only includes cookies that ensures basic functionalities and security features of the website. These cookies do not store any personal information.
+
+- Cookie
+
+\_\_cf\_bm
+
+- Duration
+
+1 hour
+
+- Description
+
+This cookie, set by Cloudflare, is used to support Cloudflare Bot Management.
+
+
+- Cookie
+
+\_pxvid
+
+- Duration
+
+1 year
+
+- Description
+
+PerimeterX sets this cookie to detect fraud and bot activity.
+
+
+- Cookie
+
+\_px3
+
+- Duration
+
+6 minutes
+
+- Description
+
+This cookie is set by the Bloomberg to protect the site from BOT attacks.
+
+
+- Cookie
+
+CookieLawInfoConsent
+
+- Duration
+
+1 year
+
+- Description
+
+CookieYes sets this cookie to record the default button state of the corresponding category and the status of CCPA. It works only in coordination with the primary cookie.
+
+
+- Cookie
+
+cookielawinfo-checkbox-necessary
+
+- Duration
+
+11 months
+
+- Description
+
+This cookie is set by GDPR Cookie Consent plugin. The cookies is used to store the user consent for the cookies in the category "Necessary".
+
+
+- Cookie
+
+cookielawinfo-checkbox-others
+
+- Duration
+
+1 year
+
+- Description
+
+Set by the GDPR Cookie Consent plugin, this cookie stores user consent for cookies in the category "Others".
+
+
+- Cookie
+
+cookielawinfo-checkbox-non-necessary
+
+- Duration
+
+11 months
+
+- Description
+
+This cookie is set by GDPR Cookie Consent plugin. The cookies is used to store the user consent for the cookies in the category "Non Necessary".
+
+
+- Cookie
+
+cookielawinfo-checkbox-analytics
+
+- Duration
+
+1 year
+
+- Description
+
+Set by the GDPR Cookie Consent plugin, this cookie records the user consent for the cookies in the "Analytics" category.
+
+
+- Cookie
+
+cookielawinfo-checkbox-performance
+
+- Duration
+
+1 year
+
+- Description
+
+Set by the GDPR Cookie Consent plugin, this cookie stores the user consent for cookies in the category "Performance".
+
+
+- Cookie
+
+cookielawinfo-checkbox-uncategorized
+
+- Duration
+
+1 year
+
+- Description
+
+The cookie is set by the GDPR Cookie Consent plugin to record the user consent for cookies in the category "Uncategorized".
+
+
+- Cookie
+
+cookielawinfo-checkbox-functional
+
+- Duration
+
+1 year
+
+- Description
+
+The GDPR Cookie Consent plugin sets the cookie to record the user consent for the cookies in the category "Functional".
+
+
+- Cookie
+
+cookielawinfo-checkbox-advertisement
+
+- Duration
+
+1 year
+
+- Description
+
+Set by the GDPR Cookie Consent plugin, this cookie records the user consent for the cookies in the "Advertisement" category.
+
+
+- Cookie
+
+wpEmojiSettingsSupports
+
+- Duration
+
+session
+
+- Description
+
+WordPress sets this cookie when a user interacts with emojis on a WordPress site. It helps determine if the user's browser can display emojis properly.
+
+
+- Cookie
+
+VISITOR\_PRIVACY\_METADATA
+
+- Duration
+
+6 months
+
+- Description
+
+YouTube sets this cookie to store the user's cookie consent state for the current domain.
+
+
+- Cookie
+
+viewed\_cookie\_policy
+
+- Duration
+
+11 months
+
+- Description
+
+The cookie is set by the GDPR Cookie Consent plugin and is used to store whether or not user has consented to the use of cookies. It does not store any personal data.
+
+
+- Cookie
+
+PHPSESSID
+
+- Duration
+
+- Description
+
+This cookie is native to PHP applications. The cookie is used to store and identify a users' unique session ID for the purpose of managing user session on the website. The cookie is a session cookies and is deleted when all the browser windows are closed.
+
+
+- Cookie
+
+\_\_cfduid
+
+- Duration
+
+4 weeks
+
+- Description
+
+The cookie is set by CloudFare. The cookie is used to identify individual clients behind a shared IP address d apply security settings on a per-client basis. It doesnot correspond to any user ID in the web application and does not store any personally identifiable information.
+
+
+Functional
+
+Functional cookies help to perform certain functionalities like sharing the content of the website on social media platforms, collect feedbacks, and other third-party features.
+
+- Cookie
+
+yt-remote-connected-devices
+
+- Duration
+
+never
+
+- Description
+
+YouTube sets this cookie to store the user's video preferences using embedded YouTube videos.
+
+
+- Cookie
+
+ytidb::LAST\_RESULT\_ENTRY\_KEY
+
+- Duration
+
+never
+
+- Description
+
+The cookie ytidb::LAST\_RESULT\_ENTRY\_KEY is used by YouTube to store the last search result entry that was clicked by the user. This information is used to improve the user experience by providing more relevant search results in the future.
+
+
+- Cookie
+
+yt-remote-device-id
+
+- Duration
+
+never
+
+- Description
+
+YouTube sets this cookie to store the user's video preferences using embedded YouTube videos.
+
+
+- Cookie
+
+yt-remote-session-name
+
+- Duration
+
+session
+
+- Description
+
+The yt-remote-session-name cookie is used by YouTube to store the user's video player preferences using embedded YouTube video.
+
+
+- Cookie
+
+yt-remote-fast-check-period
+
+- Duration
+
+session
+
+- Description
+
+The yt-remote-fast-check-period cookie is used by YouTube to store the user's video player preferences for embedded YouTube videos.
+
+
+- Cookie
+
+yt-remote-session-app
+
+- Duration
+
+session
+
+- Description
+
+The yt-remote-session-app cookie is used by YouTube to store user preferences and information about the interface of the embedded YouTube video player.
+
+
+- Cookie
+
+yt-remote-cast-available
+
+- Duration
+
+session
+
+- Description
+
+The yt-remote-cast-available cookie is used to store the user's preferences regarding whether casting is available on their YouTube video player.
+
+
+- Cookie
+
+yt-remote-cast-installed
+
+- Duration
+
+session
+
+- Description
+
+The yt-remote-cast-installed cookie is used to store the user's video player preferences using embedded YouTube video.
+
+
+- Cookie
+
+na\_id
+
+- Duration
+
+1 year
+
+- Description
+
+This cookie is set by Addthis.com to enable sharing of links on social media platforms like Facebook and Twitter
+
+
+- Cookie
+
+vc
+
+- Duration
+
+1 year
+
+- Description
+
+This cookie is set by addthis.com on sites that allow sharing on social media.
+
+
+- Cookie
+
+\_\_atuvc
+
+- Duration
+
+1 year
+
+- Description
+
+This cookie is set by Addthis to make sure you see the updated count if you share a page and return to it before our share count cache is updated.
+
+
+- Cookie
+
+\_\_atuvs
+
+- Duration
+
+30 minutes
+
+- Description
+
+This cookie is set by Addthis to make sure you see the updated count if you share a page and return to it before our share count cache is updated.
+
+
+- Cookie
+
+ouid
+
+- Duration
+
+1 year
+
+- Description
+
+The cookie is set by Addthis which enables the content of the website to be shared across different networking and social sharing websites.
+
+
+Analytics
+
+Analytical cookies are used to understand how visitors interact with the website. These cookies help provide information on metrics the number of visitors, bounce rate, traffic source, etc.
+
+- Cookie
+
+\_ga\_\*
+
+- Duration
+
+1 year 1 month 4 days
+
+- Description
+
+Google Analytics sets this cookie to store and count page views.
+
+
+- Cookie
+
+\_ga
+
+- Duration
+
+2 years
+
+- Description
+
+This cookie is installed by Google Analytics. The cookie is used to calculate visitor, session, camapign data and keep track of site usage for the site's analytics report. The cookies store information anonymously and assigns a randoly generated number to identify unique visitors.
+
+
+- Cookie
+
+sbjs\_migrations
+
+- Duration
+
+session
+
+- Description
+
+Sourcebuster sets this cookie to identify the source of a visit and stores user action information in cookies. This analytical and behavioural cookie is used to enhance the visitor experience on the website.
+
+
+- Cookie
+
+sbjs\_current\_add
+
+- Duration
+
+session
+
+- Description
+
+Sourcebuster sets this cookie to identify the source of a visit and stores user action information in cookies. This analytical and behavioural cookie is used to enhance the visitor experience on the website.
+
+
+- Cookie
+
+sbjs\_first\_add
+
+- Duration
+
+session
+
+- Description
+
+Sourcebuster sets this cookie to identify the source of a visit and stores user action information in cookies. This analytical and behavioural cookie is used to enhance the visitor experience on the website.
+
+
+- Cookie
+
+sbjs\_current
+
+- Duration
+
+session
+
+- Description
+
+Sourcebuster sets this cookie to identify the source of a visit and stores user action information in cookies. This analytical and behavioural cookie is used to enhance the visitor experience on the website.
+
+
+- Cookie
+
+sbjs\_first
+
+- Duration
+
+session
+
+- Description
+
+Sourcebuster sets this cookie to identify the source of a visit and stores user action information in cookies. This analytical and behavioural cookie is used to enhance the visitor experience on the website.
+
+
+- Cookie
+
+sbjs\_udata
+
+- Duration
+
+session
+
+- Description
+
+Sourcebuster sets this cookie to identify the source of a visit and stores user action information in cookies. This analytical and behavioural cookie is used to enhance the visitor experience on the website.
+
+
+- Cookie
+
+sbjs\_session
+
+- Duration
+
+1 hour
+
+- Description
+
+Sourcebuster sets this cookie to identify the source of a visit and stores user action information in cookies. This analytical and behavioural cookie is used to enhance the visitor experience on the website.
+
+
+- Cookie
+
+tk\_or
+
+- Duration
+
+1 year 1 month 4 days
+
+- Description
+
+JetPack plugin sets this referral cookie on sites using WooCommerce, which analyzes referrer behaviour for Jetpack.
+
+
+- Cookie
+
+tk\_r3d
+
+- Duration
+
+3 days
+
+- Description
+
+JetPack installs this cookie to collect internal metrics for user activity and improve user experience.
+
+
+- Cookie
+
+tk\_lr
+
+- Duration
+
+1 year
+
+- Description
+
+JetPack plugin sets this referral cookie on sites using WooCommerce, which analyzes referrer behaviour for Jetpack.
+
+
+- Cookie
+
+tk\_ai
+
+- Duration
+
+1 year
+
+- Description
+
+JetPack sets this cookie to store a randomly-generated anonymous ID used only within the admin area and for general analytics tracking.
+
+
+- Cookie
+
+tk\_tc
+
+- Duration
+
+session
+
+- Description
+
+JetPack sets this cookie to record details on how users use the website.
+
+
+- Cookie
+
+\_gat\_gtag\_UA\_5784146\_31
+
+- Duration
+
+1 minute
+
+- Description
+
+Google Used to distinguish users.
+
+
+- Cookie
+
+GPS
+
+- Duration
+
+30 minutes
+
+- Description
+
+This cookie is set by Youtube and registers a unique ID for tracking users based on their geographical location
+
+
+- Cookie
+
+\_\_gads
+
+- Duration
+
+2 years
+
+- Description
+
+This cookie is set by Google and stored under the name dounleclick.com. This cookie is used to track how many times users see a particular advert which helps in measuring the success of the campaign and calculate the revenue generated by the campaign. These cookies can only be read from the domain that it is set on so it will not track any data while browsing through another sites.
+
+
+- Cookie
+
+uvc
+
+- Duration
+
+1 year
+
+- Description
+
+The cookie is set by addthis.com to determine the usage of Addthis.com service.
+
+
+- Cookie
+
+ad-id
+
+- Duration
+
+7 months
+
+- Description
+
+Provided by amazon-adsystem.com for tracking user actions on other websites to provide targeted content
+
+
+- Cookie
+
+\_gat\_gtag\_UA\_116563943\_1
+
+- Duration
+
+1 minute
+
+- Description
+
+Google uses this cookie to distinguish users.
+
+
+- Cookie
+
+\_gid
+
+- Duration
+
+1 day
+
+- Description
+
+This cookie is installed by Google Analytics. The cookie is used to store information of how visitors use a website and helps in creating an analytics report of how the wbsite is doing. The data collected including the number visitors, the source where they have come from, and the pages viisted in an anonymous form.
+
+
+Performance
+
+Performance cookies are used to understand and analyze the key performance indexes of the website which helps in delivering a better user experience for the visitors.
+
+- Cookie
+
+YSC
+
+- Duration
+
+- Description
+
+This cookies is set by Youtube and is used to track the views of embedded videos.
+
+
+- Cookie
+
+\_gat
+
+- Duration
+
+1 minute
+
+- Description
+
+This cookies is installed by Google Universal Analytics to throttle the request rate to limit the colllection of data on high traffic sites.
+
+
+Advertisement
+
+Advertisement cookies are used to provide visitors with relevant ads and marketing campaigns. These cookies track visitors across websites and collect information to provide customized ads.
+
+- Cookie
+
+COMPASS
+
+- Duration
+
+1 hour
+
+- Description
+
+The COMPASS cookie is used by Yahoo to deliver targeted advertising based on user's online behavior.
+
+
+- Cookie
+
+NID
+
+- Duration
+
+5 months
+
+- Description
+
+This cookie is used to a profile based on user's interest and display personalized ads to the users.
+
+
+- Cookie
+
+\_\_Secure-YNID
+
+- Duration
+
+6 months
+
+- Description
+
+Google cookie used to protect user security and prevent fraud, especially during the login process.
+
+
+- Cookie
+
+\_\_Secure-ROLLOUT\_TOKEN
+
+- Duration
+
+6 months
+
+- Description
+
+YouTube sets this cookie to manage feature rollout and experimentation. It helps Google control which new features or interface changes are shown to users as part of testing and staged rollouts, ensuring consistent experience for a given user during an experiment.
+
+
+- Cookie
+
+yt.innertube::nextId
+
+- Duration
+
+never
+
+- Description
+
+YouTube sets this cookie to register a unique ID to store data on what videos from YouTube the user has seen.
+
+
+- Cookie
+
+yt.innertube::requests
+
+- Duration
+
+never
+
+- Description
+
+YouTube sets this cookie to register a unique ID to store data on what videos from YouTube the user has seen.
+
+
+- Cookie
+
+VISITOR\_INFO1\_LIVE
+
+- Duration
+
+5 months
+
+- Description
+
+This cookie is set by Youtube. Used to track the information of the embedded YouTube videos on a website.
+
+
+- Cookie
+
+TapAd\_TS
+
+- Duration
+
+1 month
+
+- Description
+
+The cookie is set by Tapad.com. The purpose of the cookie is to track users across devices to enable targeted advertising.
+
+
+- Cookie
+
+TapAd\_DID
+
+- Duration
+
+1 month
+
+- Description
+
+The cookie is set by tapad.com. The purpose of the cookie is to track users across devices to enable targeted advertising
+
+
+- Cookie
+
+personalization\_id
+
+- Duration
+
+2 years
+
+- Description
+
+This cookie is set by twitter.com. It is used integrate the sharing features of this social media. It also stores information about how the user uses the website for tracking and targeting.
+
+
+- Cookie
+
+uid
+
+- Duration
+
+1 year
+
+- Description
+
+This cookie is used to measure the number and behavior of the visitors to the website anonymously. The data includes the number of visits, average duration of the visit on the website, pages visited, etc. for the purpose of better understanding user preferences for targeted advertisments.
+
+
+- Cookie
+
+loc
+
+- Duration
+
+1 year
+
+- Description
+
+This cookie is set by Addthis. This is a geolocation cookie to understand where the users sharing the information are located.
+
+
+- Cookie
+
+IDE
+
+- Duration
+
+2 years
+
+- Description
+
+Used by Google DoubleClick and stores information about how the user uses the website and any other advertisement before visiting the website. This is used to present users with ads that are relevant to them according to the user profile.
+
+
+- Cookie
+
+di2
+
+- Duration
+
+1 year
+
+- Description
+
+This cookie is set by addthis.com on sites that allows sharing on social media. The cookie is used to track user behavior anonymously to generate usage trends to improve relevance to their services and advertising.
+
+
+Others
+
+Other uncategorized cookies are those that are being analyzed and have not been classified into a category as yet.
+
+- Cookie
+
+pxcts
+
+- Duration
+
+session
+
+- Description
+
+Description is currently not available.
+
+
+- Cookie
+
+\_pxttld
+
+- Duration
+
+session
+
+- Description
+
+Description is currently not available.
+
+
+- Cookie
+
+SGPBShowingLimitationDomain77659
+
+- Duration
+
+2 days
+
+- Description
+
+Description is currently not available.
+
+
+- Cookie
+
+\_\_Secure-YEC
+
+- Duration
+
+past
+
+- Description
+
+YouTube sets this cookie to stores the user's video player preferences using embedded YouTube video
+
+
+- Cookie
+
+S
+
+- Duration
+
+1 hour
+
+- Description
+
+Used by Yahoo to provide ads, content or analytics.
+
+
+- Cookie
+
+test\_cookie
+
+- Duration
+
+11 months
+
+- Description
+
+This cookie is set by doubleclick.net. The purpose of the cookie is to determine if the users' browser supports cookies.
+
+
+- Cookie
+
+sc\_at
+
+- Duration
+
+1 year
+
+- Description
+
+Snapchat sets this cookie for showing relevant advertising based on the user’s movement.
+
+
+- Cookie
+
+TapAd\_3WAY\_SYNCS
+
+- Duration
+
+1 month
+
+- Description
+
+TapAd sets this cookie for data synchronization with advertising networks.
+
+
+- Cookie
+
+\_pin\_unauth
+
+- Duration
+
+1 year
+
+- Description
+
+Pinterest set this cookie to group actions for users who cannot be identified.
+
+
+- Cookie
+
+sc\_anonymous\_id
+
+- Duration
+
+9 years
+
+- Description
+
+Soundcloud sets this cookie to enable visitors to embed content or files on the website.
+
+
+- Cookie
+
+um
+
+- Duration
+
+1 year
+
+- Description
+
+Set by addthis.com.(Purpose not known)
+
+
+- Cookie
+
+DCRP\_Categories
+
+- Duration
+
+4 weeks
+
+- Description
+
+Description is currently not available.
+
+
+- Cookie
+
+vuid
+
+- Duration
+
+2 years
+
+- Description
+
+Vimeo installs this cookie to collect tracking information by setting a unique ID to embed videos on the website.
+
+
+- Cookie
+
+X-AB
+
+- Duration
+
+1 day
+
+- Description
+
+Adobe Analytics sets this cookie in context with multi-variate testing. This is a tool used to combine or change content on the website. This allows the website to find the best variation or edition of the site.
+
+
+- Cookie
+
+YTC
+
+- Duration
+
+10 minutes
+
+- Description
+
+YouTube sets the YTC cookie to manage the embed and viewing of videos on the website.
+
+
+- Cookie
+
+sp\_t
+
+- Duration
+
+1 month
+
+- Description
+
+The sp\_t cookie is set by Spotify to implement audio content from Spotify on the website and also registers information on user interaction related to the audio content.
+
+
+- Cookie
+
+sp\_landing
+
+- Duration
+
+1 day
+
+- Description
+
+The sp\_landing is set by Spotify to implement audio content from Spotify on the website and also registers information on user interaction related to the audio content.
+
+
+- Cookie
+
+\_\_asc
+
+- Duration
+
+30 minutes
+
+- Description
+
+Alexa Metrics sets this cookie to track and report information to the Alexa analytics service.
+
+
+- Cookie
+
+\_\_auc
+
+- Duration
+
+1 year
+
+- Description
+
+Alexa Metrics sets this cookie to track and report information to the Alexa analytics service.
+
+
+- Cookie
+
+AWSESS
+
+- Duration
+
+- Description
+
+Awin sets this to ensure the same kind of advertisement is not shown to the user.
+
+
+- Cookie
+
+nevercache-b39818
+
+- Duration
+
+session
+
+- Description
+
+Description is currently not available.
+
+
+REJECTSave My PreferencesACCEPT
+
+Powered by [![](https://cdn-cookieyes.com/assets/images/poweredbtcky.svg)](https://www.cookieyes.com/product/cookie-consent/?ref=cypbcyb&utm_source=cookie-banner&utm_medium=powered-by-cookieyes)
+
+[![Logo](https://www.marktechpost.com/wp-content/uploads/2025/09/272x90-300x99.png)NewsHub](https://www.marktechpost.com/)
+
+[Premium Content](https://www.marktechpost.com/2026/10/31/factory-droid-1-0-frontier-harness/# "Premium Content")
+
+[Read our exclusive articles](https://www.marktechpost.com/2026/10/31/factory-droid-1-0-frontier-harness/# "Read our exclusive articles")
+
+[Facebook](https://www.marktechpost.com/2026/10/31/factory-droid-1-0-frontier-harness/# "Facebook")
+
+[Instagram](https://www.marktechpost.com/2026/10/31/factory-droid-1-0-frontier-harness/# "Instagram")
+
+[X](https://www.marktechpost.com/2026/10/31/factory-droid-1-0-frontier-harness/# "X")
+
+[Discord](https://pxl.to/ivxz41s "Discord")[Linkedin](https://www.linkedin.com/company/marktechpost/?viewAsMember=true "Linkedin")[Reddit](https://www.reddit.com/r/machinelearningnews/ "Reddit")[X](https://twitter.com/Marktechpost "X")
+
+- [Home](https://www.marktechpost.com/)
+- [Open Source/Weights](https://www.marktechpost.com/category/technology/open-source/)
+- [AI Agents](https://www.marktechpost.com/category/editors-pick/ai-agents/)
+- [Tutorials](https://www.marktechpost.com/category/tutorials/)
+- [Voice AI](https://www.marktechpost.com/category/technology/artificial-intelligence/voice-ai/)
+- [Robotics](https://www.marktechpost.com/category/robotics/)
+- [Newsletter](https://www.aidevsignals.com/)
+- [Promote with Us](https://promotions.marktechpost.com/)
+
+Search
+
+[![Logo](https://www.marktechpost.com/wp-content/uploads/2025/09/272x90-300x99.png)NewsHub](https://www.marktechpost.com/)
+
+- [Home](https://www.marktechpost.com/)
+- [Open Source/Weights](https://www.marktechpost.com/category/technology/open-source/)
+- [AI Agents](https://www.marktechpost.com/category/editors-pick/ai-agents/)
+- [Tutorials](https://www.marktechpost.com/category/tutorials/)
+- [Voice AI](https://www.marktechpost.com/category/technology/artificial-intelligence/voice-ai/)
+- [Robotics](https://www.marktechpost.com/category/robotics/)
+- [Newsletter](https://www.aidevsignals.com/)
+- [Promote with Us](https://promotions.marktechpost.com/)
+
+[![Logo](https://www.marktechpost.com/wp-content/uploads/2025/09/272x90-300x99.png)MARKTECHPOST](https://www.marktechpost.com/)
+
+Search AI news...
+
+Search
+
+- [Home](https://www.marktechpost.com/)
+- [Open Source/Weights](https://www.marktechpost.com/category/technology/open-source/)
+- [AI Agents](https://www.marktechpost.com/category/editors-pick/ai-agents/)
+- [Tutorials](https://www.marktechpost.com/category/tutorials/)
+- [Voice AI](https://www.marktechpost.com/category/technology/artificial-intelligence/voice-ai/)
+- [Robotics](https://www.marktechpost.com/category/robotics/)
+- [Newsletter](https://www.aidevsignals.com/)
+- [Promote with Us](https://promotions.marktechpost.com/)
+
+[Home](https://www.marktechpost.com/ "")[Editors Pick](https://www.marktechpost.com/category/editors-pick/ "View all posts in Editors Pick")[Agentic AI](https://www.marktechpost.com/category/editors-pick/agentic-ai/ "View all posts in Agentic AI")Meet Factory Droid 1.0: A Model-Independent Coding Agent Harness Built on Script...
+
+[Open-source benchmarkby **Datalab**Is your PDF parser _actually getting it right?_omni\_parse\_bench scores any parser on text, tables & layout with page-level pass/fail tests.Star on GitHub **→****_TEXT_** **_TABLE_** **_LAYOUT_**Text✓Tables✓Layout✓presentorderrepeattable\_celllayout\_kind$uv pip install omni-parse-benchSponsored](https://aicampaign.live/omnipar)
+
+- [Editors Pick](https://www.marktechpost.com/category/editors-pick/)
+- [Agentic AI](https://www.marktechpost.com/category/editors-pick/agentic-ai/)
+- [AI Agents](https://www.marktechpost.com/category/editors-pick/ai-agents/)
+- [Artificial Intelligence](https://www.marktechpost.com/category/technology/artificial-intelligence/)
+- [AI Infrastructure](https://www.marktechpost.com/category/technology/artificial-intelligence/ai-infrastructure/)
+- [Technology](https://www.marktechpost.com/category/technology/)
+- [AI Shorts](https://www.marktechpost.com/category/technology/ai-shorts/)
+- [Applications](https://www.marktechpost.com/category/technology/artificial-intelligence/applications/)
+- [Enterprise AI](https://www.marktechpost.com/category/editors-pick/enterprise-ai/)
+- [For Devs](https://www.marktechpost.com/category/editors-pick/for-devs/)
+- [Harness](https://www.marktechpost.com/category/editors-pick/harness/)
+- [New Releases](https://www.marktechpost.com/category/editors-pick/new-releases/)
+- [Software Engineering](https://www.marktechpost.com/category/editors-pick/software-engineering/)
+- [Staff](https://www.marktechpost.com/category/editors-pick/staff/)
+- [Tech News](https://www.marktechpost.com/category/tech-news/)
+
+[![](https://www.gstatic.com/images/branding/googleg/1x/googleg_standard_color_128dp.png)Add as a preferredsource on Google](https://www.google.com/preferences/source?q=marktechpost.com)
+
+Factory has released [Droid 1.0](https://factory.com/news/frontier-harness), the largest update yet to the Factory Droid agent harness. The main change is programmatic tool calling, now on by default. The model writes a program that runs its tools. One model request can now drive hundreds of tool calls.
+
+## **TL;DR**
+
+- **Size:** Base prompt is 13,055 input tokens, down 37% from 20,887. Only 2 tool definitions ship up front, down from 11.
+- **Runs on:** macOS and Windows desktop app, a terminal UI, and the Node SDK `@factory/droid-sdk`. Works with any supported model, including your own API keys.
+- **Performance:** Highest pass rate of every harness Factory tested, on the same model, at lower cost.
+- **Best:** 65.2% on Terminal-Bench 4 with Claude Opus 5.5, at $4.73 per passed task (self-reported).
+- **Worst:** With GPT-6.1 Sol, Droid takes 10% longer per passed task than Codex.
+
+## **What is Droid 1.0?**
+
+Droid 1.0 is a model-independent coding agent harness from Factory. Factory defines a harness as everything around the model. That means [the prompts, the tools, how tool results return, and the loop](https://factory.com/news/frontier-harness). Users pick a model or let [Factory Router](https://factory.com/product/router) choose a cost-efficient mix.
+
+[**_TEXT_** **_TABLE_** **_LAYOUT_**Is your PDF parser _actually getting it right?_`omni_parse_bench` · scores text, tables & layout · open sourceStar on GitHub **→**Sponsored](https://aicampaign.live/omnipar)
+
+## **How does programmatic tool calling work?**
+
+In a standard loop, every tool output lands in the model’s context. With programmatic tool calling (PTC), the model writes a program instead. Droid implements this as a **Script tool**. The model writes JavaScript that runs in a sandbox. The sandbox has no file, network, or system access of its own.
+
+Raw files, search results, and logs stay inside the program. Only printed output returns to the model. Independent calls run concurrently.
+
+The idea builds on [CodeAct (Wang et al., 2024)](https://arxiv.org/abs/2402.01030). **Factory reports these results from its own sessions:**
+
+- **Unit test fix:** 15 tool calls took 5 model calls instead of 10. The task finished in 41.6 s instead of 56.8 s.
+- **Linear cleanup:** 151 issues moved and verified in 312 tool calls. The Script used 2 requests and about 61,000 tokens. Factory models direct calls at 36 requests and about 3.1M tokens.
+- **CI sweep:** 5,384 jobs across 547 runs, in 2 requests. Under 0.1% of tool results reached the model’s context.
+
+On Claude Opus 5.5, Script mode cuts Droid’s cost by 15% versus direct tool calling. It is on by default for 10 models, including GPT-6.1 Sol and Kimi K3.
+
+[100K200K300K+users hand AI _their chores._**+30% wallet bonus** · ends Oct 31Claim 30% bonus **→**Sponsored](https://aicampaign.live/30-wk1n)
+
+Droid 1.0 Explainer
+
+Factory · Droid 1.0
+
+## How Droid 1.0 runs tools from a program
+
+Programmatic tool calling, Terminal-Bench 4 results and the harness changes behind them
+
+1 · Script mode2 · Benchmarks3 · Linear example4 · Harness changes
+
+### Direct calls vs the Script tool
+
+Fixing a failing unit test with GPT-6.1 Sol: the same 15 tool calls, replayed both ways (Factory's measurements).
+
+▶ Play the race
+
+**Direct tool calls**
+
+Model calls **0**Tool calls **0**Time **0.0 s**
+
+**Script tool**
+
+Model calls **0**Tool calls **0**Time **0.0 s**
+
+Model callTool callScript
+
+The Script is JavaScript in a sandbox with no file, network or system access of its own. Raw tool results stay in the program; only printed output returns to the model.
+
+### Terminal-Bench 4 pass rate, same model per harness
+
+Claude Opus 5.5GPT-6.1 Sol
+
+Droid
+
+65.2%
+
+Cursor
+
+62.1%
+
+OpenCode
+
+62.1%
+
+Devin
+
+59.6%
+
+Claude Code
+
+57.6%
+
+Droid: $4.73 per passed task, up to 24% cheaper and 16% to 26% faster than every other harness on Opus 5.5.
+
+Self-reported by Factory. 3 trials per task, run October 23 to 28, 2026. Cursor was not tested on GPT-6.1 Sol.
+
+### Moving 151 Linear issues: 312 tool calls
+
+Each issue was moved to the backlog, then checked so that only its status changed.
+
+▶ Compare
+
+Direct calls (modeled, 10 per request)
+
+0
+
+model requests
+
+0
+
+input tokens
+
+One Script
+
+0
+
+model requests
+
+0
+
+input tokens
+
+Direct-call figures are Factory's estimates; the Script figures come from a real session.
+
+### Other changes in Droid 1.0 (tap a card)
+
+−37%
+
+Base prompt
+
+First request fell from 20,887 to 13,055 input tokens. Droid now sends 2 tool definitions up front instead of 11.
+
+98%
+
+Cache reads
+
+A typical production request reads 98% of its input from cache. Newly loaded tools are appended at the end so the cached prefix holds.
+
+−15%
+
+Script mode cost
+
+Script mode cuts Droid's cost by 15% on Claude Opus 5.5 compared with direct tool calling.
+
+16K
+
+Compaction room
+
+Compaction summaries can now hold 16,000 tokens, up from 8,000. 3 identical tool calls trigger a nudge; 6 stop the loop.
+
+488 ms
+
+First paint
+
+Median time to first paint fell from 1,839 ms to 488 ms. Median quit time fell from 648 ms to 30 ms.
+
+~20 MB
+
+Per extra session
+
+Sessions now share the daemon process, adding about 20 MB each instead of about 350 MB per process.
+
+Source: [Factory Research, Oct 29, 2026](https://factory.com/news/frontier-harness) · figures self-reported© Marktechpost
+
+## **How does Droid 1.0 score on Terminal-Bench 4?**
+
+Factory ran each harness against Droid on the same model. Each harness ran 3 trials per task, from October 23 to 28, 2026. Only tasks both harnesses passed in all 3 trials count toward cost and time.
+
+- **Claude Opus 5.5:** Droid scores 65.2%. Cursor and OpenCode score 62.1%, Devin 59.6%, Claude Code 57.6%. Droid costs up to 24% less.
+- **GPT-6.1 Sol:** Droid scores 57.6% at $0.79 per passed task. Codex scores 54.0%, OpenCode 51.0%, Devin 45.0%.
+- **Speed:** On Opus 5.5, Droid takes 16% to 26% less time per passed task. Against Claude Code, it also uses 17% fewer tokens.
+
+## **What else changed in the harness?**
+
+Most changes came from an internal **Agent Factory** loop. Agents read failures and propose changes, tested on every affected model family. Engineers review and merge.
+
+- **Prompt cache:** Newly loaded tools are appended to the request end. The typical production request reads 98% of input from cache.
+- **Leaner first request:** Tool definitions fell 46%. Rarely used tools now load on demand.
+- **Bounded autonomy:** 3 identical tool calls trigger a nudge, and 6 stop the loop. Compaction summaries now hold 16,000 tokens, up from 8,000.
+- **App latency:** First paint fell from 1,839 ms to 488 ms. Each extra session now adds about 20 MB, not 350 MB.
+
+## **Comparison: Droid 1.0 vs other coding agent harnesses**
+
+| Feature | **Droid 1.0** ( [Factory](https://factory.com/news/frontier-harness)) | [Codex CLI](https://github.com/openai/codex) | [Claude Code](https://github.com/anthropics/claude-code) | [OpenCode](https://github.com/anomalyco/opencode) |
+| --- | --- | --- | --- | --- |
+| Developer | Factory | OpenAI | Anthropic | Anomaly |
+| Model support | Model-independent, BYOK, [Factory Router](https://factory.com/news/frontier-harness) | [ChatGPT plan or API key](https://github.com/openai/codex) | Native harness for Claude ( [Factory](https://factory.com/news/frontier-harness)) | [75+ LLM providers, local models](https://opencode.ai/docs/providers) |
+| License | Not disclosed (SDK is [Apache 2.0](https://github.com/Factory-AI/droid-sdk-typescript)) | [Apache-2.0](https://github.com/openai/codex) | [Anthropic Commercial Terms](https://github.com/anthropics/claude-code) | [MIT](https://github.com/anomalyco/opencode) |
+| Programmatic tool calling | Default (Script tool) | Yes, per [Factory](https://factory.com/news/frontier-harness) | Not disclosed | Not disclosed |
+| TB4, Claude Opus 5.5\* | **65.2%** | Not tested | 57.6% | 62.1% |
+| TB4, GPT-6.1 Sol\* | **57.6%** | 54.0% | Not tested | 51.0% |
+| Time per passed task vs Droid\* | Baseline | Droid 10% slower (Sol) | Droid 26% faster (Opus) | Droid 4% to 24% faster |
+| Pricing | [From $20/mo](https://factory.com/pricing) | [ChatGPT plan or API](https://github.com/openai/codex) | Not disclosed | Free, open source |
+
+_\*Terminal-Bench 4 figures are Factory’s own runs, from its [methodology section](https://factory.com/news/frontier-harness#methodology)._
+
+## **How can developers try it?**
+
+Droid 1.0 ships as a [desktop app](https://factory.com/product/desktop) and [terminal UI](https://factory.com/product/cli). The [Droid SDK](https://github.com/Factory-AI/droid-sdk-typescript) runs the same harness from Node, with sessions, streaming and MCP tools. Paid plans start at [$20 per month](https://factory.com/pricing).
+
+## **Key Takeaways**
+
+- Droid 1.0 makes programmatic tool calling the default.
+- 1 Script can run hundreds of tool calls per model request.
+- 65.2% on Terminal-Bench 4 with Opus 5.5, self-reported.
+- Base prompt shrank 37%, to 13,055 tokens.
+- Codex still wins on speed with GPT-6.1 Sol.
+
+* * *
+
+Check out the full [**Factory research post**](https://factory.com/news/frontier-harness), the **[Droid SDK on GitHub](https://github.com/Factory-AI/droid-sdk-typescript)** and the [**Droid docs**](https://docs.factory.com/droid-cli/quickstart). Also, feel free to follow us on **[Twitter](https://x.com/intent/follow?screen_name=marktechpost)** and don’t forget to join our **[150k+ML SubReddit](https://www.reddit.com/r/machinelearningnews/)** and Subscribe to **[our Newsletter](https://magic.beehiiv.com/v1/f5e63dd4-5653-4f09-83e2-321a8b1ba526?email={{email}})**. Wait! are you on telegram? **[now you can join us on telegram as well.](https://t.me/machinelearningresearchnews)**
+
+Need to partner with us for promoting your GitHub Repo OR Hugging Face Page OR Product Release OR Webinar etc.? **[Connect with us](https://promotions.marktechpost.com/)**
+
+[![](https://www.marktechpost.com/wp-content/uploads/2019/06/Screen-Shot-2021-09-14-at-9.02.24-AM-150x150.png)](https://www.marktechpost.com/)
+
+[View Asif Razzaq's Facebook profile](https://www.facebook.com/MarkTechPost/)
+
+[View Asif Razzaq's Twitter profile](https://twitter.com/asifrazzaq1988)
+
+[View Asif Razzaq's Linkedin profile](https://www.linkedin.com/in/asifrazzaq/)
+
+##### [Asif Razzaq](https://www.marktechpost.com/author/6flvq/)
+
+[Website](https://www.marktechpost.com/) \| [\+ postsBio ⮌](https://www.marktechpost.com/2026/10/31/factory-droid-1-0-frontier-harness/#)
+
+Asif Razzaq is the CEO of Marktechpost AI Media Inc.. As a visionary entrepreneur and engineer, Asif is committed to harnessing the potential of Artificial Intelligence for social good. His most recent endeavor is the launch of an Artificial Intelligence Media Platform, Marktechpost, which stands out for its in-depth coverage of machine learning and deep learning news that is both technically sound and easily understandable by a wide audience. The platform boasts of over 2 million monthly views, illustrating its popularity among audiences.
+
+- Asif Razzaq
+
+
+
+
+
+
+
+
+
+[Nace AI Open-Sources Drex Max v1: A 27B Decision Model That Runs Locally on Apple Silicon](https://www.marktechpost.com/2026/11/01/nace-ai-open-sources-drex-max-v1-local-inference/)
+
+- Asif Razzaq
+
+
+
+
+
+
+
+
+
+[DeepSeek Open-Sources dsh-superagent, a Router-Worker Coding Agent](https://www.marktechpost.com/2026/11/01/deepseek-dsh-superagent-router-worker-coding-agent/)
+
+- Asif Razzaq
+
+
+
+
+
+
+
+
+
+[Meet TokenEconomizer: Microsoft’s Plugin That Cuts Coding Agent Costs by Up to 30.9%](https://www.marktechpost.com/2026/10/30/microsoft-tokeneconomizer-coding-agent-cost-control/)
+
+- Asif Razzaq
+
+
+
+
+
+
+
+
+
+[Samaya AI Releases Sterling: A 3B-Active Finance Research Agent Model that Beats Claude Fable 5.1 on FrontierFinance at 11x Lower Cost](https://www.marktechpost.com/2026/10/30/samaya-sterling-post-trained-finance-research-model-frontierfinance/)
+
+
+[$uv pip install omni-parse-bench**✓** text**✓** tables**✓** layout→ scored per pageStar on GitHub **→**Sponsored](https://aicampaign.live/omnipar)
+
+#### [RELATED ARTICLES](https://www.marktechpost.com/2026/10/31/factory-droid-1-0-frontier-harness/\#) [MORE FROM AUTHOR](https://www.marktechpost.com/2026/10/31/factory-droid-1-0-frontier-harness/\#)
+
+[![Nace AI Open-Sources Drex Max v1: A 27B Decision Model That Runs Locally on Apple Silicon](https://www.marktechpost.com/wp-content/uploads/2026/11/WP-BLOG-BANNER-88881-1-218x150.png)](https://www.marktechpost.com/2026/11/01/nace-ai-open-sources-drex-max-v1-local-inference/ "Nace AI Open-Sources Drex Max v1: A 27B Decision Model That Runs Locally on Apple Silicon")
+
+### [Nace AI Open-Sources Drex Max v1: A 27B Decision Model That Runs Locally on Apple Silicon](https://www.marktechpost.com/2026/11/01/nace-ai-open-sources-drex-max-v1-local-inference/ "Nace AI Open-Sources Drex Max v1: A 27B Decision Model That Runs Locally on Apple Silicon")
+
+[![DeepSeek Open-Sources dsh-superagent, a Router-Worker Coding Agent](https://www.marktechpost.com/wp-content/uploads/2026/11/WP-BLOG-BANNER-88881-218x150.png)](https://www.marktechpost.com/2026/11/01/deepseek-dsh-superagent-router-worker-coding-agent/ "DeepSeek Open-Sources dsh-superagent, a Router-Worker Coding Agent")
+
+### [DeepSeek Open-Sources dsh-superagent, a Router-Worker Coding Agent](https://www.marktechpost.com/2026/11/01/deepseek-dsh-superagent-router-worker-coding-agent/ "DeepSeek Open-Sources dsh-superagent, a Router-Worker Coding Agent")
+
+[![Vercel Labs Open-Sources agent-desktop for Agent Computer Use](https://www.marktechpost.com/wp-content/uploads/2026/10/WP-BLOG-BANNER-88881-1-218x150.png)](https://www.marktechpost.com/2026/10/31/vercel-labs-agent-desktop-computer-use/ "Vercel Labs Open-Sources agent-desktop for Agent Computer Use")
+
+### [Vercel Labs Open-Sources agent-desktop for Agent Computer Use](https://www.marktechpost.com/2026/10/31/vercel-labs-agent-desktop-computer-use/ "Vercel Labs Open-Sources agent-desktop for Agent Computer Use")
+
+[![Meet TokenEconomizer: Microsoft’s Plugin That Cuts Coding Agent Costs by Up to 30.9%](https://www.marktechpost.com/wp-content/uploads/2026/10/WP-BLOG-BANNER-88881-218x150.png)](https://www.marktechpost.com/2026/10/30/microsoft-tokeneconomizer-coding-agent-cost-control/ "Meet TokenEconomizer: Microsoft’s Plugin That Cuts Coding Agent Costs by Up to 30.9%")
+
+### [Meet TokenEconomizer: Microsoft’s Plugin That Cuts Coding Agent Costs by Up to 30.9%](https://www.marktechpost.com/2026/10/30/microsoft-tokeneconomizer-coding-agent-cost-control/ "Meet TokenEconomizer: Microsoft’s Plugin That Cuts Coding Agent Costs by Up to 30.9%")
+
+[![AI Security Agents Compared: Claude, Codex, Mantis, Cloudflare](https://www.marktechpost.com/wp-content/uploads/2026/10/WP-BLOG-BANNER-1898-1-218x150.png)](https://www.marktechpost.com/2026/10/30/ai-security-agents-claude-codex-mantis-cloudflare/ "AI Security Agents Compared: Claude, Codex, Mantis, Cloudflare")
+
+### [AI Security Agents Compared: Claude, Codex, Mantis, Cloudflare](https://www.marktechpost.com/2026/10/30/ai-security-agents-claude-codex-mantis-cloudflare/ "AI Security Agents Compared: Claude, Codex, Mantis, Cloudflare")
+
+[![Samaya Sterling Beats Claude Fable 5.1 on FrontierFinance at 11x Lower Cost](https://www.marktechpost.com/wp-content/uploads/2026/10/WP-BLOG-BANNER-1898-218x150.png)](https://www.marktechpost.com/2026/10/30/samaya-sterling-post-trained-finance-research-model-frontierfinance/ "Samaya AI Releases Sterling: A 3B-Active Finance Research Agent Model that Beats Claude Fable 5.1 on FrontierFinance at 11x Lower Cost")
+
+### [Samaya AI Releases Sterling: A 3B-Active Finance Research Agent Model that Beats Claude Fable 5.1 on FrontierFinance at 11x Lower Cost](https://www.marktechpost.com/2026/10/30/samaya-sterling-post-trained-finance-research-model-frontierfinance/ "Samaya AI Releases Sterling: A 3B-Active Finance Research Agent Model that Beats Claude Fable 5.1 on FrontierFinance at 11x Lower Cost")
+
+[prev-page](https://www.marktechpost.com/2026/10/31/factory-droid-1-0-frontier-harness/#)[next-page](https://www.marktechpost.com/2026/10/31/factory-droid-1-0-frontier-harness/#)
+
+[![](https://www.marktechpost.com/wp-content/uploads/2025/09/272x90-300x99.png)](https://www.marktechpost.com/)
+
+[Discord](https://pxl.to/ivxz41s "Discord")[Linkedin](https://www.linkedin.com/company/marktechpost/?viewAsMember=true "Linkedin")[Reddit](https://www.reddit.com/r/machinelearningnews/ "Reddit")[X](https://twitter.com/Marktechpost "X")
+
+- [miniCON Event 2025](https://pxl.to/hki7r39)
+- [Download](https://www.marktechpost.com/download/)
+  - [AI Magazine/Report](https://www.marktechpost.com/ai-magazine/)
+- [Privacy & TC](https://www.marktechpost.com/privacy-policy/)
+- [Cookie Policy](https://www.marktechpost.com/cookie-policy/)
+- [Newsletter](https://www.aidevsignals.com/)
+- [Promote with Us](https://promotions.marktechpost.com/)
+
+© Copyright Reserved @2025 Marktechpost AI Media Inc
+
+### Get AI Dev Signals
+
+The newsletter 70,000+ AI builders read. Model releases, tools and research, without the hype.
+
+subscribe-forms.beehiiv.com
+
+# subscribe-forms.beehiiv.com is blocked
+
+This page has been blocked by an extension
+
+- Try disabling your extensions.
+
+ERR\_BLOCKED\_BY\_CLIENT
+
+Reload
+
+
+This page has been blocked by an extension
+
+![](<Base64-Image-Removed>)![](<Base64-Image-Removed>)
+
+[Go to mobile version](https://www.marktechpost.com/2026/10/31/factory-droid-1-0-frontier-harness/?amp=1)
+
+▲ AI DEV SIGNALS×
+
+Join 70,000+ AI builders
+
+Email addressSubscribe
+
+Free. Unsubscribe anytime.© Marktechpost
+
+▲ AI DEV SIGNALS×
+
+Join 70,000+ AI builders
+
+Model releases, tools and research, without the hype.
+
+Email addressSubscribe
+
+Free. Unsubscribe anytime.© Marktechpost

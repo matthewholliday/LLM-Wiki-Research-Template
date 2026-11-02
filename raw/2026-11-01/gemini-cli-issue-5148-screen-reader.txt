@@ -1,0 +1,23 @@
+Source URL: https://github.com/google-gemini/gemini-cli/issues/5148
+Effective URL: https://github.com/google-gemini/gemini-cli/issues/5148
+Title: GitHub Issue #5148: Make gemini CLI accessible to screen reader users (Public)
+Captured: 2026-11-01 via FetchUrl Markdown extraction (text snapshot, not original HTML). Long CSS/style lines removed.
+
+---
+
+Title: Make gemini CLI accessible to screen reader users
+URL: https://github.com/google-gemini/gemini-cli/issues/5148
+Description: Body: Parent issue for work towards making gemini CLI more accessible for screen reader users
+
+Status: closed (completed)
+Assignees: chrstnb
+Labels: area/platform
+
+Comments:
+
+User: Manamama
+Message: Tip: https://github.com/Piebald-AI/gemini-desktop and https://github.com/google-gemini/gemini-cli/discussions/2841may may be conceptually related (Gemini CLI as a server). Trying that https://github.com/google-gemini/gemini-cli/issues/1982#issuecomment-3020840061 now in Termux (📱) myself, as Gboard does not display the mike button somehow ...
+Edited: 7/30/2025, 6:59:59 AM
+
+User: chrstnb
+Message: Marking this as complete not because it's perfect, but because our initial pass is wrapped

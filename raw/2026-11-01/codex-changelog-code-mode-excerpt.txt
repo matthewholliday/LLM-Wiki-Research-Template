@@ -1,0 +1,113 @@
+Source URL: https://developers.openai.com/codex/changelog
+Effective URL: https://learn.chatgpt.com/docs/changelog
+HTTP status: 200
+Captured: 2026-11-01
+Format: Selected excerpt, not a full snapshot. The full page was about 1 MB of Markdown covering 193 dated entries from 2025-05-19 to 2026-10-29. This file keeps every line matching "code mode", "code_mode", or "programmatic tool" (case-insensitive), grouped under the nearest preceding date and release heading.
+
+---
+
+[2026-10-29 Codex CLI 0.166.0]
+- [#57462](https://github.com/openai/codex/pull/57462) Always put Code Mode tool descriptions before namespace descriptions [@swastik-oai](https://github.com/swastik-oai)
+- [#57836](https://github.com/openai/codex/pull/57836) Declare the image generation result type in code mode [@alicec-oai](https://github.com/alicec-oai)
+
+[2026-10-27 Codex CLI 0.165.0]
+- [#56236](https://github.com/openai/codex/pull/56236) Make the code mode yield/resume test yield explicitly between phases [@goodman-oai](https://github.com/goodman-oai)
+
+[2026-10-15 Codex CLI 0.163.0]
+- Send a follow-up while Codex is responding to steer it immediately. Interrupting a turn also stops active Code Mode cells and their nested tool calls. ( [#51812](https://github.com/openai/codex/pull/51812), [#51835](https://github.com/openai/codex/pull/51835))
+- [#51690](https://github.com/openai/codex/pull/51690) Add a feature flag for Code Mode tool description ordering [@swastik-oai](https://github.com/swastik-oai)
+- [#51704](https://github.com/openai/codex/pull/51704) Honor tool-description-first ordering in Code Mode [@swastik-oai](https://github.com/swastik-oai)
+- [#51835](https://github.com/openai/codex/pull/51835) Enable code mode interruption by default [@won-openai](https://github.com/won-openai)
+- [#52381](https://github.com/openai/codex/pull/52381) Preserve per-session routing for gRPC code mode [@cassirer-openai](https://github.com/cassirer-openai)
+- [#52681](https://github.com/openai/codex/pull/52681) Reject reserved Serde JSON keys in code mode [@cassirer-openai](https://github.com/cassirer-openai)
+- [#52685](https://github.com/openai/codex/pull/52685) Preserve code mode cancellation during output serialization [@cassirer-openai](https://github.com/cassirer-openai)
+
+[2026-10-08 Codex CLI 0.162.0]
+- Add JavaScript helpers for streaming promise results as they settle, plus opt-in ranked tool search in Code Mode. ( [#51126](https://github.com/openai/codex/pull/51126), [#51209](https://github.com/openai/codex/pull/51209))
+- [#50536](https://github.com/openai/codex/pull/50536) Keep shared MCP types stable in Code Mode exec descriptions [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#50546](https://github.com/openai/codex/pull/50546) Keep MCP resource helpers available in code mode [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#50562](https://github.com/openai/codex/pull/50562) Keep Code Mode tool discovery guidance stable across catalog changes [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#50687](https://github.com/openai/codex/pull/50687) Keep third-party tools deferred in strict Code Mode Only [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#51126](https://github.com/openai/codex/pull/51126) Add promise settlement streaming helpers to code mode [@cconger](https://github.com/cconger)
+- [#51209](https://github.com/openai/codex/pull/51209) Add ranked tool discovery to JavaScript code mode [@zamoshchin-openai](https://github.com/zamoshchin-openai)
+
+[2026-09-29 Codex CLI 0.159.0]
+- [#48725](https://github.com/openai/codex/pull/48725) Retain confirmed Code Mode messages for Guardian reviews [@ankushg](https://github.com/ankushg)
+
+[2026-09-28 Codex CLI 0.158.0]
+- [#47936](https://github.com/openai/codex/pull/47936) Make MCP and Code Mode input schema budgets configurable [@vivi](https://github.com/vivi)
+- [#48017](https://github.com/openai/codex/pull/48017) Test same-cell permission grants and strict review in code mode [@anp-oai](https://github.com/anp-oai)
+
+[2026-09-25 Codex CLI 0.157.0]
+- [#47118](https://github.com/openai/codex/pull/47118) Support model-catalog overrides for Code Mode tool messages [@rhan-oai](https://github.com/rhan-oai)
+- [#47149](https://github.com/openai/codex/pull/47149) Update code mode catalog snapshot hashes [@andrewgu-oai](https://github.com/andrewgu-oai)
+
+[2026-09-22 Codex CLI 0.156.0]
+- [#44619](https://github.com/openai/codex/pull/44619) Allow discarded code mode tool responses to be garbage collected [@jif-oai](https://github.com/jif-oai)
+- [#44865](https://github.com/openai/codex/pull/44865) Scope code mode callback delegates to individual executions [@abhinav-oai](https://github.com/abhinav-oai)
+- [#44867](https://github.com/openai/codex/pull/44867) Preserve originating budgets for code mode notifications [@abhinav-oai](https://github.com/abhinav-oai)
+- [#44934](https://github.com/openai/codex/pull/44934) Add scenario snapshots for remote compaction and Code Mode tools [@pakrym-oai](https://github.com/pakrym-oai)
+- [#45399](https://github.com/openai/codex/pull/45399) Cancel code mode timer tasks when cleared or the cell finishes [@jif-oai](https://github.com/jif-oai)
+- [#45915](https://github.com/openai/codex/pull/45915) Make Code Mode wrappers transparent to Guardian model policies [@jif-oai](https://github.com/jif-oai)
+- [#46044](https://github.com/openai/codex/pull/46044) Include Code Mode tool metadata in compaction prompts [@ningyi-oai](https://github.com/ningyi-oai)
+- [#46081](https://github.com/openai/codex/pull/46081) Mark finished empty Code Mode tool inventories as complete [@nf-openai](https://github.com/nf-openai)
+- #47036 Share stored JSON payloads across code mode cells with `Arc` [@charliemarsh-oai](https://github.com/charliemarsh-oai)
+
+[2026-09-17 Codex CLI 0.155.0]
+- [#43873](https://github.com/openai/codex/pull/43873) Handle undefined values before JSON serialization in code mode [@copyberry](https://github.com/copyberry)
+- [#44472](https://github.com/openai/codex/pull/44472) Harden Code Mode tool-call completeness tracking [@copyberry](https://github.com/copyberry)
+
+[2026-09-03 Codex CLI 0.153.0]
+- [#41934](https://github.com/openai/codex/pull/41934) Omit undersized WAV output from Code Mode
+
+[2026-09-01 Codex CLI 0.152.0]
+- [#41452](https://github.com/openai/codex/pull/41452) Report code mode host request durations [@copyberry](https://github.com/copyberry)
+
+[2026-08-26 Codex CLI 0.150.0]
+- [#39707](https://github.com/openai/codex/pull/39707) Remove redundant code mode image helper test [@copyberry](https://github.com/copyberry)
+- [#39969](https://github.com/openai/codex/pull/39969) Consolidate code mode output helper tests [@copyberry](https://github.com/copyberry)
+
+[2026-08-20 Codex CLI 0.149.0]
+- [#39505](https://github.com/openai/codex/pull/39505) Test text stringify errors in the code mode runtime [@copyberry](https://github.com/copyberry)
+- [#39506](https://github.com/openai/codex/pull/39506) Test code mode notifications without a sync tool call [@copyberry](https://github.com/copyberry)
+
+[2026-08-18 Codex CLI 0.148.0]
+- [#38044](https://github.com/openai/codex/pull/38044) Compact code mode tool calls in TUI history [@copyberry](https://github.com/copyberry)
+- [#38094](https://github.com/openai/codex/pull/38094) Test Guardian context for code mode commands [@copyberry](https://github.com/copyberry)
+- [#38606](https://github.com/openai/codex/pull/38606) Allow larger gRPC code mode tool descriptions [@copyberry](https://github.com/copyberry)
+- [#38664](https://github.com/openai/codex/pull/38664) Resolve local JSON Schema refs in Code Mode types [@copyberry](https://github.com/copyberry)
+
+[2026-08-07 Codex CLI 0.147.0]
+- [#35721](https://github.com/openai/codex/pull/35721) Honor disabled code mode fallback without a process host [@copyberry](https://github.com/copyberry)
+- [#36129](https://github.com/openai/codex/pull/36129) Resolve normalized tool name collisions in code mode [@copyberry](https://github.com/copyberry)
+- [#36139](https://github.com/openai/codex/pull/36139) Bound the code mode output termination test [@copyberry](https://github.com/copyberry)
+- [#36217](https://github.com/openai/codex/pull/36217) Run code mode exclusively through the standalone host [@copyberry](https://github.com/copyberry)
+- [#36264](https://github.com/openai/codex/pull/36264) Prefer the bundled resource for the code mode host [@copyberry](https://github.com/copyberry)
+- [#36374](https://github.com/openai/codex/pull/36374) Enable sandboxed V8 for code mode [@copyberry](https://github.com/copyberry)
+- [#36729](https://github.com/openai/codex/pull/36729) Correlate code mode tool analytics with model responses [@copyberry](https://github.com/copyberry)
+- [#36812](https://github.com/openai/codex/pull/36812) Add a dual-WebSocket transport for code mode [@copyberry](https://github.com/copyberry)
+
+[2026-07-29 Codex CLI 0.146.0]
+- Connect app-server to remote Code Mode hosts over WebSocket. ( [#35078](https://github.com/openai/codex/pull/35078), [#35098](https://github.com/openai/codex/pull/35098))
+- [#34969](https://github.com/openai/codex/pull/34969) Keep the sleep tool outside code mode [@copyberry](https://github.com/copyberry)
+- [#35364](https://github.com/openai/codex/pull/35364) Bound Code Mode metadata compatibility headers [@copyberry](https://github.com/copyberry)
+
+[2026-07-21 Codex CLI 0.145.0]
+- [#33459](https://github.com/openai/codex/pull/33459) Allow more time for image generation in code mode [@copyberry](https://github.com/copyberry)
+- [#34080](https://github.com/openai/codex/pull/34080) Add audio output support to dynamic tools and code mode [@copyberry](https://github.com/copyberry)
+
+[2026-07-09 Codex CLI 0.144.1]
+- Kept code mode working when the companion host binary is unavailable by falling back to the embedded runtime. ( [#31913](https://github.com/openai/codex/pull/31913))
+
+[2026-07-09 Codex CLI 0.144.0]
+- Fixed Code Mode crashes in Intel macOS release binaries. ( [#30953](https://github.com/openai/codex/pull/30953))
+
+[2026-07-08 Codex CLI 0.143.0]
+- [#29490](https://github.com/openai/codex/pull/29490) chore: warn when Code Mode lacks model metadata [@celia-oai](https://github.com/celia-oai)
+- [#29515](https://github.com/openai/codex/pull/29515) \[codex\] define code mode host handshake protocol [@cconger](https://github.com/cconger)
+- [#30142](https://github.com/openai/codex/pull/30142) \[codex\] wire process-owned code mode host into core [@cconger](https://github.com/cconger)
+- [#30202](https://github.com/openai/codex/pull/30202) \[codex\] bundle code mode host in release packages [@cconger](https://github.com/cconger)
+
+[2026-06-25 Codex CLI 0.142.2]
+- Code Mode now warns when the selected model lacks the required metadata. ( [#29490](https://github.com/openai/codex/pull/29490))
+- [#29490](https://github.com/openai/codex/pull/29490) chore: warn when Code Mode lacks model metadata [@celia-oai](https://github.com/celia-oai)

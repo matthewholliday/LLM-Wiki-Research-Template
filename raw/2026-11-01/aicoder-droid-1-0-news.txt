@@ -1,0 +1,267 @@
+Source URL: https://aicoder.com/news/news-20261029-factory-droid-1-0-programmatic-tool-calling-terminal-bench-4-harness
+Effective URL: https://aicoder.com/news/news-20261029-factory-droid-1-0-programmatic-tool-calling-terminal-bench-4-harness
+HTTP status: 200
+Captured: 2026-11-01
+Format: FetchUrl Markdown text snapshot, not original HTML. Lines over 3000 characters removed.
+
+---
+
+[←Back to News](https://aicoder.com/news)
+
+Tooling·Originally published Oct 29
+
+👀43views
+
+🔥82Impact Score
+
+Bookmark
+
+# Factory launches Droid 1.0: programmatic tool calling by default, hundreds of tool calls per model request, leads native harnesses on its own Terminal-Bench 4 runs
+
+AI coding agent company Factory announced Droid 1.0 on X and its blog at 22:31 UTC on Oct 29, calling it the largest update yet to its agent harness. The key change makes programmatic tool calling (PTC) the default: the model writes a JavaScript program that runs up to hundreds of tool calls in a sandbox in one model request. In Factorys own Terminal-Bench 4 runs, Droid scored 57.6% with GPT-6.1 Sol ($0.79 per passed task) and 65.2% with Claude Opus 5.5 ($4.73), ahead of Codex, Claude Code, Cursor, OpenCode and Devin on the same models.
+
+## Key Takeaways
+
+- ✓Programmatic tool calling is now the default: the model writes JavaScript that runs in a sandbox with no file, network or system access of its own, making up to hundreds of tool calls per request, with independent calls run concurrently
+- ✓Factory example: moving and verifying 151 Linear issues took 312 tool calls; direct calls needed about 36 requests and 3.1M input tokens, a Script needed 2 requests and 61K tokens
+- ✓Terminal-Bench 4 (Factory runs, Oct 23-28, three trials per task): with GPT-6.1 Sol, Droid 57.6% vs Codex 54.0%, OpenCode 51.0%, Devin 45.0%; with Opus 5.5, Droid 65.2% vs Cursor and OpenCode 62.1%, Devin 59.6%, Claude Code 57.6%
+- ✓The first request shrank from 20,887 to 13,055 tokens (-37%) and up-front tool definitions went from 11 to 2; newly loaded MCP tools are appended to keep the prompt cache intact, and a typical production request reads 98% of input from cache
+- ✓Available now as a macOS and Windows desktop app, a terminal UI and the Droid SDK (@factory/droid-sdk); the benchmarks are vendor-run with no third-party reproduction yet
+
+![Factory launches Droid 1.0: programmatic tool calling by default, hundreds of tool calls per model request, leads native harnesses on its own Terminal-Bench 4 runs](https://pbs.twimg.com/news_img/2115934693636145152/QtWS1sCw?format=jpg&name=orig)
+
+🖼️Official Media
+
+Click to view high-res
+
+⚡
+
+### Key Decision Metrics at a Glance
+
+TL;DR Verdict
+
+[🏆 Benchmark RankRank\\
+\\
+Terminal-Bench 4 (Factory runs, Oct 23-28, three trials per task): with GPT-6.1 Sol, Droid 57.6% vs Codex 54.0%, OpenCode 51.0%, Devin 45.0%; with Opus 5.5, Droid 65.2% vs Cursor and OpenCode 62.1%, Devin 59.6%, Claude Code 57.6%\\
+\\
+Full Leaderboard→](https://aicoder.com/leaderboard) [💰 Cost & PlansCompare\\
+\\
+GPT-6.1 Sol · in: $2 / out: $10\\
+\\
+Compare Plans↗](https://aicoder.com/plans?search=GPT-6.1+Sol) [🛠️ Ecosystem & IDERules\\
+\\
+Coding agent · Agent harness · Programmatic tool calling\\
+\\
+Setup IDE Rules↗](https://aicoder.com/rules)
+
+🧭
+
+#### Turn your technical choice into a development budget
+
+Compare 40 dev plans & simulate token costs vs $20/mo subscriptions
+
+[⚔️ Compare Model→](https://aicoder.com/compare?a=openai-gpt-6-1-sol) [💰 Compare plans & limits↗](https://aicoder.com/plans?search=GPT-6.1+Sol)
+
+🔗
+
+### Project Links & Resources
+
+Direct Access
+
+Direct access to official project resources and documentation
+
+[📝\\
+\\
+Droid 1.0: Building a Frontier Harness (Factory blog)\\
+\\
+factory.com/news/frontier-harness\\
+\\
+↗](https://factory.com/news/frontier-harness)
+
+🔬
+
+## In-Depth Technical Analysis
+
+### Background and pain point
+
+Coding agents now run for hours across hundreds of turns, and every turn re-sends instructions, tool definitions and history. In a classic loop the model calls one or two tools at a time and every output (whole files, search results, logs) goes back into context, so long tasks get more expensive, slower and more likely to drop steps. Factory released Droid 1.0 on Oct 29, calling it the largest update yet to its agent harness, meaning everything around the model: prompts, tools, how results come back, and the loop.
+
+### Architecture and mechanism
+
+The headline change makes programmatic tool calling (PTC) the default through a Script tool. The model writes JavaScript that runs in a sandbox with no file, network or system access of its own, making up to hundreds of tool calls in one model request, running independent calls concurrently, returning only the program output to context and logging full results for later search. Factory''s example: moving and verifying 151 Linear issues took 312 tool calls, about 36 requests and 3.1M input tokens with direct calls, versus 2 requests and 61K tokens as a Script. Other changes: newly loaded MCP tools are appended to the end of the request to keep the prompt cache intact (a typical production request reads 98% of input from cache); the first request shrank from 20,887 to 13,055 tokens (-37%), with up-front tool definitions cut from 11 to 2; the loop detects stalls, repeats and dropped tasks; and compaction summaries grew from 8,000 to 16,000 tokens. Factory also describes an internal Agent Factory where agents study benchmark failures and real-session friction, propose changes and test them on every model family before engineers decide what ships.
+
+### Benchmarks
+
+All numbers are Factory''s own runs (all Terminal-Bench 4 tasks, Oct 23-28, three trials per task, high reasoning). GPT-6.1 Sol: Droid 57.6% ($0.79 per passed task), Codex 54.0%, OpenCode 51.0%, Devin 45.0%; Factory says Droid beats Codex by 3.5 points at 12% lower cost but takes 10% longer. Claude Opus 5.5: Droid 65.2% ($4.73), Cursor and OpenCode 62.1%, Devin 59.6%, Claude Code 57.6%, with 16% to 26% less time per passed task. The methodology notes adjustments: some Opus 5.5 trials stopped by content moderation were rerun on Opus 5, Devin tasks where it stopped to ask were counted as passed if Codex passed, and Cursor tokens lost on two reconnects were estimated from transcripts. These are vendor results with no third-party reproduction yet.
+
+### Getting started
+
+Droid 1.0 is available now as a desktop app for macOS and Windows or as a terminal UI. To build on the same harness, use the Droid SDK (npm package `@factory/droid-sdk`), which runs the same Droid as the CLI: start Droid from Node, hold multi-turn sessions, stream its work, add custom tools over MCP, or connect to a running Droid daemon. Droid is model-independent, with bring-your-own keys or the Factory Router choosing models. It suits tool-heavy long tasks such as reading many files, triaging tickets in bulk or staged database migrations; compare cost and pass rate on your own codebase rather than relying on vendor charts.
+
+Action HubReady to adopt this in production?
+
+Benchmark side-by-side against alternatives, or calculate monthly token cost vs subscription break-even.
+
+[⚔️ Launch VS Compare→](https://aicoder.com/compare?a=openai-gpt-6-1-sol) [💳 View Plans↗](https://aicoder.com/plans?search=GPT-6.1+Sol)
+
+Up NextArtificial Analysis launches Intelligence Index v5: 60% private test sets, Claude Opus 5.5 leads at 58 and the open-weights gap widens to 12 points
+
+Read Now→
+
+About this article: compiled by the AICoder newsroom with AI assistance, based on the official and press sources cited above and checked against human-set editorial standards; vendor-reported figures are attributed as such.
+
+🧭
+
+### AI Coding Ecosystem & Action Hub
+
+Integrated benchmark rankings, plan discounts & IDE rules
+
+🎯Mentioned Models & Agents
+
+⚡ Model$2/M
+
+[GPT-6.1 Sol](https://aicoder.com/models/openai-gpt-6-1-sol)
+
+OpenAI
+
+[⚔️ VS](https://aicoder.com/compare?a=openai-gpt-6-1-sol) [🚀 Try ↗](https://aicoder.com/go/openai)
+
+⚡ Model$4/M
+
+[Claude Opus 5.5](https://aicoder.com/models/anthropic-claude-opus-5-5)
+
+Anthropic
+
+[⚔️ VS](https://aicoder.com/compare?a=anthropic-claude-opus-5-5) [🚀 Try ↗](https://aicoder.com/go/anthropic)
+
+[🏆\\
+\\
+Live Leaderboard\\
+\\
+Benchmark rankings\\
+\\
+→](https://aicoder.com/leaderboard) [⚔️\\
+\\
+Model Showdown\\
+\\
+Side-by-side comparison\\
+\\
+→](https://aicoder.com/compare?a=openai-gpt-6-1-sol) [💰\\
+\\
+Pricing & Plans\\
+\\
+21 vendors cost comparison\\
+\\
+→](https://aicoder.com/plans?search=GPT-6.1+Sol) [🛠️\\
+\\
+Rules Generator\\
+\\
+Cursor / Claude Code rules\\
+\\
+→](https://aicoder.com/rules)
+
+📰
+
+### Up Next & Recommended Stories
+
+[View All News→](https://aicoder.com/news)
+
+NEXT ➔
+
+Next Featured Story
+
+#### Artificial Analysis launches Intelligence Index v5: 60% private test sets, Claude Opus 5.5 leads at 58 and the open-weights gap widens to 12 points
+
+[Read Now→](https://aicoder.com/news/news-20261028-artificial-analysis-intelligence-index-v5-private-benchmarks-opus-5-5-58)
+
+[Tooling4d ago\\
+\\
+**GitHub Universe 2026: Copilot Fusion is generally available, routing and orchestrating models automatically, with Fusion Max scoring 60 on the Artificial Analysis Coding Agent Index at about half the cost of Claude Code with Opus 5.5 Max** \\
+\\
+At GitHub Universe 2026 on Oct 28, GitHub made Copilot Fusion generally available. It merges the multi-model orchestration of the Project HydraFusion research preview with Copilot auto model selection: users pick Copilot Fusion and an effort level (Standard, High or Max) in the model picker, and the system decides which models to use and whether to run a Single, Cascade or Critique workflow. GitHub says Fusion Max scored 60 on the Artificial Analysis Coding Agent Index, two points below Claude Code with Opus 5.5 Max, at about half the API cost per task, about half the tokens and about 40% less time. Each underlying model is billed at its standard rate, and paid plans get 30% off through Nov 30.\\
+\\
+Read Story→](https://aicoder.com/news/news-20261028-github-copilot-fusion-ga-universe-2026-aa-coding-agent-index-60) [Benchmark10d ago\\
+\\
+**FrontierCS 2 benchmark: agents must rebuild a paper's deleted contribution in its own repo and beat the authors' code; Claude Opus 5.5 leads at 58%, 16 tasks unsolved** \\
+\\
+Teams from UC Berkeley, Princeton and others released FrontierCS 2 (arXiv 2610.29932): 48 tasks across 13 CS domains, each built by deleting a paper's contribution from the authors' released code. An agent has 5 hours to write it back and passes only if it beats the original on every metric and every hidden workload. Of 12 agents, Claude Opus 5.5 in Claude Code leads with a 58% pass rate, every other agent passes fewer than half, and 16 tasks have no passing run. On Oct 26 maintainer Wenhao Chai said a trace audit showed the Pi harness ends runs on refusals; rerun in Antigravity, Gemini 4 Argon now beats GPT-6 Astra and sits right behind Opus 5.5.\\
+\\
+Read Story→](https://aicoder.com/news/news-20261022-frontiercs-2-cs-research-benchmark-opus-5-5-58) [Release20d ago\\
+\\
+**OpenCode 2.0 ships: one background service for TUI, web and desktop, Code Mode for all MCP servers, background subagents, and @opencode/sdk** \\
+\\
+Anomaly published the OpenCode 2.0 launch note on Oct 12: a single auto-started local service shared by the TUI, web and desktop apps; a rewritten server API with the new @opencode/client; @opencode/codemode, which turns MCP servers and OpenAPI endpoints into functions the model composes in scripts (all MCP servers opt into Code Mode by default); background subagents and background shell commands; 80+ internal features rebuilt as hot-reloadable plugins; and @opencode/sdk for embedding the same engine as a library. V1 plugins and the old server API are not compatible.\\
+\\
+Read Story→](https://aicoder.com/news/news-20261012-opencode-2-0-service-code-mode-background-subagents)
+
+🔥
+
+### Trending Radar
+
+TOP 5
+
+Ranked by reader attention & deep impact
+
+1. [1 \\
+\\
+Release13d ago\\
+\\
+    **Skyfall AI unveils SKY-001, an engineering world model that turns text or sketches into executable CAD build steps, claiming 51x faster and 150x cheaper than GPT-6 Astra on CAD** \\
+\\
+2.8k·🔥84\\
+\\
+Read→](https://aicoder.com/news/news-20261020-skyfall-ai-sky-001-engineering-world-model-cad-bim)
+2. [2 \\
+\\
+Pricing3d ago\\
+\\
+    **OpenAI gives ChatGPT Pro and Business subscribers up to $500 a month in API credits to build apps and agents** \\
+\\
+552·🔥85\\
+\\
+Read→](https://aicoder.com/news/news-20261028-openai-chatgpt-pro-business-up-to-500-monthly-api-credits)
+3. [3 \\
+\\
+Release6d ago\\
+\\
+    **OpenAI unveils three AI-produced results: a claimed refutation of the Exponential Time Hypothesis, local smoothing in every dimension, and an existence proof for QCD** \\
+\\
+376·🔥95\\
+\\
+Read→](https://aicoder.com/news/news-20261026-openai-ai-proofs-eth-false-local-smoothing-kakeya-qcd-existence)
+4. [4\\
+\\
+Tooling9d ago\\
+\\
+    **X discussion: viral posts claim Anthropic "quietly killed" Claude's reverse engineering with the REA toolkit after a Samsung TV firmware teardown went viral; no official statement yet** \\
+\\
+316·🔥82\\
+\\
+Read→](https://aicoder.com/news/news-20261025-x-discussion-claude-rea-reverse-engineering-blocked)
+5. [5\\
+\\
+Benchmark9d ago\\
+\\
+    **Artificial Analysis launches Coding Agent Index v2.0: FrontierCode from Cognition replaces DeepSWE, and Claude Code with Opus 5.5 leads at 61.7** \\
+\\
+260·🔥85\\
+\\
+Read→](https://aicoder.com/news/news-20261023-artificial-analysis-coding-agent-index-v2-frontiercode)
+
+[Explore All 1,200+ Radar News→](https://aicoder.com/news)
+
+[←Back to news list](https://aicoder.com/news)
+
+### Discussion & Comments
+
+0
+
+Sign in to join the discussion
+
+Connect with AI developers to exchange benchmark insights.
+
+Sign In
+
+No comments yet. Be the first to share your thoughts!
+
+ADSponsored
